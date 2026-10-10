@@ -1,4 +1,11 @@
-import { Body, Controller, Param, Patch, Req, Res, UnauthorizedException } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Param,
+  Patch,
+  Req,
+  Res,
+} from '@nestjs/common';
 import type { Request, Response } from 'express';
 import {
   ApiBadRequestResponse,
@@ -29,7 +36,9 @@ export class UserController {
   @ApiParam({ name: 'userId', type: String, description: 'ID of the user' })
   @ApiBody({ type: UpdateUserDto })
   @ApiOkResponse({ description: 'Details updated successfully.' })
-  @ApiUnauthorizedResponse({ description: "You are not authorised to update this data"})
+  @ApiUnauthorizedResponse({
+    description: 'You are not authorised to update this data',
+  })
   @ApiBadRequestResponse({ description: 'Bad request' })
   async update(
     @Req() req: Request,
