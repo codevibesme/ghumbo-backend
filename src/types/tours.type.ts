@@ -5,6 +5,12 @@ export enum ETourStatus {
   LIVE = 'live',
 }
 
+export enum ETourTier {
+  BUDGET = "budget",
+  STANDARD = "standard",
+  PREMIUM = "premium"
+}
+
 export const ItineraryActivity = z.object({
   title: z.string().min(1),
   description: z.string().nullable().default(null),

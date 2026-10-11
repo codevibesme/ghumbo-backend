@@ -12,6 +12,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "env-cmd -f .env env-cmd -f .env.prod node dist/main",
     "dev": "env-cmd -f .env env-cmd -f .env.local nest start --watch",
+    "seed": "nest build && env-cmd -f .env.local node dist/scripts/seed.js",
     "lint": "oxlint src/ test/",
     "test": "vitest run",
     "test:watch": "vitest",

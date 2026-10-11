@@ -17,6 +17,7 @@ import { DestinationEntity } from './destinations.entity.js';
 import type { TAsset } from '../types/misc.type.js';
 import {
   ETourStatus,
+  ETourTier,
   type TItinerary,
   type TTourInclusion,
 } from '../types/tours.type.js';
@@ -63,6 +64,9 @@ export class TourEntity {
 
   @Column({ name: 'overview', type: 'text' })
   overview: string;
+
+  @Column({ name: 'tier', type: 'enum', enum: ETourTier })
+  tier: ETourTier; 
 
   @Column({ name: 'duration_days', type: 'integer' })
   durationDays: number;
