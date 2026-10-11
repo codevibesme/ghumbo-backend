@@ -23,6 +23,7 @@ import {
 } from '../types/tours.type.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { TourInquiryEntity } from './tour_inquiries.entity.js';
+import { TourReviewEntity } from './tour_reviews.entity.js';
 
 @Entity('tours')
 @Unique('uq_tours_slug', ['slug'])
@@ -66,7 +67,7 @@ export class TourEntity {
   overview: string;
 
   @Column({ name: 'tier', type: 'enum', enum: ETourTier })
-  tier: ETourTier; 
+  tier: ETourTier;
 
   @Column({ name: 'duration_days', type: 'integer' })
   durationDays: number;
@@ -100,4 +101,7 @@ export class TourEntity {
 
   @OneToMany(() => TourInquiryEntity, (inquiries) => inquiries.tour)
   inquiries: TourInquiryEntity[];
+
+  @OneToMany(() => TourReviewEntity, (reviews) => reviews.tour)
+  reviews: TourReviewEntity[];
 }

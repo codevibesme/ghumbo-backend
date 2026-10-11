@@ -13,6 +13,8 @@ erDiagram
     tours ||--o{ tour_inquiries : "receives"
     tour_departures |o--o{ tour_inquiries : "optionally for"
     users |o--o{ tour_inquiries : "optionally by"
+    tours ||--o{ tour_reviews : "has"
+    users |o--o{ tour_reviews : "written by"
     users ||--o{ auth_identities : "has"
     users ||--o{ auth_sessions : "has"
 ```
@@ -26,10 +28,12 @@ erDiagram
 | `tour_inquiries` → `tours` | `tour_id` | `RESTRICT` |
 | `tour_inquiries` → `tour_departures` | `tour_departure_id` | `SET NULL` |
 | `tour_inquiries` → `users` | `user_id` | `SET NULL` |
+| `tour_reviews` → `tours` | `tour_id` | `CASCADE` |
+| `tour_reviews` → `users` | `user_id` | `SET NULL` |
 | `auth_identities` → `users` | `user_id` | `CASCADE` |
 | `auth_sessions` → `users` | `user_id` | `CASCADE` |
 
-Effectively: a country, destination, or tour cannot be deleted while it has children / inquiries. Deleting a tour with no inquiries removes its departures and their prices. Deleting a user removes their auth identities and sessions but keeps their inquiries (detached).
+Effectively: a country, destination, or tour cannot be deleted while it has children / inquiries. Deleting a tour with no inquiries removes its departures, their prices, and its reviews. Deleting a user removes their auth identities and sessions but keeps their inquiries and reviews (detached).
 
 ## Conventions
 
@@ -193,6 +197,28 @@ A lead submitted for a tour, optionally for a specific departure and optionally 
 - `chk_tour_inquiries_traveler_count`: `traveler_count > 0`
 
 > The DB does not verify that `tour_departure_id` belongs to `tour_id`. Validate this in the service layer when creating an inquiry.
+
+### `tour_reviews` — `TourReviewEntity`
+
+A customer's rating and feedback for a tour.
+
+| Column | Property | Type | Null | Default | Notes |
+|---|---|---|---|---|---|
+| `id` | `id` | `varchar(26)` | | ULID | PK |
+| `user_id` | `userId` | `varchar(26)` | ✓ | | FK → `users.id`. Null once the user is deleted |
+| `tour_id` | `tourId` | `varchar(26)` | | | FK → `tours.id`, indexed |
+| `rating` | `rating` | `integer` | | | 1–5 |
+| `feedback` | `feedback` | `text` | ✓ | | |
+| `assets` | `assets` | `jsonb` (`TAsset[]`) | | `'[]'` | Customer photos / videos |
+| `created_at` | `createdAt` | `timestamptz` | | `now()` | |
+| `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
+
+**Constraints:**
+- `uq_tour_reviews_user_id_tour_id`: unique on `(user_id, tour_id)`, so a user reviews a tour at most once. Its index also serves lookups by `user_id`. Rows detached from a deleted user (`user_id` null) don't conflict, since Postgres treats nulls as distinct.
+- `idx_tour_reviews_tour_id`: index on `tour_id` for listing a tour's reviews
+- `chk_tour_reviews_rating`: `rating BETWEEN 1 AND 5`
+
+> The DB does not check that the reviewer actually travelled on the tour. Enforce that in the service layer if needed.
 
 ---
 

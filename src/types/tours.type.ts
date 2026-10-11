@@ -6,9 +6,9 @@ export enum ETourStatus {
 }
 
 export enum ETourTier {
-  BUDGET = "budget",
-  STANDARD = "standard",
-  PREMIUM = "premium"
+  BUDGET = 'budget',
+  STANDARD = 'standard',
+  PREMIUM = 'premium',
 }
 
 export const ItineraryActivity = z.object({
