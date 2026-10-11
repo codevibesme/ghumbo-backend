@@ -1,6 +1,6 @@
 import { CountryEntity } from './countries.entity.js';
 import { DestinationEntity } from './destinations.entity.js';
-import { TourInquiryEntity } from './tour_inquiries.entity.js';
+import { BookingRequestEntity } from './booking_requests.entity.js';
 import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { TourEntity } from './tours.entity.js';
@@ -18,7 +18,7 @@ const ENTITIES = [
   TourEntity,
   TourDepartureEntity,
   TourDeparturePriceEntity,
-  TourInquiryEntity,
+  BookingRequestEntity,
   TourReviewEntity,
 ];
 

@@ -14,7 +14,7 @@ import {
 import { ulid } from 'ulid';
 import { TourEntity } from './tours.entity.js';
 import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
-import { TourInquiryEntity } from './tour_inquiries.entity.js';
+import { BookingRequestEntity } from './booking_requests.entity.js';
 import { ETourDepartureStatus } from '../types/tour_departures.type.js';
 
 @Entity('tour_departures')
@@ -70,6 +70,9 @@ export class TourDepartureEntity {
   @OneToMany(() => TourDeparturePriceEntity, (prices) => prices.departure)
   prices: TourDeparturePriceEntity[];
 
-  @OneToMany(() => TourInquiryEntity, (inquiries) => inquiries.departure)
-  inquiries: TourInquiryEntity[];
+  @OneToMany(
+    () => BookingRequestEntity,
+    (bookingRequests) => bookingRequests.departure,
+  )
+  bookingRequests: BookingRequestEntity[];
 }

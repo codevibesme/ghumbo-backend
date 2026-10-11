@@ -10,9 +10,9 @@ erDiagram
     destinations ||--o{ tours : "has"
     tours ||--o{ tour_departures : "has"
     tour_departures ||--o{ tour_departure_prices : "has"
-    tours ||--o{ tour_inquiries : "receives"
-    tour_departures |o--o{ tour_inquiries : "optionally for"
-    users |o--o{ tour_inquiries : "optionally by"
+    tours ||--o{ booking_requests : "receives"
+    tour_departures |o--o{ booking_requests : "optionally for"
+    users |o--o{ booking_requests : "optionally by"
     tours ||--o{ tour_reviews : "has"
     users |o--o{ tour_reviews : "written by"
     users ||--o{ auth_identities : "has"
@@ -25,15 +25,15 @@ erDiagram
 | `tours` → `destinations` | `destination_id` | `RESTRICT` |
 | `tour_departures` → `tours` | `tour_id` | `CASCADE` |
 | `tour_departure_prices` → `tour_departures` | `departure_id` | `CASCADE` |
-| `tour_inquiries` → `tours` | `tour_id` | `RESTRICT` |
-| `tour_inquiries` → `tour_departures` | `tour_departure_id` | `SET NULL` |
-| `tour_inquiries` → `users` | `user_id` | `SET NULL` |
+| `booking_requests` → `tours` | `tour_id` | `RESTRICT` |
+| `booking_requests` → `tour_departures` | `tour_departure_id` | `SET NULL` |
+| `booking_requests` → `users` | `user_id` | `SET NULL` |
 | `tour_reviews` → `tours` | `tour_id` | `CASCADE` |
 | `tour_reviews` → `users` | `user_id` | `SET NULL` |
 | `auth_identities` → `users` | `user_id` | `CASCADE` |
 | `auth_sessions` → `users` | `user_id` | `CASCADE` |
 
-Effectively: a country, destination, or tour cannot be deleted while it has children / inquiries. Deleting a tour with no inquiries removes its departures, their prices, and its reviews. Deleting a user removes their auth identities and sessions but keeps their inquiries and reviews (detached).
+Effectively: a country, destination, or tour cannot be deleted while it has children / booking requests. Deleting a tour with no booking requests removes its departures, their prices, and its reviews. Deleting a user removes their auth identities and sessions but keeps their booking requests and reviews (detached).
 
 ## Conventions
 
@@ -48,7 +48,7 @@ Effectively: a country, destination, or tour cannot be deleted while it has chil
 
   | Kind | Pattern | Example |
   |---|---|---|
-  | Foreign key | `fk_<table>_<column>` | `fk_tour_inquiries_user_id` |
+  | Foreign key | `fk_<table>_<column>` | `fk_booking_requests_user_id` |
   | Index | `idx_<table>_<columns>` | `idx_tours_destination_id` |
   | Check | `chk_<table>_<what>` | `chk_tour_departures_dates` |
   | Unique | `uq_<table>_<columns>` | `uq_tour_departure_prices_departure_type_currency` |
@@ -171,7 +171,7 @@ Per-departure price, one row per (price type, currency).
 - `uq_tour_departure_prices_departure_type_currency`: unique on `(departure_id, type, currency)`. Its index also serves lookups by `departure_id`.
 - `chk_tour_departure_prices_amount`: `amount >= 0`
 
-### `tour_inquiries` — `TourInquiryEntity`
+### `booking_requests` — `BookingRequestEntity`
 
 A lead submitted for a tour, optionally for a specific departure and optionally by a logged-in user.
 
@@ -179,7 +179,7 @@ A lead submitted for a tour, optionally for a specific departure and optionally 
 |---|---|---|---|---|---|
 | `id` | `id` | `varchar(26)` | | ULID | PK |
 | `tour_id` | `tourId` | `varchar(26)` | | | FK → `tours.id`, indexed |
-| `tour_departure_id` | `tourDepartureId` | `varchar(26)` | ✓ | | FK → `tour_departures.id`, indexed. Null = general tour inquiry |
+| `tour_departure_id` | `tourDepartureId` | `varchar(26)` | ✓ | | FK → `tour_departures.id`, indexed. Null = general tour request |
 | `user_id` | `userId` | `varchar(26)` | ✓ | | FK → `users.id`, indexed. Null = guest |
 | `travel_date` | `travelDate` | `date` (`string`) | ✓ | | Preferred date when no departure is chosen |
 | `name` | `name` | `varchar(100)` | | | |
@@ -187,16 +187,16 @@ A lead submitted for a tour, optionally for a specific departure and optionally 
 | `phone` | `phone` | `varchar(16)` | ✓ | | E.164 |
 | `traveler_count` | `travelerCount` | `integer` | | | |
 | `query` | `query` | `text` | ✓ | | Free-text message from the customer |
-| `status` | `status` | enum `ETourInquiryStatus` | | `new` | |
+| `status` | `status` | enum `EBookingRequestStatus` | | `new` | |
 | `status_notes` | `statusNotes` | `text` | ✓ | | Internal notes |
 | `created_at` | `createdAt` | `timestamptz` | | `now()` | |
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
 **Constraints:**
-- `idx_tour_inquiries_status_created_at`: index on `(status, created_at)` for the admin lead list (filter by status, sort by newest)
-- `chk_tour_inquiries_traveler_count`: `traveler_count > 0`
+- `idx_booking_requests_status_created_at`: index on `(status, created_at)` for the admin lead list (filter by status, sort by newest)
+- `chk_booking_requests_traveler_count`: `traveler_count > 0`
 
-> The DB does not verify that `tour_departure_id` belongs to `tour_id`. Validate this in the service layer when creating an inquiry.
+> The DB does not verify that `tour_departure_id` belongs to `tour_id`. Validate this in the service layer when creating a booking request.
 
 ### `tour_reviews` — `TourReviewEntity`
 
@@ -291,7 +291,7 @@ Stored as native Postgres enum types. Values can be added later, but not removed
 | `ETourDepartureStatus` | `types/tour_departures.type.ts` | `draft`, `open`, `cancelled`, `completed` |
 | `ETourDeparturePriceType` | `types/tour_departure_prices.type.ts` | `adult`, `couple`, `child` |
 | `ECURRENCY` | `types/misc.type.ts` | `inr`, `usd`, `cad`, `aed` |
-| `ETourInquiryStatus` | `types/tour_inquiries.type.ts` | `new`, `contacted`, `in_progress`, `converted`, `closed` |
+| `EBookingRequestStatus` | `types/booking_requests.type.ts` | `new`, `contacted`, `in_progress`, `converted`, `closed` |
 | `EUserRole` | `types/users.type.ts` | `customer`, `admin`, `guide` |
 | `EAuthIdentityProvider` | `types/auth_identities.type.ts` | `email`, `phone`, `google` |
 
@@ -302,7 +302,7 @@ Shapes are defined as Zod schemas, so validate with them before writing. The dat
 **`TAsset`** (`types/misc.type.ts`)
 ```ts
 {
-  label: string;               // min 3 chars
+  label: string | null;        // default null; caption / alt text
   description: string | null;
   type: 'image' | 'video';
   url: string;                 // URL

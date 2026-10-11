@@ -13,7 +13,7 @@ export enum EMediaType {
 }
 
 export const Asset = z.object({
-  label: z.string().min(3),
+  label: z.string().nullable().default(null),
   description: z.string().nullable().default(null),
   type: z.enum(EMediaType),
   url: z.url(),

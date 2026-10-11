@@ -17,7 +17,7 @@ export class CreateUserDto extends OmitType(UserDto, [
   'updatedAt',
   'identities',
   'sessions',
-  'inquiries',
+  'bookingRequests',
   'reviews',
 ]) {}
 

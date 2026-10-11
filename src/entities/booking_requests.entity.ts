@@ -11,32 +11,32 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { ETourInquiryStatus } from '../types/tour_inquiries.type.js';
+import { EBookingRequestStatus } from '../types/booking_requests.type.js';
 import { TourEntity } from './tours.entity.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { UserEntity } from './users.entity.js';
 
-@Entity('tour_inquiries')
-@Index('idx_tour_inquiries_status_created_at', ['status', 'createdAt'])
-@Check('chk_tour_inquiries_traveler_count', `"traveler_count" > 0`)
-export class TourInquiryEntity {
+@Entity('booking_requests')
+@Index('idx_booking_requests_status_created_at', ['status', 'createdAt'])
+@Check('chk_booking_requests_traveler_count', `"traveler_count" > 0`)
+export class BookingRequestEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
-  @Index('idx_tour_inquiries_tour_id')
+  @Index('idx_booking_requests_tour_id')
   @Column({ name: 'tour_id', type: 'varchar', length: 26 })
   tourId: string;
 
-  @ManyToOne(() => TourEntity, (tour) => tour.inquiries, {
+  @ManyToOne(() => TourEntity, (tour) => tour.bookingRequests, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({
     name: 'tour_id',
-    foreignKeyConstraintName: 'fk_tour_inquiries_tour_id',
+    foreignKeyConstraintName: 'fk_booking_requests_tour_id',
   })
   tour: Relation<TourEntity>;
 
-  @Index('idx_tour_inquiries_tour_departure_id')
+  @Index('idx_booking_requests_tour_departure_id')
   @Column({
     name: 'tour_departure_id',
     type: 'varchar',
@@ -45,25 +45,29 @@ export class TourInquiryEntity {
   })
   tourDepartureId: string | null;
 
-  @ManyToOne(() => TourDepartureEntity, (departure) => departure.inquiries, {
-    onDelete: 'SET NULL',
-  })
+  @ManyToOne(
+    () => TourDepartureEntity,
+    (departure) => departure.bookingRequests,
+    {
+      onDelete: 'SET NULL',
+    },
+  )
   @JoinColumn({
     name: 'tour_departure_id',
-    foreignKeyConstraintName: 'fk_tour_inquiries_tour_departure_id',
+    foreignKeyConstraintName: 'fk_booking_requests_tour_departure_id',
   })
   departure: Relation<TourDepartureEntity> | null;
 
-  @Index('idx_tour_inquiries_user_id')
+  @Index('idx_booking_requests_user_id')
   @Column({ name: 'user_id', type: 'varchar', length: 26, nullable: true })
   userId: string | null;
 
-  @ManyToOne(() => UserEntity, (user) => user.inquiries, {
+  @ManyToOne(() => UserEntity, (user) => user.bookingRequests, {
     onDelete: 'SET NULL',
   })
   @JoinColumn({
     name: 'user_id',
-    foreignKeyConstraintName: 'fk_tour_inquiries_user_id',
+    foreignKeyConstraintName: 'fk_booking_requests_user_id',
   })
   user: Relation<UserEntity> | null;
 
@@ -88,10 +92,10 @@ export class TourInquiryEntity {
   @Column({
     name: 'status',
     type: 'enum',
-    enum: ETourInquiryStatus,
-    default: ETourInquiryStatus.NEW,
+    enum: EBookingRequestStatus,
+    default: EBookingRequestStatus.NEW,
   })
-  status: ETourInquiryStatus;
+  status: EBookingRequestStatus;
 
   @Column({ name: 'status_notes', type: 'text', nullable: true })
   statusNotes: string | null;

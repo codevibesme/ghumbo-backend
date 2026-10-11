@@ -10,7 +10,7 @@ import {
 import { ulid } from 'ulid';
 import { EUserRole } from '../types/users.type.js';
 import { AuthSessionEntity } from './auth_sessions.entity.js';
-import { TourInquiryEntity } from './tour_inquiries.entity.js';
+import { BookingRequestEntity } from './booking_requests.entity.js';
 import type { TAsset } from '../types/misc.type.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
@@ -58,8 +58,11 @@ export class UserEntity {
   @OneToMany(() => AuthSessionEntity, (sessions) => sessions.user)
   sessions: AuthSessionEntity[];
 
-  @OneToMany(() => TourInquiryEntity, (inquiries) => inquiries.user)
-  inquiries: TourInquiryEntity[];
+  @OneToMany(
+    () => BookingRequestEntity,
+    (bookingRequests) => bookingRequests.user,
+  )
+  bookingRequests: BookingRequestEntity[];
 
   @OneToMany(() => TourReviewEntity, (reviews) => reviews.user)
   reviews: TourReviewEntity[];

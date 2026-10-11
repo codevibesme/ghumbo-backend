@@ -22,7 +22,7 @@ import {
   type TTourInclusion,
 } from '../types/tours.type.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
-import { TourInquiryEntity } from './tour_inquiries.entity.js';
+import { BookingRequestEntity } from './booking_requests.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
 
 @Entity('tours')
@@ -99,8 +99,11 @@ export class TourEntity {
   @OneToMany(() => TourDepartureEntity, (departures) => departures.tour)
   departures: TourDepartureEntity[];
 
-  @OneToMany(() => TourInquiryEntity, (inquiries) => inquiries.tour)
-  inquiries: TourInquiryEntity[];
+  @OneToMany(
+    () => BookingRequestEntity,
+    (bookingRequests) => bookingRequests.tour,
+  )
+  bookingRequests: BookingRequestEntity[];
 
   @OneToMany(() => TourReviewEntity, (reviews) => reviews.tour)
   reviews: TourReviewEntity[];
