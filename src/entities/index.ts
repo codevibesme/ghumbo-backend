@@ -8,6 +8,7 @@ import { AuthSessionEntity } from './auth_sessions.entity.js';
 import { UserEntity } from './users.entity.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
+import { TravelerEntity } from './travelers.entity.js';
 
 const ENTITIES = [
   UserEntity,
@@ -20,6 +21,7 @@ const ENTITIES = [
   TourDeparturePriceEntity,
   BookingRequestEntity,
   TourReviewEntity,
+  TravelerEntity,
 ];
 
 export default ENTITIES;

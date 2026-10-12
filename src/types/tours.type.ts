@@ -11,6 +11,11 @@ export enum ETourTier {
   PREMIUM = 'premium',
 }
 
+export enum ETourAudience {
+  OPEN = 'open',
+  COUPLES = 'couples',
+}
+
 export const ItineraryActivity = z.object({
   title: z.string().min(1),
   description: z.string().nullable().default(null),

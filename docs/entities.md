@@ -17,6 +17,7 @@ erDiagram
     users |o--o{ tour_reviews : "written by"
     users ||--o{ auth_identities : "has"
     users ||--o{ auth_sessions : "has"
+    users |o--o{ travelers : "saves"
 ```
 
 | Child → Parent | FK column | On delete |
@@ -32,8 +33,9 @@ erDiagram
 | `tour_reviews` → `users` | `user_id` | `SET NULL` |
 | `auth_identities` → `users` | `user_id` | `CASCADE` |
 | `auth_sessions` → `users` | `user_id` | `CASCADE` |
+| `travelers` → `users` | `user_id` | `CASCADE` |
 
-Effectively: a country, destination, or tour cannot be deleted while it has children / booking requests. Deleting a tour with no booking requests removes its departures, their prices, and its reviews. Deleting a user removes their auth identities and sessions but keeps their booking requests and reviews (detached).
+Effectively: a country, destination, or tour cannot be deleted while it has children / booking requests. Deleting a tour with no booking requests removes its departures, their prices, and its reviews. Deleting a user removes their auth identities, sessions and saved travelers but keeps their booking requests and reviews (detached).
 
 ## Conventions
 
@@ -109,6 +111,8 @@ Effectively: a country, destination, or tour cannot be deleted while it has chil
 | `name` | `name` | `varchar(255)` | | | |
 | `slug` | `slug` | `varchar(255)` | | | Unique. URL slug, lowercase kebab-case |
 | `overview` | `overview` | `text` | | | |
+| `tier` | `tier` | enum `ETourTier` | | | Price band. A tier is its own tour, not a package on one tour |
+| `audience` | `audience` | enum `ETourAudience` | | `open` | Who the tour is for. `couples` tours are separate tours, sold in pairs |
 | `duration_days` | `durationDays` | `integer` | | | |
 | `duration_nights` | `durationNights` | `integer` | | | |
 | `itinerary` | `itinerary` | `jsonb` (`TItinerary`) | | | |
@@ -155,7 +159,7 @@ A scheduled run of a tour with fixed dates and seat capacity.
 
 ### `tour_departure_prices` — `TourDeparturePriceEntity`
 
-Per-departure price, one row per (price type, currency).
+Per-departure price, one row per (price type, currency). Prices are per person, twin sharing; there is no couple price type (couples book two adults, or a `couples` audience tour).
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
@@ -277,6 +281,34 @@ One row per refresh token / logged-in device.
 | `last_used_at` | `lastUsedAt` | `timestamptz` | | `now()` | |
 | `created_at` | `createdAt` | `timestamptz` | | `now()` | |
 
+### `travelers` — `TravelerEntity`
+
+A saved traveler profile a user can reuse across bookings (themselves, family, friends). Bookings will copy these details into their own rows at booking time, so editing or deleting a saved traveler never changes past bookings.
+
+| Column | Property | Type | Null | Default | Notes |
+|---|---|---|---|---|---|
+| `id` | `id` | `varchar(26)` | | ULID | PK |
+| `user_id` | `userId` | `varchar(26)` | ✓ | | FK → `users.id`, indexed. Null when an admin creates a traveler for someone without an account |
+| `is_self` | `isSelf` | `boolean` | | `false` | The account holder's own profile |
+| `full_name` | `fullName` | `varchar(100)` | | | As on their ID |
+| `date_of_birth` | `dateOfBirth` | `date` (`string`) | | | Child pricing uses age on the departure's start date |
+| `gender` | `gender` | enum `ETravelerGender` | | | For room allocation |
+| `phone` | `phone` | `varchar(16)` | ✓ | | E.164, indexed (admin lookup of returning callers). Required for a booking's lead traveler, enforced in the service |
+| `email` | `email` | `citext` | ✓ | | Not unique: family members often share one |
+| `emergency_contact_name` | `emergencyContactName` | `varchar(100)` | ✓ | | |
+| `emergency_contact_phone` | `emergencyContactPhone` | `varchar(16)` | ✓ | | E.164 |
+| `dietary_notes` | `dietaryNotes` | `text` | ✓ | | |
+| `medical_notes` | `medicalNotes` | `text` | ✓ | | Health data (DPDP): collect with consent; expose only to admins and the trip's guide |
+| `created_at` | `createdAt` | `timestamptz` | | `now()` | |
+| `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
+| `deleted_at` | `deletedAt` | `timestamptz` | ✓ | | Soft delete (`softRemove`); TypeORM finds exclude deleted rows |
+
+**Constraints:**
+- `uq_travelers_user_id_is_self`: partial unique on `user_id` `WHERE is_self AND deleted_at IS NULL`, so a user has at most one live "self" profile.
+- `idx_travelers_user_id`, `idx_travelers_phone`
+
+> Normalize `phone` / `emergency_contact_phone` to E.164 before writing. When a user signs up with a phone that matches admin-created travelers (`user_id` null), link them in the service layer.
+
 ---
 
 ## Enums
@@ -289,11 +321,14 @@ Stored as native Postgres enum types. Values can be added later, but not removed
 | `EDestinationStatus` | `types/destinations.type.ts` | `coming_soon`, `live` |
 | `ETourStatus` | `types/tours.type.ts` | `draft`, `live` |
 | `ETourDepartureStatus` | `types/tour_departures.type.ts` | `draft`, `open`, `cancelled`, `completed` |
-| `ETourDeparturePriceType` | `types/tour_departure_prices.type.ts` | `adult`, `couple`, `child` |
+| `ETourTier` | `types/tours.type.ts` | `budget`, `standard`, `premium` |
+| `ETourAudience` | `types/tours.type.ts` | `open`, `couples` |
+| `ETourDeparturePriceType` | `types/tour_departure_prices.type.ts` | `adult`, `child` |
 | `ECURRENCY` | `types/misc.type.ts` | `inr`, `usd`, `cad`, `aed` |
 | `EBookingRequestStatus` | `types/booking_requests.type.ts` | `new`, `contacted`, `in_progress`, `converted`, `closed` |
 | `EUserRole` | `types/users.type.ts` | `customer`, `admin`, `guide` |
 | `EAuthIdentityProvider` | `types/auth_identities.type.ts` | `email`, `phone`, `google` |
+| `ETravelerGender` | `types/travelers.type.ts` | `male`, `female`, `other` |
 
 ## JSONB shapes
 

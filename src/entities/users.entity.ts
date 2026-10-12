@@ -14,6 +14,7 @@ import { BookingRequestEntity } from './booking_requests.entity.js';
 import type { TAsset } from '../types/misc.type.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
+import { TravelerEntity } from './travelers.entity.js';
 
 @Entity('users')
 export class UserEntity {
@@ -66,4 +67,7 @@ export class UserEntity {
 
   @OneToMany(() => TourReviewEntity, (reviews) => reviews.user)
   reviews: TourReviewEntity[];
+
+  @OneToMany(() => TravelerEntity, (travelers) => travelers.user)
+  travelers: TravelerEntity[];
 }

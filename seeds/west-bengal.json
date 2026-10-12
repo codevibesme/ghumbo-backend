@@ -461,11 +461,6 @@
                   "amount": "7799.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "15598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "5299.00"
@@ -482,11 +477,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "9499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "18998.00"
                 },
                 {
                   "type": "child",
@@ -507,11 +497,6 @@
                   "amount": "7799.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "15598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "5299.00"
@@ -528,11 +513,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "9499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "18998.00"
                 },
                 {
                   "type": "child",
@@ -1065,11 +1045,6 @@
                   "amount": "12999.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "25998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "9099.00"
@@ -1086,11 +1061,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "15499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "30998.00"
                 },
                 {
                   "type": "child",
@@ -1111,11 +1081,6 @@
                   "amount": "12999.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "25998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "9099.00"
@@ -1132,11 +1097,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "15499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "30998.00"
                 },
                 {
                   "type": "child",
@@ -1492,11 +1452,6 @@
                   "amount": "5499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3399.00"
@@ -1513,11 +1468,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "6199.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "12398.00"
                 },
                 {
                   "type": "child",
@@ -1538,11 +1488,6 @@
                   "amount": "5499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3399.00"
@@ -1559,11 +1504,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "5499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
                 },
                 {
                   "type": "child",
@@ -1890,11 +1830,6 @@
                   "amount": "6599.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "13198.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "5199.00"
@@ -1911,11 +1846,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "7499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "14998.00"
                 },
                 {
                   "type": "child",
@@ -1936,11 +1866,6 @@
                   "amount": "6599.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "13198.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "5199.00"
@@ -1957,11 +1882,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "6599.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "13198.00"
                 },
                 {
                   "type": "child",
@@ -2299,11 +2219,6 @@
                   "amount": "5499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "4099.00"
@@ -2320,11 +2235,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "6799.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "13598.00"
                 },
                 {
                   "type": "child",
@@ -2345,11 +2255,6 @@
                   "amount": "5499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "4099.00"
@@ -2366,11 +2271,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "5499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10998.00"
                 },
                 {
                   "type": "child",
@@ -2717,11 +2617,6 @@
                   "amount": "5799.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "11598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3999.00"
@@ -2738,11 +2633,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "7699.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "15398.00"
                 },
                 {
                   "type": "child",
@@ -2763,11 +2653,6 @@
                   "amount": "5799.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "11598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3999.00"
@@ -2784,11 +2669,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "5799.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "11598.00"
                 },
                 {
                   "type": "child",
@@ -3175,11 +3055,6 @@
                   "amount": "11499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "22998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "9099.00"
@@ -3196,11 +3071,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "12999.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "25998.00"
                 },
                 {
                   "type": "child",
@@ -3221,11 +3091,6 @@
                   "amount": "11499.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "22998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "9099.00"
@@ -3242,11 +3107,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "11499.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "22998.00"
                 },
                 {
                   "type": "child",
@@ -3593,11 +3453,6 @@
                   "amount": "5299.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3499.00"
@@ -3614,11 +3469,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "5799.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "11598.00"
                 },
                 {
                   "type": "child",
@@ -3639,11 +3489,6 @@
                   "amount": "5299.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10598.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "3499.00"
@@ -3660,11 +3505,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "5299.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "10598.00"
                 },
                 {
                   "type": "child",
@@ -4159,11 +3999,6 @@
                   "amount": "12999.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "25998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "11499.00"
@@ -4180,11 +4015,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "12999.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "25998.00"
                 },
                 {
                   "type": "child",
@@ -4205,11 +4035,6 @@
                   "amount": "13999.00"
                 },
                 {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "27998.00"
-                },
-                {
                   "type": "child",
                   "currency": "inr",
                   "amount": "12999.00"
@@ -4226,11 +4051,6 @@
                   "type": "adult",
                   "currency": "inr",
                   "amount": "13999.00"
-                },
-                {
-                  "type": "couple",
-                  "currency": "inr",
-                  "amount": "27998.00"
                 },
                 {
                   "type": "child",

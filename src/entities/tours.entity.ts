@@ -16,6 +16,7 @@ import { ulid } from 'ulid';
 import { DestinationEntity } from './destinations.entity.js';
 import type { TAsset } from '../types/misc.type.js';
 import {
+  ETourAudience,
   ETourStatus,
   ETourTier,
   type TItinerary,
@@ -68,6 +69,14 @@ export class TourEntity {
 
   @Column({ name: 'tier', type: 'enum', enum: ETourTier })
   tier: ETourTier;
+
+  @Column({
+    name: 'audience',
+    type: 'enum',
+    enum: ETourAudience,
+    default: ETourAudience.OPEN,
+  })
+  audience: ETourAudience;
 
   @Column({ name: 'duration_days', type: 'integer' })
   durationDays: number;

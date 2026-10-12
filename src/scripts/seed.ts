@@ -31,6 +31,7 @@ import { Asset, ECURRENCY } from '../types/misc.type.js';
 import { ECountryStatus } from '../types/countries.type.js';
 import { EDestinationStatus } from '../types/destinations.type.js';
 import {
+  ETourAudience,
   ETourStatus,
   ETourTier,
   Itinerary,
@@ -66,6 +67,7 @@ const SeedTour = z
     slug,
     name: z.string().min(1).max(255),
     tier: z.enum(ETourTier),
+    audience: z.enum(ETourAudience).default(ETourAudience.OPEN),
     status: z.enum(ETourStatus).default(ETourStatus.DRAFT),
     overview: z.string().min(1),
     duration_days: z.number().int().positive(),
@@ -162,6 +164,7 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
           slug: t.slug,
           name: t.name,
           tier: t.tier,
+          audience: t.audience,
           status: t.status,
           overview: t.overview,
           durationDays: t.duration_days,

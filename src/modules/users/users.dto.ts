@@ -19,6 +19,7 @@ export class CreateUserDto extends OmitType(UserDto, [
   'sessions',
   'bookingRequests',
   'reviews',
+  'travelers',
 ]) {}
 
 export class UpdateUserDto extends PartialType(
