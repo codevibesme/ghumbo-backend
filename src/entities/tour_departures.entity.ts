@@ -16,6 +16,7 @@ import { TourEntity } from './tours.entity.js';
 import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import { ETourDepartureStatus } from '../types/tour_departures.type.js';
+import { BookingEntity } from './bookings.entity.js';
 
 @Entity('tour_departures')
 @Check('chk_tour_departures_capacity', `"capacity" > 0`)
@@ -75,4 +76,7 @@ export class TourDepartureEntity {
     (bookingRequests) => bookingRequests.departure,
   )
   bookingRequests: BookingRequestEntity[];
+
+  @OneToMany(() => BookingEntity, (bookings) => bookings.departure)
+  bookings: BookingEntity[];
 }

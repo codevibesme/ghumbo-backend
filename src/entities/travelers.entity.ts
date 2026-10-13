@@ -6,6 +6,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryColumn,
   type Relation,
   UpdateDateColumn,
@@ -13,6 +14,7 @@ import {
 import { ulid } from 'ulid';
 import { ETravelerGender } from '../types/travelers.type.js';
 import { UserEntity } from './users.entity.js';
+import { BookingTravelerEntity } from './booking_travelers.entity.js';
 
 @Entity('travelers')
 @Index('uq_travelers_user_id_is_self', ['userId'], {
@@ -85,4 +87,7 @@ export class TravelerEntity {
 
   @DeleteDateColumn({ name: 'deleted_at', type: 'timestamptz' })
   deletedAt: Date | null;
+
+  @OneToMany(() => BookingTravelerEntity, (bt) => bt.traveler)
+  bookingTravelers: Relation<BookingTravelerEntity>[];
 }

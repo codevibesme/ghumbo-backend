@@ -9,6 +9,9 @@ import { UserEntity } from './users.entity.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
 import { TravelerEntity } from './travelers.entity.js';
+import { BookingEntity } from './bookings.entity.js';
+import { BookingPaymentEntity } from './booking_payments.entity.js';
+import { BookingTravelerEntity } from './booking_travelers.entity.js';
 
 const ENTITIES = [
   UserEntity,
@@ -22,6 +25,9 @@ const ENTITIES = [
   BookingRequestEntity,
   TourReviewEntity,
   TravelerEntity,
+  BookingEntity,
+  BookingPaymentEntity,
+  BookingTravelerEntity,
 ];
 
 export default ENTITIES;

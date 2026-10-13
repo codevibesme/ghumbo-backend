@@ -6,6 +6,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryColumn,
   type Relation,
   UpdateDateColumn,
@@ -15,6 +16,8 @@ import { EBookingRequestStatus } from '../types/booking_requests.type.js';
 import { TourEntity } from './tours.entity.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { UserEntity } from './users.entity.js';
+import { generateBookingRequestCode } from '../utilities/codes/codes.js';
+import { BookingEntity } from './bookings.entity.js';
 
 @Entity('booking_requests')
 @Index('idx_booking_requests_status_created_at', ['status', 'createdAt'])
@@ -71,6 +74,9 @@ export class BookingRequestEntity {
   })
   user: Relation<UserEntity> | null;
 
+  @Column({ name: 'code', type: 'varchar', length: 9, unique: true })
+  code: string = generateBookingRequestCode();
+
   @Column({ name: 'travel_date', type: 'date', nullable: true })
   travelDate: string | null;
 
@@ -105,4 +111,7 @@ export class BookingRequestEntity {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
+
+  @OneToOne(() => BookingEntity, (booking) => booking.request)
+  booking: Relation<BookingEntity> | null;
 }
