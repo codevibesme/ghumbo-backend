@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { JwtUtilityModule } from '../../utilities/jwt/jwt.module.js';
-import { BcryptModule } from '../../utilities/jwt/bcrypt.module.js';
+import { BcryptModule } from '../../utilities/bcrypt.module.js';
 import { UserModule } from '../users/users.module.js';
 import { AuthIdentityModule } from '../auth_identities/auth_identities.module.js';
 import { AuthSessionModule } from '../auth_sessions/auth_sessions.module.js';

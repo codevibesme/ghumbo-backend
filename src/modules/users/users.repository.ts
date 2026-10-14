@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, FindOptionsWhere, Repository } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 
 import { UserEntity } from '../../entities/users.entity.js';
 

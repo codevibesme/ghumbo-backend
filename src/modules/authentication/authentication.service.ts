@@ -11,7 +11,7 @@ import {
 import { UserService } from '../users/users.service.js';
 import { AuthIdentityService } from '../auth_identities/auth_identities.service.js';
 import { EAuthIdentityProvider } from '../../types/auth_identities.type.js';
-import { BcryptService } from '../../utilities/jwt/bcrypt.service.js';
+import { BcryptService } from '../../utilities/bcrypt.service.js';
 import { JwtUtilityService } from '../../utilities/jwt/jwt.service.js';
 import { createHash, randomBytes } from 'crypto';
 import { ETokenFor } from '../../types/jwt.type.js';
