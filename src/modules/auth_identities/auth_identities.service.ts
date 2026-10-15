@@ -5,7 +5,7 @@ import {
 } from './auth_identities.dto.js';
 import { EntityManager } from 'typeorm';
 import { AuthIdentityRepository } from './auth_identities.repository.js';
-import { EAuthIdentityProvider } from '../../types/auth_identities.type.js';
+import { EAuthIdentityProvider } from '../../schemas/auth_identities.schema.js';
 
 @Injectable()
 export class AuthIdentityService {

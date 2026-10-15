@@ -27,18 +27,18 @@ import { DestinationEntity } from '../src/entities/destinations.entity.js';
 import { TourEntity } from '../src/entities/tours.entity.js';
 import { TourDepartureEntity } from '../src/entities/tour_departures.entity.js';
 import { TourDeparturePriceEntity } from '../src/entities/tour_departure_prices.entity.js';
-import { Asset, ECURRENCY } from '../src/types/misc.type.js';
-import { ECountryStatus } from '../src/types/countries.type.js';
-import { EDestinationStatus } from '../src/types/destinations.type.js';
+import { Asset, ECURRENCY } from '../src/schemas/misc.schema.js';
+import { ECountryStatus } from '../src/schemas/countries.schema.js';
+import { EDestinationStatus } from '../src/schemas/destinations.schema.js';
 import {
   ETourAudience,
   ETourStatus,
   ETourTier,
   Itinerary,
   TourInclusion,
-} from '../src/types/tours.type.js';
-import { ETourDepartureStatus } from '../src/types/tour_departures.type.js';
-import { ETourDeparturePriceType } from '../src/types/tour_departure_prices.type.js';
+} from '../src/schemas/tours.schema.js';
+import { ETourDepartureStatus } from '../src/schemas/tour_departures.schema.js';
+import { ETourDeparturePriceType } from '../src/schemas/tour_departure_prices.schema.js';
 
 const SEEDS_DIR = path.resolve(process.cwd(), 'seeds');
 

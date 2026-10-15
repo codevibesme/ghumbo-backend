@@ -8,8 +8,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { DestinationEntity } from './destinations.entity.js';
-import type { TAsset } from '../types/misc.type.js';
-import { ECountryStatus } from '../types/countries.type.js';
+import type { TAsset } from '../schemas/misc.schema.js';
+import { ECountryStatus } from '../schemas/countries.schema.js';
 
 @Entity('countries')
 @Check('chk_countries_code_upper', `"code" = upper("code")`)

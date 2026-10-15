@@ -10,9 +10,9 @@ import {
   UpdateDateColumn,
   type Relation,
 } from 'typeorm';
-import { ECURRENCY } from '../types/misc.type.js';
+import { ECURRENCY } from '../schemas/misc.schema.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
-import { ETourDeparturePriceType } from '../types/tour_departure_prices.type.js';
+import { ETourDeparturePriceType } from '../schemas/tour_departure_prices.schema.js';
 
 @Entity('tour_departure_prices')
 @Unique('uq_tour_departure_prices_departure_type_currency', [

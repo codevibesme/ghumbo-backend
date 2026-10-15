@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { BookingEntity } from './bookings.entity.js';
-import { EBookingPaymentType } from '../types/booking_payments.type.js';
+import { EBookingPaymentType } from '../schemas/booking_payments.schema.js';
 
 @Entity('booking_payments')
 @Check('chk_booking_payments_amount', `"amount" > 0`)

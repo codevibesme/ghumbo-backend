@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { EUserRole } from './users.type.js';
+import { EUserRole } from './users.schema.js';
 
 export enum ETokenFor {
   USER = 'user',

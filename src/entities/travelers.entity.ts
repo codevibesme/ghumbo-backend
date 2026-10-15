@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { ETravelerGender } from '../types/travelers.type.js';
+import { ETravelerGender } from '../schemas/travelers.schema.js';
 import { UserEntity } from './users.entity.js';
 import { BookingTravelerEntity } from './booking_travelers.entity.js';
 

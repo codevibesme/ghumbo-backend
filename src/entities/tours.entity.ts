@@ -14,14 +14,14 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { DestinationEntity } from './destinations.entity.js';
-import type { TAsset } from '../types/misc.type.js';
+import type { TAsset } from '../schemas/misc.schema.js';
 import {
   ETourAudience,
   ETourStatus,
   ETourTier,
   type TItinerary,
   type TTourInclusion,
-} from '../types/tours.type.js';
+} from '../schemas/tours.schema.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';

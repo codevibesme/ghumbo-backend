@@ -15,7 +15,7 @@ import { ulid } from 'ulid';
 import { TourEntity } from './tours.entity.js';
 import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
-import { ETourDepartureStatus } from '../types/tour_departures.type.js';
+import { ETourDepartureStatus } from '../schemas/tour_departures.schema.js';
 import { BookingEntity } from './bookings.entity.js';
 
 @Entity('tour_departures')

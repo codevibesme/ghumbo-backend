@@ -14,8 +14,8 @@ import {
 } from 'typeorm';
 import { CountryEntity } from './countries.entity.js';
 import { TourEntity } from './tours.entity.js';
-import type { TAsset } from '../types/misc.type.js';
-import { EDestinationStatus } from '../types/destinations.type.js';
+import type { TAsset } from '../schemas/misc.schema.js';
+import { EDestinationStatus } from '../schemas/destinations.schema.js';
 
 @Entity('destinations')
 @Unique('uq_destinations_slug', ['slug'])

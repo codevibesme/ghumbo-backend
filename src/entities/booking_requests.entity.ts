@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { EBookingRequestStatus } from '../types/booking_requests.type.js';
+import { EBookingRequestStatus } from '../schemas/booking_requests.schema.js';
 import { TourEntity } from './tours.entity.js';
 import { TourDepartureEntity } from './tour_departures.entity.js';
 import { UserEntity } from './users.entity.js';

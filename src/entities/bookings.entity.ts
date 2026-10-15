@@ -13,8 +13,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { EBookingStatus } from '../types/bookings.type.js';
-import { ECURRENCY } from '../types/misc.type.js';
+import { EBookingStatus } from '../schemas/bookings.schema.js';
+import { ECURRENCY } from '../schemas/misc.schema.js';
 import { generateBookingCode } from '../utilities/codes/codes.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import { UserEntity } from './users.entity.js';

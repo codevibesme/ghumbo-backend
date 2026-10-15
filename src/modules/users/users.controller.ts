@@ -11,7 +11,7 @@ import {
 } from '@nestjs/swagger';
 
 import { UpdateUserDto } from './users.dto.js';
-import { ETokenFor, TVerifiedUserPayload } from '../../types/jwt.type.js';
+import { ETokenFor, TVerifiedUserPayload } from '../../schemas/jwt.schema.js';
 
 import { JwtUtilityService } from '../../utilities/jwt/jwt.service.js';
 import { UserService } from './users.service.js';

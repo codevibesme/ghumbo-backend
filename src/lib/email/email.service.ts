@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Resend } from 'resend';
-import type { TTemplateEmailSend } from '../../types/emails.type.js';
+import { TSendEmailTemplate } from '../../schemas/emails.schema.js';
 
 @Injectable()
 export class EmailService {
@@ -10,7 +10,7 @@ export class EmailService {
     this.client = new Resend(process.env.RESEND_API_KEY);
   }
 
-  async sendWithTemplate(data: TTemplateEmailSend): Promise<void> {
+  async sendWithTemplate(data: TSendEmailTemplate): Promise<void> {
     const response = await this.client.emails.send(
       {
         to: [data.to],
@@ -22,8 +22,7 @@ export class EmailService {
         scheduledAt: data.scheduledAt,
         headers: data.unsubscribeUrl
           ? {
-              'List-Unsubscribe':
-                `<${data.unsubscribeUrl}>, <mailto:unsubscribe@ghumbo.com?subject=unsubscribed>`,
+              'List-Unsubscribe': `<${data.unsubscribeUrl}>, <mailto:unsubscribe@ghumbo.com?subject=unsubscribed>`,
               'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
             }
           : {},
@@ -33,7 +32,7 @@ export class EmailService {
       },
     );
 
-    if(response.error) {
+    if (response.error) {
       throw response.error;
     }
   }

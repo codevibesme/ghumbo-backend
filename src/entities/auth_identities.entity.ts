@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { EAuthIdentityProvider } from '../types/auth_identities.type.js';
+import { EAuthIdentityProvider } from '../schemas/auth_identities.schema.js';
 import { UserEntity } from './users.entity.js';
 
 @Entity('auth_identities')

@@ -27,7 +27,7 @@ import {
 import type { Request, Response } from 'express';
 import { UserSessionSignatureDto } from '../auth_sessions/auth_sessions.dto.js';
 import { JwtUtilityService } from '../../utilities/jwt/jwt.service.js';
-import { ETokenFor, TVerifiedUserPayload } from '../../types/jwt.type.js';
+import { ETokenFor, TVerifiedUserPayload } from '../../schemas/jwt.schema.js';
 
 @Controller('auth')
 @ApiTags('auth')

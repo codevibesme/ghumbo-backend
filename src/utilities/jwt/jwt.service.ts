@@ -4,7 +4,7 @@ import {
   ETokenFor,
   TVerifiedTokenPayload,
   VerifiedTokenPayloadSchema,
-} from '../../types/jwt.type.js';
+} from '../../schemas/jwt.schema.js';
 
 @Injectable()
 export class JwtUtilityService {

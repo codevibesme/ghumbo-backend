@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthIdentityEntity } from '../../entities/auth_identities.entity.js';
 import { EntityManager, Repository } from 'typeorm';
-import { EAuthIdentityProvider } from '../../types/auth_identities.type.js';
+import { EAuthIdentityProvider } from '../../schemas/auth_identities.schema.js';
 
 @Injectable()
 export class AuthIdentityRepository {

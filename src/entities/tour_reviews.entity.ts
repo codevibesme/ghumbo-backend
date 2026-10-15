@@ -14,7 +14,7 @@ import {
 import { ulid } from 'ulid';
 import { UserEntity } from './users.entity.js';
 import { TourEntity } from './tours.entity.js';
-import type { TAsset } from '../types/misc.type.js';
+import type { TAsset } from '../schemas/misc.schema.js';
 
 @Entity('tour_reviews')
 @Unique('uq_tour_reviews_user_id_tour_id', ['userId', 'tourId'])

@@ -8,10 +8,10 @@ import {
 } from 'typeorm';
 
 import { ulid } from 'ulid';
-import { EUserRole } from '../types/users.type.js';
+import { EUserRole } from '../schemas/users.schema.js';
 import { AuthSessionEntity } from './auth_sessions.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
-import type { TAsset } from '../types/misc.type.js';
+import type { TAsset } from '../schemas/misc.schema.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
 import { TourReviewEntity } from './tour_reviews.entity.js';
 import { TravelerEntity } from './travelers.entity.js';

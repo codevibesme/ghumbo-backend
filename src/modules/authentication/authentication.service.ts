@@ -10,14 +10,14 @@ import {
 } from './authentication.dto.js';
 import { UserService } from '../users/users.service.js';
 import { AuthIdentityService } from '../auth_identities/auth_identities.service.js';
-import { EAuthIdentityProvider } from '../../types/auth_identities.type.js';
+import { EAuthIdentityProvider } from '../../schemas/auth_identities.schema.js';
 import { BcryptService } from '../../utilities/bcrypt.service.js';
 import { JwtUtilityService } from '../../utilities/jwt/jwt.service.js';
 import { createHash, randomBytes } from 'crypto';
-import { ETokenFor } from '../../types/jwt.type.js';
+import { ETokenFor } from '../../schemas/jwt.schema.js';
 import { AuthSessionService } from '../auth_sessions/auth_sessions.service.js';
 import { UserSessionSignatureDto } from '../auth_sessions/auth_sessions.dto.js';
-import { EUserRole } from '../../types/users.type.js';
+import { EUserRole } from '../../schemas/users.schema.js';
 import { TxnHelperService } from '../../helpers/txn.service.js';
 
 @Injectable()
