@@ -21,24 +21,24 @@ import {
 } from 'typeorm';
 import { monotonicFactory } from 'ulid';
 import z from 'zod';
-import dbConfig from '../configs/db.config.js';
-import { CountryEntity } from '../entities/countries.entity.js';
-import { DestinationEntity } from '../entities/destinations.entity.js';
-import { TourEntity } from '../entities/tours.entity.js';
-import { TourDepartureEntity } from '../entities/tour_departures.entity.js';
-import { TourDeparturePriceEntity } from '../entities/tour_departure_prices.entity.js';
-import { Asset, ECURRENCY } from '../types/misc.type.js';
-import { ECountryStatus } from '../types/countries.type.js';
-import { EDestinationStatus } from '../types/destinations.type.js';
+import dbConfig from '../src/configs/db.config.js';
+import { CountryEntity } from '../src/entities/countries.entity.js';
+import { DestinationEntity } from '../src/entities/destinations.entity.js';
+import { TourEntity } from '../src/entities/tours.entity.js';
+import { TourDepartureEntity } from '../src/entities/tour_departures.entity.js';
+import { TourDeparturePriceEntity } from '../src/entities/tour_departure_prices.entity.js';
+import { Asset, ECURRENCY } from '../src/types/misc.type.js';
+import { ECountryStatus } from '../src/types/countries.type.js';
+import { EDestinationStatus } from '../src/types/destinations.type.js';
 import {
   ETourAudience,
   ETourStatus,
   ETourTier,
   Itinerary,
   TourInclusion,
-} from '../types/tours.type.js';
-import { ETourDepartureStatus } from '../types/tour_departures.type.js';
-import { ETourDeparturePriceType } from '../types/tour_departure_prices.type.js';
+} from '../src/types/tours.type.js';
+import { ETourDepartureStatus } from '../src/types/tour_departures.type.js';
+import { ETourDeparturePriceType } from '../src/types/tour_departure_prices.type.js';
 
 const SEEDS_DIR = path.resolve(process.cwd(), 'seeds');
 
