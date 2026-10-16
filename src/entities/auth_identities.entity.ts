@@ -41,9 +41,6 @@ export class AuthIdentityEntity {
   @Column({ name: 'provider_user_id', type: 'varchar', length: 255 })
   providerUserId: string;
 
-  @Column({ name: 'is_verified', type: 'boolean', default: false })
-  isVerified: boolean;
-
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;
 

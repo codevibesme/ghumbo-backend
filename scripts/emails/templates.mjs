@@ -70,13 +70,11 @@ export const templates = [
     name: 'Auth · Sign-in code (OTP)',
     from: SENDERS.security,
     subject: `${v('CODE')} is your Ghumbo sign-in code`,
-    preheader: 'It expires in 10 minutes. Never share it with anyone.',
+    preheader: 'It expires in 5 minutes. Never share it with anyone.',
     variables: {
       CODE: { sample: '482 913' },
       EXPIRES_AT: { sample: '14:26 IST' },
       REQUESTED_AT: { sample: 'WED 14 OCT · 14:16 IST' },
-      DEVICE: { sample: 'Chrome on Android', fallback: 'Unknown device' },
-      LOCATION: { sample: 'Kolkata, West Bengal (approx.)', fallback: 'Unknown' },
       ACCOUNT_EMAIL: { sample: 'riya.sen@example.com' },
     },
     footer: {
@@ -86,15 +84,11 @@ export const templates = [
     body: () =>
       kicker('Sign-in code') +
       h1('Here’s your code') +
-      p('Type this on the Ghumbo sign-in screen. It works once and expires in 10 minutes.') +
+      p('Type this on the Ghumbo sign-in screen. It works once and expires in 5 minutes.') +
       card(
         `<div style="text-align:center">${label('Your 6-digit code')}<p style="margin:4px 0 16px;font:600 44px/1 ${MONO};letter-spacing:0.18em;color:${C.ink}">${v('CODE')}</p><p style="margin:0;padding-top:12px;border-top:2px dashed ${C.dash};font:500 12px/1.4 ${MONO};letter-spacing:0.04em;text-transform:uppercase;color:${C.muted}">Expires ${v('EXPIRES_AT')} · single use</p></div>`,
       ) +
-      `<tr><td style="padding:0 0 24px">${kv([
-        ['Requested', v('REQUESTED_AT'), { mono: true }],
-        ['Device', v('DEVICE')],
-        ['Near', v('LOCATION')],
-      ])}</td></tr>` +
+      `<tr><td style="padding:0 0 24px">${kv([['Requested', v('REQUESTED_AT'), { mono: true }]])}</td></tr>` +
       callout(
         'Didn’t ask for this?',
         'Ignore this email. Nobody can get into your account without the code. Ghumbo will never call or message you asking for it.',

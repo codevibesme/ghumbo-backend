@@ -16,6 +16,10 @@ import {
   TCreateChallengeResponse,
 } from '../../schemas/otp.schema.js';
 import { EEMAIL_TEMPLATES } from '../../schemas/emails.schema.js';
+import {
+  formatDateTimeIST,
+  formatTimeIST,
+} from '../../utilities/date-format.js';
 
 @Injectable()
 export class OtpService {
@@ -143,8 +147,8 @@ export class OtpService {
     challengeId: string,
     otp: string,
   ) {
-    const now = Date.now();
-    const expiresAt = now + this.OTP_TTL * 1000;
+    const now = new Date();
+    const expiresAt = new Date(now.getTime() + this.OTP_TTL * 1000);
 
     if (channel === EOtpChannel.EMAIL) {
       await this.emailService.sendWithTemplate({
@@ -154,8 +158,8 @@ export class OtpService {
           variables: {
             ACCOUNT_EMAIL: destination,
             CODE: otp,
-            EXPIRES_AT: new Date(expiresAt).toISOString(),
-            REQUESTED_AT: new Date(now).toISOString(),
+            EXPIRES_AT: formatTimeIST(expiresAt),
+            REQUESTED_AT: formatDateTimeIST(now),
           },
         },
         idempotencyKey: this.getOtpKey(challengeId),

@@ -7,5 +7,4 @@ export class CreateAuthIdentityDto extends PickType(AuthIdentityDto, [
   'userId',
   'provider',
   'providerUserId',
-  'isVerified',
 ]) {}

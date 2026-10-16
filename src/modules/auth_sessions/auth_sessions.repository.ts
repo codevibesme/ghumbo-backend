@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthSessionEntity } from '../../entities/auth_sessions.entity.js';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager, IsNull, Raw, Repository } from 'typeorm';
 import { AuthSessionDto, CreateAuthSessionDto } from './auth_sessions.dto.js';
 
 @Injectable()
@@ -49,18 +49,18 @@ export class AuthSessionRepository {
     oldHash: string,
     newHash: string,
   ): Promise<boolean> {
-    const result = await this.repo
-      .createQueryBuilder('auth_session')
-      .update(AuthSessionEntity)
-      .set({
+    const result = await this.repo.update(
+      {
+        id,
+        refreshTokenHash: oldHash,
+        revokedAt: IsNull(),
+        expiresAt: Raw((column) => `${column} > NOW()`),
+      },
+      {
         refreshTokenHash: newHash,
         lastUsedAt: () => 'NOW()',
-      })
-      .where('auth_session.id = :id', { id })
-      .andWhere('auth_session.refreshTokenHash = :oldHash', { oldHash })
-      .andWhere('auth_session.revokedAt IS NULL')
-      .andWhere('auth_session.expiresAt > NOW()')
-      .execute();
+      },
+    );
 
     if (result.affected !== 1) {
       return false;
@@ -70,15 +70,10 @@ export class AuthSessionRepository {
   }
 
   async revokeSession(id: string): Promise<boolean> {
-    const result = await this.repo
-      .createQueryBuilder('auth_session')
-      .update(AuthSessionEntity)
-      .set({
-        revokedAt: () => 'NOW()',
-      })
-      .where('auth_session.id = :id', { id })
-      .andWhere('auth_session.revokedAt IS NULL')
-      .execute();
+    const result = await this.repo.update(
+      { id, revokedAt: IsNull() },
+      { revokedAt: () => 'NOW()' },
+    );
 
     if (result.affected !== 1) {
       return false;

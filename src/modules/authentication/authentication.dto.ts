@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
   IsEmail,
+  IsNotEmpty,
   IsPhoneNumber,
   IsUUID,
   Matches,
@@ -10,13 +11,13 @@ import {
 import { trim, trimLower } from '../../utilities/transformers.js';
 
 export class SignInDto {
-  @ApiProperty()
+  @ApiProperty({ nullable: true })
   @Transform(trimLower)
   @ValidateIf((o: SignInDto) => !o.phone)
   @IsEmail()
   email: string | null;
 
-  @ApiProperty()
+  @ApiProperty({ nullable: true })
   @Transform(trim)
   @ValidateIf((o: SignInDto) => !o.email)
   @IsPhoneNumber()
@@ -25,6 +26,7 @@ export class SignInDto {
 
 export class SignUpDto extends SignInDto {
   @ApiProperty()
+  @IsNotEmpty()
   name: string;
 }
 

@@ -34,7 +34,6 @@ export class AuthenticationService {
     private readonly jwt: JwtUtilityService,
     private readonly txn: TxnHelperService,
   ) {}
-  private readonly SALT_ROUNDS = 10;
   private readonly REFRESH_TOKEN_VALIDITY = 7 * 24 * 60 * 60 * 1000;
   private readonly ACCESS_TOKEN_VALIDITY = 15 * 60;
 
@@ -87,7 +86,6 @@ export class AuthenticationService {
 
       await this.authIdentityService.create(
         {
-          isVerified: true,
           provider: record.email
             ? EAuthIdentityProvider.EMAIL
             : EAuthIdentityProvider.PHONE,

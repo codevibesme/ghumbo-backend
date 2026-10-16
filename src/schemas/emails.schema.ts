@@ -26,8 +26,6 @@ export const AuthEmailTemplate = z.object({
     CODE: text,
     EXPIRES_AT: text,
     REQUESTED_AT: text,
-    DEVICE: optionalText,
-    LOCATION: optionalText,
     ACCOUNT_EMAIL: z.email(),
   }),
 });
