@@ -41,14 +41,6 @@ export class AuthIdentityEntity {
   @Column({ name: 'provider_user_id', type: 'varchar', length: 255 })
   providerUserId: string;
 
-  @Column({
-    name: 'password_hash',
-    type: 'varchar',
-    length: 255,
-    nullable: true,
-  })
-  passwordHash: string | null;
-
   @Column({ name: 'is_verified', type: 'boolean', default: false })
   isVerified: boolean;
 

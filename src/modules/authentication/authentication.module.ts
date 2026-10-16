@@ -7,6 +7,7 @@ import { AuthSessionModule } from '../auth_sessions/auth_sessions.module.js';
 import { AuthenticationController } from './authentication.controller.js';
 import { AuthenticationService } from './authentication.service.js';
 import { TxnHelperModule } from '../../helpers/txn.module.js';
+import { OtpModule } from '../../lib/otp/otp.module.js';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TxnHelperModule } from '../../helpers/txn.module.js';
     UserModule,
     AuthIdentityModule,
     AuthSessionModule,
+    OtpModule,
   ],
   controllers: [AuthenticationController],
   providers: [AuthenticationService],

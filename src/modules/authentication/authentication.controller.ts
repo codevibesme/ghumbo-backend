@@ -19,10 +19,12 @@ import {
 } from '@nestjs/swagger';
 import { AuthenticationService } from './authentication.service.js';
 import {
+  AuthChallengeDto,
   AuthRefreshReqDto,
   AuthSuccessResponseDto,
   SignInDto,
   SignUpDto,
+  VerifyOtpDto,
 } from './authentication.dto.js';
 import type { Request, Response } from 'express';
 import { UserSessionSignatureDto } from '../auth_sessions/auth_sessions.dto.js';
@@ -39,26 +41,16 @@ export class AuthenticationController {
 
   @Post('/sign-up')
   @ApiBody({ type: SignUpDto })
-  @ApiOkResponse({ type: AuthSuccessResponseDto })
+  @ApiOkResponse({ type: AuthChallengeDto })
   @ApiUnprocessableEntityResponse({ description: 'Unprocessable Entity' })
   @ApiBadRequestResponse({ description: 'Bad Request' })
   @ApiConflictResponse({ description: 'Account already exists' })
-  async signUp(
-    @Req() req: Request,
-    @Res() res: Response,
-    @Body() body: SignUpDto,
-  ) {
+  async signUp(@Res() res: Response, @Body() body: SignUpDto) {
     if (!(body.email || body.phone) || (body.email && body.phone)) {
       throw new UnprocessableEntityException('Provide either email or phone.');
     }
 
-    const userSessionSignature: UserSessionSignatureDto = {
-      userAgent: req.headers['user-agent'] ?? '',
-      deviceId: (req.headers['x-device-id'] as string) ?? '',
-      ipAddress: req.ip ?? '',
-    };
-
-    const data = await this.authService.signUp(body, userSessionSignature);
+    const data = await this.authService.signUp(body);
 
     return res.status(200).send(data);
   }
@@ -69,22 +61,38 @@ export class AuthenticationController {
   @ApiUnprocessableEntityResponse({ description: 'Unprocessable Entity' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiNotFoundResponse({ description: 'Not found' })
-  async signIn(
-    @Req() req: Request,
-    @Res() res: Response,
-    @Body() body: SignInDto,
-  ) {
+  async signIn(@Res() res: Response, @Body() body: SignInDto) {
     if (!(body.email || body.phone) || (body.email && body.phone)) {
       throw new UnprocessableEntityException('Provide either email or phone.');
     }
 
+    const data = await this.authService.signIn(body);
+
+    return res.status(200).send(data);
+  }
+
+  @Post('/verify')
+  @ApiBody({ type: VerifyOtpDto })
+  @ApiOkResponse({ type: AuthSuccessResponseDto })
+  @ApiUnprocessableEntityResponse({ description: 'Unprocessable Entity' })
+  @ApiBadRequestResponse({ description: 'Bad Request' })
+  @ApiConflictResponse({ description: 'Account already exists' })
+  @ApiNotFoundResponse({ description: 'Not found' })
+  async verify(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Body() body: VerifyOtpDto,
+  ) {
     const userSessionSignature: UserSessionSignatureDto = {
       userAgent: req.headers['user-agent'] ?? '',
       deviceId: (req.headers['x-device-id'] as string) ?? '',
       ipAddress: req.ip ?? '',
     };
 
-    const data = await this.authService.signIn(body, userSessionSignature);
+    const data = await this.authService.verifyOtpAndCompleteAuth(
+      body,
+      userSessionSignature,
+    );
 
     return res.status(200).send(data);
   }
