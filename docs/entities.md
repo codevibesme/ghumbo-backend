@@ -7,14 +7,14 @@ PostgreSQL schema for the Ghumbo backend, defined as TypeORM entities in `src/en
 ```mermaid
 erDiagram
     countries ||--o{ destinations : "has"
-    destinations ||--o{ tours : "has"
-    tours ||--o{ tour_departures : "has"
-    tour_departures ||--o{ tour_departure_prices : "has"
-    tours ||--o{ booking_requests : "receives"
-    tour_departures |o--o{ booking_requests : "optionally for"
+    destinations ||--o{ trips : "has"
+    trips ||--o{ trip_departures : "has"
+    trip_departures ||--o{ trip_departure_prices : "has"
+    trips ||--o{ booking_requests : "receives"
+    trip_departures |o--o{ booking_requests : "optionally for"
     users |o--o{ booking_requests : "optionally by"
-    tours ||--o{ tour_reviews : "has"
-    users |o--o{ tour_reviews : "written by"
+    trips ||--o{ trip_reviews : "has"
+    users |o--o{ trip_reviews : "written by"
     users ||--o{ auth_identities : "has"
     users ||--o{ auth_sessions : "has"
     users |o--o{ travelers : "saves"
@@ -23,25 +23,25 @@ erDiagram
 | Child → Parent | FK column | On delete |
 |---|---|---|
 | `destinations` → `countries` | `country_id` | `RESTRICT` |
-| `tours` → `destinations` | `destination_id` | `RESTRICT` |
-| `tour_departures` → `tours` | `tour_id` | `CASCADE` |
-| `tour_departure_prices` → `tour_departures` | `departure_id` | `CASCADE` |
-| `booking_requests` → `tours` | `tour_id` | `RESTRICT` |
-| `booking_requests` → `tour_departures` | `tour_departure_id` | `SET NULL` |
+| `trips` → `destinations` | `destination_id` | `RESTRICT` |
+| `trip_departures` → `trips` | `trip_id` | `CASCADE` |
+| `trip_departure_prices` → `trip_departures` | `departure_id` | `CASCADE` |
+| `booking_requests` → `trips` | `trip_id` | `RESTRICT` |
+| `booking_requests` → `trip_departures` | `trip_departure_id` | `SET NULL` |
 | `booking_requests` → `users` | `user_id` | `SET NULL` |
-| `tour_reviews` → `tours` | `tour_id` | `CASCADE` |
-| `tour_reviews` → `users` | `user_id` | `SET NULL` |
+| `trip_reviews` → `trips` | `trip_id` | `CASCADE` |
+| `trip_reviews` → `users` | `user_id` | `SET NULL` |
 | `auth_identities` → `users` | `user_id` | `CASCADE` |
 | `auth_sessions` → `users` | `user_id` | `CASCADE` |
 | `travelers` → `users` | `user_id` | `CASCADE` |
 
-Effectively: a country, destination, or tour cannot be deleted while it has children / booking requests. Deleting a tour with no booking requests removes its departures, their prices, and its reviews. Deleting a user removes their auth identities, sessions and saved travelers but keeps their booking requests and reviews (detached).
+Effectively: a country, destination, or trip cannot be deleted while it has children / booking requests. Deleting a trip with no booking requests removes its departures, their prices, and its reviews. Deleting a user removes their auth identities, sessions and saved travelers but keeps their booking requests and reviews (detached).
 
 ## Conventions
 
 - **Naming:** DB tables and columns are `snake_case`; TypeORM properties are `camelCase`. Every `@Column` sets `name` explicitly.
 - **Primary keys:**
-  - Reference data (`countries`, `destinations`, `tour_departure_prices`) uses `integer` identity columns.
+  - Reference data (`countries`, `destinations`, `trip_departure_prices`) uses `integer` identity columns.
   - Everything else uses a ULID stored as `varchar(26)`, generated in the app via a property initializer (`id = ulid()`).
 - **Timestamps:** `created_at` / `updated_at` are `timestamptz`, managed by `@CreateDateColumn` / `@UpdateDateColumn`.
 - **Calendar dates** (`date` columns) are typed as `string` (`'YYYY-MM-DD'`), never JS `Date`, to avoid timezone shifts.
@@ -51,9 +51,9 @@ Effectively: a country, destination, or tour cannot be deleted while it has chil
   | Kind | Pattern | Example |
   |---|---|---|
   | Foreign key | `fk_<table>_<column>` | `fk_booking_requests_user_id` |
-  | Index | `idx_<table>_<columns>` | `idx_tours_destination_id` |
-  | Check | `chk_<table>_<what>` | `chk_tour_departures_dates` |
-  | Unique | `uq_<table>_<columns>` | `uq_tour_departure_prices_departure_type_currency` |
+  | Index | `idx_<table>_<columns>` | `idx_trips_destination_id` |
+  | Check | `chk_<table>_<what>` | `chk_trip_departures_dates` |
+  | Unique | `uq_<table>_<columns>` | `uq_trip_departure_prices_departure_type_currency` |
 - **FK columns are indexed** (Postgres does not do this automatically).
 
 ---
@@ -101,42 +101,42 @@ Effectively: a country, destination, or tour cannot be deleted while it has chil
 - `chk_destinations_latitude`: latitude between -90 and 90
 - `chk_destinations_longitude`: longitude between -180 and 180
 
-### `tours` — `TourEntity`
+### `trips` — `TripEntity`
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
 | `id` | `id` | `varchar(26)` | | ULID | PK |
 | `destination_id` | `destinationId` | `integer` | | | FK → `destinations.id`, indexed |
-| `status` | `status` | enum `ETourStatus` | | `draft` | |
+| `status` | `status` | enum `ETripStatus` | | `draft` | |
 | `name` | `name` | `varchar(255)` | | | |
 | `slug` | `slug` | `varchar(255)` | | | Unique. URL slug, lowercase kebab-case |
 | `overview` | `overview` | `text` | | | |
-| `tier` | `tier` | enum `ETourTier` | | | Price band. A tier is its own tour, not a package on one tour |
-| `audience` | `audience` | enum `ETourAudience` | | `open` | Who the tour is for. `couples` tours are separate tours, sold in pairs |
+| `tier` | `tier` | enum `ETripTier` | | | Price band. A tier is its own trip, not a package on one trip |
+| `audience` | `audience` | enum `ETripAudience` | | `open` | Who the trip is for. `couples` trips are separate trips, sold in pairs |
 | `duration_days` | `durationDays` | `integer` | | | |
 | `duration_nights` | `durationNights` | `integer` | | | |
 | `itinerary` | `itinerary` | `jsonb` (`TItinerary`) | | | |
-| `inclusions` | `inclusions` | `jsonb` (`TTourInclusion[]`) | | `'[]'` | |
-| `exclusions` | `exclusions` | `jsonb` (`TTourInclusion[]`) | | `'[]'` | |
+| `inclusions` | `inclusions` | `jsonb` (`TTripInclusion[]`) | | `'[]'` | |
+| `exclusions` | `exclusions` | `jsonb` (`TTripInclusion[]`) | | `'[]'` | |
 | `assets` | `assets` | `jsonb` (`TAsset[]`) | | `'[]'` | |
 | `is_recommended` | `isRecommended` | `boolean` | | `false` | |
 | `created_at` | `createdAt` | `timestamptz` | | `now()` | |
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
 **Constraints:**
-- `uq_tours_slug`: unique on `slug` (globally, not per destination)
-- `chk_tours_slug`: `slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`
-- `chk_tours_duration`: `duration_days > 0 AND duration_nights >= 0 AND duration_nights <= duration_days`
+- `uq_trips_slug`: unique on `slug` (globally, not per destination)
+- `chk_trips_slug`: `slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`
+- `chk_trips_duration`: `duration_days > 0 AND duration_nights >= 0 AND duration_nights <= duration_days`
 
-### `tour_departures` — `TourDepartureEntity`
+### `trip_departures` — `TripDepartureEntity`
 
-A scheduled run of a tour with fixed dates and seat capacity.
+A scheduled run of a trip with fixed dates and seat capacity.
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
 | `id` | `id` | `varchar(26)` | | ULID | PK |
-| `tour_id` | `tourId` | `varchar(26)` | | | FK → `tours.id`, indexed |
-| `status` | `status` | enum `ETourDepartureStatus` | | `draft` | |
+| `trip_id` | `tripId` | `varchar(26)` | | | FK → `trips.id`, indexed |
+| `status` | `status` | enum `ETripDepartureStatus` | | `draft` | |
 | `start_date` | `startDate` | `date` (`string`) | | | |
 | `end_date` | `endDate` | `date` (`string`) | | | |
 | `capacity` | `capacity` | `integer` | | | |
@@ -145,45 +145,45 @@ A scheduled run of a tour with fixed dates and seat capacity.
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
 **Checks:**
-- `chk_tour_departures_capacity`: `capacity > 0`
-- `chk_tour_departures_booked_seats`: `booked_seats >= 0 AND booked_seats <= capacity`
-- `chk_tour_departures_dates`: `end_date >= start_date`
+- `chk_trip_departures_capacity`: `capacity > 0`
+- `chk_trip_departures_booked_seats`: `booked_seats >= 0 AND booked_seats <= capacity`
+- `chk_trip_departures_dates`: `end_date >= start_date`
 
 > **Booking seats:** the check constraint is a safety net against overbooking, not the booking mechanism. Increment atomically:
 > ```sql
-> UPDATE tour_departures
+> UPDATE trip_departures
 > SET booked_seats = booked_seats + $n
 > WHERE id = $id AND booked_seats + $n <= capacity
 > ```
 > and treat 0 affected rows as "sold out".
 
-### `tour_departure_prices` — `TourDeparturePriceEntity`
+### `trip_departure_prices` — `TripDeparturePriceEntity`
 
-Per-departure price, one row per (price type, currency). Prices are per person, twin sharing; there is no couple price type (couples book two adults, or a `couples` audience tour).
+Per-departure price, one row per (price type, currency). Prices are per person, twin sharing; there is no couple price type (couples book two adults, or a `couples` audience trip).
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
 | `id` | `id` | `integer` identity | | | PK |
-| `departure_id` | `departureId` | `varchar(26)` | | | FK → `tour_departures.id` |
-| `type` | `type` | enum `ETourDeparturePriceType` | | | |
+| `departure_id` | `departureId` | `varchar(26)` | | | FK → `trip_departures.id` |
+| `type` | `type` | enum `ETripDeparturePriceType` | | | |
 | `currency` | `currency` | enum `ECURRENCY` | | | |
 | `amount` | `amount` | `numeric(12,2)` (`string`) | | | |
 | `created_at` | `createdAt` | `timestamptz` | | `now()` | |
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
 **Constraints:**
-- `uq_tour_departure_prices_departure_type_currency`: unique on `(departure_id, type, currency)`. Its index also serves lookups by `departure_id`.
-- `chk_tour_departure_prices_amount`: `amount >= 0`
+- `uq_trip_departure_prices_departure_type_currency`: unique on `(departure_id, type, currency)`. Its index also serves lookups by `departure_id`.
+- `chk_trip_departure_prices_amount`: `amount >= 0`
 
 ### `booking_requests` — `BookingRequestEntity`
 
-A lead submitted for a tour, optionally for a specific departure and optionally by a logged-in user.
+A lead submitted for a trip, optionally for a specific departure and optionally by a logged-in user.
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
 | `id` | `id` | `varchar(26)` | | ULID | PK |
-| `tour_id` | `tourId` | `varchar(26)` | | | FK → `tours.id`, indexed |
-| `tour_departure_id` | `tourDepartureId` | `varchar(26)` | ✓ | | FK → `tour_departures.id`, indexed. Null = general tour request |
+| `trip_id` | `tripId` | `varchar(26)` | | | FK → `trips.id`, indexed |
+| `trip_departure_id` | `tripDepartureId` | `varchar(26)` | ✓ | | FK → `trip_departures.id`, indexed. Null = general trip request |
 | `user_id` | `userId` | `varchar(26)` | ✓ | | FK → `users.id`, indexed. Null = guest |
 | `travel_date` | `travelDate` | `date` (`string`) | ✓ | | Preferred date when no departure is chosen |
 | `name` | `name` | `varchar(100)` | | | |
@@ -200,17 +200,17 @@ A lead submitted for a tour, optionally for a specific departure and optionally 
 - `idx_booking_requests_status_created_at`: index on `(status, created_at)` for the admin lead list (filter by status, sort by newest)
 - `chk_booking_requests_traveler_count`: `traveler_count > 0`
 
-> The DB does not verify that `tour_departure_id` belongs to `tour_id`. Validate this in the service layer when creating a booking request.
+> The DB does not verify that `trip_departure_id` belongs to `trip_id`. Validate this in the service layer when creating a booking request.
 
-### `tour_reviews` — `TourReviewEntity`
+### `trip_reviews` — `TripReviewEntity`
 
-A customer's rating and feedback for a tour.
+A customer's rating and feedback for a trip.
 
 | Column | Property | Type | Null | Default | Notes |
 |---|---|---|---|---|---|
 | `id` | `id` | `varchar(26)` | | ULID | PK |
 | `user_id` | `userId` | `varchar(26)` | ✓ | | FK → `users.id`. Null once the user is deleted |
-| `tour_id` | `tourId` | `varchar(26)` | | | FK → `tours.id`, indexed |
+| `trip_id` | `tripId` | `varchar(26)` | | | FK → `trips.id`, indexed |
 | `rating` | `rating` | `integer` | | | 1–5 |
 | `feedback` | `feedback` | `text` | ✓ | | |
 | `assets` | `assets` | `jsonb` (`TAsset[]`) | | `'[]'` | Customer photos / videos |
@@ -218,11 +218,11 @@ A customer's rating and feedback for a tour.
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
 **Constraints:**
-- `uq_tour_reviews_user_id_tour_id`: unique on `(user_id, tour_id)`, so a user reviews a tour at most once. Its index also serves lookups by `user_id`. Rows detached from a deleted user (`user_id` null) don't conflict, since Postgres treats nulls as distinct.
-- `idx_tour_reviews_tour_id`: index on `tour_id` for listing a tour's reviews
-- `chk_tour_reviews_rating`: `rating BETWEEN 1 AND 5`
+- `uq_trip_reviews_user_id_trip_id`: unique on `(user_id, trip_id)`, so a user reviews a trip at most once. Its index also serves lookups by `user_id`. Rows detached from a deleted user (`user_id` null) don't conflict, since Postgres treats nulls as distinct.
+- `idx_trip_reviews_trip_id`: index on `trip_id` for listing a trip's reviews
+- `chk_trip_reviews_rating`: `rating BETWEEN 1 AND 5`
 
-> The DB does not check that the reviewer actually travelled on the tour. Enforce that in the service layer if needed.
+> The DB does not check that the reviewer actually travelled on the trip. Enforce that in the service layer if needed.
 
 ---
 
@@ -317,24 +317,24 @@ Stored as native Postgres enum types. Values can be added later, but not removed
 
 | Enum | Source | Values |
 |---|---|---|
-| `ECountryStatus` | `types/countries.type.ts` | `coming_soon`, `live` |
-| `EDestinationStatus` | `types/destinations.type.ts` | `coming_soon`, `live` |
-| `ETourStatus` | `types/tours.type.ts` | `draft`, `live` |
-| `ETourDepartureStatus` | `types/tour_departures.type.ts` | `draft`, `open`, `cancelled`, `completed` |
-| `ETourTier` | `types/tours.type.ts` | `budget`, `standard`, `premium` |
-| `ETourAudience` | `types/tours.type.ts` | `open`, `couples` |
-| `ETourDeparturePriceType` | `types/tour_departure_prices.type.ts` | `adult`, `child` |
-| `ECURRENCY` | `types/misc.type.ts` | `inr`, `usd`, `cad`, `aed` |
-| `EBookingRequestStatus` | `types/booking_requests.type.ts` | `new`, `contacted`, `in_progress`, `converted`, `closed` |
-| `EUserRole` | `types/users.type.ts` | `customer`, `admin`, `guide` |
-| `EAuthIdentityProvider` | `types/auth_identities.type.ts` | `email`, `phone`, `google` |
-| `ETravelerGender` | `types/travelers.type.ts` | `male`, `female`, `other` |
+| `ECountryStatus` | `schemas/countries.schema.ts` | `coming_soon`, `live` |
+| `EDestinationStatus` | `schemas/destinations.schema.ts` | `coming_soon`, `live` |
+| `ETripStatus` | `schemas/trips.schema.ts` | `draft`, `live` |
+| `ETripDepartureStatus` | `schemas/trip_departures.schema.ts` | `draft`, `open`, `cancelled`, `completed` |
+| `ETripTier` | `schemas/trips.schema.ts` | `budget`, `standard`, `premium` |
+| `ETripAudience` | `schemas/trips.schema.ts` | `open`, `couples` |
+| `ETripDeparturePriceType` | `schemas/trip_departure_prices.schema.ts` | `adult`, `child` |
+| `ECURRENCY` | `schemas/misc.schema.ts` | `inr`, `usd`, `cad`, `aed` |
+| `EBookingRequestStatus` | `schemas/booking_requests.schema.ts` | `new`, `contacted`, `in_progress`, `converted`, `closed` |
+| `EUserRole` | `schemas/users.schema.ts` | `customer`, `admin`, `guide` |
+| `EAuthIdentityProvider` | `schemas/auth_identities.schema.ts` | `email`, `phone`, `google` |
+| `ETravelerGender` | `schemas/travelers.schema.ts` | `male`, `female`, `other` |
 
 ## JSONB shapes
 
 Shapes are defined as Zod schemas, so validate with them before writing. The database does not enforce them.
 
-**`TAsset`** (`types/misc.type.ts`)
+**`TAsset`** (`schemas/misc.schema.ts`)
 ```ts
 {
   label: string | null;        // default null; caption / alt text
@@ -346,7 +346,7 @@ Shapes are defined as Zod schemas, so validate with them before writing. The dat
 }
 ```
 
-**`TItinerary`** (`types/tours.type.ts`)
+**`TItinerary`** (`schemas/trips.schema.ts`)
 ```ts
 {
   days: {
@@ -369,7 +369,7 @@ Shapes are defined as Zod schemas, so validate with them before writing. The dat
 }
 ```
 
-**`TTourInclusion`** (`types/tours.type.ts`)
+**`TTripInclusion`** (`schemas/trips.schema.ts`)
 ```ts
 { title: string; description: string; }
 ```

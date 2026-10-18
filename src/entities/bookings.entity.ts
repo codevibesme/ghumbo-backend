@@ -18,7 +18,7 @@ import { ECURRENCY } from '../schemas/misc.schema.js';
 import { generateBookingCode } from '../utilities/codes/codes.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import { UserEntity } from './users.entity.js';
-import { TourDepartureEntity } from './tour_departures.entity.js';
+import { TripDepartureEntity } from './trip_departures.entity.js';
 import { BookingTravelerEntity } from './booking_travelers.entity.js';
 import { BookingPaymentEntity } from './booking_payments.entity.js';
 
@@ -65,14 +65,14 @@ export class BookingEntity {
   @Column({ name: 'departure_id', type: 'varchar', length: 26, nullable: true })
   departureId: string | null;
 
-  @ManyToOne(() => TourDepartureEntity, (departure) => departure.bookings, {
+  @ManyToOne(() => TripDepartureEntity, (departure) => departure.bookings, {
     onDelete: 'NO ACTION',
   })
   @JoinColumn({
     name: 'departure_id',
     foreignKeyConstraintName: 'fk_bookings_departure_id',
   })
-  departure: Relation<TourDepartureEntity> | null;
+  departure: Relation<TripDepartureEntity> | null;
 
   @Column({ name: 'traveler_count', type: 'integer' })
   travelerCount: number;

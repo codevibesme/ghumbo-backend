@@ -11,34 +11,34 @@ import {
   type Relation,
 } from 'typeorm';
 import { ECURRENCY } from '../schemas/misc.schema.js';
-import { TourDepartureEntity } from './tour_departures.entity.js';
-import { ETourDeparturePriceType } from '../schemas/tour_departure_prices.schema.js';
+import { TripDepartureEntity } from './trip_departures.entity.js';
+import { ETripDeparturePriceType } from '../schemas/trip_departure_prices.schema.js';
 
-@Entity('tour_departure_prices')
-@Unique('uq_tour_departure_prices_departure_type_currency', [
+@Entity('trip_departure_prices')
+@Unique('uq_trip_departure_prices_departure_type_currency', [
   'departureId',
   'type',
   'currency',
 ])
-@Check('chk_tour_departure_prices_amount', `"amount" >= 0`)
-export class TourDeparturePriceEntity {
+@Check('chk_trip_departure_prices_amount', `"amount" >= 0`)
+export class TripDeparturePriceEntity {
   @PrimaryGeneratedColumn('identity')
   id: number;
 
   @Column({ name: 'departure_id', type: 'varchar', length: 26 })
   departureId: string;
 
-  @ManyToOne(() => TourDepartureEntity, (departure) => departure.prices, {
+  @ManyToOne(() => TripDepartureEntity, (departure) => departure.prices, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({
     name: 'departure_id',
-    foreignKeyConstraintName: 'fk_tour_departure_prices_departure_id',
+    foreignKeyConstraintName: 'fk_trip_departure_prices_departure_id',
   })
-  departure: Relation<TourDepartureEntity>;
+  departure: Relation<TripDepartureEntity>;
 
-  @Column({ name: 'type', type: 'enum', enum: ETourDeparturePriceType })
-  type: ETourDeparturePriceType;
+  @Column({ name: 'type', type: 'enum', enum: ETripDeparturePriceType })
+  type: ETripDeparturePriceType;
 
   @Column({ name: 'currency', type: 'enum', enum: ECURRENCY })
   currency: ECURRENCY;

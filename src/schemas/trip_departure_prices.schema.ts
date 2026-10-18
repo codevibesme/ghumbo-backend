@@ -1,4 +1,4 @@
-export enum ETourDeparturePriceType {
+export enum ETripDeparturePriceType {
   ADULT = 'adult',
   CHILD = 'child',
 }

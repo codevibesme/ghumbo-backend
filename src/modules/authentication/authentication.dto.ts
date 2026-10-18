@@ -4,6 +4,7 @@ import {
   IsEmail,
   IsNotEmpty,
   IsPhoneNumber,
+  IsString,
   IsUUID,
   Matches,
   ValidateIf
@@ -63,5 +64,7 @@ export class AuthSuccessResponseDto {
 
 export class AuthRefreshReqDto {
   @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   refreshToken: string;
 }

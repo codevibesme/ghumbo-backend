@@ -1,14 +1,14 @@
 /**
- * Seeds countries → destinations → tours → departures → prices from JSON files in `seeds/`.
+ * Seeds countries → destinations → trips → departures → prices from JSON files in `seeds/`.
  *
  *   npm run seed                      # all seeds/*.json, alphabetical
  *   npm run seed -- seeds/west-bengal.json
  *
- * Idempotent: rows are matched on natural keys (country code, destination slug, tour slug,
- * departure tour + start_date, price departure + type + currency) and updated in place.
+ * Idempotent: rows are matched on natural keys (country code, destination slug, trip slug,
+ * departure trip + start_date, price departure + type + currency) and updated in place.
  * Nothing is deleted. Runs in a single transaction.
  *
- * Ordering: new tours get monotonic ULIDs, so `ORDER BY id` returns tours in the order
+ * Ordering: new trips get monotonic ULIDs, so `ORDER BY id` returns trips in the order
  * they appear in the seed file. (`created_at` is identical for every row, since Postgres
  * `now()` is the transaction start time.) Re-running keeps existing ids, so order is stable.
  */
@@ -24,21 +24,21 @@ import z from 'zod';
 import dbConfig from '../src/configs/db.config.js';
 import { CountryEntity } from '../src/entities/countries.entity.js';
 import { DestinationEntity } from '../src/entities/destinations.entity.js';
-import { TourEntity } from '../src/entities/tours.entity.js';
-import { TourDepartureEntity } from '../src/entities/tour_departures.entity.js';
-import { TourDeparturePriceEntity } from '../src/entities/tour_departure_prices.entity.js';
+import { TripEntity } from '../src/entities/trips.entity.js';
+import { TripDepartureEntity } from '../src/entities/trip_departures.entity.js';
+import { TripDeparturePriceEntity } from '../src/entities/trip_departure_prices.entity.js';
 import { Asset, ECURRENCY } from '../src/schemas/misc.schema.js';
 import { ECountryStatus } from '../src/schemas/countries.schema.js';
 import { EDestinationStatus } from '../src/schemas/destinations.schema.js';
 import {
-  ETourAudience,
-  ETourStatus,
-  ETourTier,
+  ETripAudience,
+  ETripStatus,
+  ETripTier,
   Itinerary,
-  TourInclusion,
-} from '../src/schemas/tours.schema.js';
-import { ETourDepartureStatus } from '../src/schemas/tour_departures.schema.js';
-import { ETourDeparturePriceType } from '../src/schemas/tour_departure_prices.schema.js';
+  TripInclusion,
+} from '../src/schemas/trips.schema.js';
+import { ETripDepartureStatus } from '../src/schemas/trip_departures.schema.js';
+import { ETripDeparturePriceType } from '../src/schemas/trip_departure_prices.schema.js';
 
 const SEEDS_DIR = path.resolve(process.cwd(), 'seeds');
 
@@ -47,7 +47,7 @@ const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 const money = z.string().regex(/^\d+(\.\d{1,2})?$/);
 
 const SeedPrice = z.object({
-  type: z.enum(ETourDeparturePriceType),
+  type: z.enum(ETripDeparturePriceType),
   currency: z.enum(ECURRENCY),
   amount: money,
 });
@@ -56,26 +56,26 @@ const SeedDeparture = z
   .object({
     start_date: date,
     end_date: date,
-    status: z.enum(ETourDepartureStatus).default(ETourDepartureStatus.OPEN),
+    status: z.enum(ETripDepartureStatus).default(ETripDepartureStatus.OPEN),
     capacity: z.number().int().positive(),
     prices: z.array(SeedPrice),
   })
   .refine((d) => d.end_date >= d.start_date, 'end_date before start_date');
 
-const SeedTour = z
+const SeedTrip = z
   .object({
     slug,
     name: z.string().min(1).max(255),
-    tier: z.enum(ETourTier),
-    audience: z.enum(ETourAudience).default(ETourAudience.OPEN),
-    status: z.enum(ETourStatus).default(ETourStatus.DRAFT),
+    tier: z.enum(ETripTier),
+    audience: z.enum(ETripAudience).default(ETripAudience.OPEN),
+    status: z.enum(ETripStatus).default(ETripStatus.DRAFT),
     overview: z.string().min(1),
     duration_days: z.number().int().positive(),
     duration_nights: z.number().int().nonnegative(),
     is_recommended: z.boolean().default(false),
     itinerary: Itinerary,
-    inclusions: z.array(TourInclusion).default([]),
-    exclusions: z.array(TourInclusion).default([]),
+    inclusions: z.array(TripInclusion).default([]),
+    exclusions: z.array(TripInclusion).default([]),
     assets: z.array(Asset).default([]),
     departures: z.array(SeedDeparture).default([]),
   })
@@ -93,7 +93,7 @@ const SeedDestination = z.object({
   latitude: z.number().min(-90).max(90),
   longitude: z.number().min(-180).max(180),
   assets: z.array(Asset).default([]),
-  tours: z.array(SeedTour).default([]),
+  trips: z.array(SeedTrip).default([]),
 });
 
 const SeedFile = z.object({
@@ -153,12 +153,12 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
     );
     destination = await em.save(destination);
 
-    for (const t of d.tours) {
-      let tour = await em.findOneBy(TourEntity, { slug: t.slug });
-      count(tour ? 'updated' : 'created', 'tours');
-      tour = em.merge(
-        TourEntity,
-        tour ?? em.create(TourEntity, { id: nextId() }),
+    for (const t of d.trips) {
+      let trip = await em.findOneBy(TripEntity, { slug: t.slug });
+      count(trip ? 'updated' : 'created', 'trips');
+      trip = em.merge(
+        TripEntity,
+        trip ?? em.create(TripEntity, { id: nextId() }),
         {
           destinationId: destination.id,
           slug: t.slug,
@@ -176,19 +176,19 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
           assets: t.assets,
         },
       );
-      tour = await em.save(tour);
+      trip = await em.save(trip);
 
       for (const dep of t.departures) {
-        let departure = await em.findOneBy(TourDepartureEntity, {
-          tourId: tour.id,
+        let departure = await em.findOneBy(TripDepartureEntity, {
+          tripId: trip.id,
           startDate: dep.start_date,
         });
-        count(departure ? 'updated' : 'created', 'tour_departures');
+        count(departure ? 'updated' : 'created', 'trip_departures');
         departure = em.merge(
-          TourDepartureEntity,
-          departure ?? em.create(TourDepartureEntity, { id: nextId() }),
+          TripDepartureEntity,
+          departure ?? em.create(TripDepartureEntity, { id: nextId() }),
           {
-            tourId: tour.id,
+            tripId: trip.id,
             startDate: dep.start_date,
             endDate: dep.end_date,
             status: dep.status,
@@ -199,7 +199,7 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
 
         if (dep.prices.length) {
           await em.upsert(
-            TourDeparturePriceEntity,
+            TripDeparturePriceEntity,
             dep.prices.map((p) => ({
               departureId: departure.id,
               type: p.type,
@@ -208,8 +208,8 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
             })),
             ['departureId', 'type', 'currency'],
           );
-          stats.updated['tour_departure_prices (upserted)'] =
-            (stats.updated['tour_departure_prices (upserted)'] ?? 0) +
+          stats.updated['trip_departure_prices (upserted)'] =
+            (stats.updated['trip_departure_prices (upserted)'] ?? 0) +
             dep.prices.length;
         }
       }

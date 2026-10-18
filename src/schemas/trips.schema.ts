@@ -1,17 +1,17 @@
 import z from 'zod';
 
-export enum ETourStatus {
+export enum ETripStatus {
   DRAFT = 'draft',
   LIVE = 'live',
 }
 
-export enum ETourTier {
+export enum ETripTier {
   BUDGET = 'budget',
   STANDARD = 'standard',
   PREMIUM = 'premium',
 }
 
-export enum ETourAudience {
+export enum ETripAudience {
   OPEN = 'open',
   COUPLES = 'couples',
 }
@@ -60,9 +60,9 @@ export type TItineraryActivity = z.infer<typeof ItineraryActivity>;
 export type TItineraryDay = z.infer<typeof ItineraryDay>;
 export type TItinerary = z.infer<typeof Itinerary>;
 
-export const TourInclusion = z.object({
+export const TripInclusion = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
 });
 
-export type TTourInclusion = z.infer<typeof TourInclusion>;
+export type TTripInclusion = z.infer<typeof TripInclusion>;

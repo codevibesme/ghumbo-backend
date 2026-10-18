@@ -13,7 +13,7 @@ import { AuthSessionEntity } from './auth_sessions.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import type { TAsset } from '../schemas/misc.schema.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
-import { TourReviewEntity } from './tour_reviews.entity.js';
+import { TripReviewEntity } from './trip_reviews.entity.js';
 import { TravelerEntity } from './travelers.entity.js';
 import { BookingEntity } from './bookings.entity.js';
 
@@ -66,8 +66,8 @@ export class UserEntity {
   )
   bookingRequests: BookingRequestEntity[];
 
-  @OneToMany(() => TourReviewEntity, (reviews) => reviews.user)
-  reviews: TourReviewEntity[];
+  @OneToMany(() => TripReviewEntity, (reviews) => reviews.user)
+  reviews: TripReviewEntity[];
 
   @OneToMany(() => TravelerEntity, (travelers) => travelers.user)
   travelers: TravelerEntity[];

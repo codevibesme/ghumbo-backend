@@ -13,8 +13,8 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { EBookingRequestStatus } from '../schemas/booking_requests.schema.js';
-import { TourEntity } from './tours.entity.js';
-import { TourDepartureEntity } from './tour_departures.entity.js';
+import { TripEntity } from './trips.entity.js';
+import { TripDepartureEntity } from './trip_departures.entity.js';
 import { UserEntity } from './users.entity.js';
 import { generateBookingRequestCode } from '../utilities/codes/codes.js';
 import { BookingEntity } from './bookings.entity.js';
@@ -26,40 +26,40 @@ export class BookingRequestEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
-  @Index('idx_booking_requests_tour_id')
-  @Column({ name: 'tour_id', type: 'varchar', length: 26 })
-  tourId: string;
+  @Index('idx_booking_requests_trip_id')
+  @Column({ name: 'trip_id', type: 'varchar', length: 26 })
+  tripId: string;
 
-  @ManyToOne(() => TourEntity, (tour) => tour.bookingRequests, {
+  @ManyToOne(() => TripEntity, (trip) => trip.bookingRequests, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({
-    name: 'tour_id',
-    foreignKeyConstraintName: 'fk_booking_requests_tour_id',
+    name: 'trip_id',
+    foreignKeyConstraintName: 'fk_booking_requests_trip_id',
   })
-  tour: Relation<TourEntity>;
+  trip: Relation<TripEntity>;
 
-  @Index('idx_booking_requests_tour_departure_id')
+  @Index('idx_booking_requests_trip_departure_id')
   @Column({
-    name: 'tour_departure_id',
+    name: 'trip_departure_id',
     type: 'varchar',
     length: 26,
     nullable: true,
   })
-  tourDepartureId: string | null;
+  tripDepartureId: string | null;
 
   @ManyToOne(
-    () => TourDepartureEntity,
+    () => TripDepartureEntity,
     (departure) => departure.bookingRequests,
     {
       onDelete: 'SET NULL',
     },
   )
   @JoinColumn({
-    name: 'tour_departure_id',
-    foreignKeyConstraintName: 'fk_booking_requests_tour_departure_id',
+    name: 'trip_departure_id',
+    foreignKeyConstraintName: 'fk_booking_requests_trip_departure_id',
   })
-  departure: Relation<TourDepartureEntity> | null;
+  departure: Relation<TripDepartureEntity> | null;
 
   @Index('idx_booking_requests_user_id')
   @Column({ name: 'user_id', type: 'varchar', length: 26, nullable: true })

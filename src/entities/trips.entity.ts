@@ -16,47 +16,47 @@ import { ulid } from 'ulid';
 import { DestinationEntity } from './destinations.entity.js';
 import type { TAsset } from '../schemas/misc.schema.js';
 import {
-  ETourAudience,
-  ETourStatus,
-  ETourTier,
+  ETripAudience,
+  ETripStatus,
+  ETripTier,
   type TItinerary,
-  type TTourInclusion,
-} from '../schemas/tours.schema.js';
-import { TourDepartureEntity } from './tour_departures.entity.js';
+  type TTripInclusion,
+} from '../schemas/trips.schema.js';
+import { TripDepartureEntity } from './trip_departures.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
-import { TourReviewEntity } from './tour_reviews.entity.js';
+import { TripReviewEntity } from './trip_reviews.entity.js';
 
-@Entity('tours')
-@Unique('uq_tours_slug', ['slug'])
-@Check('chk_tours_slug', `"slug" ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`)
+@Entity('trips')
+@Unique('uq_trips_slug', ['slug'])
+@Check('chk_trips_slug', `"slug" ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`)
 @Check(
-  'chk_tours_duration',
+  'chk_trips_duration',
   `"duration_days" > 0 AND "duration_nights" >= 0 AND "duration_nights" <= "duration_days"`,
 )
-export class TourEntity {
+export class TripEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
-  @Index('idx_tours_destination_id')
+  @Index('idx_trips_destination_id')
   @Column({ name: 'destination_id', type: 'integer' })
   destinationId: number;
 
-  @ManyToOne(() => DestinationEntity, (destination) => destination.tours, {
+  @ManyToOne(() => DestinationEntity, (destination) => destination.trips, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({
     name: 'destination_id',
-    foreignKeyConstraintName: 'fk_tours_destination_id',
+    foreignKeyConstraintName: 'fk_trips_destination_id',
   })
   destination: Relation<DestinationEntity>;
 
   @Column({
     name: 'status',
     type: 'enum',
-    enum: ETourStatus,
-    default: ETourStatus.DRAFT,
+    enum: ETripStatus,
+    default: ETripStatus.DRAFT,
   })
-  status: ETourStatus;
+  status: ETripStatus;
 
   @Column({ name: 'name', type: 'varchar', length: 255 })
   name: string;
@@ -67,16 +67,16 @@ export class TourEntity {
   @Column({ name: 'overview', type: 'text' })
   overview: string;
 
-  @Column({ name: 'tier', type: 'enum', enum: ETourTier })
-  tier: ETourTier;
+  @Column({ name: 'tier', type: 'enum', enum: ETripTier })
+  tier: ETripTier;
 
   @Column({
     name: 'audience',
     type: 'enum',
-    enum: ETourAudience,
-    default: ETourAudience.OPEN,
+    enum: ETripAudience,
+    default: ETripAudience.OPEN,
   })
-  audience: ETourAudience;
+  audience: ETripAudience;
 
   @Column({ name: 'duration_days', type: 'integer' })
   durationDays: number;
@@ -88,10 +88,10 @@ export class TourEntity {
   itinerary: TItinerary;
 
   @Column({ name: 'inclusions', type: 'jsonb', default: () => "'[]'" })
-  inclusions: TTourInclusion[];
+  inclusions: TTripInclusion[];
 
   @Column({ name: 'exclusions', type: 'jsonb', default: () => "'[]'" })
-  exclusions: TTourInclusion[];
+  exclusions: TTripInclusion[];
 
   @Column({ name: 'assets', type: 'jsonb', default: () => "'[]'" })
   assets: TAsset[];
@@ -105,15 +105,15 @@ export class TourEntity {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 
-  @OneToMany(() => TourDepartureEntity, (departures) => departures.tour)
-  departures: TourDepartureEntity[];
+  @OneToMany(() => TripDepartureEntity, (departures) => departures.trip)
+  departures: TripDepartureEntity[];
 
   @OneToMany(
     () => BookingRequestEntity,
-    (bookingRequests) => bookingRequests.tour,
+    (bookingRequests) => bookingRequests.trip,
   )
   bookingRequests: BookingRequestEntity[];
 
-  @OneToMany(() => TourReviewEntity, (reviews) => reviews.tour)
-  reviews: TourReviewEntity[];
+  @OneToMany(() => TripReviewEntity, (reviews) => reviews.trip)
+  reviews: TripReviewEntity[];
 }

@@ -13,14 +13,14 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { UserEntity } from './users.entity.js';
-import { TourEntity } from './tours.entity.js';
+import { TripEntity } from './trips.entity.js';
 import type { TAsset } from '../schemas/misc.schema.js';
 
-@Entity('tour_reviews')
-@Unique('uq_tour_reviews_user_id_tour_id', ['userId', 'tourId'])
-@Index('idx_tour_reviews_tour_id', ['tourId'])
-@Check('chk_tour_reviews_rating', `"rating" BETWEEN 1 AND 5`)
-export class TourReviewEntity {
+@Entity('trip_reviews')
+@Unique('uq_trip_reviews_user_id_trip_id', ['userId', 'tripId'])
+@Index('idx_trip_reviews_trip_id', ['tripId'])
+@Check('chk_trip_reviews_rating', `"rating" BETWEEN 1 AND 5`)
+export class TripReviewEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
@@ -30,19 +30,19 @@ export class TourReviewEntity {
   @ManyToOne(() => UserEntity, (user) => user.reviews, { onDelete: 'SET NULL' })
   @JoinColumn({
     name: 'user_id',
-    foreignKeyConstraintName: 'fk_tour_reviews_user_id',
+    foreignKeyConstraintName: 'fk_trip_reviews_user_id',
   })
   user: Relation<UserEntity> | null;
 
-  @Column({ name: 'tour_id', type: 'varchar', length: 26 })
-  tourId: string;
+  @Column({ name: 'trip_id', type: 'varchar', length: 26 })
+  tripId: string;
 
-  @ManyToOne(() => TourEntity, (tour) => tour.reviews, { onDelete: 'CASCADE' })
+  @ManyToOne(() => TripEntity, (trip) => trip.reviews, { onDelete: 'CASCADE' })
   @JoinColumn({
-    name: 'tour_id',
-    foreignKeyConstraintName: 'fk_tour_reviews_tour_id',
+    name: 'trip_id',
+    foreignKeyConstraintName: 'fk_trip_reviews_trip_id',
   })
-  tour: Relation<TourEntity>;
+  trip: Relation<TripEntity>;
 
   @Column({ name: 'rating', type: 'integer' })
   rating: number;

@@ -13,7 +13,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { CountryEntity } from './countries.entity.js';
-import { TourEntity } from './tours.entity.js';
+import { TripEntity } from './trips.entity.js';
 import type { TAsset } from '../schemas/misc.schema.js';
 import { EDestinationStatus } from '../schemas/destinations.schema.js';
 
@@ -71,6 +71,6 @@ export class DestinationEntity {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 
-  @OneToMany(() => TourEntity, (tours) => tours.destination)
-  tours: TourEntity[];
+  @OneToMany(() => TripEntity, (trips) => trips.destination)
+  trips: TripEntity[];
 }

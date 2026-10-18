@@ -12,43 +12,43 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { TourEntity } from './tours.entity.js';
-import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
+import { TripEntity } from './trips.entity.js';
+import { TripDeparturePriceEntity } from './trip_departure_prices.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
-import { ETourDepartureStatus } from '../schemas/tour_departures.schema.js';
+import { ETripDepartureStatus } from '../schemas/trip_departures.schema.js';
 import { BookingEntity } from './bookings.entity.js';
 
-@Entity('tour_departures')
-@Check('chk_tour_departures_capacity', `"capacity" > 0`)
+@Entity('trip_departures')
+@Check('chk_trip_departures_capacity', `"capacity" > 0`)
 @Check(
-  'chk_tour_departures_booked_seats',
+  'chk_trip_departures_booked_seats',
   `"booked_seats" >= 0 AND "booked_seats" <= "capacity"`,
 )
-@Check('chk_tour_departures_dates', `"end_date" >= "start_date"`)
-export class TourDepartureEntity {
+@Check('chk_trip_departures_dates', `"end_date" >= "start_date"`)
+export class TripDepartureEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
-  @Index('idx_tour_departures_tour_id')
-  @Column({ name: 'tour_id', type: 'varchar', length: 26 })
-  tourId: string;
+  @Index('idx_trip_departures_trip_id')
+  @Column({ name: 'trip_id', type: 'varchar', length: 26 })
+  tripId: string;
 
-  @ManyToOne(() => TourEntity, (tour) => tour.departures, {
+  @ManyToOne(() => TripEntity, (trip) => trip.departures, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({
-    name: 'tour_id',
-    foreignKeyConstraintName: 'fk_tour_departures_tour_id',
+    name: 'trip_id',
+    foreignKeyConstraintName: 'fk_trip_departures_trip_id',
   })
-  tour: Relation<TourEntity>;
+  trip: Relation<TripEntity>;
 
   @Column({
     name: 'status',
     type: 'enum',
-    enum: ETourDepartureStatus,
-    default: ETourDepartureStatus.DRAFT,
+    enum: ETripDepartureStatus,
+    default: ETripDepartureStatus.DRAFT,
   })
-  status: ETourDepartureStatus;
+  status: ETripDepartureStatus;
 
   @Column({ name: 'start_date', type: 'date' })
   startDate: string;
@@ -68,8 +68,8 @@ export class TourDepartureEntity {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 
-  @OneToMany(() => TourDeparturePriceEntity, (prices) => prices.departure)
-  prices: TourDeparturePriceEntity[];
+  @OneToMany(() => TripDeparturePriceEntity, (prices) => prices.departure)
+  prices: TripDeparturePriceEntity[];
 
   @OneToMany(
     () => BookingRequestEntity,

@@ -1,13 +1,13 @@
 import { CountryEntity } from './countries.entity.js';
 import { DestinationEntity } from './destinations.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
-import { TourDeparturePriceEntity } from './tour_departure_prices.entity.js';
-import { TourDepartureEntity } from './tour_departures.entity.js';
-import { TourEntity } from './tours.entity.js';
+import { TripDeparturePriceEntity } from './trip_departure_prices.entity.js';
+import { TripDepartureEntity } from './trip_departures.entity.js';
+import { TripEntity } from './trips.entity.js';
 import { AuthSessionEntity } from './auth_sessions.entity.js';
 import { UserEntity } from './users.entity.js';
 import { AuthIdentityEntity } from './auth_identities.entity.js';
-import { TourReviewEntity } from './tour_reviews.entity.js';
+import { TripReviewEntity } from './trip_reviews.entity.js';
 import { TravelerEntity } from './travelers.entity.js';
 import { BookingEntity } from './bookings.entity.js';
 import { BookingPaymentEntity } from './booking_payments.entity.js';
@@ -19,11 +19,11 @@ const ENTITIES = [
   AuthSessionEntity,
   CountryEntity,
   DestinationEntity,
-  TourEntity,
-  TourDepartureEntity,
-  TourDeparturePriceEntity,
+  TripEntity,
+  TripDepartureEntity,
+  TripDeparturePriceEntity,
   BookingRequestEntity,
-  TourReviewEntity,
+  TripReviewEntity,
   TravelerEntity,
   BookingEntity,
   BookingPaymentEntity,
