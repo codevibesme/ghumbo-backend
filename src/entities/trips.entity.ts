@@ -19,6 +19,7 @@ import {
   ETripAudience,
   ETripStatus,
   ETripTier,
+  TTripTag,
   type TItinerary,
   type TTripInclusion,
 } from '../schemas/trips.schema.js';
@@ -83,6 +84,9 @@ export class TripEntity {
 
   @Column({ name: 'duration_nights', type: 'integer' })
   durationNights: number;
+
+  @Column({ name: 'tags', type: 'jsonb', default: () => "'[]'" })
+  tags: TTripTag[];
 
   @Column({ name: 'itinerary', type: 'jsonb' })
   itinerary: TItinerary;

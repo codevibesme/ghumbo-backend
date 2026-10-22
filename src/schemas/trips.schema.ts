@@ -56,13 +56,18 @@ export const Itinerary = z.object({
   days: z.array(ItineraryDay),
 });
 
-export type TItineraryActivity = z.infer<typeof ItineraryActivity>;
-export type TItineraryDay = z.infer<typeof ItineraryDay>;
-export type TItinerary = z.infer<typeof Itinerary>;
-
 export const TripInclusion = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
 });
 
+export const TripTag = z.object({
+  label: z.string(),
+  description: z.string().nullable().default(null),
+});
+
+export type TItineraryActivity = z.infer<typeof ItineraryActivity>;
+export type TItineraryDay = z.infer<typeof ItineraryDay>;
+export type TItinerary = z.infer<typeof Itinerary>;
 export type TTripInclusion = z.infer<typeof TripInclusion>;
+export type TTripTag = z.infer<typeof TripTag>;

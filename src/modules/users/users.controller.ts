@@ -26,7 +26,6 @@ export class UserController {
 
   @Patch('/me')
   @ApiBearerAuth('JWT-auth')
-  @ApiParam({ name: 'userId', type: String, description: 'ID of the user' })
   @ApiBody({ type: UpdateUserDto })
   @ApiOkResponse({ description: 'Details updated successfully.' })
   @ApiUnauthorizedResponse({
@@ -36,7 +35,6 @@ export class UserController {
   async update(
     @Req() req: Request,
     @Res() res: Response,
-    @Param('userId') userId: string,
     @Body() body: UpdateUserDto,
   ) {
     const payload = await this.jwt.verify<TVerifiedUserPayload>(

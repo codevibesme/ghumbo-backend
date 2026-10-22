@@ -27,7 +27,7 @@ export class CountryEntity {
   })
   status: ECountryStatus;
 
-  @Column({ name: 'name', type: 'varchar', length: 255 })
+  @Column({ name: 'name', type: 'varchar', length: 255, unique: true })
   name: string;
 
   @Column({ name: 'code', type: 'char', length: 2, unique: true })
