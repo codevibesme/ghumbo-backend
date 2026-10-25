@@ -5,7 +5,12 @@ import {
 } from '@nestjs/common';
 import { EntityManager } from 'typeorm';
 import { UserRepository } from './users.repository.js';
-import { CreateUserDto, UpdateUserDto, UserDto } from './users.dto.js';
+import {
+  CreateUserDto,
+  UpdateUserDto,
+  UserDetailsDto,
+  UserDto,
+} from './users.dto.js';
 
 @Injectable()
 export class UserService {
@@ -27,6 +32,18 @@ export class UserService {
     if (!user) throw new NotFoundException('User not found.');
 
     return user;
+  }
+
+  async getDetails(id: string): Promise<UserDetailsDto> {
+    const user = await this.findByIdOrThrow(id);
+
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      phone: user.phone,
+      photo: user.photo,
+    };
   }
 
   async findByEmailOrPhone(

@@ -32,11 +32,9 @@ export function rejectForeignOrigin(
     return next();
   }
 
-  res
-    .status(403)
-    .json({
-      statusCode: 403,
-      message: 'Origin not allowed',
-      error: 'Forbidden',
-    });
+  res.status(403).json({
+    statusCode: 403,
+    message: 'Origin not allowed',
+    error: 'Forbidden',
+  });
 }

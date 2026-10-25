@@ -24,7 +24,8 @@ import { TxnHelperService } from '../../helpers/txn.service.js';
 import { OtpService } from '../../lib/otp/otp.service.js';
 import { EOtpChannel } from '../../schemas/otp.schema.js';
 import { Profile } from 'passport-google-oauth20';
-import { EMediaType } from '../../schemas/misc.schema.js';
+import { EMediaType, TAsset } from '../../schemas/misc.schema.js';
+import { EntityManager } from 'typeorm';
 import {
   ACCESS_TOKEN_VALIDITY,
   REFRESH_TOKEN_VALIDITY,
@@ -52,6 +53,31 @@ export class AuthenticationService {
       refreshToken,
       refreshTokenHash,
     };
+  }
+
+  private toProfilePhoto(url: string): TAsset {
+    return {
+      label: 'Profile Photo',
+      description: 'Profile photo of the user',
+      thumbnail_url: url,
+      url,
+      type: EMediaType.IMAGE,
+      sort_order: 0,
+    };
+  }
+
+  private async savePhotoIfMissing(
+    user: UserDto,
+    photo: string | null,
+    txn: EntityManager | null,
+  ): Promise<void> {
+    if (!photo || user.photo) return;
+
+    await this.userService.update(
+      user.id,
+      { photo: this.toProfilePhoto(photo) },
+      txn,
+    );
   }
 
   private async validateSignUp(record: SignUpDto): Promise<void> {
@@ -92,16 +118,7 @@ export class AuthenticationService {
           name: record.name,
           email: record.email,
           phone: record.phone,
-          photo: record.photo
-            ? {
-                label: 'Profile Photo',
-                description: 'Profile photo of the user',
-                thumbnail_url: record.photo,
-                url: record.photo,
-                type: EMediaType.IMAGE,
-                sort_order: 0,
-              }
-            : null,
+          photo: record.photo ? this.toProfilePhoto(record.photo) : null,
           role: EUserRole.CUSTOMER,
         },
         txnManager,
@@ -325,6 +342,7 @@ export class AuthenticationService {
   async linkGoogleProvider(
     user: UserDto,
     providerUserId: string,
+    photo: string | null,
     refreshToken: string,
     refreshTokenHash: string,
     userSessionSignature: UserSessionSignatureDto,
@@ -340,6 +358,8 @@ export class AuthenticationService {
         },
         txnManager,
       );
+
+      await this.savePhotoIfMissing(user, photo, txnManager);
 
       const session = await this.authSessionService.create(
         {
@@ -406,6 +426,9 @@ export class AuthenticationService {
     if (authIdentity) {
       const user = await this.userService.findByIdOrThrow(authIdentity.userId);
 
+      // Accounts linked before photos were saved on linking get theirs now.
+      await this.savePhotoIfMissing(user, photo, null);
+
       const session = await this.authSessionService.create(
         {
           expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
@@ -449,6 +472,7 @@ export class AuthenticationService {
       return await this.linkGoogleProvider(
         existingEmailUser,
         providerUserId,
+        photo,
         refreshToken,
         refreshTokenHash,
         userSessionSignature,
@@ -463,16 +487,7 @@ export class AuthenticationService {
           name: name,
           email: email,
           phone: null,
-          photo: photo
-            ? {
-                label: 'Profile Photo',
-                description: 'Profile photo of the user',
-                thumbnail_url: photo,
-                url: photo,
-                type: EMediaType.IMAGE,
-                sort_order: 0,
-              }
-            : null,
+          photo: photo ? this.toProfilePhoto(photo) : null,
           role: EUserRole.CUSTOMER,
         },
         txnManager,

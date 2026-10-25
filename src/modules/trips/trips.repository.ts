@@ -149,6 +149,7 @@ export class TripRepository {
       .createQueryBuilder('trip')
       .leftJoinAndSelect('trip.destination', 'destination')
       .where('trip.slug = :slug', { slug })
+      .andWhere('trip.status = :status', { status: ETripStatus.LIVE })
       .getOne();
   }
 }
