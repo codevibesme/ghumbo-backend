@@ -62,7 +62,7 @@ export class TripRepository {
         'departure.endDate',
       ])
       .addSelect('departure.capacity - departure.booked_seats', 'seats_left')
-      
+
       .addSelect(
         (sq) =>
           sq
@@ -101,7 +101,6 @@ export class TripRepository {
         currency,
       });
 
-    
     const [{ entities, raw }, count] = await Promise.all([
       qb
         .clone()
@@ -148,6 +147,7 @@ export class TripRepository {
   async findBySlug(slug: string): Promise<TripDto | null> {
     return this.repo
       .createQueryBuilder('trip')
+      .leftJoinAndSelect('trip.destination', 'destination')
       .where('trip.slug = :slug', { slug })
       .getOne();
   }

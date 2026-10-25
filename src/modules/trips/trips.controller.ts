@@ -33,16 +33,20 @@ export class TripController {
     return res.status(200).send(data);
   }
 
-    @Get('/:slug')
-    @ApiOkResponse({ type: TripDto })
-    @ApiParam({ name: 'slug', type: 'string', example: 'darjeeling-queen-of-the-hills-budget' })
-    @ApiBadRequestResponse({ description: 'Bad request' })
-    @ApiNotFoundResponse({ description: 'Not found' })
-    async findBySlug(@Res() res: Response, @Param('slug') slug: string) {
-      slug = decodeURIComponent(slug);
+  @Get('/:slug')
+  @ApiOkResponse({ type: TripDto })
+  @ApiParam({
+    name: 'slug',
+    type: 'string',
+    example: 'darjeeling-queen-of-the-hills-budget',
+  })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiNotFoundResponse({ description: 'Not found' })
+  async findBySlug(@Res() res: Response, @Param('slug') slug: string) {
+    slug = decodeURIComponent(slug);
 
-      const data = await this.service.findBySlugOrThrow(slug);
+    const data = await this.service.findBySlugOrThrow(slug);
 
-      return res.status(200).send(data);
-    }
+    return res.status(200).send(data);
+  }
 }

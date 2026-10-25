@@ -2,8 +2,9 @@ import { Transform } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsPhoneNumber,
-  IsString,
+  IsUrl,
   IsUUID,
   Matches,
   ValidateIf,
@@ -25,6 +26,10 @@ export class SignInDto {
 export class SignUpDto extends SignInDto {
   @IsNotEmpty()
   name: string;
+
+  @IsUrl()
+  @IsOptional()
+  photo?: string | null;
 }
 
 export class AuthChallengeDto {
@@ -49,10 +54,4 @@ export class AuthSuccessResponseDto {
   refreshToken: string;
 
   accessToken: string;
-}
-
-export class AuthRefreshReqDto {
-  @IsNotEmpty()
-  @IsString()
-  refreshToken: string;
 }

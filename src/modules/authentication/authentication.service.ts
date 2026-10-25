@@ -23,6 +23,13 @@ import { EUserRole } from '../../schemas/users.schema.js';
 import { TxnHelperService } from '../../helpers/txn.service.js';
 import { OtpService } from '../../lib/otp/otp.service.js';
 import { EOtpChannel } from '../../schemas/otp.schema.js';
+import { Profile } from 'passport-google-oauth20';
+import { EMediaType } from '../../schemas/misc.schema.js';
+import {
+  ACCESS_TOKEN_VALIDITY,
+  REFRESH_TOKEN_VALIDITY,
+} from './authentication.constant.js';
+import { UserDto } from '../users/users.dto.js';
 
 @Injectable()
 export class AuthenticationService {
@@ -34,8 +41,18 @@ export class AuthenticationService {
     private readonly jwt: JwtUtilityService,
     private readonly txn: TxnHelperService,
   ) {}
-  private readonly REFRESH_TOKEN_VALIDITY = 7 * 24 * 60 * 60 * 1000;
-  private readonly ACCESS_TOKEN_VALIDITY = 15 * 60;
+
+  private createRefreshToken() {
+    const refreshToken = randomBytes(32).toString('hex');
+    const refreshTokenHash = createHash('sha256')
+      .update(refreshToken)
+      .digest('hex');
+
+    return {
+      refreshToken,
+      refreshTokenHash,
+    };
+  }
 
   private async validateSignUp(record: SignUpDto): Promise<void> {
     const existingUser = await this.userService.findByEmailOrPhone(
@@ -67,10 +84,7 @@ export class AuthenticationService {
 
     let accessToken: string;
 
-    const refreshToken = randomBytes(32).toString('hex');
-    const refreshTokenHash = createHash('sha256')
-      .update(refreshToken)
-      .digest('hex');
+    const { refreshToken, refreshTokenHash } = this.createRefreshToken();
 
     const { user, session } = await this.txn.run(async (txnManager) => {
       const user = await this.userService.create(
@@ -78,7 +92,16 @@ export class AuthenticationService {
           name: record.name,
           email: record.email,
           phone: record.phone,
-          photo: null,
+          photo: record.photo
+            ? {
+                label: 'Profile Photo',
+                description: 'Profile photo of the user',
+                thumbnail_url: record.photo,
+                url: record.photo,
+                type: EMediaType.IMAGE,
+                sort_order: 0,
+              }
+            : null,
           role: EUserRole.CUSTOMER,
         },
         txnManager,
@@ -97,7 +120,7 @@ export class AuthenticationService {
 
       const session = await this.authSessionService.create(
         {
-          expiresAt: new Date(Date.now() + this.REFRESH_TOKEN_VALIDITY),
+          expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
           refreshTokenHash: refreshTokenHash,
           revokedAt: null,
           userId: user.id,
@@ -124,7 +147,7 @@ export class AuthenticationService {
           lastUsedAt: session.lastUsedAt,
         },
       },
-      this.ACCESS_TOKEN_VALIDITY,
+      ACCESS_TOKEN_VALIDITY,
     );
 
     return {
@@ -155,14 +178,11 @@ export class AuthenticationService {
   ): Promise<AuthSuccessResponseDto> {
     const { userId, userRole } = await this.validateSignIn(record);
 
-    const refreshToken = randomBytes(32).toString('hex');
-    const refreshTokenHash = createHash('sha256')
-      .update(refreshToken)
-      .digest('hex');
+    const { refreshToken, refreshTokenHash } = this.createRefreshToken();
 
     const session = await this.authSessionService.create(
       {
-        expiresAt: new Date(Date.now() + this.REFRESH_TOKEN_VALIDITY),
+        expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
         refreshTokenHash: refreshTokenHash,
         revokedAt: null,
         userId,
@@ -186,7 +206,7 @@ export class AuthenticationService {
           lastUsedAt: session.lastUsedAt,
         },
       },
-      this.ACCESS_TOKEN_VALIDITY,
+      ACCESS_TOKEN_VALIDITY,
     );
 
     return {
@@ -257,10 +277,10 @@ export class AuthenticationService {
 
     const user = await this.userService.findByIdOrThrow(authSession.userId);
 
-    const newRefreshToken = randomBytes(32).toString('hex');
-    const newRefreshTokenHash = createHash('sha256')
-      .update(newRefreshToken)
-      .digest('hex');
+    const {
+      refreshToken: newRefreshToken,
+      refreshTokenHash: newRefreshTokenHash,
+    } = this.createRefreshToken();
 
     const updatedAuthSession = await this.authSessionService.rotateRefreshToken(
       authSession.id,
@@ -280,7 +300,7 @@ export class AuthenticationService {
           lastUsedAt: updatedAuthSession.lastUsedAt,
         },
       },
-      this.ACCESS_TOKEN_VALIDITY,
+      ACCESS_TOKEN_VALIDITY,
     );
 
     return {
@@ -289,15 +309,228 @@ export class AuthenticationService {
     };
   }
 
-  async signOut(userId: string, sessionId: string): Promise<void> {
-    const user = await this.userService.findByIdOrThrow(userId);
-    const authSession =
-      await this.authSessionService.findByIdOrThrow(sessionId);
+  async signOut(refreshToken: string): Promise<void> {
+    const refreshTokenHash = createHash('sha256')
+      .update(refreshToken)
+      .digest('hex');
 
-    if (user.id !== authSession.userId) {
-      throw new UnauthorizedException("Session doesn't belong to the user");
+    const authSession =
+      await this.authSessionService.findByRefreshTokenHash(refreshTokenHash);
+
+    if (authSession && !authSession.revokedAt) {
+      await this.authSessionService.revokeSession(authSession.id);
+    }
+  }
+
+  async linkGoogleProvider(
+    user: UserDto,
+    providerUserId: string,
+    refreshToken: string,
+    refreshTokenHash: string,
+    userSessionSignature: UserSessionSignatureDto,
+  ) {
+    let accessToken: string;
+
+    const { session } = await this.txn.run(async (txnManager) => {
+      await this.authIdentityService.create(
+        {
+          provider: EAuthIdentityProvider.GOOGLE,
+          providerUserId,
+          userId: user.id,
+        },
+        txnManager,
+      );
+
+      const session = await this.authSessionService.create(
+        {
+          expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
+          refreshTokenHash: refreshTokenHash,
+          revokedAt: null,
+          userId: user.id,
+          lastUsedAt: new Date(),
+          deviceId: userSessionSignature.deviceId,
+          ipAddress: userSessionSignature.ipAddress,
+          userAgent: userSessionSignature.userAgent,
+        },
+        txnManager,
+      );
+
+      return { session };
+    });
+
+    accessToken = await this.jwt.sign(
+      {
+        type: ETokenFor.USER,
+        role: user.role,
+        userId: user.id,
+        session: {
+          id: session.id,
+          expiresAt: session.expiresAt,
+          revokedAt: session.revokedAt,
+          lastUsedAt: session.lastUsedAt,
+        },
+      },
+      ACCESS_TOKEN_VALIDITY,
+    );
+
+    return {
+      refreshToken: refreshToken,
+      accessToken: accessToken,
+    };
+  }
+
+  async validateGoogleUser(
+    profile: Profile,
+    userSessionSignature: UserSessionSignatureDto,
+  ): Promise<AuthSuccessResponseDto> {
+    const providerUserId = profile.id;
+    const email = profile.emails?.[0]?.value?.toLowerCase() || null;
+    const isEmailVerified = profile.emails?.[0]?.verified || false;
+    const name = profile.displayName || 'User';
+    const photo = profile.photos?.[0]?.value || null;
+
+    if (!email || !isEmailVerified) {
+      throw new UnauthorizedException(
+        'Google account must provide a verified email',
+      );
     }
 
-    await this.authSessionService.revokeSession(sessionId);
+    const authIdentity =
+      await this.authIdentityService.findByProviderAndProviderUserId(
+        EAuthIdentityProvider.GOOGLE,
+        providerUserId,
+      );
+
+    const { refreshToken, refreshTokenHash } = this.createRefreshToken();
+
+    if (authIdentity) {
+      const user = await this.userService.findByIdOrThrow(authIdentity.userId);
+
+      const session = await this.authSessionService.create(
+        {
+          expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
+          refreshTokenHash: refreshTokenHash,
+          revokedAt: null,
+          userId: user.id,
+          lastUsedAt: new Date(),
+          deviceId: userSessionSignature.deviceId,
+          ipAddress: userSessionSignature.ipAddress,
+          userAgent: userSessionSignature.userAgent,
+        },
+        null,
+      );
+
+      const accessToken = await this.jwt.sign(
+        {
+          type: ETokenFor.USER,
+          role: user.role,
+          userId: user.id,
+          session: {
+            id: session.id,
+            expiresAt: session.expiresAt,
+            revokedAt: session.revokedAt,
+            lastUsedAt: session.lastUsedAt,
+          },
+        },
+        ACCESS_TOKEN_VALIDITY,
+      );
+
+      return {
+        refreshToken: refreshToken,
+        accessToken: accessToken,
+      };
+    }
+
+    const existingEmailUser = await this.userService.findByEmailOrPhone(
+      email,
+      null,
+    );
+    if (existingEmailUser) {
+      return await this.linkGoogleProvider(
+        existingEmailUser,
+        providerUserId,
+        refreshToken,
+        refreshTokenHash,
+        userSessionSignature,
+      );
+    }
+
+    let accessToken: string;
+
+    const { user, session } = await this.txn.run(async (txnManager) => {
+      const user = await this.userService.create(
+        {
+          name: name,
+          email: email,
+          phone: null,
+          photo: photo
+            ? {
+                label: 'Profile Photo',
+                description: 'Profile photo of the user',
+                thumbnail_url: photo,
+                url: photo,
+                type: EMediaType.IMAGE,
+                sort_order: 0,
+              }
+            : null,
+          role: EUserRole.CUSTOMER,
+        },
+        txnManager,
+      );
+
+      await this.authIdentityService.create(
+        {
+          provider: EAuthIdentityProvider.GOOGLE,
+          providerUserId,
+          userId: user.id,
+        },
+        txnManager,
+      );
+
+      await this.authIdentityService.create(
+        {
+          provider: EAuthIdentityProvider.EMAIL,
+          providerUserId: email,
+          userId: user.id,
+        },
+        txnManager,
+      );
+
+      const session = await this.authSessionService.create(
+        {
+          expiresAt: new Date(Date.now() + REFRESH_TOKEN_VALIDITY),
+          refreshTokenHash: refreshTokenHash,
+          revokedAt: null,
+          userId: user.id,
+          lastUsedAt: new Date(),
+          deviceId: userSessionSignature.deviceId,
+          ipAddress: userSessionSignature.ipAddress,
+          userAgent: userSessionSignature.userAgent,
+        },
+        txnManager,
+      );
+
+      return { user, session };
+    });
+
+    accessToken = await this.jwt.sign(
+      {
+        type: ETokenFor.USER,
+        role: user.role,
+        userId: user.id,
+        session: {
+          id: session.id,
+          expiresAt: session.expiresAt,
+          revokedAt: session.revokedAt,
+          lastUsedAt: session.lastUsedAt,
+        },
+      },
+      ACCESS_TOKEN_VALIDITY,
+    );
+
+    return {
+      refreshToken: refreshToken,
+      accessToken: accessToken,
+    };
   }
 }

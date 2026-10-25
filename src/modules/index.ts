@@ -1,4 +1,5 @@
 import { AuthenticationModule } from './authentication/authentication.module.js';
+import { BookingRequestModule } from './booking_requests/booking_requests.module.js';
 import { CountryModule } from './countries/countries.module.js';
 import { DestinationModule } from './destinations/destinations.module.js';
 import { TripDepartureModule } from './trip_departures/trip_departures.module.js';
@@ -13,5 +14,6 @@ export const MODULES = [
   DestinationModule,
   TripModule,
   TripDepartureModule,
-  TripReviewModule
+  TripReviewModule,
+  BookingRequestModule,
 ];

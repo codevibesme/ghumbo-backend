@@ -1,30 +1,27 @@
-import { Body, Controller, Param, Patch, Req, Res } from '@nestjs/common';
-import type { Request, Response } from 'express';
+import { Body, Controller, Patch, Req, Res, UseGuards } from '@nestjs/common';
+import type { Response } from 'express';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiBody,
   ApiOkResponse,
-  ApiParam,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
 import { UpdateUserDto } from './users.dto.js';
-import { ETokenFor, TVerifiedUserPayload } from '../../schemas/jwt.schema.js';
 
-import { JwtUtilityService } from '../../utilities/jwt/jwt.service.js';
 import { UserService } from './users.service.js';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard.js';
+import { type AuthenticatedUserReq } from '../../interfaces/index.js';
 
 @Controller('users')
 @ApiTags('users')
 export class UserController {
-  constructor(
-    private readonly jwt: JwtUtilityService,
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   @Patch('/me')
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
   @ApiBody({ type: UpdateUserDto })
   @ApiOkResponse({ description: 'Details updated successfully.' })
@@ -33,16 +30,11 @@ export class UserController {
   })
   @ApiBadRequestResponse({ description: 'Bad request' })
   async update(
-    @Req() req: Request,
+    @Req() req: AuthenticatedUserReq,
     @Res() res: Response,
     @Body() body: UpdateUserDto,
   ) {
-    const payload = await this.jwt.verify<TVerifiedUserPayload>(
-      req?.headers?.authorization || '',
-      ETokenFor.USER,
-    );
-
-    await this.userService.update(payload.userId, body, null);
+    await this.userService.update(req.user.userId, body, null);
 
     return res.status(200).send('Details updated successfully.');
   }
