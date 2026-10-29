@@ -16,19 +16,15 @@ import { DestinationService } from './destinations.service.js';
 export class DestinationController {
   constructor(private readonly service: DestinationService) {}
 
-  @Get('/country/:countryName')
+  @Get('/')
   @ApiOkResponse({ type: PaginatedResponseDto<DestinationDto> })
-  @ApiParam({ name: 'countryName', type: 'string', example: 'india' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiNotFoundResponse({ description: 'Not found' })
-  async findAllByCountryName(
+  async findAll(
     @Res() res: Response,
-    @Param('countryName') countryName: string,
     @Query() query: DestinationQueryDto,
   ) {
-    countryName = decodeURIComponent(countryName);
-
-    const data = await this.service.findAllByCountryName(countryName, query);
+    const data = await this.service.findAll(query);
 
     return res.status(200).send(data);
   }

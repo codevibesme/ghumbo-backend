@@ -7,11 +7,10 @@ import { PaginatedResponseDto } from '../misc/dto.js';
 export class TripService {
   constructor(private readonly repo: TripRepository) {}
 
-  async findByDestinationSlug(
-    slug: string,
+  async findAll(
     query: TripQueryDto,
   ): Promise<PaginatedResponseDto<TripListItemDto>> {
-    return await this.repo.findByDestinationSlug(slug, query);
+    return await this.repo.findAll(query);
   }
 
   async findBySlug(slug: string): Promise<TripDto | null> {

@@ -28,6 +28,9 @@ import { BookingRequestEntity } from './booking_requests.entity.js';
 import { TripReviewEntity } from './trip_reviews.entity.js';
 
 @Entity('trips')
+@Index('idx_trips_name_trgm', { synchronize: false })
+@Index('idx_trips_overview_trgm', { synchronize: false })
+@Index('idx_trips_tags_trgm', { synchronize: false })
 @Unique('uq_trips_slug', ['slug'])
 @Check('chk_trips_slug', `"slug" ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`)
 @Check(
@@ -111,12 +114,6 @@ export class TripEntity {
 
   @OneToMany(() => TripDepartureEntity, (departures) => departures.trip)
   departures: TripDepartureEntity[];
-
-  @OneToMany(
-    () => BookingRequestEntity,
-    (bookingRequests) => bookingRequests.trip,
-  )
-  bookingRequests: BookingRequestEntity[];
 
   @OneToMany(() => TripReviewEntity, (reviews) => reviews.trip)
   reviews: TripReviewEntity[];

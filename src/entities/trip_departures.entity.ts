@@ -13,10 +13,10 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { TripEntity } from './trips.entity.js';
-import { TripDeparturePriceEntity } from './trip_departure_prices.entity.js';
 import { BookingRequestEntity } from './booking_requests.entity.js';
 import { ETripDepartureStatus } from '../schemas/trip_departures.schema.js';
 import { BookingEntity } from './bookings.entity.js';
+import { ECURRENCY } from '../schemas/misc.schema.js';
 
 @Entity('trip_departures')
 @Check('chk_trip_departures_capacity', `"capacity" > 0`)
@@ -50,6 +50,9 @@ export class TripDepartureEntity {
   })
   status: ETripDepartureStatus;
 
+  @Column({ name: 'is_peak', type: 'boolean', default: false })
+  isPeak: boolean;
+
   @Column({ name: 'start_date', type: 'date' })
   startDate: string;
 
@@ -62,14 +65,17 @@ export class TripDepartureEntity {
   @Column({ name: 'booked_seats', type: 'integer', default: 0 })
   bookedSeats: number;
 
+  @Column({ name: 'currency', type: 'enum', enum: ECURRENCY })
+  currency: ECURRENCY;
+
+  @Column({ name: 'amount', type: 'numeric', precision: 12, scale: 2 })
+  amount: string;
+
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
-
-  @OneToMany(() => TripDeparturePriceEntity, (prices) => prices.departure)
-  prices: TripDeparturePriceEntity[];
 
   @OneToMany(
     () => BookingRequestEntity,

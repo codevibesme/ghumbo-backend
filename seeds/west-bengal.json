@@ -453,73 +453,37 @@
               "start_date": "2026-11-13",
               "end_date": "2026-11-16",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "7799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5299.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "7799.00"
             },
             {
               "start_date": "2026-12-26",
               "end_date": "2026-12-29",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "9499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "6199.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "9499.00"
             },
             {
               "start_date": "2027-03-19",
               "end_date": "2027-03-22",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "7799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5299.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "7799.00"
             },
             {
               "start_date": "2027-05-01",
               "end_date": "2027-05-04",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "9499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "6199.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "9499.00"
             }
           ]
         },
@@ -1037,73 +1001,37 @@
               "start_date": "2026-11-07",
               "end_date": "2026-11-12",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "12999.00"
             },
             {
               "start_date": "2026-12-23",
               "end_date": "2026-12-28",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "15499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "10999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "15499.00"
             },
             {
               "start_date": "2027-03-06",
               "end_date": "2027-03-11",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "12999.00"
             },
             {
               "start_date": "2027-04-17",
               "end_date": "2027-04-22",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "15499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "10999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "15499.00"
             }
           ]
         },
@@ -1444,73 +1372,37 @@
               "start_date": "2026-11-14",
               "end_date": "2026-11-16",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3399.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             },
             {
               "start_date": "2026-12-26",
               "end_date": "2026-12-28",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "6199.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3599.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "6199.00"
             },
             {
               "start_date": "2027-01-16",
               "end_date": "2027-01-18",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3399.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             },
             {
               "start_date": "2027-02-13",
               "end_date": "2027-02-15",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3399.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             }
           ]
         },
@@ -1822,73 +1714,37 @@
               "start_date": "2026-11-14",
               "end_date": "2026-11-16",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "6599.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5199.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "6599.00"
             },
             {
               "start_date": "2026-12-26",
               "end_date": "2026-12-28",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "7499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "7499.00"
             },
             {
               "start_date": "2027-01-16",
               "end_date": "2027-01-18",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "6599.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5199.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "6599.00"
             },
             {
               "start_date": "2027-02-13",
               "end_date": "2027-02-15",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "6599.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "5199.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "6599.00"
             }
           ]
         },
@@ -2211,73 +2067,37 @@
               "start_date": "2026-11-16",
               "end_date": "2026-11-18",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "4099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             },
             {
               "start_date": "2026-12-28",
               "end_date": "2026-12-30",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "6799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "4499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "6799.00"
             },
             {
               "start_date": "2027-01-18",
               "end_date": "2027-01-20",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "4099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             },
             {
               "start_date": "2027-02-15",
               "end_date": "2027-02-17",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "4099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5499.00"
             }
           ]
         },
@@ -2609,73 +2429,37 @@
               "start_date": "2026-11-20",
               "end_date": "2026-11-22",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5799.00"
             },
             {
               "start_date": "2026-12-25",
               "end_date": "2026-12-27",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "7699.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "4699.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "7699.00"
             },
             {
               "start_date": "2027-01-22",
               "end_date": "2027-01-24",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5799.00"
             },
             {
               "start_date": "2027-02-19",
               "end_date": "2027-02-21",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5799.00"
             }
           ]
         },
@@ -3047,73 +2831,37 @@
               "start_date": "2026-11-20",
               "end_date": "2026-11-23",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "11499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "11499.00"
             },
             {
               "start_date": "2026-12-27",
               "end_date": "2026-12-30",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9599.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "12999.00"
             },
             {
               "start_date": "2027-01-22",
               "end_date": "2027-01-25",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "11499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "11499.00"
             },
             {
               "start_date": "2027-03-05",
               "end_date": "2027-03-08",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "11499.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "9099.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "11499.00"
             }
           ]
         },
@@ -3445,73 +3193,37 @@
               "start_date": "2026-11-21",
               "end_date": "2026-11-23",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5299.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5299.00"
             },
             {
               "start_date": "2026-12-27",
               "end_date": "2026-12-29",
               "status": "open",
+              "is_peak": true,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5799.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3799.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5799.00"
             },
             {
               "start_date": "2027-01-23",
               "end_date": "2027-01-25",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5299.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5299.00"
             },
             {
               "start_date": "2027-02-20",
               "end_date": "2027-02-22",
               "status": "open",
+              "is_peak": false,
               "capacity": 18,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "5299.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "3499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "5299.00"
             }
           ]
         },
@@ -3991,73 +3703,37 @@
               "start_date": "2026-11-20",
               "end_date": "2026-11-25",
               "status": "open",
+              "is_peak": false,
               "capacity": 14,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "11499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "12999.00"
             },
             {
               "start_date": "2027-03-12",
               "end_date": "2027-03-17",
               "status": "open",
+              "is_peak": false,
               "capacity": 14,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "11499.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "12999.00"
             },
             {
               "start_date": "2027-04-09",
               "end_date": "2027-04-14",
               "status": "open",
+              "is_peak": true,
               "capacity": 14,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "13999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "13999.00"
             },
             {
               "start_date": "2027-05-07",
               "end_date": "2027-05-12",
               "status": "open",
+              "is_peak": true,
               "capacity": 14,
-              "prices": [
-                {
-                  "type": "adult",
-                  "currency": "inr",
-                  "amount": "13999.00"
-                },
-                {
-                  "type": "child",
-                  "currency": "inr",
-                  "amount": "12999.00"
-                }
-              ]
+              "currency": "inr",
+              "amount": "13999.00"
             }
           ]
         }

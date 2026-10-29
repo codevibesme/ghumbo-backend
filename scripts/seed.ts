@@ -1,11 +1,11 @@
 /**
- * Seeds countries → destinations → trips → departures → prices from JSON files in `seeds/`.
+ * Seeds countries → destinations → trips → departures from JSON files in `seeds/`.
  *
  *   npm run seed                      # all seeds/*.json, alphabetical
  *   npm run seed -- seeds/west-bengal.json
  *
  * Idempotent: rows are matched on natural keys (country code, destination slug, trip slug,
- * departure trip + start_date, price departure + type + currency) and updated in place.
+ * departure trip + start_date) and updated in place.
  * Nothing is deleted. Runs in a single transaction.
  *
  * Ordering: new trips get monotonic ULIDs, so `ORDER BY id` returns trips in the order
@@ -26,7 +26,6 @@ import { CountryEntity } from '../src/entities/countries.entity.js';
 import { DestinationEntity } from '../src/entities/destinations.entity.js';
 import { TripEntity } from '../src/entities/trips.entity.js';
 import { TripDepartureEntity } from '../src/entities/trip_departures.entity.js';
-import { TripDeparturePriceEntity } from '../src/entities/trip_departure_prices.entity.js';
 import { Asset, ECURRENCY } from '../src/schemas/misc.schema.js';
 import { ECountryStatus } from '../src/schemas/countries.schema.js';
 import { EDestinationStatus } from '../src/schemas/destinations.schema.js';
@@ -38,7 +37,6 @@ import {
   TripInclusion,
 } from '../src/schemas/trips.schema.js';
 import { ETripDepartureStatus } from '../src/schemas/trip_departures.schema.js';
-import { ETripDeparturePriceType } from '../src/schemas/trip_departure_prices.schema.js';
 
 const SEEDS_DIR = path.resolve(process.cwd(), 'seeds');
 
@@ -46,19 +44,15 @@ const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 const money = z.string().regex(/^\d+(\.\d{1,2})?$/);
 
-const SeedPrice = z.object({
-  type: z.enum(ETripDeparturePriceType),
-  currency: z.enum(ECURRENCY),
-  amount: money,
-});
-
 const SeedDeparture = z
   .object({
     start_date: date,
     end_date: date,
     status: z.enum(ETripDepartureStatus).default(ETripDepartureStatus.OPEN),
+    is_peak: z.boolean().default(false),
     capacity: z.number().int().positive(),
-    prices: z.array(SeedPrice),
+    currency: z.enum(ECURRENCY),
+    amount: money,
   })
   .refine((d) => d.end_date >= d.start_date, 'end_date before start_date');
 
@@ -192,26 +186,13 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
             startDate: dep.start_date,
             endDate: dep.end_date,
             status: dep.status,
+            isPeak: dep.is_peak,
             capacity: dep.capacity,
+            currency: dep.currency,
+            amount: dep.amount,
           },
         );
-        departure = await em.save(departure);
-
-        if (dep.prices.length) {
-          await em.upsert(
-            TripDeparturePriceEntity,
-            dep.prices.map((p) => ({
-              departureId: departure.id,
-              type: p.type,
-              currency: p.currency,
-              amount: p.amount,
-            })),
-            ['departureId', 'type', 'currency'],
-          );
-          stats.updated['trip_departure_prices (upserted)'] =
-            (stats.updated['trip_departure_prices (upserted)'] ?? 0) +
-            dep.prices.length;
-        }
+        await em.save(departure);
       }
     }
   }

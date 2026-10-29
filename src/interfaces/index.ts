@@ -18,6 +18,20 @@ export interface AuthenticatedUserReq extends Request {
   };
 }
 
+export interface OptionalAuthenticatedUserReq extends Request {
+  user: {
+    type: ETokenFor.USER;
+    role: EUserRole;
+    userId: string;
+    session: {
+      id: string;
+      expiresAt: string;
+      revokedAt: string | null;
+      lastUsedAt: string;
+    };
+  } | undefined;
+}
+
 export interface GoogleUserReq extends Request {
   user?: Profile;
 }

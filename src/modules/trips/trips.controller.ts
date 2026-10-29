@@ -16,19 +16,12 @@ import { PaginatedResponseDto } from '../misc/dto.js';
 export class TripController {
   constructor(private readonly service: TripService) {}
 
-  @Get('/destination/:slug')
+  @Get('/')
   @ApiOkResponse({ type: PaginatedResponseDto })
-  @ApiParam({ name: 'slug', type: 'string', example: 'india' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiNotFoundResponse({ description: 'Not found' })
-  async findAllByCountryName(
-    @Res() res: Response,
-    @Param('slug') slug: string,
-    @Query() query: TripQueryDto,
-  ) {
-    slug = decodeURIComponent(slug);
-
-    const data = await this.service.findByDestinationSlug(slug, query);
+  async findAll(@Res() res: Response, @Query() query: TripQueryDto) {
+    const data = await this.service.findAll(query);
 
     return res.status(200).send(data);
   }

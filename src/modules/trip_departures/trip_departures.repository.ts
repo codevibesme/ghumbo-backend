@@ -15,11 +15,14 @@ export class TripDepartureRepository {
   async findByTripId(tripId: string): Promise<TripDepartureDto[]> {
     return await this.repo
       .createQueryBuilder('departure')
-      .leftJoinAndSelect('departure.prices', 'price')
       .where('departure.tripId = :tripId', { tripId })
       .andWhere('departure.status = :status', {
         status: ETripDepartureStatus.OPEN,
       })
       .getMany();
+  }
+
+  async findByIdAndStatus(id: string, status: ETripDepartureStatus): Promise<TripDepartureDto | null> {
+    return await this.repo.findOneBy({ id, status });
   }
 }

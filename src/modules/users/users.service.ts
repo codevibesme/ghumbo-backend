@@ -43,6 +43,7 @@ export class UserService {
       name: user.name,
       phone: user.phone,
       photo: user.photo,
+      createdAt: user.createdAt
     };
   }
 

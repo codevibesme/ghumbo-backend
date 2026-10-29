@@ -13,8 +13,7 @@ export class DestinationRepository {
     private readonly repo: Repository<DestinationEntity>,
   ) {}
 
-  async findAllByCountryId(
-    countryId: number,
+  async findAll(
     query: DestinationQueryDto,
   ): Promise<PaginatedResponseDto<DestinationDto>> {
     let page = query.page ?? 1;
@@ -22,7 +21,7 @@ export class DestinationRepository {
 
     const [destinations, count] = await this.repo.findAndCount({
       where: {
-        countryId,
+        ...(query.countryId ? { countryId: query.countryId } : {}),
         ...(query.name ? { name: ILike(`%${query.name}%`) } : {}),
         ...(query.status
           ? { status: query.status }
@@ -37,7 +36,7 @@ export class DestinationRepository {
 
     return {
       page,
-      size: destinations.length,
+      size,
       data: destinations,
       total: count,
       hasNext: page * size < count,

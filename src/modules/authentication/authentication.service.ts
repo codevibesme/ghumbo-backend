@@ -31,6 +31,8 @@ import {
   REFRESH_TOKEN_VALIDITY,
 } from './authentication.constant.js';
 import { UserDto } from '../users/users.dto.js';
+import { EmailService } from '../../lib/email/email.service.js';
+// import { EEMAIL_TEMPLATES } from '../../schemas/emails.schema.js';
 
 @Injectable()
 export class AuthenticationService {
@@ -41,7 +43,27 @@ export class AuthenticationService {
     private readonly otpService: OtpService,
     private readonly jwt: JwtUtilityService,
     private readonly txn: TxnHelperService,
+    private readonly emailService: EmailService,
   ) {}
+
+  private async sendSignUpEmail(user: UserDto){
+    if(!user.email) {
+      return;
+    }
+
+    // await this.emailService.sendWithTemplate({
+    //   to: user.email,
+    //   idempotencyKey: `sign-up:${user.id}`,
+    //   template: {
+    //     id: EEMAIL_TEMPLATES.LIFECYCLE_WELCOME,
+    //     variables: {
+    //       ACCOUNT_EMAIL: user.email,
+    //       USER_NAME: user.name,
+          
+    //     }
+    //   }
+    // });
+  }
 
   private createRefreshToken() {
     const refreshToken = randomBytes(32).toString('hex');

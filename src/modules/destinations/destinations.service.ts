@@ -11,13 +11,6 @@ export class DestinationService {
     private readonly repo: DestinationRepository,
   ) {}
 
-  async findAllByCountryId(
-    countryId: number,
-    query: DestinationQueryDto,
-  ): Promise<PaginatedResponseDto<DestinationDto>> {
-    return await this.repo.findAllByCountryId(countryId, query);
-  }
-
   async findById(id: number): Promise<DestinationDto | null> {
     return await this.repo.findById(id);
   }
@@ -29,13 +22,17 @@ export class DestinationService {
     return data;
   }
 
-  async findAllByCountryName(
-    countryName: string,
+  async findAll(
     query: DestinationQueryDto,
   ): Promise<PaginatedResponseDto<DestinationDto>> {
-    const country = await this.countryService.findByNameOrThrow(countryName);
+    if (query.country && !query.countryId) {
+      const country = await this.countryService.findByNameOrThrow(
+        decodeURIComponent(query.country),
+      );
+      query.countryId = country.id;
+    }
 
-    return await this.findAllByCountryId(country.id, query);
+    return await this.repo.findAll(query);
   }
 
   async findBySlug(slug: string): Promise<DestinationDto | null> {

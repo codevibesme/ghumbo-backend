@@ -1,14 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TripEntity } from '../../entities/trips.entity.js';
-import { Repository } from 'typeorm';
+import { Brackets, Repository } from 'typeorm';
 import { TripDto, TripListItemDto, TripQueryDto } from './trips.dto.js';
 import { PaginatedResponseDto } from '../misc/dto.js';
 import { TripDepartureEntity } from '../../entities/trip_departures.entity.js';
-import { TripDeparturePriceEntity } from '../../entities/trip_departure_prices.entity.js';
 import { TripReviewEntity } from '../../entities/trip_reviews.entity.js';
 import { ETripDepartureStatus } from '../../schemas/trip_departures.schema.js';
-import { ETripDeparturePriceType } from '../../schemas/trip_departure_prices.schema.js';
 import { ETripStatus } from '../../schemas/trips.schema.js';
 import { ECURRENCY } from '../../schemas/misc.schema.js';
 
@@ -18,13 +16,16 @@ export class TripRepository {
     @InjectRepository(TripEntity) private readonly repo: Repository<TripEntity>,
   ) {}
 
-  async findByDestinationSlug(
-    slug: string,
+  async findAll(
     query: TripQueryDto,
   ): Promise<PaginatedResponseDto<TripListItemDto>> {
     let page = query.page ?? 1;
     let size = query.size ?? 10;
     const currency = query.currency ?? ECURRENCY.INR;
+    const destinationSlug = query.destination || null;
+
+    const q = query.q?.trim() || null;
+    const tags = query.tags?.length ? query.tags : null;
 
     const qb = this.repo.createQueryBuilder('trip');
 
@@ -33,10 +34,10 @@ export class TripRepository {
       .subQuery()
       .select('d.id')
       .from(TripDepartureEntity, 'd')
-      .where('d.trip_id = trip.id')
+      .where('d.tripId = trip.id')
       .andWhere('d.status = :openStatus')
-      .andWhere('d.start_date >= CURRENT_DATE')
-      .orderBy('d.start_date', 'ASC')
+      .andWhere('d.startDate >= CURRENT_DATE')
+      .orderBy('d.startDate', 'ASC')
       .limit(1)
       .getQuery();
 
@@ -50,6 +51,8 @@ export class TripRepository {
         'trip.id',
         'trip.name',
         'trip.slug',
+        'trip.tags',
+        'trip.isRecommended',
         'trip.tier',
         'trip.durationDays',
         'trip.durationNights',
@@ -58,22 +61,19 @@ export class TripRepository {
         'destination.name',
         'destination.slug',
         'departure.id',
+        'departure.isPeak',
         'departure.startDate',
         'departure.endDate',
       ])
-      .addSelect('departure.capacity - departure.booked_seats', 'seats_left')
-
+      .addSelect('departure.capacity - departure.bookedSeats', 'seats_left')
       .addSelect(
         (sq) =>
           sq
-            .select('MIN(p.amount)')
-            .from(TripDeparturePriceEntity, 'p')
-            .innerJoin('p.departure', 'pd')
-            .where('pd.trip_id = trip.id')
+            .select('MIN(pd.amount)')
+            .from(TripDepartureEntity, 'pd')
+            .where('pd.tripId = trip.id')
             .andWhere('pd.status = :openStatus')
-            .andWhere('pd.start_date >= CURRENT_DATE')
-            .andWhere('p.type = :adultType')
-            .andWhere('p.currency = :currency'),
+            .andWhere('pd.startDate >= CURRENT_DATE'),
         'starting_price',
       )
       .addSelect(
@@ -81,7 +81,7 @@ export class TripRepository {
           sq
             .select('ROUND(AVG(r.rating)::numeric, 1)')
             .from(TripReviewEntity, 'r')
-            .where('r.trip_id = trip.id'),
+            .where('r.tripId = trip.id'),
         'rating',
       )
       .addSelect(
@@ -89,17 +89,40 @@ export class TripRepository {
           sq
             .select('COUNT(*)')
             .from(TripReviewEntity, 'r')
-            .where('r.trip_id = trip.id'),
+            .where('r.tripId = trip.id'),
         'review_count',
-      )
-      .where('destination.slug = :slug', { slug })
-      .andWhere('trip.status = :liveStatus')
-      .setParameters({
-        openStatus: ETripDepartureStatus.OPEN,
-        adultType: ETripDeparturePriceType.ADULT,
-        liveStatus: ETripStatus.LIVE,
-        currency,
+      );
+
+    if (destinationSlug) {
+      qb.where('destination.slug = :slug', {
+        slug: decodeURIComponent(destinationSlug),
       });
+    }
+
+    if (q) {
+      qb.andWhere(
+        new Brackets((w) =>
+          w
+            .where('trip.name ILIKE :q')
+            .orWhere('trip.overview ILIKE :q')
+            .orWhere('destination.name ILIKE :q')
+            .orWhere('trip.tags::text ILIKE :q'),
+        ),
+        { q: `%${q.replace(/[%_\\]/g, '\\$&')}%` },
+      );
+    }
+
+    if (tags) {
+      // any of the labels; jsonb containment per label
+      qb.andWhere('trip.tags @> ANY(:tagFilters::jsonb[])', {
+        tagFilters: tags.map((label) => JSON.stringify([{ label }])),
+      });
+    }
+
+    qb.andWhere('trip.status = :liveStatus').setParameters({
+      openStatus: ETripDepartureStatus.OPEN,
+      liveStatus: ETripStatus.LIVE,
+    });
 
     const [{ entities, raw }, count] = await Promise.all([
       qb

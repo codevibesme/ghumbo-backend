@@ -1,6 +1,5 @@
 import { Transform } from 'class-transformer';
 import {
-  IsDateString,
   IsEmail,
   IsInt,
   IsNotEmpty,
@@ -11,33 +10,19 @@ import {
   Max,
   MaxLength,
   Min,
-  ValidateIf,
 } from 'class-validator';
 import { BookingRequestEntity } from '../../entities/booking_requests.entity.js';
 import { trim, trimLower } from '../../utilities/transformers.js';
+import { PickType } from '@nestjs/swagger';
+import { ECURRENCY } from '../../schemas/misc.schema.js';
 
 const ULID = /^[0-9A-HJKMNP-TV-Z]{26}$/;
-const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 
 export class BookingRequestDto extends BookingRequestEntity {}
 
-/**
- * Public seat request. `userId` and `status` are set by the server, never the
- * client. Either a departure or a preferred travel date is required ("I'm
- * flexible" sends only the date).
- */
-export class CreateBookingRequestDto {
-  @Matches(ULID, { message: 'tripId must be a valid id' })
-  tripId: string;
-
-  @ValidateIf((o: CreateBookingRequestDto) => !o.travelDate)
+export class CreateBookingRequestReqDto {
   @Matches(ULID, { message: 'tripDepartureId must be a valid id' })
-  tripDepartureId: string | null;
-
-  @ValidateIf((o: CreateBookingRequestDto) => !o.tripDepartureId)
-  @Matches(DATE_ONLY, { message: 'travelDate must be YYYY-MM-DD' })
-  @IsDateString({ strict: true })
-  travelDate: string | null;
+  tripDepartureId: string;
 
   @Transform(trim)
   @IsString()
@@ -66,4 +51,30 @@ export class CreateBookingRequestDto {
   @IsString()
   @MaxLength(2000)
   query: string | null;
+}
+
+export class CreateBookingRequestDto extends CreateBookingRequestReqDto {
+  @IsOptional()
+  userId: string | null;
+}
+
+export class UserBookingRequestDto extends PickType(BookingRequestDto, [
+  'id',
+  'tripDepartureId',
+  'status',
+  'statusNotes',
+  'code',
+  'name',
+  'email',
+  'phone',
+  'createdAt',
+  'updatedAt',
+  'travelerCount',
+]) {
+  tripName: string;
+  destinationName: string;
+  startDate: string;
+  endDate: string;
+  currency: ECURRENCY;
+  estimate: string;
 }

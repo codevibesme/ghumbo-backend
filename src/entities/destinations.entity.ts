@@ -18,6 +18,7 @@ import type { TAsset } from '../schemas/misc.schema.js';
 import { EDestinationStatus } from '../schemas/destinations.schema.js';
 
 @Entity('destinations')
+@Index('idx_destinations_name_trgm', { synchronize: false })
 @Unique('uq_destinations_slug', ['slug'])
 @Check('chk_destinations_slug', `"slug" ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`)
 @Check('chk_destinations_latitude', `"latitude" BETWEEN -90 AND 90`)

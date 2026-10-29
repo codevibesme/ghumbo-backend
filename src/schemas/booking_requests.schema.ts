@@ -4,4 +4,5 @@ export enum EBookingRequestStatus {
   IN_PROGRESS = 'in_progress',
   CONVERTED = 'converted',
   CLOSED = 'closed',
+  WITHDRAWN = 'withdrawn',
 }
