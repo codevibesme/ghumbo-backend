@@ -1,0 +1,39 @@
+{
+  "country": {
+    "code": "IN",
+    "name": "India",
+    "status": "live",
+    "latitude": 20.5937,
+    "longitude": 78.9629,
+    "assets": [
+      {
+        "label": "Taj Mahal, Agra",
+        "description": "The Taj Mahal at sunrise. Photo: Yann; edited by Jim Carter, CC BY-SA 4.0, via Wikimedia Commons",
+        "type": "image",
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1920px-Taj_Mahal_%28Edited%29.jpeg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/500px-Taj_Mahal_%28Edited%29.jpeg",
+        "sort_order": 0
+      },
+      {
+        "label": "Hawa Mahal, Jaipur",
+        "description": "East facade of the Hawa Mahal, Jaipur. Photo: Chainwit., CC BY-SA 4.0, via Wikimedia Commons",
+        "type": "image",
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/1920px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/500px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg",
+        "sort_order": 1
+      }
+    ]
+  },
+  "destinations": [
+    {
+      "slug": "sikkim",
+      "name": "Sikkim",
+      "status": "coming_soon",
+      "overview": "Monasteries, high lakes and Kanchenjunga views, a short drive up from the Darjeeling hills. Gangtok, Tsomgo Lake and Pelling are on the list for our first Sikkim departures. Dates and prices are still being planned.",
+      "latitude": 27.533,
+      "longitude": 88.512,
+      "assets": [],
+      "trips": []
+    }
+  ]
+}

@@ -10,16 +10,16 @@
         "label": "Taj Mahal, Agra",
         "description": "The Taj Mahal at sunrise. Photo: Yann; edited by Jim Carter, CC BY-SA 4.0, via Wikimedia Commons",
         "type": "image",
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1920px-Taj_Mahal_%28Edited%29.jpeg",
-        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/500px-Taj_Mahal_%28Edited%29.jpeg",
+        "url": "https://cdn.ghumbo.com/catalog/countries/india/01-taj-mahal-agra.jpg",
+        "thumbnail_url": "https://cdn.ghumbo.com/catalog/countries/india/01-taj-mahal-agra-640.jpg",
         "sort_order": 0
       },
       {
         "label": "Hawa Mahal, Jaipur",
         "description": "East facade of the Hawa Mahal, Jaipur. Photo: Chainwit., CC BY-SA 4.0, via Wikimedia Commons",
         "type": "image",
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/1920px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg",
-        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/500px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg",
+        "url": "https://cdn.ghumbo.com/catalog/countries/india/02-hawa-mahal-jaipur.jpg",
+        "thumbnail_url": "https://cdn.ghumbo.com/catalog/countries/india/02-hawa-mahal-jaipur-640.jpg",
         "sort_order": 1
       }
     ]
@@ -37,32 +37,32 @@
           "label": "Howrah Bridge, Kolkata",
           "description": "Howrah Bridge lit up over the Hooghly at dusk. Photo: Shubhankar.sengupta19, CC BY-SA 3.0, via Wikimedia Commons",
           "type": "image",
-          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Howrah_bridge_betwixt_Lights.jpg/1920px-Howrah_bridge_betwixt_Lights.jpg",
-          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Howrah_bridge_betwixt_Lights.jpg/500px-Howrah_bridge_betwixt_Lights.jpg",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/01-howrah-bridge-kolkata.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/01-howrah-bridge-kolkata-640.jpg",
           "sort_order": 0
         },
         {
           "label": "Victoria Memorial, Kolkata",
           "description": "The white-marble Victoria Memorial and its gardens. Photo: Subhrajyoti07, CC BY-SA 4.0, via Wikimedia Commons",
           "type": "image",
-          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Victoria_Memorial_situated_in_Kolkata.jpg/1920px-Victoria_Memorial_situated_in_Kolkata.jpg",
-          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Victoria_Memorial_situated_in_Kolkata.jpg/500px-Victoria_Memorial_situated_in_Kolkata.jpg",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/02-victoria-memorial-kolkata.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/02-victoria-memorial-kolkata-640.jpg",
           "sort_order": 1
         },
         {
           "label": "Darjeeling Himalayan Railway",
           "description": "The Darjeeling toy train passing roadside shops. Photo: Arne Hückelheim, CC BY-SA 4.0, via Wikimedia Commons",
           "type": "image",
-          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/DarjeelingTrainFruitshop_%282%29.jpg/1920px-DarjeelingTrainFruitshop_%282%29.jpg",
-          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/DarjeelingTrainFruitshop_%282%29.jpg/500px-DarjeelingTrainFruitshop_%282%29.jpg",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/03-darjeeling-himalayan-railway.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/03-darjeeling-himalayan-railway-640.jpg",
           "sort_order": 2
         },
         {
           "label": "Sundarbans mangroves",
           "description": "Mangrove creeks of the Sundarbans delta. Photo: Shihabur Rahman, CC BY-SA 4.0, via Wikimedia Commons",
           "type": "image",
-          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Save_the_sundarbans_20.jpg/1920px-Save_the_sundarbans_20.jpg",
-          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Save_the_sundarbans_20.jpg/500px-Save_the_sundarbans_20.jpg",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/04-sundarbans-mangroves.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/04-sundarbans-mangroves-640.jpg",
           "sort_order": 3
         }
       ],
@@ -75,7 +75,17 @@
           "overview": "Darjeeling on a backpacker's budget, without missing the moments that matter. Join a fixed-date group of up to 18 at NJP or Bagdogra and ride a shared Tempo Traveller up through Kurseong's tea country. You'll stay three nights in a family-run homestay a few minutes below Chowrasta, with hot breakfasts and hosts who know which momo shop is worth the queue. Local jeeps carry you to Tiger Hill for Kanchenjunga's sunrise, Ghum's old monastery and, next day, the Himalayan Mountaineering Institute, the red pandas at the zoo, Happy Valley's tea terraces and the Peace Pagoda. Lunches and dinners are yours to choose on the Mall, and the toy-train joyride is an easy add-on. A Ghumbo coordinator handles tickets, timings and the early starts.",
           "duration_days": 4,
           "duration_nights": 3,
-          "is_recommended": false,
+          "is_recommended": true,
+          "tags": [
+            {
+              "label": "Hills",
+              "description": null
+            },
+            {
+              "label": "Heritage",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -403,48 +413,48 @@
               "label": "Kanchenjunga from Tiger Hill",
               "description": "Kanchenjunga and the eastern Himalaya at sunrise from Tiger Hill, with Darjeeling on the ridge below. Photo: Judith, CC BY 2.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/View_of_the_Himalayas_and_the_Kanchenjunga%2C_from_Tiger_Hill%2C_Darjeeling.jpg/1920px-View_of_the_Himalayas_and_the_Kanchenjunga%2C_from_Tiger_Hill%2C_Darjeeling.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/View_of_the_Himalayas_and_the_Kanchenjunga%2C_from_Tiger_Hill%2C_Darjeeling.jpg/500px-View_of_the_Himalayas_and_the_Kanchenjunga%2C_from_Tiger_Hill%2C_Darjeeling.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/01-kanchenjunga-from-tiger-hill.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/01-kanchenjunga-from-tiger-hill-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Batasia Loop War Memorial",
               "description": "The Gorkha war memorial at Batasia Loop, framed by the Kanchenjunga range. Photo: Shuvankar Sarkar, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg/1920px-Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg/500px-Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/02-batasia-loop-war-memorial.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/02-batasia-loop-war-memorial-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Darjeeling Himalayan Railway toy train",
               "description": "A blue B-class steam locomotive of the Darjeeling Himalayan Railway at Batasia Loop. Photo: Srikumar74, Public domain, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Toy_Train_Darjeeling_West_Bengal_India.jpg/1920px-Toy_Train_Darjeeling_West_Bengal_India.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Toy_Train_Darjeeling_West_Bengal_India.jpg/500px-Toy_Train_Darjeeling_West_Bengal_India.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/03-darjeeling-himalayan-railway-toy-train.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/03-darjeeling-himalayan-railway-toy-train-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Ghum Monastery",
               "description": "Yiga Choeling Monastery at Ghum, home to a large Maitreya Buddha. Photo: Bernard Gagnon, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Yiga_Choeling_Monastery%2C_Ghum_02.jpg/1920px-Yiga_Choeling_Monastery%2C_Ghum_02.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Yiga_Choeling_Monastery%2C_Ghum_02.jpg/500px-Yiga_Choeling_Monastery%2C_Ghum_02.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/04-ghum-monastery.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/04-ghum-monastery-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Japanese Peace Pagoda",
               "description": "The white Japanese Peace Pagoda on Jalapahar hill, wrapped in mountain mist. Photo: JyotiPN, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Japanese_Peace_Pagoda%2C_Darjeeling%2C_Full_view.jpg/1920px-Japanese_Peace_Pagoda%2C_Darjeeling%2C_Full_view.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Japanese_Peace_Pagoda%2C_Darjeeling%2C_Full_view.jpg/500px-Japanese_Peace_Pagoda%2C_Darjeeling%2C_Full_view.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/05-japanese-peace-pagoda.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/05-japanese-peace-pagoda-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Happy Valley Tea Estate",
               "description": "Terraced tea bushes of Happy Valley Tea Estate below Darjeeling town. Photo: Matt Stabile, CC BY 2.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Happy_Valley_Tea_Estate%2C_Darjeeling.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Happy_Valley_Tea_Estate%2C_Darjeeling.jpg/500px-Happy_Valley_Tea_Estate%2C_Darjeeling.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/06-happy-valley-tea-estate.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/06-happy-valley-tea-estate-640.jpg",
               "sort_order": 5
             }
           ],
@@ -496,6 +506,12 @@
           "duration_days": 6,
           "duration_nights": 5,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Hills",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -951,48 +967,48 @@
               "label": "Sumendu Lake, Mirik",
               "description": "Sumendu Lake and the town of Mirik on a clear spring day. Photo: Benoy, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Mirik_Sumendu_Lake.jpg/1920px-Mirik_Sumendu_Lake.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Mirik_Sumendu_Lake.jpg/500px-Mirik_Sumendu_Lake.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/01-sumendu-lake-mirik.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/01-sumendu-lake-mirik-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Batasia Loop, Darjeeling",
               "description": "The Batasia Loop war memorial with the Kanchenjunga range behind. Photo: Shuvankar Sarkar, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg/1920px-Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg/500px-Batasia_Loop_War_Memorial_with_Kanchanjunga.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/02-batasia-loop-war-memorial.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/02-batasia-loop-war-memorial-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Ghum Monastery",
               "description": "Yiga Choeling Monastery at Ghum on the edge of Darjeeling. Photo: Bernard Gagnon, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Yiga_Choeling_Monastery%2C_Ghum_02.jpg/1920px-Yiga_Choeling_Monastery%2C_Ghum_02.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Yiga_Choeling_Monastery%2C_Ghum_02.jpg/500px-Yiga_Choeling_Monastery%2C_Ghum_02.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/04-ghum-monastery.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-queen-of-the-hills-budget/04-ghum-monastery-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Durpin Monastery, Kalimpong",
               "description": "Zang Dhok Palri Phodang, the hilltop monastery on Durpin Dara in Kalimpong. Photo: Bernard Gagnon, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Zang_Dhok_Palri_Phodang_01.jpg/1920px-Zang_Dhok_Palri_Phodang_01.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Zang_Dhok_Palri_Phodang_01.jpg/500px-Zang_Dhok_Palri_Phodang_01.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/04-durpin-monastery-kalimpong.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/04-durpin-monastery-kalimpong-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Deolo Hill gardens",
               "description": "Flowerbeds and a pavilion in the park atop Deolo Hill, Kalimpong. Photo: Biswajit Majumdar, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Deolo%2C_Kalimpong%2C_West_Bengal_734316%2C_India_-_panoramio.jpg/1920px-Deolo%2C_Kalimpong%2C_West_Bengal_734316%2C_India_-_panoramio.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Deolo%2C_Kalimpong%2C_West_Bengal_734316%2C_India_-_panoramio.jpg/500px-Deolo%2C_Kalimpong%2C_West_Bengal_734316%2C_India_-_panoramio.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/05-deolo-hill-gardens.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/05-deolo-hill-gardens-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Kalimpong town",
               "description": "Kalimpong's houses stacked along the ridge. Photo: Bernard Gagnon, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/View_of_Kalimpong%2C_India.jpg/1920px-View_of_Kalimpong%2C_India.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/View_of_Kalimpong%2C_India.jpg/500px-View_of_Kalimpong%2C_India.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/06-kalimpong-town.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/darjeeling-kalimpong-mirik-hill-circuit-budget/06-kalimpong-town-640.jpg",
               "sort_order": 5
             }
           ],
@@ -1044,6 +1060,16 @@
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Heritage",
+              "description": null
+            },
+            {
+              "label": "City",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -1322,48 +1348,48 @@
               "label": "Victoria Memorial, Kolkata",
               "description": "The white marble Victoria Memorial above its gardens on the Maidan. Photo: Subhrajyoti07, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Victoria_Memorial_situated_in_Kolkata.jpg/1920px-Victoria_Memorial_situated_in_Kolkata.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Victoria_Memorial_situated_in_Kolkata.jpg/500px-Victoria_Memorial_situated_in_Kolkata.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/02-victoria-memorial-kolkata.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/west-bengal/02-victoria-memorial-kolkata-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Howrah Bridge from the ghats",
               "description": "Morning on a Hooghly ghat with the Howrah Bridge spanning the river. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hooghly_River_and_the_Howrah_Bridge%2C_Kolkata%2C_India.jpg/1920px-Hooghly_River_and_the_Howrah_Bridge%2C_Kolkata%2C_India.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hooghly_River_and_the_Howrah_Bridge%2C_Kolkata%2C_India.jpg/500px-Hooghly_River_and_the_Howrah_Bridge%2C_Kolkata%2C_India.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/02-howrah-bridge-from-the-ghats.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/02-howrah-bridge-from-the-ghats-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Kumartuli idol workshop",
               "description": "An artisan hand-paints clay idols in a Kumartuli workshop. Photo: Pritviswa, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Finishing_Touch-_Hand_Painting.jpg/1920px-Finishing_Touch-_Hand_Painting.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Finishing_Touch-_Hand_Painting.jpg/500px-Finishing_Touch-_Hand_Painting.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/03-kumartuli-idol-workshop.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/03-kumartuli-idol-workshop-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Jorasanko Thakur Bari",
               "description": "The red-and-green courtyard of Tagore's ancestral home at Jorasanko. Photo: Kinjal bose 78, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Jorasanko_Thakurbari.jpg/1920px-Jorasanko_Thakurbari.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Jorasanko_Thakurbari.jpg/500px-Jorasanko_Thakurbari.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/04-jorasanko-thakur-bari.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/04-jorasanko-thakur-bari-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Kolkata tram at Esplanade",
               "description": "A Calcutta Tramways car pulling into the Esplanade terminus. Photo: Gupsag1998, CC0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/211_at_Esplanade.jpg/1920px-211_at_Esplanade.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/211_at_Esplanade.jpg/500px-211_at_Esplanade.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/05-kolkata-tram-at-esplanade.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/05-kolkata-tram-at-esplanade-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Dakshineswar Kali Temple",
               "description": "The nine-spired Dakshineswar Kali temple beside the Hooghly. Photo: Knath, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Dakhineshwar_Temple_beside_the_Hoogly%2C_West_Bengal.JPG/1920px-Dakhineshwar_Temple_beside_the_Hoogly%2C_West_Bengal.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Dakhineshwar_Temple_beside_the_Hoogly%2C_West_Bengal.JPG/500px-Dakhineshwar_Temple_beside_the_Hoogly%2C_West_Bengal.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/06-dakshineswar-kali-temple.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/kolkata-city-of-joy-heritage-budget/06-dakshineswar-kali-temple-640.jpg",
               "sort_order": 5
             }
           ],
@@ -1415,6 +1441,12 @@
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Wildlife",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -1664,48 +1696,48 @@
               "label": "Royal Bengal tiger, Sundarban Tiger Reserve",
               "description": "A Royal Bengal tiger pauses on a mangrove mudbank before crossing a creek in the Sundarban Tiger Reserve. Photo: Soumyajit Nandy, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Sundarban_Tiger.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Sundarban_Tiger.jpg/500px-Sundarban_Tiger.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/01-royal-bengal-tiger-sundarban-tiger-reserve.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/01-royal-bengal-tiger-sundarban-tiger-reserve-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Dobanki canopy walk",
               "description": "The fenced, elevated canopy walk at Dobanki camp runs above the mangrove canopy. Photo: Pinakpani, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Dobanki_wildlife_sanctuary_complex_in_Sundarban_03.jpg/1920px-Dobanki_wildlife_sanctuary_complex_in_Sundarban_03.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Dobanki_wildlife_sanctuary_complex_in_Sundarban_03.jpg/500px-Dobanki_wildlife_sanctuary_complex_in_Sundarban_03.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/02-dobanki-canopy-walk.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/02-dobanki-canopy-walk-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Sajnekhali Wildlife Sanctuary",
               "description": "Entrance steps and welcome arch at Sajnekhali, home of the watchtower and Mangrove Interpretation Centre. Photo: Pinakpani, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Sajnekhali_wildlife_Sanctuary_in_Sundarban_02.jpg/1920px-Sajnekhali_wildlife_Sanctuary_in_Sundarban_02.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Sajnekhali_wildlife_Sanctuary_in_Sundarban_02.jpg/500px-Sajnekhali_wildlife_Sanctuary_in_Sundarban_02.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/03-sajnekhali-wildlife-sanctuary.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/03-sajnekhali-wildlife-sanctuary-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Houseboat cruise on the creeks",
               "description": "A double-deck tourist launch cruising a wide Sundarbans river channel. Photo: Kingshuk Mondal, CC BY 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Tourist_Boat_in_Sundarbans%2C_West_Bengal%2C_India_01.jpg/1920px-Tourist_Boat_in_Sundarbans%2C_West_Bengal%2C_India_01.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Tourist_Boat_in_Sundarbans%2C_West_Bengal%2C_India_01.jpg/500px-Tourist_Boat_in_Sundarbans%2C_West_Bengal%2C_India_01.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/04-houseboat-cruise-on-the-creeks.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/04-houseboat-cruise-on-the-creeks-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Mangrove forest at high tide",
               "description": "Dense mangrove forest standing in the high tide along a river in the tiger reserve. Photo: Kingshuk Mondal, CC BY 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Dense_Mangrove_Forest_of_the_Sundarban_Tiger_Reserve_during_High_Tide%2C_West_Bengal%2C_India_02.jpg/1920px-Dense_Mangrove_Forest_of_the_Sundarban_Tiger_Reserve_during_High_Tide%2C_West_Bengal%2C_India_02.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Dense_Mangrove_Forest_of_the_Sundarban_Tiger_Reserve_during_High_Tide%2C_West_Bengal%2C_India_02.jpg/500px-Dense_Mangrove_Forest_of_the_Sundarban_Tiger_Reserve_during_High_Tide%2C_West_Bengal%2C_India_02.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/05-mangrove-forest-at-high-tide.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/05-mangrove-forest-at-high-tide-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Bonbibi folk performance",
               "description": "The finale of a Bonbibir Pala, the Sundarbans folk drama honouring the forest goddess Bonbibi. Photo: Sayamindu Dasgupta, CC BY-SA 2.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bonbibir_pala.jpg/1920px-Bonbibir_pala.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Bonbibir_pala.jpg/500px-Bonbibir_pala.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/06-bonbibi-folk-performance.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sundarbans-mangrove-tiger-safari-budget/06-bonbibi-folk-performance-640.jpg",
               "sort_order": 5
             }
           ],
@@ -1757,6 +1789,12 @@
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Coast",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -2017,48 +2055,48 @@
               "label": "Mandarmani beach",
               "description": "Wide, firm sands and rolling surf at Mandarmani beach on the Bay of Bengal. Photo: Tarunsamanta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Mandarmani_Sea_beach_01.jpg/1920px-Mandarmani_Sea_beach_01.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Mandarmani_Sea_beach_01.jpg/500px-Mandarmani_Sea_beach_01.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/01-mandarmani-beach.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/01-mandarmani-beach-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Sunset at Tajpur beach",
               "description": "The setting sun reflected on the wet, empty sands of Tajpur beach. Photo: Radhamadhab Sarangi, CC0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Sunset_in_Tajpur_Beach.jpg/1920px-Sunset_in_Tajpur_Beach.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Sunset_in_Tajpur_Beach.jpg/500px-Sunset_in_Tajpur_Beach.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/02-sunset-at-tajpur-beach.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/02-sunset-at-tajpur-beach-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Jagannath Dham, Digha",
               "description": "The newly built Jagannath temple at Digha lit up after dark. Photo: Tarunsamanta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Jagannath_Temple%2C_Digha_03.jpg/1920px-Jagannath_Temple%2C_Digha_03.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Jagannath_Temple%2C_Digha_03.jpg/500px-Jagannath_Temple%2C_Digha_03.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/03-jagannath-dham-digha.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/03-jagannath-dham-digha-640.jpg",
               "sort_order": 2
             },
             {
               "label": "New Digha beach",
               "description": "Evening strollers and a fishing boat in the shallows at New Digha beach. Photo: Indrajit Das, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/New_Digha_Beach_1.jpg/1920px-New_Digha_Beach_1.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/New_Digha_Beach_1.jpg/500px-New_Digha_Beach_1.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/04-new-digha-beach.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/04-new-digha-beach-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Udaipur beach fishermen",
               "description": "Fishermen haul a wooden boat ashore at Udaipur beach near the Odisha border. Photo: Srikumar74, Public domain, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Digha_udaipur_beach_West_Bengal_India.jpg/1920px-Digha_udaipur_beach_West_Bengal_India.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Digha_udaipur_beach_West_Bengal_India.jpg/500px-Digha_udaipur_beach_West_Bengal_India.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/05-udaipur-beach-fishermen.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/05-udaipur-beach-fishermen-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Digha Science Centre",
               "description": "The entrance to Digha Science Centre and National Science Camp in New Digha. Photo: Biswarup Ganguly, CC BY 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Digha_Science_Centre_-_New_Digha_0018.JPG/1920px-Digha_Science_Centre_-_New_Digha_0018.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Digha_Science_Centre_-_New_Digha_0018.JPG/500px-Digha_Science_Centre_-_New_Digha_0018.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/06-digha-science-centre.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/digha-mandarmani-tajpur-coastal-escape-budget/06-digha-science-centre-640.jpg",
               "sort_order": 5
             }
           ],
@@ -2110,6 +2148,12 @@
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Heritage",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -2379,48 +2423,48 @@
               "label": "Shyam Rai Temple, Bishnupur",
               "description": "The five-pinnacled Shyam Rai terracotta temple in Bishnupur. Photo: Suman Kumar Giri, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Shyamrahi_Temple.jpg/1920px-Shyamrahi_Temple.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Shyamrahi_Temple.jpg/500px-Shyamrahi_Temple.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/01-shyam-rai-temple-bishnupur.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/01-shyam-rai-temple-bishnupur-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Jor Bangla Temple, Bishnupur",
               "description": "The twin hut-roofed Jor Bangla temple and its carved terracotta facade. Photo: Shatarupa Dutta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Jod_Bangla_Terracotta_Temple%2C_Bishnupur%2C_West_Bengal.jpg/1920px-Jod_Bangla_Terracotta_Temple%2C_Bishnupur%2C_West_Bengal.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Jod_Bangla_Terracotta_Temple%2C_Bishnupur%2C_West_Bengal.jpg/500px-Jod_Bangla_Terracotta_Temple%2C_Bishnupur%2C_West_Bengal.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/02-jor-bangla-temple-bishnupur.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/02-jor-bangla-temple-bishnupur-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Rasmancha, Bishnupur",
               "description": "The pyramid-roofed Rasmancha with its ring of arched galleries. Photo: Jonoikobangali, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Rasmancha_Arnab_Dutta_2011.JPG/1920px-Rasmancha_Arnab_Dutta_2011.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Rasmancha_Arnab_Dutta_2011.JPG/500px-Rasmancha_Arnab_Dutta_2011.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/03-rasmancha-bishnupur.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/03-rasmancha-bishnupur-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Upasana Griha, Santiniketan",
               "description": "The glass-walled Upasana Griha prayer hall on the Visva-Bharati campus. Photo: Biswarup Ganguly, CC BY 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Upasana_Griha_-_North-western_View_-_Santiniketan_2014-06-29_5300.JPG/1920px-Upasana_Griha_-_North-western_View_-_Santiniketan_2014-06-29_5300.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Upasana_Griha_-_North-western_View_-_Santiniketan_2014-06-29_5300.JPG/500px-Upasana_Griha_-_North-western_View_-_Santiniketan_2014-06-29_5300.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/04-upasana-griha-santiniketan.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/04-upasana-griha-santiniketan-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Baul music at Sonajhuri haat",
               "description": "Folk musicians playing at the Saturday haat in Sonajhuri forest. Photo: PritD, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Folk_Music_at_Shonibarer_Haat%2C_Sonajhuri%2C_Santiniketan%2C_Birbhum%2C_India_01.jpg/1920px-Folk_Music_at_Shonibarer_Haat%2C_Sonajhuri%2C_Santiniketan%2C_Birbhum%2C_India_01.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Folk_Music_at_Shonibarer_Haat%2C_Sonajhuri%2C_Santiniketan%2C_Birbhum%2C_India_01.jpg/500px-Folk_Music_at_Shonibarer_Haat%2C_Sonajhuri%2C_Santiniketan%2C_Birbhum%2C_India_01.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/05-baul-music-at-sonajhuri-haat.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/05-baul-music-at-sonajhuri-haat-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Baluchari silk sari",
               "description": "A Baluchari silk sari woven in Bishnupur with mythological panels. Photo: Sumita Roy Dutta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Baluchari_saree_of_Bishnupur_DSC06029.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Baluchari_saree_of_Bishnupur_DSC06029.jpg/500px-Baluchari_saree_of_Bishnupur_DSC06029.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/06-baluchari-silk-sari.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/shantiniketan-bishnupur-terracotta-trail-budget/06-baluchari-silk-sari-640.jpg",
               "sort_order": 5
             }
           ],
@@ -2472,6 +2516,12 @@
           "duration_days": 4,
           "duration_nights": 3,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Wildlife",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -2781,48 +2831,48 @@
               "label": "Elephant safari, Jaldapara",
               "description": "Visitors on an elephant safari watch a one-horned rhino cross a stony river bed in Jaldapara National Park. Photo: Sujansarkar541, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Elephant_Safari_in_Jaldapara_National_Park.jpg/1920px-Elephant_Safari_in_Jaldapara_National_Park.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Elephant_Safari_in_Jaldapara_National_Park.jpg/500px-Elephant_Safari_in_Jaldapara_National_Park.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/01-elephant-safari-jaldapara.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/01-elephant-safari-jaldapara-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Rhinos in Gorumara grassland",
               "description": "A rhino mother and calf graze the open grassland of Gorumara National Park. Photo: Rupeshsarkar, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Landscape_of_Garumara.jpg/1920px-Landscape_of_Garumara.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Landscape_of_Garumara.jpg/500px-Landscape_of_Garumara.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/02-rhinos-in-gorumara-grassland.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/02-rhinos-in-gorumara-grassland-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Jatraprasad watchtower",
               "description": "The pagoda-roofed Jatraprasad watchtower inside Gorumara National Park. Photo: Jonoikobangali, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Gorumara_Jatra_Proshad_Arnab_Dutta.JPG/1920px-Gorumara_Jatra_Proshad_Arnab_Dutta.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Gorumara_Jatra_Proshad_Arnab_Dutta.JPG/500px-Gorumara_Jatra_Proshad_Arnab_Dutta.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/03-jatraprasad-watchtower.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/03-jatraprasad-watchtower-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Murti River, Gorumara",
               "description": "The braided Murti River winding through grassland and forest inside Gorumara National Park. Photo: Rupeshsarkar, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Murti_River_flowing_inside_the_park.jpg/1920px-Murti_River_flowing_inside_the_park.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Murti_River_flowing_inside_the_park.jpg/500px-Murti_River_flowing_inside_the_park.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/04-murti-river-gorumara.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/04-murti-river-gorumara-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Chilapata Forest",
               "description": "A timber bridge leads into the dense sal and mixed forest of Chilapata. Photo: Kaustav Dutta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Inside_the_Chilapata_Forest%2C_West_Bengal.jpg/1920px-Inside_the_Chilapata_Forest%2C_West_Bengal.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Inside_the_Chilapata_Forest%2C_West_Bengal.jpg/500px-Inside_the_Chilapata_Forest%2C_West_Bengal.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/05-chilapata-forest.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/05-chilapata-forest-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Murti valley at Samsing",
               "description": "The Murti River cutting through green foothill valleys near Samsing. Photo: Abhijit Kar Gupta, CC BY 2.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Samsing%2C_Sikkim%2C_near_West_Bengal_border%2C_the_river_and_the_valley_2012.jpg/1920px-Samsing%2C_Sikkim%2C_near_West_Bengal_border%2C_the_river_and_the_valley_2012.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Samsing%2C_Sikkim%2C_near_West_Bengal_border%2C_the_river_and_the_valley_2012.jpg/500px-Samsing%2C_Sikkim%2C_near_West_Bengal_border%2C_the_river_and_the_valley_2012.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/06-murti-valley-at-samsing.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/dooars-jaldapara-gorumara-wildlife-budget/06-murti-valley-at-samsing-640.jpg",
               "sort_order": 5
             }
           ],
@@ -2874,6 +2924,12 @@
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Heritage",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -3143,48 +3199,48 @@
               "label": "Hazarduari Palace at night",
               "description": "The colonnaded Hazarduari Palace lit up after dark. Photo: DeepanjanGhosh, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Hazarduari_Palace%2C_Murshidabad_illuminated_at_night.jpg/1920px-Hazarduari_Palace%2C_Murshidabad_illuminated_at_night.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Hazarduari_Palace%2C_Murshidabad_illuminated_at_night.jpg/500px-Hazarduari_Palace%2C_Murshidabad_illuminated_at_night.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/01-hazarduari-palace-at-night.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/01-hazarduari-palace-at-night-640.jpg",
               "sort_order": 0
             },
             {
               "label": "Nizamat Imambara",
               "description": "The long white facade of the Nizamat Imambara facing Hazarduari. Photo: Pratiti090, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Nizamat_Imambara-Murshidabad-West_Bengal_-_DSC0002.jpg/1920px-Nizamat_Imambara-Murshidabad-West_Bengal_-_DSC0002.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Nizamat_Imambara-Murshidabad-West_Bengal_-_DSC0002.jpg/500px-Nizamat_Imambara-Murshidabad-West_Bengal_-_DSC0002.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/02-nizamat-imambara.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/02-nizamat-imambara-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Katra Masjid",
               "description": "Katra Masjid's domed prayer hall between its two corner towers. Photo: Rangan Datta Wiki, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Katra_Masjid_panoramic_view.jpg/1920px-Katra_Masjid_panoramic_view.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Katra_Masjid_panoramic_view.jpg/500px-Katra_Masjid_panoramic_view.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/03-katra-masjid.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/03-katra-masjid-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Kathgola Palace",
               "description": "Kathgola garden palace reflected in its ornamental lake. Photo: Amitabha Gupta, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Kathgola_Palace_at_Murshidabad_district.jpg/1920px-Kathgola_Palace_at_Murshidabad_district.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Kathgola_Palace_at_Murshidabad_district.jpg/500px-Kathgola_Palace_at_Murshidabad_district.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/04-kathgola-palace.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/04-kathgola-palace-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Khushbagh",
               "description": "The tomb enclosure at Khushbagh garden across the Bhagirathi. Photo: Sagnik0123456789, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Khosbagh.JPG/1920px-Khosbagh.JPG",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Khosbagh.JPG/500px-Khosbagh.JPG",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/05-khushbagh.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/05-khushbagh-640.jpg",
               "sort_order": 4
             },
             {
               "label": "Jahan Kosha cannon",
               "description": "The 17th-century Jahan Kosha cannon at Topkhana. Photo: Samudra013, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Jahankosha_Kaman_Murshidabad.jpg/1920px-Jahankosha_Kaman_Murshidabad.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Jahankosha_Kaman_Murshidabad.jpg/500px-Jahankosha_Kaman_Murshidabad.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/06-jahan-kosha-cannon.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/murshidabad-nawabi-heritage-budget/06-jahan-kosha-cannon-640.jpg",
               "sort_order": 5
             }
           ],
@@ -3236,6 +3292,16 @@
           "duration_days": 6,
           "duration_nights": 5,
           "is_recommended": false,
+          "tags": [
+            {
+              "label": "Trek",
+              "description": null
+            },
+            {
+              "label": "Hills",
+              "description": null
+            }
+          ],
           "itinerary": {
             "days": [
               {
@@ -3661,40 +3727,40 @@
               "label": "Kanchenjunga from Sandakphu",
               "description": "Sunset light on the Kanchenjunga massif seen from Sandakphu in Singalila National Park. Photo: Abhishek.ghosh1984, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Kangchenjunga_%28Kanchenjunga%29_from_Singalila_National_Park%2C_Sandakphu.jpg/1920px-Kangchenjunga_%28Kanchenjunga%29_from_Singalila_National_Park%2C_Sandakphu.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Kangchenjunga_%28Kanchenjunga%29_from_Singalila_National_Park%2C_Sandakphu.jpg/500px-Kangchenjunga_%28Kanchenjunga%29_from_Singalila_National_Park%2C_Sandakphu.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/01-kanchenjunga-from-sandakphu.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/01-kanchenjunga-from-sandakphu-640.jpg",
               "sort_order": 0
             },
             {
               "label": "The Sleeping Buddha range",
               "description": "The 'Sleeping Buddha' skyline of the Kanchenjunga range from Sandakphu. Photo: Adwartising, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Sleeping_Buddha_from_Sandakphu.jpg/1920px-Sleeping_Buddha_from_Sandakphu.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Sleeping_Buddha_from_Sandakphu.jpg/500px-Sleeping_Buddha_from_Sandakphu.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/02-the-sleeping-buddha-range.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/02-the-sleeping-buddha-range-640.jpg",
               "sort_order": 1
             },
             {
               "label": "Kanchenjunga from Tumling",
               "description": "Snow peaks over the forested ridge near Tumling on the Singalila trail. Photo: Satadru306, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Kanchendzonga_range_from_Tumling.jpg/1920px-Kanchendzonga_range_from_Tumling.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Kanchendzonga_range_from_Tumling.jpg/500px-Kanchendzonga_range_from_Tumling.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/03-kanchenjunga-from-tumling.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/03-kanchenjunga-from-tumling-640.jpg",
               "sort_order": 2
             },
             {
               "label": "Singalila National Park meadows",
               "description": "Misty meadows on the way to Tumling inside Singalila National Park. Photo: Spattadar, CC BY-SA 4.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Vast_green_meadows_and_hills_in_Singalila_National_Park.jpg/1920px-Vast_green_meadows_and_hills_in_Singalila_National_Park.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Vast_green_meadows_and_hills_in_Singalila_National_Park.jpg/500px-Vast_green_meadows_and_hills_in_Singalila_National_Park.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/04-singalila-national-park-meadows.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/04-singalila-national-park-meadows-640.jpg",
               "sort_order": 3
             },
             {
               "label": "Manebhanjan village",
               "description": "Manebhanjan, the trek's starting village on the India-Nepal border. Photo: Koustav2007, CC BY-SA 3.0, via Wikimedia Commons",
               "type": "image",
-              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Manebhanjang.jpg/1920px-Manebhanjang.jpg",
-              "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Manebhanjang.jpg/500px-Manebhanjang.jpg",
+              "url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/05-manebhanjan-village.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/sandakphu-singalila-ridge-trek-budget/05-manebhanjan-village-640.jpg",
               "sort_order": 4
             }
           ],

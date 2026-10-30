@@ -17,7 +17,8 @@ export const SignInContext = z
 
 export const SignUpContext = z.object({
   type: z.literal('sign-up'),
-  name: z.string(),
+  firstName: z.string(),
+  lastName: z.string().default(''),
   email: z.string().nullable().default(null),
   phone: z.string().nullable().default(null),
 });

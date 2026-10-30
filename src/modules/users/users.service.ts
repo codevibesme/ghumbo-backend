@@ -40,7 +40,8 @@ export class UserService {
     return {
       id: user.id,
       email: user.email,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       phone: user.phone,
       photo: user.photo,
       createdAt: user.createdAt

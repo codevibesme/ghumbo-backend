@@ -5,6 +5,7 @@ import { EntityManager, In, Not, Repository, SelectQueryBuilder } from 'typeorm'
 import {
   BookingRequestDto,
   CreateBookingRequestDto,
+  UserBookingFingerprint,
   UserBookingRequestDto,
 } from './booking_requests.dto.js';
 import { PaginatedResponseDto, PaginationReqDto } from '../misc/dto.js';
@@ -24,7 +25,8 @@ export class BookingRequestRepository {
       status: data.status,
       statusNotes: data.statusNotes,
       code: data.code,
-      name: data.name,
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
       phone: data.phone,
       createdAt: data.createdAt,
@@ -51,7 +53,8 @@ export class BookingRequestRepository {
         'br.status',
         'br.statusNotes',
         'br.code',
-        'br.name',
+        'br.firstName',
+        'br.lastName',
         'br.email',
         'br.phone',
         'br.createdAt',
@@ -128,5 +131,14 @@ export class BookingRequestRepository {
     }
 
     throw new BadRequestException("Failed to withdrawn: Might be withdrawn, or not found");
+  }
+
+  async findByUserFingerPrint(fingerPrint: UserBookingFingerprint): Promise<BookingRequestDto | null> {
+    return await this.repo.findOneBy({ 
+      tripDepartureId: fingerPrint.tripDepartureId,
+      email: fingerPrint.email,
+      status: Not(In(['withdrawn', 'closed'])),
+      ...(fingerPrint.userId ? { userId: fingerPrint.userId || undefined } : {})
+     })
   }
 }

@@ -26,6 +26,16 @@ export class BookingRequestService {
     if(departure.capacity <= departure.bookedSeats) {
       throw new ConflictException('Houseful');
     }
+    
+    const existingRequest = await this.repo.findByUserFingerPrint({
+      userId: data.userId,
+      email: data.email,
+      tripDepartureId: data.tripDepartureId
+    });
+
+    if(existingRequest) {
+      throw new ConflictException("The booking request already exists for these details");
+    }
 
     return await this.repo.create(data, txn);
   }

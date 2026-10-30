@@ -5,7 +5,8 @@ export class UserDto extends UserEntity {}
 
 export class UserDetailsDto extends PickType(UserDto, [
   'id',
-  'name',
+  'firstName',
+  'lastName',
   'email',
   'phone',
   'photo',

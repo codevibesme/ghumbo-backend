@@ -9,6 +9,10 @@ export const VerifiedUserPayloadSchema = z.object({
   type: z.literal(ETokenFor.USER),
   role: z.enum(EUserRole),
   userId: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string().nullable().default(null),
+  phone: z.string().nullable().default(null),
   session: z.object({
     id: z.string(),
     expiresAt: z.coerce.string(),

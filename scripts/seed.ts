@@ -35,6 +35,7 @@ import {
   ETripTier,
   Itinerary,
   TripInclusion,
+  TripTag,
 } from '../src/schemas/trips.schema.js';
 import { ETripDepartureStatus } from '../src/schemas/trip_departures.schema.js';
 
@@ -67,6 +68,7 @@ const SeedTrip = z
     duration_days: z.number().int().positive(),
     duration_nights: z.number().int().nonnegative(),
     is_recommended: z.boolean().default(false),
+    tags: z.array(TripTag).default([]),
     itinerary: Itinerary,
     inclusions: z.array(TripInclusion).default([]),
     exclusions: z.array(TripInclusion).default([]),
@@ -164,6 +166,7 @@ async function seedFile(em: EntityManager, seed: TSeedFile) {
           durationDays: t.duration_days,
           durationNights: t.duration_nights,
           isRecommended: t.is_recommended,
+          tags: t.tags,
           itinerary: t.itinerary,
           inclusions: t.inclusions,
           exclusions: t.exclusions,

@@ -27,8 +27,14 @@ export class CreateBookingRequestReqDto {
   @Transform(trim)
   @IsString()
   @IsNotEmpty()
-  @MaxLength(100)
-  name: string;
+  @MaxLength(50)
+  firstName: string;
+  
+  @Transform(trim)
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(50)
+  lastName: string;
 
   @Transform(trimLower)
   @IsEmail()
@@ -53,6 +59,14 @@ export class CreateBookingRequestReqDto {
   query: string | null;
 }
 
+export class UserBookingFingerprint extends PickType(CreateBookingRequestReqDto, [
+  'email',
+  'tripDepartureId'
+]) { 
+  @IsOptional()
+  userId: string | null;
+}
+
 export class CreateBookingRequestDto extends CreateBookingRequestReqDto {
   @IsOptional()
   userId: string | null;
@@ -64,7 +78,8 @@ export class UserBookingRequestDto extends PickType(BookingRequestDto, [
   'status',
   'statusNotes',
   'code',
-  'name',
+  'firstName',
+  'lastName',
   'email',
   'phone',
   'createdAt',

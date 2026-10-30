@@ -58,7 +58,7 @@ export class AuthenticationService {
     //     id: EEMAIL_TEMPLATES.LIFECYCLE_WELCOME,
     //     variables: {
     //       ACCOUNT_EMAIL: user.email,
-    //       USER_NAME: user.name,
+    //       USER_NAME: user.firstName,
           
     //     }
     //   }
@@ -137,7 +137,8 @@ export class AuthenticationService {
     const { user, session } = await this.txn.run(async (txnManager) => {
       const user = await this.userService.create(
         {
-          name: record.name,
+          firstName: record.firstName,
+          lastName: record.lastName ?? '',
           email: record.email,
           phone: record.phone,
           photo: record.photo ? this.toProfilePhoto(record.photo) : null,
@@ -179,6 +180,10 @@ export class AuthenticationService {
         type: ETokenFor.USER,
         role: user.role,
         userId: user.id,
+        firstName: user.firstName,
+        email: user.email,
+        phone: user.phone,
+        lastName: user.lastName,
         session: {
           id: session.id,
           expiresAt: session.expiresAt,
@@ -197,7 +202,7 @@ export class AuthenticationService {
 
   private async validateSignIn(
     record: SignInDto,
-  ): Promise<{ userId: string; userRole: EUserRole }> {
+  ): Promise<{ userId: string; firstName: string; lastName: string; email: string | null; phone: string | null; userRole: EUserRole }> {
     const user = await this.userService.findByEmailOrPhoneOrThrow(
       record.email,
       record.phone,
@@ -208,14 +213,14 @@ export class AuthenticationService {
       record.email ? EAuthIdentityProvider.EMAIL : EAuthIdentityProvider.PHONE,
     );
 
-    return { userId: user.id, userRole: user.role };
+    return { userId: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, userRole: user.role };
   }
 
   private async completeSignIn(
     record: SignInDto,
     userSessionSignature: UserSessionSignatureDto,
   ): Promise<AuthSuccessResponseDto> {
-    const { userId, userRole } = await this.validateSignIn(record);
+    const { userId, firstName, lastName, email, phone, userRole } = await this.validateSignIn(record);
 
     const { refreshToken, refreshTokenHash } = this.createRefreshToken();
 
@@ -238,6 +243,10 @@ export class AuthenticationService {
         type: ETokenFor.USER,
         role: userRole,
         userId,
+        firstName,
+        lastName,
+        email,
+        phone,
         session: {
           id: session.id,
           expiresAt: session.expiresAt,
@@ -264,7 +273,8 @@ export class AuthenticationService {
         type: 'sign-up',
         email: record.email,
         phone: record.phone,
-        name: record.name,
+        firstName: record.firstName,
+        lastName: record.lastName ?? '',
       },
     });
   }
@@ -332,6 +342,10 @@ export class AuthenticationService {
         type: ETokenFor.USER,
         role: user.role,
         userId: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
         session: {
           id: updatedAuthSession.id,
           expiresAt: updatedAuthSession.expiresAt,
@@ -405,6 +419,10 @@ export class AuthenticationService {
         type: ETokenFor.USER,
         role: user.role,
         userId: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
         session: {
           id: session.id,
           expiresAt: session.expiresAt,
@@ -428,7 +446,14 @@ export class AuthenticationService {
     const providerUserId = profile.id;
     const email = profile.emails?.[0]?.value?.toLowerCase() || null;
     const isEmailVerified = profile.emails?.[0]?.verified || false;
-    const name = profile.displayName || 'User';
+    // Google usually splits the name; fall back to the display name
+    const [displayFirst = 'User', ...displayRest] = (profile.displayName || '')
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    const firstName = profile.name?.givenName?.trim() || displayFirst;
+    const lastName =
+      profile.name?.familyName?.trim() ?? displayRest.join(' ');
     const photo = profile.photos?.[0]?.value || null;
 
     if (!email || !isEmailVerified) {
@@ -470,6 +495,10 @@ export class AuthenticationService {
           type: ETokenFor.USER,
           role: user.role,
           userId: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          phone: user.phone,
           session: {
             id: session.id,
             expiresAt: session.expiresAt,
@@ -506,7 +535,8 @@ export class AuthenticationService {
     const { user, session } = await this.txn.run(async (txnManager) => {
       const user = await this.userService.create(
         {
-          name: name,
+          firstName: firstName.slice(0, 50),
+          lastName: lastName.slice(0, 50),
           email: email,
           phone: null,
           photo: photo ? this.toProfilePhoto(photo) : null,
@@ -555,6 +585,10 @@ export class AuthenticationService {
         type: ETokenFor.USER,
         role: user.role,
         userId: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
         session: {
           id: session.id,
           expiresAt: session.expiresAt,

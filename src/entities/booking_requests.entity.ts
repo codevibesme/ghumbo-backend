@@ -8,9 +8,8 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryColumn,
-  type Relation,
-  Unique,
   UpdateDateColumn,
+  type Relation,
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { EBookingRequestStatus } from '../schemas/booking_requests.schema.js';
@@ -22,8 +21,14 @@ import { BookingEntity } from './bookings.entity.js';
 @Entity('booking_requests')
 @Index('idx_booking_requests_status_created_at', ['status', 'createdAt'])
 @Check('chk_booking_requests_traveler_count', `"traveler_count" > 0`)
-@Unique('uq_booking_requests_email_trip_departure_id', ['email', 'tripDepartureId'])
-@Unique('uq_booking_requests_user_id_trip_departure_id', ['userId', 'tripDepartureId'])
+@Index('uq_booking_requests_email_trip_departure_id', ['email', 'tripDepartureId'], {
+  unique: true,
+  where: "status NOT IN ('withdrawn', 'closed')" 
+})
+@Index('uq_booking_requests_user_id_trip_departure_id', ['userId', 'tripDepartureId'], {
+  unique: true,
+  where: "status NOT IN ('withdrawn', 'closed')" 
+})
 export class BookingRequestEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
@@ -65,8 +70,11 @@ export class BookingRequestEntity {
   @Column({ name: 'code', type: 'varchar', length: 9, unique: true })
   code: string = generateBookingRequestCode();
 
-  @Column({ name: 'name', type: 'varchar', length: 100 })
-  name: string;
+  @Column({ name: 'first_name', type: 'varchar', length: 50 })
+  firstName: string;
+  
+  @Column({ name: 'last_name', type: 'varchar', length: 50 })
+  lastName: string;
 
   @Column({ name: 'email', type: 'varchar', length: 254 })
   email: string;

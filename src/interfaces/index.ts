@@ -9,6 +9,10 @@ export interface AuthenticatedUserReq extends Request {
     type: ETokenFor.USER;
     role: EUserRole;
     userId: string;
+    firstName: string;
+    lastName: string;
+    email: string | null;
+    phone: string | null;
     session: {
       id: string;
       expiresAt: string;
@@ -23,6 +27,10 @@ export interface OptionalAuthenticatedUserReq extends Request {
     type: ETokenFor.USER;
     role: EUserRole;
     userId: string;
+    firstName: string;
+    lastName: string;
+    email: string | null;
+    phone: string | null;
     session: {
       id: string;
       expiresAt: string;

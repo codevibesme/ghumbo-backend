@@ -7,6 +7,7 @@ import {
   IsUrl,
   IsUUID,
   Matches,
+  MaxLength,
   ValidateIf,
 } from 'class-validator';
 import { trim, trimLower } from '../../utilities/transformers.js';
@@ -24,8 +25,15 @@ export class SignInDto {
 }
 
 export class SignUpDto extends SignInDto {
+  @Transform(trim)
   @IsNotEmpty()
-  name: string;
+  @MaxLength(50)
+  firstName: string;
+
+  @Transform(trim)
+  @IsOptional()
+  @MaxLength(50)
+  lastName?: string;
 
   @IsUrl()
   @IsOptional()

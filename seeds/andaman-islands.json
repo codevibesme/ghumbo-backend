@@ -1,0 +1,1717 @@
+{
+  "country": {
+    "code": "IN",
+    "name": "India",
+    "status": "live",
+    "latitude": 20.5937,
+    "longitude": 78.9629,
+    "assets": [
+      {
+        "label": "Taj Mahal, Agra",
+        "description": "The Taj Mahal at sunrise. Photo: Yann; edited by Jim Carter, CC BY-SA 4.0, via Wikimedia Commons",
+        "type": "image",
+        "url": "https://cdn.ghumbo.com/catalog/countries/india/01-taj-mahal-agra.jpg",
+        "thumbnail_url": "https://cdn.ghumbo.com/catalog/countries/india/01-taj-mahal-agra-640.jpg",
+        "sort_order": 0
+      },
+      {
+        "label": "Hawa Mahal, Jaipur",
+        "description": "East facade of the Hawa Mahal, Jaipur. Photo: Chainwit., CC BY-SA 4.0, via Wikimedia Commons",
+        "type": "image",
+        "url": "https://cdn.ghumbo.com/catalog/countries/india/02-hawa-mahal-jaipur.jpg",
+        "thumbnail_url": "https://cdn.ghumbo.com/catalog/countries/india/02-hawa-mahal-jaipur-640.jpg",
+        "sort_order": 1
+      }
+    ]
+  },
+  "destinations": [
+    {
+      "slug": "andaman-islands",
+      "name": "Andaman Islands",
+      "status": "live",
+      "overview": "Far out in the Bay of Bengal, the Andaman Islands are India's tropical edge: powder-white beaches, glass-clear water and some of the healthiest coral reefs in the country, all reached by a short flight to Port Blair, now officially Sri Vijaya Puram. The town holds the islands' history in the Cellular Jail, the 'Kala Pani' prison of the freedom struggle, and across the harbour the banyan-wrapped ruins of Ross Island, now Netaji Subhas Chandra Bose Dweep. Fast catamarans hop to Swaraj Dweep (Havelock), home to Radhanagar beach and the country's best-known scuba sites, and to tiny, slow-paced Shaheed Dweep (Neil) with its natural rock arch. Further north, the road through the Jarawa reserve leads to Baratang's mangrove creeks and limestone caves. November to April is the best time to visit, with calm seas and clear water from January to April; the south-west monsoon (roughly late May to September) brings rough seas, heavy rain and frequent ferry cancellations.",
+      "latitude": 11.6234,
+      "longitude": 92.7265,
+      "assets": [
+        {
+          "label": "Radhanagar Beach, Swaraj Dweep",
+          "description": "The long white-sand arc of Radhanagar beach on Havelock. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+          "type": "image",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/01-radhanagar-beach-swaraj-dweep.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/01-radhanagar-beach-swaraj-dweep-640.jpg",
+          "sort_order": 0
+        },
+        {
+          "label": "Cellular Jail, Port Blair",
+          "description": "Front view of the Cellular Jail and its central tower. Photo: Jomesh, CC BY 3.0, via Wikimedia Commons",
+          "type": "image",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/02-cellular-jail-port-blair.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/02-cellular-jail-port-blair-640.jpg",
+          "sort_order": 1
+        },
+        {
+          "label": "Shaheed Dweep (Neil Island)",
+          "description": "Turquoise water and a quiet tropical beach on Neil. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+          "type": "image",
+          "url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/03-shaheed-dweep-neil-island.jpg",
+          "thumbnail_url": "https://cdn.ghumbo.com/catalog/destinations/andaman-islands/03-shaheed-dweep-neil-island-640.jpg",
+          "sort_order": 2
+        }
+      ],
+      "trips": [
+        {
+          "slug": "andaman-port-blair-havelock-budget",
+          "name": "Andaman Express: Port Blair & Havelock",
+          "tier": "budget",
+          "status": "live",
+          "audience": "open",
+          "overview": "The Andamans in four days, at a backpacker's price. Join a fixed-date group of up to 18 in Port Blair (Sri Vijaya Puram) and start with the island's history: the Cellular Jail, where India's freedom fighters were exiled to 'Kala Pani', and its evening light and sound show. Next morning a private catamaran carries you to Swaraj Dweep (Havelock) for two nights in a simple cottage resort near Govind Nagar beach. Swim at Kalapathar's turquoise cove, watch the sun set over Radhanagar, and spend a free day snorkelling at Elephant Beach or trying your first scuba dive. Ferries, port fees, transfers, entry tickets and breakfasts are covered; lunches, dinners and water sports are yours to choose. A Ghumbo coordinator handles the tickets, ferry timings and early starts.",
+          "duration_days": 4,
+          "duration_nights": 3,
+          "is_recommended": false,
+          "tags": [
+            {
+              "label": "Coast",
+              "description": null
+            }
+          ],
+          "itinerary": {
+            "days": [
+              {
+                "day": 1,
+                "title": "Arrive in Port Blair: the Cellular Jail and Corbyn's Cove",
+                "overview": "Fly into Veer Savarkar International Airport and meet the group in Port Blair, now officially Sri Vijaya Puram. After lunch, walk the wings of the Cellular Jail, unwind at Corbyn's Cove and end the day with the light and sound show in the jail courtyard.",
+                "location": "Port Blair (Sri Vijaya Puram)",
+                "activities": [
+                  {
+                    "title": "Pickup at Veer Savarkar International Airport (IXZ)",
+                    "description": "Your Ghumbo coordinator meets arrivals at Port Blair airport and runs the group to the hotel in batches. Please book flights landing before 12:00 and share your flight number when you book.",
+                    "start_time": "08:00",
+                    "end_time": "12:30",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Hotel check-in",
+                    "description": "Check in to a simple budget hotel near Aberdeen Bazaar, a short walk from the jail, the clock tower and the waterfront.",
+                    "start_time": "12:00",
+                    "end_time": "13:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Fish curry thali or a South Indian meal at an Aberdeen Bazaar eatery - pay direct, approx ₹250–400.",
+                    "start_time": "13:00",
+                    "end_time": "13:45",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "National Memorial Cellular Jail",
+                    "description": "Walk the radial wings of the 1906 'Kala Pani' prison, see the cells where freedom fighters such as Veer Savarkar were held, the gallows and the museum, then climb to the central tower for views over the harbour. Closed on Mondays and national holidays. Entry included.",
+                    "start_time": "14:00",
+                    "end_time": "15:45",
+                    "location": "Cellular Jail, Atlanta Point, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Corbyn's Cove beach",
+                    "description": "A short drive to Port Blair's palm-fringed town beach for a paddle, coconut water and a late-afternoon sea breeze.",
+                    "start_time": "16:00",
+                    "end_time": "17:15",
+                    "location": "Corbyn's Cove, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Cellular Jail light and sound show",
+                    "description": "The story of the jail and the freedom struggle told in light and sound in the courtyard, under the old peepal tree. We book the first (Hindi) show; an English show runs at 18:50 on Mondays, Wednesdays and Fridays. Ticket included.",
+                    "start_time": "17:50",
+                    "end_time": "18:50",
+                    "location": "Cellular Jail, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Your coordinator walks the group to a good-value seafood or North Indian place in Aberdeen Bazaar and briefs everyone on the early ferry. Pay direct, approx ₹300–500.",
+                    "start_time": "20:00",
+                    "end_time": "21:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [],
+                "accommodation": "Budget hotel near Aberdeen Bazaar, Port Blair (AC twin room, attached bath)"
+              },
+              {
+                "day": 2,
+                "title": "Ferry to Swaraj Dweep (Havelock): Kalapathar and a Radhanagar sunset",
+                "overview": "An early catamaran across Ritchie's Archipelago to Swaraj Dweep (about 1.5–2 hours). Spend the late morning on the rocky, turquoise shore of Kalapathar, then head to Radhanagar, often ranked among Asia's best beaches, for a swim and the sunset.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Early breakfast at the hotel (packed if the ferry is very early).",
+                    "start_time": "06:30",
+                    "end_time": "07:15",
+                    "location": "Port Blair",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Swaraj Dweep",
+                    "description": "Transfer to the jetty and board a private catamaran (Makruzz, Nautika or Green Ocean, base class; operator depends on availability) for the 1.5–2 hour crossing. Tickets and port fees included. Keep motion-sickness tablets handy.",
+                    "start_time": "07:30",
+                    "end_time": "10:00",
+                    "location": "Port Blair jetty to Havelock jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Check in at Havelock",
+                    "description": "Check in to a simple cottage resort near Govind Nagar beach (Beach No. 3), a few minutes from the jetty and the main market.",
+                    "start_time": "10:15",
+                    "end_time": "11:00",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Kalapathar beach",
+                    "description": "A narrow strip of white sand and clear turquoise water edged by black rocks and tall forest, on the island's quiet east coast.",
+                    "start_time": "11:15",
+                    "end_time": "12:45",
+                    "location": "Kalapathar, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch at a beach shack or market café - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Rest at the resort",
+                    "description": "Time to rest through the hottest part of the day.",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Radhanagar beach (Beach No. 7) and sunset",
+                    "description": "By group vehicle to the island's west coast: a long arc of powder-white sand backed by mahua forest. Swim only between the lifeguard flags, then watch the sun drop into the sea (sunset is around 17:00–17:30 in winter).",
+                    "start_time": "15:45",
+                    "end_time": "18:00",
+                    "location": "Radhanagar Beach, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own at a Havelock market restaurant; your coordinator can suggest seafood and wood-fired pizza spots. Approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 3,
+                "title": "Elephant Beach, reefs and a lazy Havelock day",
+                "overview": "A flexible day on Swaraj Dweep. Most of the group takes the shared speedboat to Elephant Beach for snorkelling and water sports, and the afternoon is free for a first scuba dive, a kayak or simply the beach.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast",
+                    "description": "Breakfast at the resort.",
+                    "start_time": "07:30",
+                    "end_time": "08:15",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Elephant Beach by speedboat",
+                    "description": "Optional, approx ₹1,000 return per person: a 20-minute shared speedboat ride from Havelock jetty to Elephant Beach, with shallow reefs for snorkelling; a basic snorkel is usually included. Sea walk (approx ₹3,500) and glass-bottom boat rides (approx ₹1,000–1,500) are paid on the spot. Boats run only when the forest and port authorities allow. Those not going can walk to Govind Nagar or Vijay Nagar beach instead.",
+                    "start_time": "08:30",
+                    "end_time": "12:30",
+                    "location": "Elephant Beach, Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch on your own - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Try scuba dive",
+                    "description": "Optional, approx ₹5,500–6,500: a beginner's boat dive with a PADI/SSI centre (no swimming needed, about 2–3 hours including briefing; 30–40 minutes underwater). Book through your coordinator a day ahead. Do not fly within 18–24 hours of diving.",
+                    "start_time": "14:00",
+                    "end_time": "16:30",
+                    "location": "Havelock dive centres",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Free afternoon on the beach",
+                    "description": "Laze at Govind Nagar or Vijay Nagar beach, rent a scooter (approx ₹600–700 a day) or browse the market.",
+                    "start_time": "14:00",
+                    "end_time": "17:30",
+                    "location": "Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Sunset or bioluminescence kayaking",
+                    "description": "Optional, approx ₹3,500: a guided kayak through the mangroves at sunset, or after dark on moonless nights to see the plankton glow.",
+                    "start_time": "16:30",
+                    "end_time": "19:00",
+                    "location": "Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own - approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 4,
+                "title": "Back to Port Blair and home",
+                "overview": "A last morning swim, then the late-morning catamaran back to Port Blair (1.5–2.5 hours, depending on the operator) and a drop at the airport for afternoon flights.",
+                "location": "Swaraj Dweep to Port Blair",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Breakfast at the resort, a last dip at Govind Nagar beach and check-out.",
+                    "start_time": "07:30",
+                    "end_time": "09:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Port Blair",
+                    "description": "The first private catamaran back from Havelock (usually around 10:30–11:00). Tickets and port fees included.",
+                    "start_time": "10:30",
+                    "end_time": "13:00",
+                    "location": "Havelock jetty to Port Blair jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Drop at Port Blair airport",
+                    "description": "Group transfer from the jetty to Veer Savarkar International Airport (about 15 minutes); tour ends. Please book flights departing after 15:00.",
+                    "start_time": "13:00",
+                    "end_time": "13:45",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": null
+              }
+            ]
+          },
+          "inclusions": [
+            {
+              "title": "3 nights' budget stays",
+              "description": "1 night in an AC budget hotel near Aberdeen Bazaar, Port Blair, and 2 nights in a simple cottage resort near Govind Nagar beach, Havelock; twin sharing, attached bath."
+            },
+            {
+              "title": "Daily breakfast",
+              "description": "3 breakfasts (Day 2 to Day 4) at the hotels (CP plan); packed if the ferry is very early."
+            },
+            {
+              "title": "Private catamaran ferries",
+              "description": "Port Blair–Havelock–Port Blair on Makruzz, Nautika or Green Ocean (base class), with port and jetty fees."
+            },
+            {
+              "title": "Airport, jetty and sightseeing transfers",
+              "description": "Fixed-time airport and jetty transfers and Port Blair sightseeing in a shared AC Tempo Traveller; shared AC vehicle on Havelock for Kalapathar and Radhanagar."
+            },
+            {
+              "title": "Entry fees on the itinerary",
+              "description": "Cellular Jail entry and the Cellular Jail light and sound show ticket."
+            },
+            {
+              "title": "Ghumbo group coordinator and 5% GST",
+              "description": "One coordinator with the group for all four days (Hindi/English/Bengali); GST included."
+            }
+          ],
+          "exclusions": [
+            {
+              "title": "Flights to and from Port Blair",
+              "description": "Air fare to Veer Savarkar International Airport (IXZ) and back."
+            },
+            {
+              "title": "Lunches and dinners",
+              "description": "All lunches and dinners at local eateries (budget approx ₹700–1,000 a day; Havelock is pricier than Port Blair)."
+            },
+            {
+              "title": "Elephant Beach boat and water sports",
+              "description": "Shared speedboat approx ₹1,000 return; sea walk approx ₹3,500; glass-bottom boat approx ₹1,000–1,500; kayaking approx ₹3,500."
+            },
+            {
+              "title": "Scuba diving",
+              "description": "Optional try-dive approx ₹5,500–6,500, booked with a certified dive centre."
+            },
+            {
+              "title": "Camera fees and ferry upgrades",
+              "description": "Video-camera fee at the Cellular Jail; upgrades to premium/royal ferry classes."
+            },
+            {
+              "title": "Weather delays and ferry cancellations",
+              "description": "Extra nights, meals or rebooked flights if ferries are cancelled by the port authorities for bad weather; we rebook the group's ferries at no charge."
+            },
+            {
+              "title": "Tips, insurance and personal expenses",
+              "description": "Gratuities, travel insurance, scooter hire, laundry, drinks and shopping."
+            }
+          ],
+          "assets": [
+            {
+              "label": "Radhanagar Beach, Swaraj Dweep",
+              "description": "Radhanagar beach edged by tall rainforest. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/01-radhanagar-beach-swaraj-dweep.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/01-radhanagar-beach-swaraj-dweep-640.jpg",
+              "sort_order": 0
+            },
+            {
+              "label": "Kalapathar Beach, Swaraj Dweep",
+              "description": "The rocky, turquoise shoreline at Kalapathar. Photo: Arkadeep Meta, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/02-kalapathar-beach-swaraj-dweep.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/02-kalapathar-beach-swaraj-dweep-640.jpg",
+              "sort_order": 1
+            },
+            {
+              "label": "Cellular Jail, Port Blair",
+              "description": "The National Memorial Cellular Jail. Photo: Tonynirappathu, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/03-cellular-jail-port-blair.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/03-cellular-jail-port-blair-640.jpg",
+              "sort_order": 2
+            },
+            {
+              "label": "Corbyn's Cove, Port Blair",
+              "description": "Palm-lined Corbyn's Cove beach. Photo: Joe tarafdar, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/04-corbyn-s-cove-port-blair.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-port-blair-havelock-budget/04-corbyn-s-cove-port-blair-640.jpg",
+              "sort_order": 3
+            }
+          ],
+          "departures": [
+            {
+              "start_date": "2026-11-20",
+              "end_date": "2026-11-23",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "15999.00"
+            },
+            {
+              "start_date": "2026-12-26",
+              "end_date": "2026-12-29",
+              "status": "open",
+              "is_peak": true,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "18999.00"
+            },
+            {
+              "start_date": "2027-01-15",
+              "end_date": "2027-01-18",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "15999.00"
+            },
+            {
+              "start_date": "2027-03-19",
+              "end_date": "2027-03-22",
+              "status": "open",
+              "is_peak": true,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "18999.00"
+            }
+          ]
+        },
+        {
+          "slug": "andaman-havelock-neil-island-hopper-budget",
+          "name": "Andaman Island Hopper: Havelock & Neil",
+          "tier": "budget",
+          "status": "live",
+          "audience": "open",
+          "overview": "Three islands in five days on a budget, with the ferries sorted. Meet the group in Port Blair (Sri Vijaya Puram) for the Cellular Jail, Corbyn's Cove and the evening light and sound show. A private catamaran then takes you to Swaraj Dweep (Havelock) for two nights: Kalapathar's turquoise water, sunset on Radhanagar beach and a free day for Elephant Beach snorkelling, a first scuba dive or bioluminescent kayaking. Next, hop to sleepy Shaheed Dweep (Neil) to walk out to the Natural Bridge at low tide, swim at Bharatpur and watch the sun go down at Laxmanpur, before a Sitapur sunrise and the ferry back. Stays are simple twin-share hotels and cottages with breakfast; all three ferries, port fees, transfers and entry tickets are included, and a Ghumbo coordinator travels with the group.",
+          "duration_days": 5,
+          "duration_nights": 4,
+          "is_recommended": false,
+          "tags": [
+            {
+              "label": "Coast",
+              "description": null
+            }
+          ],
+          "itinerary": {
+            "days": [
+              {
+                "day": 1,
+                "title": "Arrive in Port Blair: the Cellular Jail and Corbyn's Cove",
+                "overview": "Fly into Veer Savarkar International Airport and meet the group in Port Blair, now officially Sri Vijaya Puram. After lunch, walk the wings of the Cellular Jail, unwind at Corbyn's Cove and end the day with the light and sound show in the jail courtyard.",
+                "location": "Port Blair (Sri Vijaya Puram)",
+                "activities": [
+                  {
+                    "title": "Pickup at Veer Savarkar International Airport (IXZ)",
+                    "description": "Your Ghumbo coordinator meets arrivals at Port Blair airport and runs the group to the hotel in batches. Please book flights landing before 12:00 and share your flight number when you book.",
+                    "start_time": "08:00",
+                    "end_time": "12:30",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Hotel check-in",
+                    "description": "Check in to a simple budget hotel near Aberdeen Bazaar, a short walk from the jail, the clock tower and the waterfront.",
+                    "start_time": "12:00",
+                    "end_time": "13:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Fish curry thali or a South Indian meal at an Aberdeen Bazaar eatery - pay direct, approx ₹250–400.",
+                    "start_time": "13:00",
+                    "end_time": "13:45",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "National Memorial Cellular Jail",
+                    "description": "Walk the radial wings of the 1906 'Kala Pani' prison, see the cells where freedom fighters such as Veer Savarkar were held, the gallows and the museum, then climb to the central tower for views over the harbour. Closed on Mondays and national holidays. Entry included.",
+                    "start_time": "14:00",
+                    "end_time": "15:45",
+                    "location": "Cellular Jail, Atlanta Point, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Corbyn's Cove beach",
+                    "description": "A short drive to Port Blair's palm-fringed town beach for a paddle, coconut water and a late-afternoon sea breeze.",
+                    "start_time": "16:00",
+                    "end_time": "17:15",
+                    "location": "Corbyn's Cove, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Cellular Jail light and sound show",
+                    "description": "The story of the jail and the freedom struggle told in light and sound in the courtyard, under the old peepal tree. We book the first (Hindi) show; an English show runs at 18:50 on Mondays, Wednesdays and Fridays. Ticket included.",
+                    "start_time": "17:50",
+                    "end_time": "18:50",
+                    "location": "Cellular Jail, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Your coordinator walks the group to a good-value seafood or North Indian place in Aberdeen Bazaar and briefs everyone on the early ferry. Pay direct, approx ₹300–500.",
+                    "start_time": "20:00",
+                    "end_time": "21:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [],
+                "accommodation": "Budget hotel near Aberdeen Bazaar, Port Blair (AC twin room, attached bath)"
+              },
+              {
+                "day": 2,
+                "title": "Ferry to Swaraj Dweep (Havelock): Kalapathar and a Radhanagar sunset",
+                "overview": "An early catamaran across Ritchie's Archipelago to Swaraj Dweep (about 1.5–2 hours). Spend the late morning on the rocky, turquoise shore of Kalapathar, then head to Radhanagar, often ranked among Asia's best beaches, for a swim and the sunset.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Early breakfast at the hotel (packed if the ferry is very early).",
+                    "start_time": "06:30",
+                    "end_time": "07:15",
+                    "location": "Port Blair",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Swaraj Dweep",
+                    "description": "Transfer to the jetty and board a private catamaran (Makruzz, Nautika or Green Ocean, base class; operator depends on availability) for the 1.5–2 hour crossing. Tickets and port fees included. Keep motion-sickness tablets handy.",
+                    "start_time": "07:30",
+                    "end_time": "10:00",
+                    "location": "Port Blair jetty to Havelock jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Check in at Havelock",
+                    "description": "Check in to a simple cottage resort near Govind Nagar beach (Beach No. 3), a few minutes from the jetty and the main market.",
+                    "start_time": "10:15",
+                    "end_time": "11:00",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Kalapathar beach",
+                    "description": "A narrow strip of white sand and clear turquoise water edged by black rocks and tall forest, on the island's quiet east coast.",
+                    "start_time": "11:15",
+                    "end_time": "12:45",
+                    "location": "Kalapathar, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch at a beach shack or market café - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Rest at the resort",
+                    "description": "Time to rest through the hottest part of the day.",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Radhanagar beach (Beach No. 7) and sunset",
+                    "description": "By group vehicle to the island's west coast: a long arc of powder-white sand backed by mahua forest. Swim only between the lifeguard flags, then watch the sun drop into the sea (sunset is around 17:00–17:30 in winter).",
+                    "start_time": "15:45",
+                    "end_time": "18:00",
+                    "location": "Radhanagar Beach, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own at a Havelock market restaurant; your coordinator can suggest seafood and wood-fired pizza spots. Approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 3,
+                "title": "Elephant Beach, reefs and a lazy Havelock day",
+                "overview": "A flexible day on Swaraj Dweep. Most of the group takes the shared speedboat to Elephant Beach for snorkelling and water sports, and the afternoon is free for a first scuba dive, a kayak or simply the beach.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast",
+                    "description": "Breakfast at the resort.",
+                    "start_time": "07:30",
+                    "end_time": "08:15",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Elephant Beach by speedboat",
+                    "description": "Optional, approx ₹1,000 return per person: a 20-minute shared speedboat ride from Havelock jetty to Elephant Beach, with shallow reefs for snorkelling; a basic snorkel is usually included. Sea walk (approx ₹3,500) and glass-bottom boat rides (approx ₹1,000–1,500) are paid on the spot. Boats run only when the forest and port authorities allow. Those not going can walk to Govind Nagar or Vijay Nagar beach instead.",
+                    "start_time": "08:30",
+                    "end_time": "12:30",
+                    "location": "Elephant Beach, Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch on your own - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Try scuba dive",
+                    "description": "Optional, approx ₹5,500–6,500: a beginner's boat dive with a PADI/SSI centre (no swimming needed, about 2–3 hours including briefing; 30–40 minutes underwater). Book through your coordinator a day ahead. Do not fly within 18–24 hours of diving.",
+                    "start_time": "14:00",
+                    "end_time": "16:30",
+                    "location": "Havelock dive centres",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Free afternoon on the beach",
+                    "description": "Laze at Govind Nagar or Vijay Nagar beach, rent a scooter (approx ₹600–700 a day) or browse the market.",
+                    "start_time": "14:00",
+                    "end_time": "17:30",
+                    "location": "Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Sunset or bioluminescence kayaking",
+                    "description": "Optional, approx ₹3,500: a guided kayak through the mangroves at sunset, or after dark on moonless nights to see the plankton glow.",
+                    "start_time": "16:30",
+                    "end_time": "19:00",
+                    "location": "Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own - approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 4,
+                "title": "Shaheed Dweep (Neil): the Natural Bridge and a Laxmanpur sunset",
+                "overview": "A short hop to tiny, laid-back Shaheed Dweep (about 1 hour). Walk out to the Natural Bridge rock arch at low tide, swim in the calm shallows of Bharatpur, then end the day at Laxmanpur Beach No. 1 for the sunset.",
+                "location": "Shaheed Dweep (Neil)",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Breakfast at the resort.",
+                    "start_time": "07:30",
+                    "end_time": "08:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Shaheed Dweep",
+                    "description": "Morning catamaran from Havelock to Neil (about 45–60 minutes; operator and exact time depend on the season's schedule). Tickets and port fees included.",
+                    "start_time": "09:15",
+                    "end_time": "10:30",
+                    "location": "Havelock jetty to Neil jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Check in at Neil",
+                    "description": "Check in to a simple cottage near the Neil Kendra market and Bharatpur beach.",
+                    "start_time": "10:45",
+                    "end_time": "11:30",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Bharatpur beach",
+                    "description": "Calm, shallow water a short walk from the jetty, with a fringing reef just offshore. Glass-bottom boat rides are available here (optional, approx ₹1,000–1,500).",
+                    "start_time": "11:30",
+                    "end_time": "13:00",
+                    "location": "Bharatpur Beach, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch at a Neil Kendra eatery - pay direct, approx ₹300–400.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Natural Bridge (Laxmanpur Beach No. 2)",
+                    "description": "Walk over the coral rocks at low tide to the island's famous natural rock arch, peering into tide pools for sea cucumbers, starfish and small fish. Timing is set by the tide; wear sturdy sandals and do not touch living coral.",
+                    "start_time": "14:30",
+                    "end_time": "16:00",
+                    "location": "Laxmanpur Beach No. 2, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Sunset at Laxmanpur Beach No. 1",
+                    "description": "A wide sweep of white sand facing west, the best sunset spot on the island.",
+                    "start_time": "16:15",
+                    "end_time": "17:45",
+                    "location": "Laxmanpur Beach No. 1, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own at a Neil Kendra restaurant - approx ₹350–500.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget cottage near Neil Kendra / Bharatpur Beach, Shaheed Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 5,
+                "title": "Sitapur sunrise and back to Port Blair",
+                "overview": "Catch sunrise at Sitapur on Neil's eastern tip, then a late-morning catamaran back to Port Blair (about 1.25–1.5 hours) and a drop at the airport for afternoon flights.",
+                "location": "Shaheed Dweep to Port Blair",
+                "activities": [
+                  {
+                    "title": "Sunrise at Sitapur beach",
+                    "description": "A short drive to Sitapur (Beach No. 5) for sunrise over the open sea and the limestone cliffs at low tide (sunrise is about 05:45–06:15 in winter).",
+                    "start_time": "05:15",
+                    "end_time": "06:45",
+                    "location": "Sitapur Beach, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Breakfast at the cottage and check-out.",
+                    "start_time": "07:30",
+                    "end_time": "09:00",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Port Blair",
+                    "description": "The first private catamaran from Neil to Port Blair (usually around 10:00–11:00; about 1.25–1.5 hours). Tickets and port fees included.",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "location": "Neil jetty to Port Blair jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Drop at Port Blair airport",
+                    "description": "Group transfer from the jetty to Veer Savarkar International Airport (about 15 minutes); tour ends. Please book flights departing after 14:30.",
+                    "start_time": "12:00",
+                    "end_time": "12:45",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": null
+              }
+            ]
+          },
+          "inclusions": [
+            {
+              "title": "4 nights' budget stays",
+              "description": "1 night in an AC budget hotel in Port Blair, 2 nights in a cottage resort near Govind Nagar beach, Havelock, and 1 night in a cottage near Neil Kendra; twin sharing, attached bath."
+            },
+            {
+              "title": "Daily breakfast",
+              "description": "4 breakfasts (Day 2 to Day 5) at the hotels (CP plan)."
+            },
+            {
+              "title": "Private catamaran ferries",
+              "description": "Port Blair–Havelock, Havelock–Neil and Neil–Port Blair on Makruzz, Nautika, Green Ocean or ITT Majestic (base class), with port and jetty fees."
+            },
+            {
+              "title": "Airport, jetty and sightseeing transfers",
+              "description": "Shared AC Tempo Traveller in Port Blair; shared AC vehicles on Havelock and Neil for every sight on the itinerary, including the Sitapur sunrise."
+            },
+            {
+              "title": "Entry fees on the itinerary",
+              "description": "Cellular Jail entry and the Cellular Jail light and sound show ticket."
+            },
+            {
+              "title": "Ghumbo group coordinator and 5% GST",
+              "description": "One coordinator with the group for all five days (Hindi/English/Bengali); GST included."
+            }
+          ],
+          "exclusions": [
+            {
+              "title": "Flights to and from Port Blair",
+              "description": "Air fare to Veer Savarkar International Airport (IXZ) and back."
+            },
+            {
+              "title": "Lunches and dinners",
+              "description": "All lunches and dinners at local eateries (budget approx ₹700–1,000 a day)."
+            },
+            {
+              "title": "Elephant Beach boat and water sports",
+              "description": "Shared speedboat approx ₹1,000 return; sea walk approx ₹3,500; glass-bottom boat approx ₹1,000–1,500; kayaking approx ₹3,500."
+            },
+            {
+              "title": "Scuba diving",
+              "description": "Optional try-dive approx ₹5,500–6,500 at Havelock or Neil."
+            },
+            {
+              "title": "Camera fees and ferry upgrades",
+              "description": "Video-camera fee at the Cellular Jail; upgrades to premium/royal ferry classes."
+            },
+            {
+              "title": "Weather delays and ferry cancellations",
+              "description": "Extra nights, meals or rebooked flights if ferries are cancelled by the port authorities for bad weather; we rebook the group's ferries at no charge."
+            },
+            {
+              "title": "Tips, insurance and personal expenses",
+              "description": "Gratuities, travel insurance, scooter hire, laundry, drinks and shopping."
+            }
+          ],
+          "assets": [
+            {
+              "label": "Laxmanpur Beach, Shaheed Dweep",
+              "description": "Empty sands at Laxmanpur beach. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/02-laxmanpur-beach-shaheed-dweep.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/02-laxmanpur-beach-shaheed-dweep-640.jpg",
+              "sort_order": 0
+            },
+            {
+              "label": "Radhanagar Beach, Swaraj Dweep",
+              "description": "Radhanagar beach in the late-afternoon light before sunset. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/03-radhanagar-beach-swaraj-dweep.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/03-radhanagar-beach-swaraj-dweep-640.jpg",
+              "sort_order": 1
+            },
+            {
+              "label": "Natural Bridge, Shaheed Dweep",
+              "description": "The coral-rock natural arch at Neil, seen at low tide. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/01-natural-bridge-shaheed-dweep.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/01-natural-bridge-shaheed-dweep-640.jpg",
+              "sort_order": 2
+            },
+            {
+              "label": "Cellular Jail, Port Blair",
+              "description": "The Cellular Jail national memorial. Photo: Biswarup Ganguly, CC BY-SA 3.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/05-cellular-jail-port-blair.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-havelock-neil-island-hopper-budget/05-cellular-jail-port-blair-640.jpg",
+              "sort_order": 3
+            }
+          ],
+          "departures": [
+            {
+              "start_date": "2026-11-27",
+              "end_date": "2026-12-01",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "19999.00"
+            },
+            {
+              "start_date": "2026-12-29",
+              "end_date": "2027-01-02",
+              "status": "open",
+              "is_peak": true,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "23999.00"
+            },
+            {
+              "start_date": "2027-02-12",
+              "end_date": "2027-02-16",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "19999.00"
+            },
+            {
+              "start_date": "2027-03-26",
+              "end_date": "2027-03-30",
+              "status": "open",
+              "is_peak": true,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "23999.00"
+            }
+          ]
+        },
+        {
+          "slug": "andaman-baratang-ross-havelock-neil-circuit-budget",
+          "name": "Andaman Grand Circuit: Baratang, Ross, Havelock & Neil",
+          "tier": "budget",
+          "status": "live",
+          "audience": "open",
+          "overview": "The full Andaman loop in a week, at a budget price. Begin in Port Blair (Sri Vijaya Puram) at the Cellular Jail and its light and sound show. Next day, convoy north through the Jarawa Tribal Reserve to Baratang, where a speedboat slips through a mangrove tunnel to ancient limestone caves and a bubbling mud volcano. Then cross the harbour to the coral shallows and lighthouse of North Bay and the banyan-wrapped colonial ruins of Ross Island, now Netaji Subhas Chandra Bose Dweep. The second half is pure beach: two nights on Swaraj Dweep (Havelock) for Kalapathar, a Radhanagar sunset and a free day for Elephant Beach or a first scuba dive, then a night on quiet Shaheed Dweep (Neil) for the Natural Bridge, Laxmanpur sunset and Sitapur sunrise. Simple twin-share stays with breakfast, every ferry and boat, permits, entry fees and transfers are covered, with a Ghumbo coordinator throughout.",
+          "duration_days": 7,
+          "duration_nights": 6,
+          "is_recommended": false,
+          "tags": [
+            {
+              "label": "Coast",
+              "description": null
+            },
+            {
+              "label": "Heritage",
+              "description": null
+            }
+          ],
+          "itinerary": {
+            "days": [
+              {
+                "day": 1,
+                "title": "Arrive in Port Blair: the Cellular Jail and Corbyn's Cove",
+                "overview": "Fly into Veer Savarkar International Airport and meet the group in Port Blair, now officially Sri Vijaya Puram. After lunch, walk the wings of the Cellular Jail, unwind at Corbyn's Cove and end the day with the light and sound show in the jail courtyard.",
+                "location": "Port Blair (Sri Vijaya Puram)",
+                "activities": [
+                  {
+                    "title": "Pickup at Veer Savarkar International Airport (IXZ)",
+                    "description": "Your Ghumbo coordinator meets arrivals at Port Blair airport and runs the group to the hotel in batches. Please book flights landing before 12:00 and share your flight number when you book.",
+                    "start_time": "08:00",
+                    "end_time": "12:30",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Hotel check-in",
+                    "description": "Check in to a simple budget hotel near Aberdeen Bazaar, a short walk from the jail, the clock tower and the waterfront.",
+                    "start_time": "12:00",
+                    "end_time": "13:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Fish curry thali or a South Indian meal at an Aberdeen Bazaar eatery - pay direct, approx ₹250–400.",
+                    "start_time": "13:00",
+                    "end_time": "13:45",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "National Memorial Cellular Jail",
+                    "description": "Walk the radial wings of the 1906 'Kala Pani' prison, see the cells where freedom fighters such as Veer Savarkar were held, the gallows and the museum, then climb to the central tower for views over the harbour. Closed on Mondays and national holidays. Entry included.",
+                    "start_time": "14:00",
+                    "end_time": "15:45",
+                    "location": "Cellular Jail, Atlanta Point, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Corbyn's Cove beach",
+                    "description": "A short drive to Port Blair's palm-fringed town beach for a paddle, coconut water and a late-afternoon sea breeze.",
+                    "start_time": "16:00",
+                    "end_time": "17:15",
+                    "location": "Corbyn's Cove, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Cellular Jail light and sound show",
+                    "description": "The story of the jail and the freedom struggle told in light and sound in the courtyard, under the old peepal tree. We book the first (Hindi) show; an English show runs at 18:50 on Mondays, Wednesdays and Fridays. Ticket included.",
+                    "start_time": "17:50",
+                    "end_time": "18:50",
+                    "location": "Cellular Jail, Port Blair",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Your coordinator walks the group to a good-value seafood or North Indian place in Aberdeen Bazaar and briefs everyone on the early ferry. Pay direct, approx ₹300–500.",
+                    "start_time": "20:00",
+                    "end_time": "21:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [],
+                "accommodation": "Budget hotel near Aberdeen Bazaar, Port Blair (AC twin room, attached bath)"
+              },
+              {
+                "day": 2,
+                "title": "Baratang: mangrove creeks and limestone caves",
+                "overview": "A long, rewarding day trip north along the Andaman Trunk Road. The road runs through the Jarawa Tribal Reserve in escorted convoys, so we leave before dawn. At Baratang a speedboat threads a tunnel of mangroves to the limestone caves, and we stop at the mud volcano before the return convoy.",
+                "location": "Baratang Island",
+                "activities": [
+                  {
+                    "title": "Pre-dawn departure from Port Blair",
+                    "description": "Leave the hotel at 03:30 in the group AC Tempo Traveller with a packed breakfast, for the 50 km drive to the Jirkatang check post. Carry original government photo ID (Aadhaar, passport or driving licence).",
+                    "start_time": "03:30",
+                    "end_time": "05:00",
+                    "location": "Port Blair to Jirkatang",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Packed breakfast",
+                    "description": "Packed breakfast from the hotel, eaten at Jirkatang while the coordinator completes check-post registration.",
+                    "start_time": "05:00",
+                    "end_time": "05:45",
+                    "location": "Jirkatang check post",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Convoy through the Jarawa Tribal Reserve",
+                    "description": "Join the first escorted convoy (around 06:00) along the Andaman Trunk Road to Middle Strait, about 2 hours. Stopping, photography and any contact with the Jarawa are strictly prohibited by law. Convoy times are set by the administration and can change.",
+                    "start_time": "06:00",
+                    "end_time": "08:00",
+                    "location": "Jirkatang to Middle Strait",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Vehicle ferry to Baratang",
+                    "description": "A short government vehicle ferry across the strait from Middle Strait to Nilambur jetty on Baratang Island.",
+                    "start_time": "08:00",
+                    "end_time": "08:30",
+                    "location": "Middle Strait to Nilambur, Baratang",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Speedboat through the mangrove creek",
+                    "description": "A shared forest-department speedboat runs through a narrow creek walled by tall mangroves (about 25 minutes each way). Boat and forest permit included.",
+                    "start_time": "08:45",
+                    "end_time": "09:15",
+                    "location": "Nilambur jetty to Limestone Caves jetty",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Limestone Caves",
+                    "description": "Walk about 1–1.5 km along a jungle and village path to the caves, then explore stalactites and stalagmites shaped over millions of years. Bring a torch and shoes with grip.",
+                    "start_time": "09:15",
+                    "end_time": "11:15",
+                    "location": "Limestone Caves, Baratang",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Mud volcano",
+                    "description": "A short drive to one of the few mud volcanoes in India, where cool grey mud bubbles up from below.",
+                    "start_time": "11:30",
+                    "end_time": "12:15",
+                    "location": "Mud Volcano, Baratang",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Simple fish or veg thali at a Baratang jetty eatery - pay direct, approx ₹200–300.",
+                    "start_time": "12:15",
+                    "end_time": "13:00",
+                    "location": "Nilambur, Baratang",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Return convoy to Port Blair",
+                    "description": "Vehicle ferry back to Middle Strait and the afternoon convoy through the reserve to Jirkatang, then on to Port Blair.",
+                    "start_time": "13:30",
+                    "end_time": "18:30",
+                    "location": "Baratang to Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own near the hotel - approx ₹300–500.",
+                    "start_time": "20:00",
+                    "end_time": "21:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget hotel near Aberdeen Bazaar, Port Blair (AC twin room, attached bath)"
+              },
+              {
+                "day": 3,
+                "title": "North Bay and Netaji Subhas Chandra Bose Dweep (Ross Island)",
+                "overview": "A harbour-hopping day from Port Blair: the coral shallows and lighthouse of North Bay (the view on the old ₹20 note), then the ruined British headquarters of Ross Island, now Netaji Subhas Chandra Bose Dweep, overrun by banyan roots and wandering deer.",
+                "location": "Port Blair harbour",
+                "activities": [
+                  {
+                    "title": "Breakfast",
+                    "description": "Breakfast at the hotel.",
+                    "start_time": "07:00",
+                    "end_time": "08:00",
+                    "location": "Port Blair",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Boat to North Bay Island",
+                    "description": "From the Rajiv Gandhi Water Sports Complex (Aberdeen jetty), a shared tourist boat across the harbour to North Bay. Combined North Bay and Ross boat ticket included.",
+                    "start_time": "08:30",
+                    "end_time": "09:00",
+                    "location": "Aberdeen jetty to North Bay",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "North Bay beach and lighthouse",
+                    "description": "Time on the small beach and coral shallows below the red-and-white lighthouse.",
+                    "start_time": "09:00",
+                    "end_time": "11:30",
+                    "location": "North Bay Island",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Sea walk, snorkelling or semi-submarine",
+                    "description": "Optional, paid at North Bay: sea walk approx ₹3,000–3,500, snorkelling approx ₹1,000–3,000, glass-bottom boat or semi-submarine (coral safari) approx ₹1,000–3,500. Water sports stop in rough seas.",
+                    "start_time": "09:15",
+                    "end_time": "11:15",
+                    "location": "North Bay Island",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Netaji Subhas Chandra Bose Dweep (Ross Island)",
+                    "description": "Walk among the roofless church, bakery, Chief Commissioner's house and officers' club of the old British penal settlement, swallowed by peepal and banyan roots, with spotted deer and peacocks for company. Entry included.",
+                    "start_time": "11:45",
+                    "end_time": "14:00",
+                    "location": "Netaji Subhas Chandra Bose Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Late lunch back in town - pay direct, approx ₹250–400.",
+                    "start_time": "14:30",
+                    "end_time": "15:30",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Free evening on the Marina",
+                    "description": "Rest, or stroll along Marina Park and the Rajiv Gandhi Water Sports Complex waterfront at sunset.",
+                    "start_time": "15:30",
+                    "end_time": "19:30",
+                    "location": "Marina Park, Port Blair",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own; your coordinator briefs the group on the morning ferry. Approx ₹300–500.",
+                    "start_time": "20:00",
+                    "end_time": "21:00",
+                    "location": "Aberdeen Bazaar, Port Blair",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget hotel near Aberdeen Bazaar, Port Blair (AC twin room, attached bath)"
+              },
+              {
+                "day": 4,
+                "title": "Ferry to Swaraj Dweep (Havelock): Kalapathar and a Radhanagar sunset",
+                "overview": "An early catamaran across Ritchie's Archipelago to Swaraj Dweep (about 1.5–2 hours). Spend the late morning on the rocky, turquoise shore of Kalapathar, then head to Radhanagar, often ranked among Asia's best beaches, for a swim and the sunset.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Early breakfast at the hotel (packed if the ferry is very early).",
+                    "start_time": "06:30",
+                    "end_time": "07:15",
+                    "location": "Port Blair",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Swaraj Dweep",
+                    "description": "Transfer to the jetty and board a private catamaran (Makruzz, Nautika or Green Ocean, base class; operator depends on availability) for the 1.5–2 hour crossing. Tickets and port fees included. Keep motion-sickness tablets handy.",
+                    "start_time": "07:30",
+                    "end_time": "10:00",
+                    "location": "Port Blair jetty to Havelock jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Check in at Havelock",
+                    "description": "Check in to a simple cottage resort near Govind Nagar beach (Beach No. 3), a few minutes from the jetty and the main market.",
+                    "start_time": "10:15",
+                    "end_time": "11:00",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Kalapathar beach",
+                    "description": "A narrow strip of white sand and clear turquoise water edged by black rocks and tall forest, on the island's quiet east coast.",
+                    "start_time": "11:15",
+                    "end_time": "12:45",
+                    "location": "Kalapathar, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch at a beach shack or market café - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Rest at the resort",
+                    "description": "Time to rest through the hottest part of the day.",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Radhanagar beach (Beach No. 7) and sunset",
+                    "description": "By group vehicle to the island's west coast: a long arc of powder-white sand backed by mahua forest. Swim only between the lifeguard flags, then watch the sun drop into the sea (sunset is around 17:00–17:30 in winter).",
+                    "start_time": "15:45",
+                    "end_time": "18:00",
+                    "location": "Radhanagar Beach, Swaraj Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own at a Havelock market restaurant; your coordinator can suggest seafood and wood-fired pizza spots. Approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 5,
+                "title": "Elephant Beach, reefs and a lazy Havelock day",
+                "overview": "A flexible day on Swaraj Dweep. Most of the group takes the shared speedboat to Elephant Beach for snorkelling and water sports, and the afternoon is free for a first scuba dive, a kayak or simply the beach.",
+                "location": "Swaraj Dweep (Havelock)",
+                "activities": [
+                  {
+                    "title": "Breakfast",
+                    "description": "Breakfast at the resort.",
+                    "start_time": "07:30",
+                    "end_time": "08:15",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Elephant Beach by speedboat",
+                    "description": "Optional, approx ₹1,000 return per person: a 20-minute shared speedboat ride from Havelock jetty to Elephant Beach, with shallow reefs for snorkelling; a basic snorkel is usually included. Sea walk (approx ₹3,500) and glass-bottom boat rides (approx ₹1,000–1,500) are paid on the spot. Boats run only when the forest and port authorities allow. Those not going can walk to Govind Nagar or Vijay Nagar beach instead.",
+                    "start_time": "08:30",
+                    "end_time": "12:30",
+                    "location": "Elephant Beach, Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch on your own - pay direct, approx ₹300–450.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Try scuba dive",
+                    "description": "Optional, approx ₹5,500–6,500: a beginner's boat dive with a PADI/SSI centre (no swimming needed, about 2–3 hours including briefing; 30–40 minutes underwater). Book through your coordinator a day ahead. Do not fly within 18–24 hours of diving.",
+                    "start_time": "14:00",
+                    "end_time": "16:30",
+                    "location": "Havelock dive centres",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Free afternoon on the beach",
+                    "description": "Laze at Govind Nagar or Vijay Nagar beach, rent a scooter (approx ₹600–700 a day) or browse the market.",
+                    "start_time": "14:00",
+                    "end_time": "17:30",
+                    "location": "Swaraj Dweep",
+                    "type": "free_time",
+                    "included": true
+                  },
+                  {
+                    "title": "Sunset or bioluminescence kayaking",
+                    "description": "Optional, approx ₹3,500: a guided kayak through the mangroves at sunset, or after dark on moonless nights to see the plankton glow.",
+                    "start_time": "16:30",
+                    "end_time": "19:00",
+                    "location": "Swaraj Dweep",
+                    "type": "activity",
+                    "included": false
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own - approx ₹400–600.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Havelock market (No. 3)",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget beach-side cottage resort near Govind Nagar (Beach No. 3), Swaraj Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 6,
+                "title": "Shaheed Dweep (Neil): the Natural Bridge and a Laxmanpur sunset",
+                "overview": "A short hop to tiny, laid-back Shaheed Dweep (about 1 hour). Walk out to the Natural Bridge rock arch at low tide, swim in the calm shallows of Bharatpur, then end the day at Laxmanpur Beach No. 1 for the sunset.",
+                "location": "Shaheed Dweep (Neil)",
+                "activities": [
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Breakfast at the resort.",
+                    "start_time": "07:30",
+                    "end_time": "08:30",
+                    "location": "Govind Nagar, Swaraj Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Shaheed Dweep",
+                    "description": "Morning catamaran from Havelock to Neil (about 45–60 minutes; operator and exact time depend on the season's schedule). Tickets and port fees included.",
+                    "start_time": "09:15",
+                    "end_time": "10:30",
+                    "location": "Havelock jetty to Neil jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Check in at Neil",
+                    "description": "Check in to a simple cottage near the Neil Kendra market and Bharatpur beach.",
+                    "start_time": "10:45",
+                    "end_time": "11:30",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "accommodation",
+                    "included": true
+                  },
+                  {
+                    "title": "Bharatpur beach",
+                    "description": "Calm, shallow water a short walk from the jetty, with a fringing reef just offshore. Glass-bottom boat rides are available here (optional, approx ₹1,000–1,500).",
+                    "start_time": "11:30",
+                    "end_time": "13:00",
+                    "location": "Bharatpur Beach, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Lunch",
+                    "description": "Lunch at a Neil Kendra eatery - pay direct, approx ₹300–400.",
+                    "start_time": "13:00",
+                    "end_time": "14:00",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": false
+                  },
+                  {
+                    "title": "Natural Bridge (Laxmanpur Beach No. 2)",
+                    "description": "Walk over the coral rocks at low tide to the island's famous natural rock arch, peering into tide pools for sea cucumbers, starfish and small fish. Timing is set by the tide; wear sturdy sandals and do not touch living coral.",
+                    "start_time": "14:30",
+                    "end_time": "16:00",
+                    "location": "Laxmanpur Beach No. 2, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Sunset at Laxmanpur Beach No. 1",
+                    "description": "A wide sweep of white sand facing west, the best sunset spot on the island.",
+                    "start_time": "16:15",
+                    "end_time": "17:45",
+                    "location": "Laxmanpur Beach No. 1, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Dinner",
+                    "description": "Dinner on your own at a Neil Kendra restaurant - approx ₹350–500.",
+                    "start_time": "19:30",
+                    "end_time": "20:30",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": false
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": "Budget cottage near Neil Kendra / Bharatpur Beach, Shaheed Dweep (twin room, attached bath)"
+              },
+              {
+                "day": 7,
+                "title": "Sitapur sunrise and back to Port Blair",
+                "overview": "Catch sunrise at Sitapur on Neil's eastern tip, then a late-morning catamaran back to Port Blair (about 1.25–1.5 hours) and a drop at the airport for afternoon flights.",
+                "location": "Shaheed Dweep to Port Blair",
+                "activities": [
+                  {
+                    "title": "Sunrise at Sitapur beach",
+                    "description": "A short drive to Sitapur (Beach No. 5) for sunrise over the open sea and the limestone cliffs at low tide (sunrise is about 05:45–06:15 in winter).",
+                    "start_time": "05:15",
+                    "end_time": "06:45",
+                    "location": "Sitapur Beach, Shaheed Dweep",
+                    "type": "sightseeing",
+                    "included": true
+                  },
+                  {
+                    "title": "Breakfast and check-out",
+                    "description": "Breakfast at the cottage and check-out.",
+                    "start_time": "07:30",
+                    "end_time": "09:00",
+                    "location": "Neil Kendra, Shaheed Dweep",
+                    "type": "meal",
+                    "included": true
+                  },
+                  {
+                    "title": "Private ferry to Port Blair",
+                    "description": "The first private catamaran from Neil to Port Blair (usually around 10:00–11:00; about 1.25–1.5 hours). Tickets and port fees included.",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "location": "Neil jetty to Port Blair jetty",
+                    "type": "transfer",
+                    "included": true
+                  },
+                  {
+                    "title": "Drop at Port Blair airport",
+                    "description": "Group transfer from the jetty to Veer Savarkar International Airport (about 15 minutes); tour ends. Please book flights departing after 14:30.",
+                    "start_time": "12:00",
+                    "end_time": "12:45",
+                    "location": "Veer Savarkar International Airport, Port Blair",
+                    "type": "transfer",
+                    "included": true
+                  }
+                ],
+                "meals": [
+                  "breakfast"
+                ],
+                "accommodation": null
+              }
+            ]
+          },
+          "inclusions": [
+            {
+              "title": "6 nights' budget stays",
+              "description": "3 nights in an AC budget hotel near Aberdeen Bazaar, Port Blair, 2 nights in a cottage resort near Govind Nagar beach, Havelock, and 1 night in a cottage near Neil Kendra; twin sharing, attached bath."
+            },
+            {
+              "title": "Daily breakfast",
+              "description": "6 breakfasts (Day 2 to Day 7), packed on the Baratang day (CP plan)."
+            },
+            {
+              "title": "Private catamaran ferries",
+              "description": "Port Blair–Havelock, Havelock–Neil and Neil–Port Blair on Makruzz, Nautika, Green Ocean or ITT Majestic (base class), with port and jetty fees."
+            },
+            {
+              "title": "Baratang day trip",
+              "description": "AC Tempo Traveller via the Andaman Trunk Road convoy, vehicle ferry, shared speedboat to the Limestone Caves, forest permit and mud volcano."
+            },
+            {
+              "title": "North Bay and Ross Island boats",
+              "description": "Shared tourist boat from Aberdeen jetty to North Bay and Netaji Subhas Chandra Bose Dweep, with Ross Island entry."
+            },
+            {
+              "title": "Airport, jetty and sightseeing transfers",
+              "description": "Shared AC Tempo Traveller in Port Blair; shared AC vehicles on Havelock and Neil for every sight on the itinerary."
+            },
+            {
+              "title": "Entry fees on the itinerary",
+              "description": "Cellular Jail entry and light and sound show, Ross Island entry and Baratang forest permit."
+            },
+            {
+              "title": "Ghumbo group coordinator and 5% GST",
+              "description": "One coordinator with the group for all seven days (Hindi/English/Bengali); GST included."
+            }
+          ],
+          "exclusions": [
+            {
+              "title": "Flights to and from Port Blair",
+              "description": "Air fare to Veer Savarkar International Airport (IXZ) and back."
+            },
+            {
+              "title": "Lunches and dinners",
+              "description": "All lunches and dinners at local eateries (budget approx ₹700–1,000 a day)."
+            },
+            {
+              "title": "Water sports at North Bay and Havelock",
+              "description": "Elephant Beach speedboat approx ₹1,000; sea walk approx ₹3,000–3,500; snorkelling, glass-bottom boat and kayaking paid locally."
+            },
+            {
+              "title": "Scuba diving",
+              "description": "Optional try-dive approx ₹5,500–6,500 at Havelock, Neil or North Bay."
+            },
+            {
+              "title": "Camera fees and ferry upgrades",
+              "description": "Camera fees at the Cellular Jail and Ross Island; upgrades to premium/royal ferry classes."
+            },
+            {
+              "title": "Weather delays and ferry cancellations",
+              "description": "Extra nights, meals or rebooked flights if ferries are cancelled by the port authorities for bad weather; we rebook the group's ferries at no charge."
+            },
+            {
+              "title": "Tips, insurance and personal expenses",
+              "description": "Gratuities, travel insurance, scooter hire, laundry, drinks and shopping."
+            }
+          ],
+          "assets": [
+            {
+              "label": "Swaraj Dweep (Havelock)",
+              "description": "A turquoise sandy lagoon with bleached driftwood on Havelock. Photo: Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/05-swaraj-dweep-havelock.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/05-swaraj-dweep-havelock-640.jpg",
+              "sort_order": 0
+            },
+            {
+              "label": "Netaji Subhas Chandra Bose Dweep (Ross Island)",
+              "description": "A British-era building on Ross Island overgrown with tree roots. Photo: Vinayaraj, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/03-netaji-subhas-chandra-bose-dweep-ross-island.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/03-netaji-subhas-chandra-bose-dweep-ross-island-640.jpg",
+              "sort_order": 1
+            },
+            {
+              "label": "North Bay Island",
+              "description": "North Bay Island and its lighthouse. Photo: Yercaud-elango, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/04-north-bay-island.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/04-north-bay-island-640.jpg",
+              "sort_order": 2
+            },
+            {
+              "label": "Mangrove creek, Baratang",
+              "description": "The mangrove swamps of Baratang island. Photo: Ishitadatta, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/02-mangrove-creek-baratang.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/02-mangrove-creek-baratang-640.jpg",
+              "sort_order": 3
+            },
+            {
+              "label": "Limestone Caves, Baratang",
+              "description": "Mineral-streaked rock formations inside the Baratang limestone caves. Photo: Pratiti090, CC BY-SA 4.0, via Wikimedia Commons",
+              "type": "image",
+              "url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/01-limestone-caves-baratang.jpg",
+              "thumbnail_url": "https://cdn.ghumbo.com/catalog/trips/andaman-baratang-ross-havelock-neil-circuit-budget/01-limestone-caves-baratang-640.jpg",
+              "sort_order": 4
+            }
+          ],
+          "departures": [
+            {
+              "start_date": "2026-11-13",
+              "end_date": "2026-11-19",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "27999.00"
+            },
+            {
+              "start_date": "2026-12-23",
+              "end_date": "2026-12-29",
+              "status": "open",
+              "is_peak": true,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "32999.00"
+            },
+            {
+              "start_date": "2027-02-05",
+              "end_date": "2027-02-11",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "27999.00"
+            },
+            {
+              "start_date": "2027-04-02",
+              "end_date": "2027-04-08",
+              "status": "open",
+              "is_peak": false,
+              "capacity": 18,
+              "currency": "inr",
+              "amount": "27999.00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

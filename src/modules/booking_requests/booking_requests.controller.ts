@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -38,22 +39,31 @@ import { OptionalAuthGuard } from '../authentication/guards/optional-jwt-auth.gu
 export class BookingRequestController {
   constructor(private readonly service: BookingRequestService) {}
 
+  private validateUserBooking(payload: CreateBookingRequestDto, req: AuthenticatedUserReq) {
+    for (const key of ['firstName', 'lastName', 'email', 'phone'] as const) {
+      const mine = req.user[key];
+      if (mine && mine !== payload[key]) throw new BadRequestException("Your details don't match your account");
+    }
+    
+  }
+
   @Post()
   @UseGuards(OptionalAuthGuard)
   @ApiBody({ type: CreateBookingRequestReqDto })
   @ApiOkResponse({ type: BookingRequestDto })
   @ApiBadRequestResponse({ description: 'Bad request' })
   async create(@Req() req: OptionalAuthenticatedUserReq, @Res() res: Response, @Body() body: CreateBookingRequestReqDto) {
-    const paylaod: CreateBookingRequestDto = {
+    const payload: CreateBookingRequestDto = {
       ...body,
       userId: null
     };
 
     if(req.user) {
-      paylaod.userId = req.user.userId;  
+      this.validateUserBooking(payload, req as AuthenticatedUserReq);
+      payload.userId = req.user.userId;  
     }
 
-    const data = await this.service.create(paylaod, null);
+    const data = await this.service.create(payload, null);
 
     return res.status(200).send(data);
   }

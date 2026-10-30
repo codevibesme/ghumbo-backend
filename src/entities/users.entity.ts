@@ -22,8 +22,11 @@ export class UserEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
 
-  @Column({ name: 'name', type: 'varchar', length: 50 })
-  name: string;
+  @Column({ name: 'first_name', type: 'varchar', length: 50 })
+  firstName: string;
+  
+  @Column({ name: 'last_name', type: 'varchar', length: 50 })
+  lastName: string;
 
   @Column({ name: 'email', type: 'citext', unique: true, nullable: true })
   email: string | null;
