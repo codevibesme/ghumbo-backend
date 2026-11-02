@@ -1,7 +1,13 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BookingRequestEntity } from '../../entities/booking_requests.entity.js';
-import { EntityManager, In, Not, Repository, SelectQueryBuilder } from 'typeorm';
+import {
+  EntityManager,
+  In,
+  Not,
+  Repository,
+  SelectQueryBuilder,
+} from 'typeorm';
 import {
   BookingRequestDto,
   CreateBookingRequestDto,
@@ -38,10 +44,12 @@ export class BookingRequestRepository {
       endDate: data.departure.endDate,
       currency: data.departure.currency,
       estimate: String(Number(data.departure.amount) * data.travelerCount),
-    }
+    };
   }
 
-  private buildUserBookingRequestQuery(userId: string): SelectQueryBuilder<BookingRequestEntity> {
+  private buildUserBookingRequestQuery(
+    userId: string,
+  ): SelectQueryBuilder<BookingRequestEntity> {
     return this.repo
       .createQueryBuilder('br')
       .innerJoin('br.departure', 'dept')
@@ -67,7 +75,7 @@ export class BookingRequestRepository {
         'dept.currency',
         'dept.amount',
       ])
-      .where('br.userId = :userId', { userId })
+      .where('br.userId = :userId', { userId });
   }
 
   async create(
@@ -96,7 +104,9 @@ export class BookingRequestRepository {
       .orderBy('br.createdAt', 'DESC')
       .getManyAndCount();
 
-    const result: UserBookingRequestDto[] = res.map((row) => this.toUserBookingRequest(row));
+    const result: UserBookingRequestDto[] = res.map((row) =>
+      this.toUserBookingRequest(row),
+    );
 
     return {
       page,
@@ -110,35 +120,51 @@ export class BookingRequestRepository {
 
   async findByUserIdAndCode(
     userId: string,
-    code: string
+    code: string,
   ): Promise<UserBookingRequestDto | null> {
-    const res =  await this.buildUserBookingRequestQuery(userId)
+    const res = await this.buildUserBookingRequestQuery(userId)
       .andWhere('br.code = :code', { code })
       .getOne();
 
-    if(!res) return null;
+    if (!res) return null;
 
     return this.toUserBookingRequest(res);
   }
-  
-  async withdraw(
-    userId: string,
-    code: string
-  ): Promise<void> {
-    const res = await this.repo.update({ userId, code, status: Not(In([EBookingRequestStatus.WITHDRAWN, EBookingRequestStatus.CONVERTED, EBookingRequestStatus.CLOSED])) }, {status: EBookingRequestStatus.WITHDRAWN})
-    if(res.affected === 1) {
+
+  async withdraw(userId: string, code: string): Promise<void> {
+    const res = await this.repo.update(
+      {
+        userId,
+        code,
+        status: Not(
+          In([
+            EBookingRequestStatus.WITHDRAWN,
+            EBookingRequestStatus.CONVERTED,
+            EBookingRequestStatus.CLOSED,
+          ]),
+        ),
+      },
+      { status: EBookingRequestStatus.WITHDRAWN },
+    );
+    if (res.affected === 1) {
       return;
     }
 
-    throw new BadRequestException("Failed to withdrawn: Might be withdrawn, or not found");
+    throw new BadRequestException(
+      'Failed to withdrawn: Might be withdrawn, or not found',
+    );
   }
 
-  async findByUserFingerPrint(fingerPrint: UserBookingFingerprint): Promise<BookingRequestDto | null> {
-    return await this.repo.findOneBy({ 
+  async findByUserFingerPrint(
+    fingerPrint: UserBookingFingerprint,
+  ): Promise<BookingRequestDto | null> {
+    return await this.repo.findOneBy({
       tripDepartureId: fingerPrint.tripDepartureId,
       email: fingerPrint.email,
       status: Not(In(['withdrawn', 'closed'])),
-      ...(fingerPrint.userId ? { userId: fingerPrint.userId || undefined } : {})
-     })
+      ...(fingerPrint.userId
+        ? { userId: fingerPrint.userId || undefined }
+        : {}),
+    });
   }
 }

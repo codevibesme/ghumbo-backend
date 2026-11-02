@@ -9,7 +9,7 @@ import { TripDepartureModule } from '../trip_departures/trip_departures.module.j
 @Module({
   imports: [
     TypeOrmModule.forFeature([BookingRequestEntity]),
-    TripDepartureModule
+    TripDepartureModule,
   ],
   controllers: [BookingRequestController],
   providers: [BookingRequestService, BookingRequestRepository],

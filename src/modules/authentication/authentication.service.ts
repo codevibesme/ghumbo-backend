@@ -31,8 +31,6 @@ import {
   REFRESH_TOKEN_VALIDITY,
 } from './authentication.constant.js';
 import { UserDto } from '../users/users.dto.js';
-import { EmailService } from '../../lib/email/email.service.js';
-// import { EEMAIL_TEMPLATES } from '../../schemas/emails.schema.js';
 
 @Injectable()
 export class AuthenticationService {
@@ -43,26 +41,12 @@ export class AuthenticationService {
     private readonly otpService: OtpService,
     private readonly jwt: JwtUtilityService,
     private readonly txn: TxnHelperService,
-    private readonly emailService: EmailService,
   ) {}
 
-  private async sendSignUpEmail(user: UserDto){
-    if(!user.email) {
+  private async sendSignUpEmail(user: UserDto) {
+    if (!user.email) {
       return;
     }
-
-    // await this.emailService.sendWithTemplate({
-    //   to: user.email,
-    //   idempotencyKey: `sign-up:${user.id}`,
-    //   template: {
-    //     id: EEMAIL_TEMPLATES.LIFECYCLE_WELCOME,
-    //     variables: {
-    //       ACCOUNT_EMAIL: user.email,
-    //       USER_NAME: user.firstName,
-          
-    //     }
-    //   }
-    // });
   }
 
   private createRefreshToken() {
@@ -200,9 +184,14 @@ export class AuthenticationService {
     };
   }
 
-  private async validateSignIn(
-    record: SignInDto,
-  ): Promise<{ userId: string; firstName: string; lastName: string; email: string | null; phone: string | null; userRole: EUserRole }> {
+  private async validateSignIn(record: SignInDto): Promise<{
+    userId: string;
+    firstName: string;
+    lastName: string;
+    email: string | null;
+    phone: string | null;
+    userRole: EUserRole;
+  }> {
     const user = await this.userService.findByEmailOrPhoneOrThrow(
       record.email,
       record.phone,
@@ -213,14 +202,22 @@ export class AuthenticationService {
       record.email ? EAuthIdentityProvider.EMAIL : EAuthIdentityProvider.PHONE,
     );
 
-    return { userId: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, userRole: user.role };
+    return {
+      userId: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user.phone,
+      userRole: user.role,
+    };
   }
 
   private async completeSignIn(
     record: SignInDto,
     userSessionSignature: UserSessionSignatureDto,
   ): Promise<AuthSuccessResponseDto> {
-    const { userId, firstName, lastName, email, phone, userRole } = await this.validateSignIn(record);
+    const { userId, firstName, lastName, email, phone, userRole } =
+      await this.validateSignIn(record);
 
     const { refreshToken, refreshTokenHash } = this.createRefreshToken();
 
@@ -452,8 +449,7 @@ export class AuthenticationService {
       .split(/\s+/)
       .filter(Boolean);
     const firstName = profile.name?.givenName?.trim() || displayFirst;
-    const lastName =
-      profile.name?.familyName?.trim() ?? displayRest.join(' ');
+    const lastName = profile.name?.familyName?.trim() ?? displayRest.join(' ');
     const photo = profile.photos?.[0]?.value || null;
 
     if (!email || !isEmailVerified) {

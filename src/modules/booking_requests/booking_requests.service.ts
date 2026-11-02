@@ -1,4 +1,8 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { BookingRequestRepository } from './booking_requests.repository.js';
 import {
   BookingRequestDto,
@@ -14,27 +18,32 @@ import { ETripDepartureStatus } from '../../schemas/trip_departures.schema.js';
 export class BookingRequestService {
   constructor(
     private readonly departureService: TripDepartureService,
-    private readonly repo: BookingRequestRepository
+    private readonly repo: BookingRequestRepository,
   ) {}
 
   async create(
     data: CreateBookingRequestDto,
     txn: EntityManager | null,
   ): Promise<BookingRequestDto> {
-    const departure = await this.departureService.findByIdAndStatusOrThrow(data.tripDepartureId, ETripDepartureStatus.OPEN);
+    const departure = await this.departureService.findByIdAndStatusOrThrow(
+      data.tripDepartureId,
+      ETripDepartureStatus.OPEN,
+    );
 
-    if(departure.capacity <= departure.bookedSeats) {
+    if (departure.capacity <= departure.bookedSeats) {
       throw new ConflictException('Houseful');
     }
-    
+
     const existingRequest = await this.repo.findByUserFingerPrint({
       userId: data.userId,
       email: data.email,
-      tripDepartureId: data.tripDepartureId
+      tripDepartureId: data.tripDepartureId,
     });
 
-    if(existingRequest) {
-      throw new ConflictException("The booking request already exists for these details");
+    if (existingRequest) {
+      throw new ConflictException(
+        'The booking request already exists for these details',
+      );
     }
 
     return await this.repo.create(data, txn);
@@ -49,27 +58,24 @@ export class BookingRequestService {
 
   async findByCode(
     userId: string,
-    code: string
+    code: string,
   ): Promise<UserBookingRequestDto | null> {
     return await this.repo.findByUserIdAndCode(userId, code);
   }
-  
+
   async findByCodeOrThrow(
     userId: string,
-    code: string
+    code: string,
   ): Promise<UserBookingRequestDto> {
     const data = await this.findByCode(userId, code);
-    if(!data) {
-      throw new NotFoundException("Booking request not found")
+    if (!data) {
+      throw new NotFoundException('Booking request not found');
     }
 
     return data;
   }
 
-  async withdraw(
-    userId: string,
-    code: string
-  ): Promise<void> {
+  async withdraw(userId: string, code: string): Promise<void> {
     await this.repo.withdraw(userId, code);
   }
 }

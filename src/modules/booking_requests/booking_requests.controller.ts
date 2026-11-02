@@ -22,7 +22,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import type { Response } from 'express';
-import type { AuthenticatedUserReq, OptionalAuthenticatedUserReq } from '../../interfaces/index.js';
+import type {
+  AuthenticatedUserReq,
+  OptionalAuthenticatedUserReq,
+} from '../../interfaces/index.js';
 import {
   BookingRequestDto,
   CreateBookingRequestDto,
@@ -39,12 +42,15 @@ import { OptionalAuthGuard } from '../authentication/guards/optional-jwt-auth.gu
 export class BookingRequestController {
   constructor(private readonly service: BookingRequestService) {}
 
-  private validateUserBooking(payload: CreateBookingRequestDto, req: AuthenticatedUserReq) {
+  private validateUserBooking(
+    payload: CreateBookingRequestDto,
+    req: AuthenticatedUserReq,
+  ) {
     for (const key of ['firstName', 'lastName', 'email', 'phone'] as const) {
       const mine = req.user[key];
-      if (mine && mine !== payload[key]) throw new BadRequestException("Your details don't match your account");
+      if (mine && mine !== payload[key])
+        throw new BadRequestException("Your details don't match your account");
     }
-    
   }
 
   @Post()
@@ -52,15 +58,19 @@ export class BookingRequestController {
   @ApiBody({ type: CreateBookingRequestReqDto })
   @ApiOkResponse({ type: BookingRequestDto })
   @ApiBadRequestResponse({ description: 'Bad request' })
-  async create(@Req() req: OptionalAuthenticatedUserReq, @Res() res: Response, @Body() body: CreateBookingRequestReqDto) {
+  async create(
+    @Req() req: OptionalAuthenticatedUserReq,
+    @Res() res: Response,
+    @Body() body: CreateBookingRequestReqDto,
+  ) {
     const payload: CreateBookingRequestDto = {
       ...body,
-      userId: null
+      userId: null,
     };
 
-    if(req.user) {
+    if (req.user) {
       this.validateUserBooking(payload, req as AuthenticatedUserReq);
-      payload.userId = req.user.userId;  
+      payload.userId = req.user.userId;
     }
 
     const data = await this.service.create(payload, null);
@@ -72,9 +82,9 @@ export class BookingRequestController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
   @ApiQuery({ type: PaginationReqDto })
-  @ApiOkResponse({ type: PaginatedResponseDto<UserBookingRequestDto>})
-  @ApiNotFoundResponse({ description: "Not found" })
-  @ApiBadRequestResponse({ description: "Bad request" })
+  @ApiOkResponse({ type: PaginatedResponseDto<UserBookingRequestDto> })
+  @ApiNotFoundResponse({ description: 'Not found' })
+  @ApiBadRequestResponse({ description: 'Bad request' })
   async findUserBookings(
     @Req() req: AuthenticatedUserReq,
     @Res() res: Response,
@@ -88,7 +98,7 @@ export class BookingRequestController {
     return res.status(200).json(data);
   }
 
-  @Get("/:code")
+  @Get('/:code')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
   @ApiParam({ type: String, name: 'code' })
@@ -98,33 +108,27 @@ export class BookingRequestController {
   async findByCode(
     @Req() req: AuthenticatedUserReq,
     @Res() res: Response,
-    @Param('code') code: string
+    @Param('code') code: string,
   ) {
-    const data = await this.service.findByCodeOrThrow(
-      req.user.userId,
-      code
-    );
+    const data = await this.service.findByCodeOrThrow(req.user.userId, code);
 
     return res.status(200).json(data);
   }
 
-  @Patch("/withdraw/:code")
+  @Patch('/withdraw/:code')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
   @ApiParam({ type: String, name: 'code' })
-  @ApiOkResponse({ description: "Withdrawn sucessfully." })
+  @ApiOkResponse({ description: 'Withdrawn sucessfully.' })
   @ApiNotFoundResponse({ description: 'Not found' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   async withdraw(
     @Req() req: AuthenticatedUserReq,
     @Res() res: Response,
-    @Param('code') code: string
+    @Param('code') code: string,
   ) {
-    await this.service.withdraw(
-      req.user.userId,
-      code
-    );
+    await this.service.withdraw(req.user.userId, code);
 
-    return res.status(200).json("Withdrawn successfully.");
+    return res.status(200).json('Withdrawn successfully.');
   }
 }

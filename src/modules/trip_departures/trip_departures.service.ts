@@ -11,13 +11,19 @@ export class TripDepartureService {
     return await this.repo.findByTripId(tripId);
   }
 
-  async findByIdAndStatus(id: string, status: ETripDepartureStatus): Promise<TripDepartureDto | null> {
+  async findByIdAndStatus(
+    id: string,
+    status: ETripDepartureStatus,
+  ): Promise<TripDepartureDto | null> {
     return await this.repo.findByIdAndStatus(id, status);
   }
-  
-  async findByIdAndStatusOrThrow(id: string, status: ETripDepartureStatus): Promise<TripDepartureDto> {
+
+  async findByIdAndStatusOrThrow(
+    id: string,
+    status: ETripDepartureStatus,
+  ): Promise<TripDepartureDto> {
     const data = await this.findByIdAndStatus(id, status);
-    if(!data) throw new NotFoundException('Trip departure not found');
+    if (!data) throw new NotFoundException('Trip departure not found');
 
     return data;
   }

@@ -23,21 +23,23 @@ export interface AuthenticatedUserReq extends Request {
 }
 
 export interface OptionalAuthenticatedUserReq extends Request {
-  user: {
-    type: ETokenFor.USER;
-    role: EUserRole;
-    userId: string;
-    firstName: string;
-    lastName: string;
-    email: string | null;
-    phone: string | null;
-    session: {
-      id: string;
-      expiresAt: string;
-      revokedAt: string | null;
-      lastUsedAt: string;
-    };
-  } | undefined;
+  user:
+    | {
+        type: ETokenFor.USER;
+        role: EUserRole;
+        userId: string;
+        firstName: string;
+        lastName: string;
+        email: string | null;
+        phone: string | null;
+        session: {
+          id: string;
+          expiresAt: string;
+          revokedAt: string | null;
+          lastUsedAt: string;
+        };
+      }
+    | undefined;
 }
 
 export interface GoogleUserReq extends Request {

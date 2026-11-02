@@ -10,7 +10,6 @@ import { OtpModule } from '../../lib/otp/otp.module.js';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt-auth.strategy.js';
 import { GoogleStrategy } from './strategies/google-auth.strategy.js';
-import { EmailModule } from '../../lib/email/email.module.js';
 
 @Module({
   imports: [
@@ -20,8 +19,7 @@ import { EmailModule } from '../../lib/email/email.module.js';
     UserModule,
     AuthIdentityModule,
     AuthSessionModule,
-    EmailModule,
-    OtpModule,
+    OtpModule
   ],
   controllers: [AuthenticationController],
   providers: [AuthenticationService, JwtStrategy, GoogleStrategy],

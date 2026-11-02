@@ -44,7 +44,7 @@ export class UserService {
       lastName: user.lastName,
       phone: user.phone,
       photo: user.photo,
-      createdAt: user.createdAt
+      createdAt: user.createdAt,
     };
   }
 

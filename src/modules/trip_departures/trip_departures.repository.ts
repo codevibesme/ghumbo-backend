@@ -22,7 +22,10 @@ export class TripDepartureRepository {
       .getMany();
   }
 
-  async findByIdAndStatus(id: string, status: ETripDepartureStatus): Promise<TripDepartureDto | null> {
+  async findByIdAndStatus(
+    id: string,
+    status: ETripDepartureStatus,
+  ): Promise<TripDepartureDto | null> {
     return await this.repo.findOneBy({ id, status });
   }
 }

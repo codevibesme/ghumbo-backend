@@ -56,4 +56,8 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
 
     return n;
   }
+
+  async decr(key: string) {
+    await this.client.decr(key);
+  }
 }

@@ -4,8 +4,8 @@ import {
   HttpStatus,
   Injectable,
   UnauthorizedException,
+  UnprocessableEntityException,
 } from '@nestjs/common';
-import { EmailService } from '../email/email.service.js';
 import { createHmac, randomInt, randomUUID, timingSafeEqual } from 'crypto';
 import { CacheService } from '../cache/cache.service.js';
 import {
@@ -20,6 +20,8 @@ import {
   formatDateTimeIST,
   formatTimeIST,
 } from '../../utilities/date-format.js';
+import { QueueService } from '../queue/queue.service.js';
+import { QUEUES } from '../queue/queue.config.js';
 
 @Injectable()
 export class OtpService {
@@ -28,7 +30,7 @@ export class OtpService {
   private readonly MAX_REQ_PER_HOUR = 10;
 
   constructor(
-    private readonly emailService: EmailService,
+    private readonly queueService: QueueService,
     private readonly cacheService: CacheService,
   ) {}
 
@@ -40,16 +42,32 @@ export class OtpService {
     return randomInt(0, 1_000_000).toString().padStart(6, '0');
   }
 
+  private getCooldownKey(destination: string): string {
+    return `otp:cooldown:${destination}`;
+  }
+
+  private getMaxReqKey(destination: string): string {
+    return `otp:maxReq:${destination}`;
+  }
+
   private hashOtp(challengeId: string, otp: string): string {
     return createHmac('sha256', process.env.OTP_SECRET!)
       .update(`${challengeId}:${otp}`)
       .digest('hex');
   }
 
+  private async resetChallengeCache(destination: string, challengeId: string) {
+    await Promise.allSettled([
+      this.cacheService.del(this.getOtpKey(challengeId)),
+      this.cacheService.decr(this.getMaxReqKey(destination)),
+      this.cacheService.del(this.getCooldownKey(destination)),
+    ]);
+  }
+
   async createChallenge(
     opts: TCreateChallenge,
   ): Promise<TCreateChallengeResponse> {
-    const cooldownKey = `otp:cooldown:${opts.destination}`;
+    const cooldownKey = this.getCooldownKey(opts.destination);
     const acquired = await this.cacheService.setIfNotExists(
       cooldownKey,
       '1',
@@ -65,7 +83,7 @@ export class OtpService {
       );
     }
 
-    const maxReqKey = `otp:maxReq:${opts.destination}`;
+    const maxReqKey = this.getMaxReqKey(opts.destination);
     const maxReqPerHour = await this.cacheService.incr(maxReqKey, 3600);
 
     if (maxReqPerHour > this.MAX_REQ_PER_HOUR) {
@@ -96,7 +114,14 @@ export class OtpService {
       this.OTP_TTL,
     );
 
-    await this.deliverOtp(opts.channel, opts.destination, challengeId, otp);
+    try {
+      await this.deliverOtp(opts.channel, opts.destination, challengeId, otp);
+    } catch (err: any) {
+      await this.resetChallengeCache(opts.destination, challengeId);
+      throw new BadRequestException(
+        `Failed to deliver OTP, please try again. ${err.message}`,
+      );
+    }
 
     return {
       challengeId,
@@ -149,25 +174,39 @@ export class OtpService {
   ) {
     const now = new Date();
     const expiresAt = new Date(now.getTime() + this.OTP_TTL * 1000);
+    const idempotencyKey = this.getOtpKey(challengeId);
 
     if (channel === EOtpChannel.EMAIL) {
-      await this.emailService.sendWithTemplate({
-        to: destination,
-        template: {
-          id: EEMAIL_TEMPLATES.AUTH_SIGN_IN_CODE,
-          variables: {
-            ACCOUNT_EMAIL: destination,
-            CODE: otp,
-            EXPIRES_AT: formatTimeIST(expiresAt),
-            REQUESTED_AT: formatDateTimeIST(now),
+      await this.queueService.notify(QUEUES.NOTIFICATION.name, {
+        id: randomUUID(),
+        body: {
+          type: 'NOTIFICATION',
+          eventType: 'auth-challenge',
+          idempotencyKey,
+          data: {
+            channel: 'email',
+            destination,
+            idempotencyKey,
+            payload: {
+              to: destination,
+              template: {
+                id: EEMAIL_TEMPLATES.AUTH_SIGN_IN_CODE,
+                variables: {
+                  ACCOUNT_EMAIL: destination,
+                  CODE: otp,
+                  EXPIRES_AT: formatTimeIST(expiresAt),
+                  REQUESTED_AT: formatDateTimeIST(now),
+                },
+              },
+              idempotencyKey,
+            },
           },
         },
-        idempotencyKey: this.getOtpKey(challengeId),
       });
     } else if (channel === EOtpChannel.PHONE) {
       // send sms
     } else {
-      throw new BadRequestException(
+      throw new UnprocessableEntityException(
         'Otp channel not supported. Should be either email or phone',
       );
     }

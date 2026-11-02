@@ -10,7 +10,7 @@ export class UserDetailsDto extends PickType(UserDto, [
   'email',
   'phone',
   'photo',
-  'createdAt'
+  'createdAt',
 ]) {}
 
 export class CreateUserDto extends OmitType(UserDto, [

@@ -20,10 +20,7 @@ export class DestinationController {
   @ApiOkResponse({ type: PaginatedResponseDto<DestinationDto> })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiNotFoundResponse({ description: 'Not found' })
-  async findAll(
-    @Res() res: Response,
-    @Query() query: DestinationQueryDto,
-  ) {
+  async findAll(@Res() res: Response, @Query() query: DestinationQueryDto) {
     const data = await this.service.findAll(query);
 
     return res.status(200).send(data);
