@@ -2,7 +2,7 @@ import { AuthenticationModule } from './authentication/authentication.module.js'
 import { BookingRequestModule } from './booking_requests/booking_requests.module.js';
 import { CountryModule } from './countries/countries.module.js';
 import { DestinationModule } from './destinations/destinations.module.js';
-import { NotificationModule } from './notifications/notifications.module.js';
+
 import { TripDepartureModule } from './trip_departures/trip_departures.module.js';
 import { TripReviewModule } from './trip_reviews/trip_reviews.module.js';
 import { TripModule } from './trips/trips.module.js';

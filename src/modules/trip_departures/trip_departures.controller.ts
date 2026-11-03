@@ -7,8 +7,8 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { TripDepartureService } from './trip_departures.service.js';
-import { DestinationDto } from '../destinations/destinations.dto.js';
 import type { Response } from 'express';
+import { TripDepartureDto } from './trip_departures.dto.js';
 
 @Controller('departures')
 @ApiTags('departures')
@@ -16,7 +16,7 @@ export class TripDepartureController {
   constructor(private readonly service: TripDepartureService) {}
 
   @Get('/trip/:tripId')
-  @ApiOkResponse({ type: DestinationDto, isArray: true })
+  @ApiOkResponse({ type: TripDepartureDto, isArray: true })
   @ApiParam({ name: 'tripId', type: 'string' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiNotFoundResponse({ description: 'Not found' })
@@ -25,6 +25,15 @@ export class TripDepartureController {
     @Param('tripId') tripId: string,
   ) {
     const data = await this.service.findByTripId(tripId);
+
+    return res.status(200).send(data);
+  }
+
+  @Get('/upcoming')
+  @ApiOkResponse({ type: TripDepartureDto, isArray: true })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  async findUpcoming(@Res() res: Response) {
+    const data = await this.service.findUpcoming();
 
     return res.status(200).send(data);
   }

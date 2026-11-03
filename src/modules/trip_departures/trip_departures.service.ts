@@ -27,4 +27,8 @@ export class TripDepartureService {
 
     return data;
   }
+
+  async findUpcoming() {
+    return await this.repo.findUpcoming();
+  }
 }
