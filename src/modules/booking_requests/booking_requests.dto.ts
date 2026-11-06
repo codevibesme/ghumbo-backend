@@ -41,11 +41,13 @@ export class CreateBookingRequestReqDto {
   @MaxLength(254)
   email: string;
 
+  // Required: we call every request within 24 hours.
   @Transform(trim)
-  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
   @IsPhoneNumber()
   @MaxLength(16)
-  phone: string | null;
+  phone: string;
 
   @IsInt()
   @Min(1)

@@ -17,7 +17,7 @@ export enum EEMAIL_TEMPLATES {
   LIFECYCLE_AFTER_TRIP = 'lifecycle-after-trip',
   LIFECYCLE_WAITLIST_OPEN = 'lifecycle-waitlist-open',
   LIFECYCLE_REVIEW_REMINDER = 'lifecycle-review-reminder',
-  BILLING_DEPOSIT_RECEIPT = 'billing-deposit-receipt',
+  BILLING_PAYMENT_RECEIPT = 'billing-payment-receipt',
 }
 
 export const AuthEmailTemplate = z.object({
@@ -63,7 +63,6 @@ export const TripRequestReceivedEmailTemplate = z.object({
     TRAVELLERS: text,
     ESTIMATE: text,
     SUPPORT_PHONE: text,
-    DEPOSIT_AMOUNT: text,
     TRACK_URL: url,
   }),
 });
@@ -104,8 +103,6 @@ export const TripSeatConfirmedEmailTemplate = z.object({
     PICKUP: text,
     LEAVES_AT: text,
     STAY: text,
-    DEPOSIT_AMOUNT: text,
-    BALANCE_DUE_DATE: text,
     TRIP_TOTAL: text,
     COORDINATOR_NAME: text,
     COORDINATOR_NOTE: text,
@@ -232,8 +229,8 @@ export const LifecycleReviewReminderEmailTemplate = z.object({
   }),
 });
 
-export const BillingDepositReceiptEmailTemplate = z.object({
-  id: z.literal(EEMAIL_TEMPLATES.BILLING_DEPOSIT_RECEIPT),
+export const BillingPaymentReceiptEmailTemplate = z.object({
+  id: z.literal(EEMAIL_TEMPLATES.BILLING_PAYMENT_RECEIPT),
   variables: z.strictObject({
     USER_NAME: optionalText,
     BOOKING_REF: text,
@@ -241,13 +238,10 @@ export const BillingDepositReceiptEmailTemplate = z.object({
     TRIP_SHORT: text,
     DEPARTURE_DATE: text,
     TRAVELLERS: text,
-    DEPOSIT_AMOUNT: text,
+    AMOUNT_PAID: text,
     RECEIPT_NUMBER: text,
     PAID_AT: text,
     PAYMENT_METHOD: text,
-    TRIP_TOTAL: text,
-    BALANCE_AMOUNT: text,
-    BALANCE_DUE_DATE: text,
     INVOICE_URL: url,
   }),
 });
@@ -263,7 +257,7 @@ export const EmailTemplate = z.discriminatedUnion('id', [
   LifecycleAfterTripEmailTemplate,
   LifecycleWaitlistOpenEmailTemplate,
   LifecycleReviewReminderEmailTemplate,
-  BillingDepositReceiptEmailTemplate,
+  BillingPaymentReceiptEmailTemplate,
 ]);
 
 export type TEmailTemplatePayload = z.infer<typeof EmailTemplate>;

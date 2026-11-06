@@ -7,7 +7,8 @@ import {
   callout, steps, features, ratingRow, board, photo, tripCard,
 } from './layout.mjs';
 
-const REPLY_TO = 'support@ghumbo.com';
+// Replies go to support. Same env as the footer line (sync.mjs); env-cmd loads .env for emails:sync.
+const REPLY_TO = process.env.GHUMBO_SUPPORT_EMAIL?.trim() || 'support@ghumbo.com';
 export const SENDERS = {
   security: 'Ghumbo <security@mail.ghumbo.com>',
   trips: 'Ghumbo <trips@mail.ghumbo.com>',
@@ -160,7 +161,6 @@ export const templates = [
       TRAVELLERS: { sample: '2 adults · one room' },
       ESTIMATE: { sample: '≈ ₹18,998 · GST included' },
       SUPPORT_PHONE: { sample: '+91 33 4000 0000' },
-      DEPOSIT_AMOUNT: { sample: '₹5,000' },
       TRACK_URL: { sample: 'https://ghumbo.com/my-trips/GH-26DEC-4821' },
     },
     footer: {
@@ -187,7 +187,7 @@ export const templates = [
       h2('What happens next') +
       steps([
         ['Within 24 hours', 'We call you', `From ${v('SUPPORT_PHONE')}. Save the number so you know it’s us.`],
-        ['On the call', 'We confirm your seat', `We answer your questions and hold your seat. A ${v('DEPOSIT_AMOUNT')} deposit confirms it.`],
+        ['On the call', 'We confirm your seat', 'We answer your questions and sort your room, then send a link to pay in full. Paying confirms your seat.'],
         ['7 days before', 'Your trip pack arrives', 'Pickup time, your coordinator and a packing list.'],
       ]) +
       button(v('TRACK_URL'), 'Track your request →') +
@@ -254,7 +254,7 @@ export const templates = [
     name: 'Trips · 4 Seat confirmed',
     from: SENDERS.trips,
     subject: `You’re booked: ${v('TRIP_SHORT')}, ${v('DEPARTURE_DATE')}`,
-    preheader: 'Deposit received. Your pickup point and coordinator are inside.',
+    preheader: 'Payment received. Your pickup point and coordinator are inside.',
     variables: {
       ...user,
       TRIP_SHORT: { sample: 'Darjeeling' },
@@ -267,8 +267,6 @@ export const templates = [
       PICKUP: { sample: '11:00 · NJP station / Bagdogra airport' },
       LEAVES_AT: { sample: '11:30 sharp' },
       STAY: { sample: 'Family-run homestay below Chowrasta' },
-      DEPOSIT_AMOUNT: { sample: '₹5,000' },
-      BALANCE_DUE_DATE: { sample: 'Sat 19 Dec 2026' },
       TRIP_TOTAL: { sample: '₹18,998 · 2 adults · GST included' },
       COORDINATOR_NAME: { sample: 'Pemba Sherpa' },
       COORDINATOR_NOTE: { sample: 'With the group all four days. Handles tickets, timings and the 04:00 start for Tiger Hill.' },
@@ -282,7 +280,7 @@ export const templates = [
     body: () =>
       kicker('Seat confirmed') +
       h1(`You’re going to ${v('TRIP_SHORT')}`) +
-      p(`Deposit received, ${v('USER_NAME')}. ${v('SEATS_TEXT')} on the ${v('DEPARTURE_DATE')} departure are yours. Here’s everything for the day you arrive.`) +
+      p(`Payment received, ${v('USER_NAME')}. ${v('SEATS_TEXT')} on the ${v('DEPARTURE_DATE')} departure are yours. Here’s everything for the day you arrive.`) +
       card(
         `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tr><td style="font:600 12px/1.2 ${MONO};letter-spacing:0.08em;color:${C.red}">BOARDING PASS</td><td style="text-align:right;font:600 12px/1.2 ${MONO};letter-spacing:0.08em;color:${C.ink}">${v('BOOKING_REF')}</td></tr></table>` +
           `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin:16px 0"><tr><td style="vertical-align:top">${label('From')}<p style="margin:0;font:800 20px/1.2 ${SANS};color:${C.ink}">${v('FROM_POINT')}</p></td><td style="vertical-align:top;text-align:right">${label('To')}<p style="margin:0;font:800 20px/1.2 ${SANS};color:${C.ink}">${v('TRIP_SHORT')}</p></td></tr></table>` +
@@ -296,9 +294,7 @@ export const templates = [
       ) +
       h2('Payment') +
       `<tr><td style="padding:0 0 24px">${kv([
-        ['Deposit', `${v('DEPOSIT_AMOUNT')} ${badge('Received')}`],
-        ['Balance due', v('BALANCE_DUE_DATE'), { mono: true }],
-        ['Trip total', v('TRIP_TOTAL')],
+        ['Trip total', `${v('TRIP_TOTAL')} ${badge('Paid in full')}`],
       ])}</td></tr>` +
       callout(`Your coordinator: ${v('COORDINATOR_NAME')}`, v('COORDINATOR_NOTE')) +
       button(v('TRIP_URL'), 'View my trip →') +
@@ -534,13 +530,13 @@ export const templates = [
       note('This is the only reminder we’ll send.', '0'),
   },
 
-  // 11 · Deposit receipt
+  // 11 · Payment receipt (trips are paid in full after the call)
   {
-    alias: 'billing-deposit-receipt',
-    name: 'Billing · 11 Deposit receipt',
+    alias: 'billing-payment-receipt',
+    name: 'Billing · 11 Payment receipt',
     from: SENDERS.billing,
-    subject: `Receipt for your deposit · ${v('BOOKING_REF')}`,
-    preheader: `${v('DEPOSIT_AMOUNT')} received for ${v('TRIP_SHORT')}, ${v('DEPARTURE_DATE')}.`,
+    subject: `Receipt for your payment · ${v('BOOKING_REF')}`,
+    preheader: `${v('AMOUNT_PAID')} received for ${v('TRIP_SHORT')}, ${v('DEPARTURE_DATE')}.`,
     variables: {
       ...user,
       BOOKING_REF: { sample: 'GH-26DEC-4821' },
@@ -548,13 +544,10 @@ export const templates = [
       TRIP_SHORT: { sample: 'Darjeeling' },
       DEPARTURE_DATE: { sample: 'Sat 26 Dec' },
       TRAVELLERS: { sample: '2 adults' },
-      DEPOSIT_AMOUNT: { sample: '₹5,000' },
+      AMOUNT_PAID: { sample: '₹18,998' },
       RECEIPT_NUMBER: { sample: 'GHR-2026-000148' },
       PAID_AT: { sample: 'MON 12 OCT 2026 · 11:32 IST' },
       PAYMENT_METHOD: { sample: 'UPI · riya@okaxis' },
-      TRIP_TOTAL: { sample: '₹18,998' },
-      BALANCE_AMOUNT: { sample: '₹13,998' },
-      BALANCE_DUE_DATE: { sample: 'Sat 19 Dec 2026' },
       INVOICE_URL: { sample: 'https://ghumbo.com/my-trips/GH-26DEC-4821/invoice' },
     },
     footer: {
@@ -564,10 +557,10 @@ export const templates = [
     },
     body: () =>
       kicker('Payment receipt') +
-      h1('Deposit received, thanks') +
-      p(`Hi ${v('USER_NAME')}, here’s the receipt for the deposit you paid on our call. Your GST invoice is linked below. Keep it for your records.`) +
+      h1('Payment received, thanks') +
+      p(`Hi ${v('USER_NAME')}, here’s the receipt for your trip, paid in full. Your seat is confirmed, and your GST invoice is linked below. Keep it for your records.`) +
       card(
-        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tr><td style="vertical-align:top">${label('Amount paid')}${bigMono(v('DEPOSIT_AMOUNT'), 30)}</td><td style="vertical-align:top;text-align:right">${badge('Paid')}</td></tr></table>` +
+        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tr><td style="vertical-align:top">${label('Amount paid')}${bigMono(v('AMOUNT_PAID'), 30)}</td><td style="vertical-align:top;text-align:right">${badge('Paid')}</td></tr></table>` +
           `<div style="height:20px;line-height:20px">&#160;</div>` +
           kv([
             ['Receipt no.', v('RECEIPT_NUMBER'), { mono: true }],
@@ -577,12 +570,7 @@ export const templates = [
             ['Trip', `${v('TRIP_NAME')} · ${v('TRAVELLERS')}`],
           ], 140),
       ) +
-      h2('What’s left to pay') +
-      `<tr><td style="padding:0 0 24px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse">` +
-      `<tr><td style="padding:10px 16px 10px 0;border-top:2px dashed ${C.dash};font:400 15px/1.5 ${SANS};color:${C.ink}">Trip total · GST included</td><td style="padding:10px 0;border-top:2px dashed ${C.dash};text-align:right;font:600 15px/1.5 ${MONO};color:${C.ink}">${v('TRIP_TOTAL')}</td></tr>` +
-      `<tr><td style="padding:10px 16px 10px 0;border-top:1px solid ${C.rule};font:400 15px/1.5 ${SANS};color:${C.ink}">Deposit paid</td><td style="padding:10px 0;border-top:1px solid ${C.rule};text-align:right;font:600 15px/1.5 ${MONO};color:${C.ink}">− ${v('DEPOSIT_AMOUNT')}</td></tr>` +
-      `<tr><td style="padding:12px 16px 12px 0;border-top:1.5px solid ${C.ink};font:700 16px/1.5 ${SANS};color:${C.ink}">Balance due by ${v('BALANCE_DUE_DATE')}</td><td style="padding:12px 0;border-top:1.5px solid ${C.ink};text-align:right;font:600 16px/1.5 ${MONO};color:${C.ink}">${v('BALANCE_AMOUNT')}</td></tr>` +
-      `</table></td></tr>` +
+      note('GST included. Nothing more to pay for what’s in your ticket.', '0 0 24px') +
       button(v('INVOICE_URL'), 'Download invoice (PDF) →') +
       note('Something look wrong? Reply with your receipt number and we’ll sort it out.', '0'),
   },

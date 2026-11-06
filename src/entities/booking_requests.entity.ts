@@ -87,8 +87,9 @@ export class BookingRequestEntity {
   @Column({ name: 'email', type: 'varchar', length: 254 })
   email: string;
 
-  @Column({ name: 'phone', type: 'varchar', length: 16, nullable: true })
-  phone: string | null;
+  // E.164, required: we call every request within 24 hours.
+  @Column({ name: 'phone', type: 'varchar', length: 16 })
+  phone: string;
 
   @Column({ name: 'traveler_count', type: 'integer' })
   travelerCount: number;

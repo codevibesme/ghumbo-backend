@@ -218,7 +218,7 @@ export const layout = ({ title, preheader, body, footer, brand }) => {
   const footLines = [
     footer.reason,
     ...(footer.lines ?? []),
-    `Replies go to <a href="mailto:support@ghumbo.com" style="color:${C.paper}">support@ghumbo.com</a>.`,
+    `Replies go to <a href="mailto:${brand.supportEmail}" style="color:${C.paper}">${brand.supportEmail}</a>.`,
     `Ghumbo · ${brand.address}${footer.gstin ? ` · GSTIN ${brand.gstin}` : ''}`,
   ]
     .map((l) => `<p style="margin:0 0 8px;font:400 14px/1.5 ${SANS};color:${C.paper}">${l}</p>`)

@@ -24,6 +24,7 @@ const BRAND_ENV = {
   gstin: 'GHUMBO_GSTIN',
   logoUrl: 'GHUMBO_LOGO_URL',
   logoUrlDark: 'GHUMBO_LOGO_URL_DARK',
+  supportEmail: 'GHUMBO_SUPPORT_EMAIL',
 };
 const brandEnv = Object.fromEntries(
   Object.entries(BRAND_ENV).map(([field, name]) => [field, process.env[name]?.trim() || undefined]),
@@ -36,6 +37,7 @@ const brand = {
   ...brandEnv,
   address: brandEnv.address ?? '[Registered address]',
   gstin: brandEnv.gstin ?? '[GSTIN]',
+  supportEmail: brandEnv.supportEmail ?? 'support@ghumbo.com',
 };
 
 const render = (t) =>
