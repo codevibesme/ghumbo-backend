@@ -14,7 +14,7 @@ import {
 import { BookingRequestEntity } from '../../entities/booking_requests.entity.js';
 import { trim, trimLower } from '../../utilities/transformers.js';
 import { PickType } from '@nestjs/swagger';
-import { ECURRENCY } from '../../schemas/misc.schema.js';
+import { ECURRENCY, TAsset } from '../../schemas/misc.schema.js';
 
 const ULID = /^[0-9A-HJKMNP-TV-Z]{26}$/;
 
@@ -87,7 +87,12 @@ export class UserBookingRequestDto extends PickType(BookingRequestDto, [
   'travelerCount',
 ]) {
   tripName: string;
+  /** For linking to the trip page. */
+  tripSlug: string;
+  /** The trip's cover photo (its first asset), for the My trips card. */
+  tripAsset: TAsset | null;
   destinationName: string;
+  isPeak: boolean;
   startDate: string;
   endDate: string;
   currency: ECURRENCY;
