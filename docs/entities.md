@@ -241,7 +241,7 @@ A customer's rating and feedback for a trip.
 | `created_at` | `createdAt` | `timestamptz` | | `now()` | |
 | `updated_at` | `updatedAt` | `timestamptz` | | `now()` | |
 
-> `citext` requires the `citext` extension. TypeORM runs `CREATE EXTENSION IF NOT EXISTS citext` on startup, which needs a DB role with permission to create extensions.
+> `citext` requires the `citext` extension. The baseline migration creates it (and `pg_trgm`), which needs a DB role with permission to create extensions.
 
 ### `auth_identities` — `AuthIdentityEntity`
 
@@ -374,9 +374,29 @@ Shapes are defined as Zod schemas, so validate with them before writing. The dat
 { title: string; description: string; }
 ```
 
-## Schema sync
+## Migrations
 
-There are no migrations yet. The schema is applied with `synchronize: true` only when `ENV=local` (see `src/configs/db.config.ts`).
-- Adding a check constraint fails if existing rows violate it.
-- Column renames or type changes can make TypeORM drop and recreate the column, which loses that column's data.
-- Before deploying anywhere non-local, generate migrations from these entities.
+`synchronize` is off in every environment. The schema changes only through TypeORM migrations in `src/migrations/`, which build to `dist/migrations/`.
+
+| Command | What it does |
+| --- | --- |
+| `npm run migration:run` | Builds, then applies pending migrations to the `.env` database |
+| `npm run migration:generate -- src/migrations/<Name>` | Builds, then writes a migration with the diff between the entities and the `.env` database |
+| `npm run migration:create -- src/migrations/<Name>` | Writes an empty migration for hand-written SQL |
+| `npm run migration:revert` | Reverts the last applied migration |
+| `npm run migration:show` | Lists migrations and whether each is applied |
+| `node dist/migrate.js` | Deploy step: applies pending migrations using the container's env |
+
+Workflow for a schema change:
+1. Change the entity.
+2. `npm run migration:run` so your local DB is up to date, then `npm run migration:generate -- src/migrations/<Name>`.
+3. Read the generated SQL. Column renames or type changes are generated as drop + add, which loses data; rewrite them as `ALTER TABLE ... RENAME` or a type cast by hand.
+4. Commit the entity change and the migration together.
+
+Rules:
+- Keep migrations backward compatible (expand, then contract): the previous app version must still run on the new schema, so a deploy or rollback never breaks.
+- Adding a check constraint fails if existing rows violate it. Backfill first.
+- Indexes declared with `synchronize: false` (the `*_trgm` trigram indexes) are never generated. Write them by hand, as `1794022551987-Baseline.ts` does.
+- Never edit a migration that has run in production. Add a new one.
+
+Each migration runs in its own transaction. Applied migrations are recorded in the `migrations` table.

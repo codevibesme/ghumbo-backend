@@ -233,7 +233,6 @@ async function main() {
 
   const seeds = loadSeeds(args);
 
-  // Same config as the app: schema synchronize runs only when ENV=local.
   const dataSource = new DataSource(dbConfig as DataSourceOptions);
   await dataSource.initialize();
 

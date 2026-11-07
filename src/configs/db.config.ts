@@ -1,29 +1,30 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import path from 'node:path';
 import pg from 'pg';
+import type { DataSourceOptions } from 'typeorm';
 import ENTITIES from '../entities/index.js';
 
 // Return `date` columns as 'YYYY-MM-DD' strings instead of local-midnight JS Dates
 pg.types.setTypeParser(pg.types.builtins.DATE, (value) => value);
 
-const dbConfig: TypeOrmModuleOptions = {
+const dbConfig: DataSourceOptions = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
   entities: ENTITIES,
-  synchronize: process.env.ENV === 'local',
+  synchronize: false,
+  migrationsRun: false,
+  migrations: [path.join(import.meta.dirname, '../migrations/*.js')],
+  migrationsTableName: 'migrations',
   dropSchema: false,
-  connectTimeoutMS: 50000,
+  connectTimeoutMS: 10_000,
+  poolSize: 10,
+  ssl:
+    process.env.ENV === 'production'
+      ? {
+          rejectUnauthorized: true,
+        }
+      : false,
   extra: {
-    connectionLimit: 10,
-    waitForConnections: true,
-    queueLimit: 0,
-    ...(process.env.DB_SSL === 'true' && {
-      ssl: {
-        rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true',
-        ca: process.env.DB_CA_CERT,
-        key: process.env.DB_CLIENT_KEY,
-        cert: process.env.DB_CLIENT_CERT,
-      },
-    }),
+    idleTimeoutMillis: 30_000,
   },
 };
 
