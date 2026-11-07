@@ -31,24 +31,40 @@ export class TripDepartureRepository {
     return await this.repo.findOneBy({ id, status });
   }
 
- async findUpcoming(): Promise<TripDepartureDto[]> {
-  return await this.repo.createQueryBuilder('departure')
-    .innerJoin('departure.trip', 'trip')
-    .innerJoin('trip.destination', 'destination')
-    .select([
-      'departure.id', 'departure.tripId', 'departure.status', 'departure.isPeak',
-      'departure.startDate', 'departure.endDate', 'departure.capacity',
-      'departure.bookedSeats', 'departure.currency', 'departure.amount',
-      'trip.id', 'trip.name', 'trip.slug', 'trip.status', 'trip.durationDays',
-      'destination.slug', 'destination.name', 'destination.status',
-    ])
-    .where('departure.status = :open', { open: ETripDepartureStatus.OPEN })
-    .andWhere('departure.startDate >= CURRENT_DATE')
-    .andWhere('trip.status = :live', { live: ETripStatus.LIVE })
-    .andWhere('destination.status = :liveDest', { liveDest: EDestinationStatus.LIVE })
-    .orderBy('departure.startDate', 'ASC')
-    .addOrderBy('trip.name', 'ASC')
-    .take(10)
-    .getMany();
-}
+  async findUpcoming(): Promise<TripDepartureDto[]> {
+    return await this.repo
+      .createQueryBuilder('departure')
+      .innerJoin('departure.trip', 'trip')
+      .innerJoin('trip.destination', 'destination')
+      .select([
+        'departure.id',
+        'departure.tripId',
+        'departure.status',
+        'departure.isPeak',
+        'departure.startDate',
+        'departure.endDate',
+        'departure.capacity',
+        'departure.bookedSeats',
+        'departure.currency',
+        'departure.amount',
+        'trip.id',
+        'trip.name',
+        'trip.slug',
+        'trip.status',
+        'trip.durationDays',
+        'destination.slug',
+        'destination.name',
+        'destination.status',
+      ])
+      .where('departure.status = :open', { open: ETripDepartureStatus.OPEN })
+      .andWhere('departure.startDate >= CURRENT_DATE')
+      .andWhere('trip.status = :live', { live: ETripStatus.LIVE })
+      .andWhere('destination.status = :liveDest', {
+        liveDest: EDestinationStatus.LIVE,
+      })
+      .orderBy('departure.startDate', 'ASC')
+      .addOrderBy('trip.name', 'ASC')
+      .take(10)
+      .getMany();
+  }
 }

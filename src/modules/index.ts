@@ -16,5 +16,5 @@ export const MODULES = [
   TripModule,
   TripDepartureModule,
   TripReviewModule,
-  BookingRequestModule
+  BookingRequestModule,
 ];

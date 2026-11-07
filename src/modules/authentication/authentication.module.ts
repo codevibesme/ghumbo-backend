@@ -19,7 +19,7 @@ import { GoogleStrategy } from './strategies/google-auth.strategy.js';
     UserModule,
     AuthIdentityModule,
     AuthSessionModule,
-    OtpModule
+    OtpModule,
   ],
   controllers: [AuthenticationController],
   providers: [AuthenticationService, JwtStrategy, GoogleStrategy],
