@@ -140,7 +140,7 @@ export const templates = [
           badge: badge(v(`TRIP_${i}_SEATS`)),
           price: v(`TRIP_${i}_PRICE`),
         })),
-        foot: 'TWIN SHARING · GST INCLUDED',
+        foot: 'TWIN SHARING · TAXES INCLUDED',
       }),
   },
 
@@ -159,7 +159,7 @@ export const templates = [
       DEPARTURE_DATE: { sample: 'Sat 26 Dec' },
       DEPARTURE_DATES: { sample: 'SAT 26 DEC → TUE 29 DEC 2026' },
       TRAVELLERS: { sample: '2 adults · one room' },
-      ESTIMATE: { sample: '≈ ₹18,998 · GST included' },
+      ESTIMATE: { sample: '≈ ₹18,998 · taxes included' },
       SUPPORT_PHONE: { sample: '+91 33 4000 0000' },
       TRACK_URL: { sample: 'https://ghumbo.com/my-trips/GH-26DEC-4821' },
     },
@@ -267,7 +267,7 @@ export const templates = [
       PICKUP: { sample: '11:00 · NJP station / Bagdogra airport' },
       LEAVES_AT: { sample: '11:30 sharp' },
       STAY: { sample: 'Family-run homestay below Chowrasta' },
-      TRIP_TOTAL: { sample: '₹18,998 · 2 adults · GST included' },
+      TRIP_TOTAL: { sample: '₹18,998 · 2 adults · taxes included' },
       COORDINATOR_NAME: { sample: 'Pemba Sherpa' },
       COORDINATOR_NOTE: { sample: 'With the group all four days. Handles tickets, timings and the 04:00 start for Tiger Hill.' },
       TRIP_URL: { sample: 'https://ghumbo.com/my-trips/GH-26DEC-4821' },
@@ -442,7 +442,7 @@ export const templates = [
         '0 0 32px',
       ) +
       h2('Where next?', '0 0 4px') +
-      note('Fresh dates coming up. Per person, twin sharing, GST included.', '0 0 16px') +
+      note('Fresh dates coming up. Per person, twin sharing, taxes included.', '0 0 16px') +
       [1, 2, 3]
         .map((i) =>
           tripCard({
@@ -558,7 +558,7 @@ export const templates = [
     body: () =>
       kicker('Payment receipt') +
       h1('Payment received, thanks') +
-      p(`Hi ${v('USER_NAME')}, here’s the receipt for your trip, paid in full. Your seat is confirmed, and your GST invoice is linked below. Keep it for your records.`) +
+      p(`Hi ${v('USER_NAME')}, here’s the receipt for your trip, paid in full. Your seat is confirmed, and your invoice is linked below. Keep it for your records.`) +
       card(
         `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse"><tr><td style="vertical-align:top">${label('Amount paid')}${bigMono(v('AMOUNT_PAID'), 30)}</td><td style="vertical-align:top;text-align:right">${badge('Paid')}</td></tr></table>` +
           `<div style="height:20px;line-height:20px">&#160;</div>` +
@@ -570,7 +570,7 @@ export const templates = [
             ['Trip', `${v('TRIP_NAME')} · ${v('TRAVELLERS')}`],
           ], 140),
       ) +
-      note('GST included. Nothing more to pay for what’s in your ticket.', '0 0 24px') +
+      note('All taxes included. Nothing more to pay for what’s in your ticket.', '0 0 24px') +
       button(v('INVOICE_URL'), 'Download invoice (PDF) →') +
       note('Something look wrong? Reply with your receipt number and we’ll sort it out.', '0'),
   },

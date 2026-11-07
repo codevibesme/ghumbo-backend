@@ -8,7 +8,8 @@
 // unless --draft is passed. RESEND_API_KEY must have full access (sending-only keys can't manage templates).
 //
 // Brand env (required to sync; --check/--preview fall back to placeholders and a text wordmark):
-//   GHUMBO_ADDRESS, GHUMBO_GSTIN, GHUMBO_LOGO_URL, GHUMBO_LOGO_URL_DARK
+//   GHUMBO_ADDRESS, GHUMBO_LOGO_URL, GHUMBO_LOGO_URL_DARK, GHUMBO_SUPPORT_EMAIL
+// Optional: GHUMBO_GSTIN (printed on billing emails once Ghumbo is GST-registered).
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -21,7 +22,6 @@ const MAX_VARIABLES = 50;
 
 const BRAND_ENV = {
   address: 'GHUMBO_ADDRESS',
-  gstin: 'GHUMBO_GSTIN',
   logoUrl: 'GHUMBO_LOGO_URL',
   logoUrlDark: 'GHUMBO_LOGO_URL_DARK',
   supportEmail: 'GHUMBO_SUPPORT_EMAIL',
@@ -36,7 +36,7 @@ const missingBrandEnv = Object.entries(BRAND_ENV)
 const brand = {
   ...brandEnv,
   address: brandEnv.address ?? '[Registered address]',
-  gstin: brandEnv.gstin ?? '[GSTIN]',
+  gstin: process.env.GHUMBO_GSTIN?.trim() || null,
   supportEmail: brandEnv.supportEmail ?? 'support@ghumbo.com',
 };
 
