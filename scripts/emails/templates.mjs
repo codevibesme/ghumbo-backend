@@ -7,7 +7,7 @@ import {
   callout, steps, features, ratingRow, board, photo, tripCard,
 } from './layout.mjs';
 
-// Replies go to support. Same env as the footer line (sync.mjs); env-cmd loads .env for emails:sync.
+// Replies go to support. Same env as the footer line (sync.mjs); `node --env-file=.env` loads it for emails:sync.
 const REPLY_TO = process.env.GHUMBO_SUPPORT_EMAIL?.trim() || 'support@ghumbo.com';
 export const SENDERS = {
   security: 'Ghumbo <security@mail.ghumbo.com>',

@@ -1,0 +1,121 @@
+name: Deploy
+
+# Push to production: CI, build an arm64 image tagged with the commit SHA, push to ECR, deploy.
+# Manual run with `sha`: redeploy an image already in ECR (rollback), skipping CI and build.
+on:
+  push:
+    branches: [production]
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: Git SHA of an image already in ECR to redeploy (rollback). Leave empty to build and deploy the selected branch.
+        required: false
+        default: ''
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  ECR_REPOSITORY: ghumbo-backend
+
+jobs:
+  ci:
+    if: inputs.sha == ''
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: ci
+    # Native arm64 runner: the EC2 instance is Graviton (t4g).
+    runs-on: ubuntu-24.04-arm
+    environment: production
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/arm64
+          push: true
+          provenance: false
+          tags: ${{ steps.ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build
+    # Runs after a successful build, or on its own for a rollback. Never after a failed CI or build.
+    if: ${{ !cancelled() && (needs.build.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.sha != '')) }}
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 20
+    env:
+      SHA: ${{ inputs.sha || github.sha }}
+      INSTANCE_ID: ${{ vars.EC2_INSTANCE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Check the image exists
+        run: aws ecr describe-images --repository-name "$ECR_REPOSITORY" --image-ids imageTag="$SHA" --query 'imageDetails[0].imagePushedAt' --output text
+
+      - name: Deploy through SSM Run Command
+        env:
+          IMAGE: ${{ steps.ecr.outputs.registry }}/ghumbo-backend:${{ inputs.sha || github.sha }}
+        run: |
+          # Ship the Compose file, Caddyfile and deploy script with the command, then run the script.
+          # The host's .env is never touched.
+          b64() { base64 -w0 "$1"; }
+          SCRIPT=$(cat <<SH
+          set -eu
+          mkdir -p /opt/ghumbo && cd /opt/ghumbo
+          echo '$(b64 deploy/docker-compose.prod.yml)' | base64 -d > docker-compose.yml
+          echo '$(b64 deploy/Caddyfile)' | base64 -d > Caddyfile
+          echo '$(b64 deploy/deploy.sh)' | base64 -d > deploy.sh
+          chmod 700 deploy.sh
+          ./deploy.sh '$IMAGE'
+          SH
+          )
+          jq -n --arg s "$SCRIPT" '{commands: [$s], executionTimeout: ["900"]}' > params.json
+
+          CMD_ID=$(aws ssm send-command \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "deploy ${SHA:0:12}" \
+            --parameters file://params.json \
+            --query Command.CommandId --output text)
+          echo "SSM command $CMD_ID"
+
+          while true; do
+            STATUS=$(aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE_ID" \
+              --query Status --output text 2>/dev/null || echo Pending)
+            case "$STATUS" in
+              Pending|InProgress|Delayed) sleep 5 ;;
+              *) break ;;
+            esac
+          done
+
+          aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE_ID" \
+            --query '[StandardOutputContent, StandardErrorContent]' --output text
+          echo "Status: $STATUS"
+          if [ "$STATUS" != Success ]; then
+            echo "::error::Deploy failed. To roll back, run this workflow with the previous SHA (cat /opt/ghumbo/current_image on the host)."
+            exit 1
+          fi

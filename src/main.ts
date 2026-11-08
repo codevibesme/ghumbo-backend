@@ -14,6 +14,9 @@ async function bootstrap() {
 
   app.set('trust proxy', 1);
 
+  // On SIGTERM (deploys), stop accepting connections and finish in-flight requests.
+  app.enableShutdownHooks();
+
   if (process.env.ENV === 'local') {
     setupSwagger(app);
   }

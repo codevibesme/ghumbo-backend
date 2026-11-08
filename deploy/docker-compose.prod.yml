@@ -1,0 +1,94 @@
+# Production stack on the EC2 host. Lives at /opt/ghumbo/docker-compose.yml next to
+# Caddyfile and .env (the hand-kept secrets file, mode 600).
+#
+#   IMAGE=<ecr>/ghumbo-backend:<sha> docker compose pull
+#   IMAGE=<ecr>/ghumbo-backend:<sha> docker compose run --rm api node dist/migrate.js
+#   IMAGE=<ecr>/ghumbo-backend:<sha> docker compose up -d
+#
+# ${API_DOMAIN} is read from .env in this directory (Compose interpolation), so Caddy
+# never sees the other secrets.
+
+x-app: &app
+  image: ${IMAGE:?set IMAGE to <ecr>/ghumbo-backend:<sha>}
+  init: true
+  restart: unless-stopped
+  env_file: .env
+  environment:
+    NODE_ENV: production
+    ENV: production
+    PORT: '8000'
+    REDIS_HOST: redis
+    REDIS_PORT: '6379'
+  depends_on:
+    redis:
+      condition: service_healthy
+  logging: &logging
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: '5'
+
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?set API_DOMAIN in .env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - api
+    logging: *logging
+
+  api:
+    <<: *app
+    expose:
+      - '8000'
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:8000/health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"
+      interval: 15s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+  worker:
+    <<: *app
+    command: ['node', 'dist/worker.js']
+    # Time to finish in-flight SQS messages after SIGTERM before Docker kills it.
+    stop_grace_period: 60s
+
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+    # OTPs and cache only: every key has a TTL, so no persistence and evict by TTL.
+    command:
+      - redis-server
+      - --save
+      - ''
+      - --appendonly
+      - 'no'
+      - --maxmemory
+      - 256mb
+      - --maxmemory-policy
+      - volatile-lru
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    logging: *logging
+
+volumes:
+  # Let's Encrypt certificates and account keys. Survives redeploys.
+  caddy-data:
+  caddy-config:

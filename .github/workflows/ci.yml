@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [dev]
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint, format, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run lint
+      - run: npx prettier --check "src/**/*.ts"
+      - run: npm run build
+
+  migrations:
+    name: Migrations match entities
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ghumbo
+          POSTGRES_PASSWORD: ghumbo
+          POSTGRES_DB: ghumbo
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ghumbo"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://ghumbo:ghumbo@localhost:5432/ghumbo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Apply all migrations to an empty database
+        run: node dist/migrate.js
+      - name: Fail if entities changed without a migration
+        run: node node_modules/typeorm/cli.js migration:generate -d dist/configs/data-source.js --check src/migrations/Pending

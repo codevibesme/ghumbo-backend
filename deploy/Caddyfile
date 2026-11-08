@@ -1,0 +1,21 @@
+# Only public entrypoint. Gets and renews TLS certificates for {$API_DOMAIN} on its own.
+
+{$API_DOMAIN} {
+	encode zstd gzip
+
+	log {
+		output stdout
+		format json
+	}
+
+	# Health endpoints are for the host only (container healthcheck and deploy script).
+	@health path /health /health/*
+	respond @health 404
+
+	reverse_proxy api:8000 {
+		# While the API container restarts during a deploy, hold requests and retry
+		# the connection for up to 10s instead of returning 502.
+		lb_try_duration 10s
+		lb_try_interval 250ms
+	}
+}
