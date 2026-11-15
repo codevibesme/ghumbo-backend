@@ -29,6 +29,7 @@
       "slug": "andaman-islands",
       "name": "Andaman Islands",
       "status": "live",
+      "best_time": "Nov–Apr",
       "overview": "Far out in the Bay of Bengal, the Andaman Islands are India's tropical edge: powder-white beaches, glass-clear water and some of the healthiest coral reefs in the country, all reached by a short flight to Port Blair, now officially Sri Vijaya Puram. The town holds the islands' history in the Cellular Jail, the 'Kala Pani' prison of the freedom struggle, and across the harbour the banyan-wrapped ruins of Ross Island, now Netaji Subhas Chandra Bose Dweep. Fast catamarans hop to Swaraj Dweep (Havelock), home to Radhanagar beach and the country's best-known scuba sites, and to tiny, slow-paced Shaheed Dweep (Neil) with its natural rock arch. Further north, the road through the Jarawa reserve leads to Baratang's mangrove creeks and limestone caves. November to April is the best time to visit, with calm seas and clear water from January to April; the south-west monsoon (roughly late May to September) brings rough seas, heavy rain and frequent ferry cancellations.",
       "latitude": 11.6234,
       "longitude": 92.7265,
@@ -62,6 +63,7 @@
         {
           "slug": "andaman-port-blair-havelock-budget",
           "name": "Andaman Express: Port Blair & Havelock",
+          "tagline": "Cellular Jail, then two nights on Havelock with Radhanagar sunsets",
           "tier": "budget",
           "status": "live",
           "audience": "open",
@@ -69,10 +71,126 @@
           "duration_days": 4,
           "duration_nights": 3,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Veer Savarkar International Airport, Port Blair",
+              "type": "airport",
+              "city": "Port Blair",
+              "code": "IXZ"
+            }
+          ],
+          "destination_hub": {
+            "name": "Havelock",
+            "type": "port",
+            "city": "Havelock",
+            "code": "HVL"
+          },
+          "stops": [
+            "Port Blair"
+          ],
+          "best_time": "Nov–Apr",
           "tags": [
             {
               "label": "Coast",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 17:50",
+              "description": "The Cellular Jail courtyard goes dark and the story of Kala Pani is told in light and sound."
+            },
+            {
+              "title": "DAY 2 · 11:15",
+              "description": "Kalapathar: a thin strip of white sand, black rocks and water so clear it looks shallow."
+            },
+            {
+              "title": "DAY 2 · 15:45",
+              "description": "A swim between the flags at Radhanagar, then the sun dropping straight into the sea."
+            },
+            {
+              "title": "DAY 3 · 08:30",
+              "description": "A 20-minute speedboat to Elephant Beach and your first look at a reef through a snorkel mask."
+            },
+            {
+              "title": "2 NIGHTS",
+              "description": "In a simple cottage near Govind Nagar beach, a few minutes from the jetty and the market."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Cellular Jail shuts on Mondays",
+              "description": "The museum is closed on Mondays and national holidays, and none of our Day 1 dates fall on one. We book the 17:50 Hindi light and sound show; the English show runs at 18:50 only on Mondays, Wednesdays and Fridays."
+            },
+            {
+              "title": "Ferries run at the sea's mercy",
+              "description": "Catamaran timings change by season and sailings are cancelled when the port authorities call rough seas. Your coordinator confirms the exact time the evening before and rebooks the group's ferries free if a sailing is cancelled."
+            },
+            {
+              "title": "Elephant Beach boats can be stopped",
+              "description": "The speedboats run only when the forest and port authorities allow, and are halted in rough seas. If they don't run on Day 3, we suggest Govind Nagar or Vijay Nagar beach and you pay nothing for the boat."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Reef-safe sunscreen and a hat",
+              "description": "The sun is strong on open beaches and boats, and mineral sunscreen is kinder to the coral you'll swim over."
+            },
+            {
+              "title": "Cash in small notes",
+              "description": "ATMs on Havelock and Neil run dry or go offline, and many shacks, boats and scooter hires take cash only."
+            },
+            {
+              "title": "Motion-sickness tablets",
+              "description": "Catamaran crossings can be choppy; take one half an hour before boarding if you're prone to seasickness."
+            },
+            {
+              "title": "Swimwear and a quick-dry towel",
+              "description": "You'll be in the water at Kalapathar, Radhanagar and Elephant Beach, often twice in a day."
+            },
+            {
+              "title": "Dry bag or waterproof phone pouch",
+              "description": "Keeps your phone and cash safe on speedboats and wet beach landings."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Book a flight landing before 12:00",
+              "description": "Fly into Veer Savarkar International Airport (IXZ), Port Blair, and share your flight number with us when you book. Port Blair was officially renamed Sri Vijaya Puram in 2024; flights, ferry tickets and signboards may show either name."
+            },
+            {
+              "title": "Find your coordinator at arrivals",
+              "description": "From 08:00 your Ghumbo coordinator meets each flight outside the arrivals gate; their name and number are in your confirmation."
+            },
+            {
+              "title": "Ride to the hotel in batches",
+              "description": "The coordinator runs arrivals to the hotel near Aberdeen Bazaar in batches until about 12:30, and the group heads to the Cellular Jail together at 14:00."
+            },
+            {
+              "title": "Delayed or stuck?",
+              "description": "If your flight is late, call your coordinator; anyone landing after the last batch takes a taxi to the hotel (about 15 minutes) and joins the group there before 14:00."
+            }
+          ],
+          "faq": [
+            {
+              "question": "Do I need to know how to swim?",
+              "answer": "No. Snorkelling at Elephant Beach is done in shallow water with a life jacket, and a try scuba dive needs no swimming at all. At Radhanagar, stay between the lifeguard flags."
+            },
+            {
+              "question": "What is not included in the price?",
+              "answer": "Flights to and from Port Blair, lunches and dinners (about ₹700–1,000 a day), the Elephant Beach boat and water sports, scuba diving, camera fees and ferry class upgrades. Prices are taxes included."
+            },
+            {
+              "question": "How do payment and cancellation work?",
+              "answer": "Requesting a seat is free. We call you to confirm, then you pay 100% through a secure link; there is no deposit or balance. If you cancel, the charge is 10% at 30 or more days before departure, 50% at 15–29 days, 75% at 7–14 days and 100% under 7 days or for a no-show. Seats can't be transferred to someone else."
+            },
+            {
+              "question": "What happens if ferries are cancelled for bad weather?",
+              "answer": "The port authorities stop sailings when the sea is rough, and nobody can override that. Your coordinator rebooks the group's ferries at no charge and reshuffles the days where possible. If weather stops us running the trip, you choose a free move to another date or a refund of unspent costs; extra nights, meals or changed flights caused by a cancelled ferry are not covered, so travel insurance is worth having."
+            },
+            {
+              "question": "Will my phone and internet work on the islands?",
+              "answer": "Jio, Airtel and BSNL work in Port Blair and around the jetties and markets on Havelock and Neil, but signal drops on remote beaches and data can be slow. Download tickets and maps before you leave the mainland."
             }
           ],
           "itinerary": {
@@ -372,8 +490,8 @@
               "description": "Cellular Jail entry and the Cellular Jail light and sound show ticket."
             },
             {
-              "title": "Ghumbo group coordinator and 5% GST",
-              "description": "One coordinator with the group for all four days (Hindi/English/Bengali); GST included."
+              "title": "Ghumbo group coordinator and taxes",
+              "description": "One coordinator with the group for all four days (Hindi/English/Bengali); taxes included."
             }
           ],
           "exclusions": [
@@ -482,6 +600,7 @@
         {
           "slug": "andaman-havelock-neil-island-hopper-budget",
           "name": "Andaman Island Hopper: Havelock & Neil",
+          "tagline": "Three islands in five days: Port Blair, Havelock and quiet Neil",
           "tier": "budget",
           "status": "live",
           "audience": "open",
@@ -489,10 +608,127 @@
           "duration_days": 5,
           "duration_nights": 4,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Veer Savarkar International Airport, Port Blair",
+              "type": "airport",
+              "city": "Port Blair",
+              "code": "IXZ"
+            }
+          ],
+          "destination_hub": {
+            "name": "Neil",
+            "type": "port",
+            "city": "Neil",
+            "code": "NIL"
+          },
+          "stops": [
+            "Port Blair",
+            "Swaraj Dweep (Havelock)"
+          ],
+          "best_time": "Nov–Apr",
           "tags": [
             {
               "label": "Coast",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 2 · 15:45",
+              "description": "Powder-white Radhanagar beach, a swim between the flags and the sun going down over the sea."
+            },
+            {
+              "title": "DAY 3 · 08:30",
+              "description": "A speedboat to Elephant Beach for snorkelling over shallow coral, or a first scuba dive after lunch."
+            },
+            {
+              "title": "DAY 4 · 14:30",
+              "description": "A low-tide walk over coral rock to Neil's Natural Bridge, peering into pools for starfish."
+            },
+            {
+              "title": "DAY 5 · 05:15",
+              "description": "Sunrise at Sitapur, the sky lighting up over open sea at Neil's eastern tip."
+            },
+            {
+              "title": "4 NIGHTS",
+              "description": "One in Port Blair, two in a Havelock beach cottage and one in a cottage near Neil Kendra."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Cellular Jail shuts on Mondays",
+              "description": "The museum is closed on Mondays and national holidays, and none of our Day 1 dates fall on one. We book the 17:50 Hindi light and sound show; the English show runs at 18:50 only on Mondays, Wednesdays and Fridays."
+            },
+            {
+              "title": "Three ferries, all weather-dependent",
+              "description": "Island-hopping timings change with the season and sailings stop in rough seas. Your coordinator confirms each crossing the evening before and rebooks the group free if one is cancelled."
+            },
+            {
+              "title": "The Natural Bridge runs on the tide",
+              "description": "You can only walk out to the rock arch at low tide, so the exact Day 4 timing shifts. Your coordinator checks the tide table and swaps the Bharatpur and Natural Bridge slots if needed."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Reef-safe sunscreen and a hat",
+              "description": "The sun is strong on open beaches and boats, and mineral sunscreen is kinder to the coral you'll swim over."
+            },
+            {
+              "title": "Cash in small notes",
+              "description": "ATMs on Havelock and Neil run dry or go offline, and many shacks, boats and scooter hires take cash only."
+            },
+            {
+              "title": "Motion-sickness tablets",
+              "description": "Catamaran crossings can be choppy; take one half an hour before boarding if you're prone to seasickness."
+            },
+            {
+              "title": "Sturdy sandals with grip",
+              "description": "The walk to the Natural Bridge crosses sharp, slippery coral rock."
+            },
+            {
+              "title": "Torch or headlamp",
+              "description": "Useful for the 05:15 start to Sitapur and dark lanes on Neil at night."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Book a flight landing before 12:00",
+              "description": "Fly into Veer Savarkar International Airport (IXZ), Port Blair, and share your flight number with us when you book. Port Blair was officially renamed Sri Vijaya Puram in 2024; flights, ferry tickets and signboards may show either name."
+            },
+            {
+              "title": "Find your coordinator at arrivals",
+              "description": "From 08:00 your Ghumbo coordinator meets each flight outside the arrivals gate; their name and number are in your confirmation."
+            },
+            {
+              "title": "Ride to the hotel in batches",
+              "description": "The coordinator runs arrivals to the hotel near Aberdeen Bazaar in batches until about 12:30, and the group heads to the Cellular Jail together at 14:00."
+            },
+            {
+              "title": "Delayed or stuck?",
+              "description": "If your flight is late, call your coordinator; anyone landing after the last batch takes a taxi to the hotel (about 15 minutes) and joins the group there before 14:00."
+            }
+          ],
+          "faq": [
+            {
+              "question": "I get seasick. How rough are the ferries?",
+              "answer": "There are three crossings of about 1–2 hours each on enclosed, air-conditioned catamarans. Mornings are usually calmer; take a tablet before boarding and sit low and in the middle."
+            },
+            {
+              "question": "Do I need to know how to swim?",
+              "answer": "No. Snorkelling is done in shallow water with a life jacket, and a try scuba dive needs no swimming. At Bharatpur and Radhanagar, stay where the lifeguards point you."
+            },
+            {
+              "question": "What is not included in the price?",
+              "answer": "Flights to and from Port Blair, lunches and dinners (about ₹700–1,000 a day), the Elephant Beach boat, water sports, scuba diving, camera fees and ferry upgrades. Prices are taxes included."
+            },
+            {
+              "question": "How do payment and cancellation work?",
+              "answer": "Requesting a seat is free. We call you to confirm, then you pay 100% through a secure link; there is no deposit or balance. If you cancel, the charge is 10% at 30 or more days before departure, 50% at 15–29 days, 75% at 7–14 days and 100% under 7 days or for a no-show. Seats can't be transferred to someone else."
+            },
+            {
+              "question": "What happens if ferries are cancelled for bad weather?",
+              "answer": "The port authorities stop sailings when the sea is rough, and nobody can override that. Your coordinator rebooks the group's ferries at no charge and reshuffles the days where possible. If weather stops us running the trip, you choose a free move to another date or a refund of unspent costs; extra nights, meals or changed flights caused by a cancelled ferry are not covered, so travel insurance is worth having."
             }
           ],
           "itinerary": {
@@ -885,8 +1121,8 @@
               "description": "Cellular Jail entry and the Cellular Jail light and sound show ticket."
             },
             {
-              "title": "Ghumbo group coordinator and 5% GST",
-              "description": "One coordinator with the group for all five days (Hindi/English/Bengali); GST included."
+              "title": "Ghumbo group coordinator and taxes",
+              "description": "One coordinator with the group for all five days (Hindi/English/Bengali); taxes included."
             }
           ],
           "exclusions": [
@@ -995,6 +1231,7 @@
         {
           "slug": "andaman-baratang-ross-havelock-neil-circuit-budget",
           "name": "Andaman Grand Circuit: Baratang, Ross, Havelock & Neil",
+          "tagline": "Baratang caves, Ross Island ruins, then Havelock and Neil in a week",
           "tier": "budget",
           "status": "live",
           "audience": "open",
@@ -1002,6 +1239,26 @@
           "duration_days": 7,
           "duration_nights": 6,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Veer Savarkar International Airport, Port Blair",
+              "type": "airport",
+              "city": "Port Blair",
+              "code": "IXZ"
+            }
+          ],
+          "destination_hub": {
+            "name": "Neil",
+            "type": "port",
+            "city": "Neil",
+            "code": "NIL"
+          },
+          "stops": [
+            "Baratang",
+            "Ross Island",
+            "Swaraj Dweep (Havelock)"
+          ],
+          "best_time": "Nov–Apr",
           "tags": [
             {
               "label": "Coast",
@@ -1010,6 +1267,108 @@
             {
               "label": "Heritage",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 2 · 08:45",
+              "description": "A speedboat slips through a tunnel of mangroves to Baratang's limestone caves."
+            },
+            {
+              "title": "DAY 3 · 11:45",
+              "description": "Banyan roots swallowing a British church and bakery on Ross Island, with spotted deer wandering past."
+            },
+            {
+              "title": "DAY 4 · 15:45",
+              "description": "Radhanagar beach at sunset: a long arc of white sand and a swim between the flags."
+            },
+            {
+              "title": "DAY 6 · 14:30",
+              "description": "A low-tide walk over coral rock to Neil's Natural Bridge, tide pools full of starfish."
+            },
+            {
+              "title": "6 NIGHTS",
+              "description": "Three in Port Blair, two in a Havelock beach cottage and one near Neil Kendra market."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Baratang convoy: no stopping, no photos",
+              "description": "The road crosses the Jarawa Tribal Reserve in escorted convoys at fixed times, and stopping, photography and any contact are banned by law. Convoy times can change, so we leave at 03:30 to make the first one and carry everyone's photo ID."
+            },
+            {
+              "title": "Closures we plan around",
+              "description": "The Cellular Jail museum and Baratang's limestone caves are closed on Mondays, and Ross Island is widely reported to close on Wednesdays. None of our dates put those visits on those days; if an unscheduled closure comes up, the coordinator swaps the day's order."
+            },
+            {
+              "title": "Ferries and boats depend on the sea",
+              "description": "Havelock and Neil ferries and the North Bay and Ross boats stop in rough seas. Your coordinator confirms timings the evening before and rebooks the group's ferries free if a sailing is cancelled."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Reef-safe sunscreen and a hat",
+              "description": "The sun is strong on open beaches and boats, and mineral sunscreen is kinder to the coral you'll swim over."
+            },
+            {
+              "title": "Cash in small notes",
+              "description": "ATMs on Havelock and Neil run dry or go offline, and many shacks, boats and scooter hires take cash only."
+            },
+            {
+              "title": "Original photo ID",
+              "description": "Needed at the Jirkatang check post and for the Baratang forest permit; Aadhaar, passport or driving licence."
+            },
+            {
+              "title": "Shoes with grip and a torch",
+              "description": "For the 1–1.5 km jungle path and dark, uneven floor of the Baratang caves."
+            },
+            {
+              "title": "Motion-sickness tablets",
+              "description": "Useful for the long convoy drive and three catamaran crossings."
+            },
+            {
+              "title": "Swimwear and a dry bag",
+              "description": "North Bay, Radhanagar, Elephant Beach and Bharatpur all have water you'll want to get into."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Book a flight landing before 12:00",
+              "description": "Fly into Veer Savarkar International Airport (IXZ), Port Blair, and share your flight number with us when you book. Port Blair was officially renamed Sri Vijaya Puram in 2024; flights, ferry tickets and signboards may show either name."
+            },
+            {
+              "title": "Find your coordinator at arrivals",
+              "description": "From 08:00 your Ghumbo coordinator meets each flight outside the arrivals gate; their name and number are in your confirmation."
+            },
+            {
+              "title": "Ride to the hotel in batches",
+              "description": "The coordinator runs arrivals to the hotel near Aberdeen Bazaar in batches until about 12:30, and the group heads to the Cellular Jail together at 14:00."
+            },
+            {
+              "title": "Delayed or stuck?",
+              "description": "If your flight is late, call your coordinator; anyone landing after the last batch takes a taxi to the hotel (about 15 minutes) and joins the group there before 14:00. Day 2 starts at 03:30, so an early night helps."
+            }
+          ],
+          "faq": [
+            {
+              "question": "How hard is the Baratang day?",
+              "answer": "It is long rather than tough: a 03:30 start, about 4–5 hours each way including the check post, convoy and vehicle ferry, short boat rides and a 1–1.5 km walk to the caves. You're back in Port Blair by about 18:30."
+            },
+            {
+              "question": "I'm a foreign national. Do I need a permit?",
+              "answer": "Indian citizens need no permit. Most foreign nationals don't need a Restricted Area Permit for Port Blair, Havelock, Neil or Baratang, but rules changed in 2025, so tell us your nationality when you book and we'll confirm what you need."
+            },
+            {
+              "question": "What is not included in the price?",
+              "answer": "Flights to and from Port Blair, lunches and dinners (about ₹700–1,000 a day), water sports at North Bay and Havelock, scuba diving, camera fees and ferry upgrades. Prices are taxes included."
+            },
+            {
+              "question": "How do payment and cancellation work?",
+              "answer": "Requesting a seat is free. We call you to confirm, then you pay 100% through a secure link; there is no deposit or balance. If you cancel, the charge is 10% at 30 or more days before departure, 50% at 15–29 days, 75% at 7–14 days and 100% under 7 days or for a no-show. Seats can't be transferred to someone else."
+            },
+            {
+              "question": "What happens if ferries are cancelled for bad weather?",
+              "answer": "The port authorities stop sailings when the sea is rough, and nobody can override that. Your coordinator rebooks the group's ferries at no charge and reshuffles the days where possible. If weather stops us running the trip, you choose a free move to another date or a refund of unspent costs; extra nights, meals or changed flights caused by a cancelled ferry are not covered, so travel insurance is worth having."
             }
           ],
           "itinerary": {
@@ -1596,8 +1955,8 @@
               "description": "Cellular Jail entry and light and sound show, Ross Island entry and Baratang forest permit."
             },
             {
-              "title": "Ghumbo group coordinator and 5% GST",
-              "description": "One coordinator with the group for all seven days (Hindi/English/Bengali); GST included."
+              "title": "Ghumbo group coordinator and taxes",
+              "description": "One coordinator with the group for all seven days (Hindi/English/Bengali); taxes included."
             }
           ],
           "exclusions": [
@@ -1673,15 +2032,6 @@
             }
           ],
           "departures": [
-            {
-              "start_date": "2026-11-13",
-              "end_date": "2026-11-19",
-              "status": "open",
-              "is_peak": false,
-              "capacity": 18,
-              "currency": "inr",
-              "amount": "27999.00"
-            },
             {
               "start_date": "2026-12-23",
               "end_date": "2026-12-29",

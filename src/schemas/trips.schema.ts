@@ -66,8 +66,46 @@ export const TripTag = z.object({
   description: z.string().nullable().default(null),
 });
 
+export const TripHub = z.object({
+  name: z.string(),
+  type: z.enum(['airport', 'station', 'port', 'bus_stand']),
+  city: z.string(),
+  code: z.string(),
+});
+
+export const TripWhatToPack = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+export const TripHighlight = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+export const TripCallout = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+export const TripMeetingInstruction = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+export const TripFAQ = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
 export type TItineraryActivity = z.infer<typeof ItineraryActivity>;
 export type TItineraryDay = z.infer<typeof ItineraryDay>;
 export type TItinerary = z.infer<typeof Itinerary>;
 export type TTripInclusion = z.infer<typeof TripInclusion>;
 export type TTripTag = z.infer<typeof TripTag>;
+export type TTripHub = z.infer<typeof TripHub>;
+export type TTripWhatToPack = z.infer<typeof TripWhatToPack>;
+export type TTripMeetingInstruction = z.infer<typeof TripMeetingInstruction>;
+export type TTripHighlight = z.infer<typeof TripHighlight>;
+export type TTripCallout = z.infer<typeof TripCallout>;
+export type TTripFAQ = z.infer<typeof TripFAQ>;

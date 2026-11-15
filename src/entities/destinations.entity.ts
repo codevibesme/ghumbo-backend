@@ -54,6 +54,9 @@ export class DestinationEntity {
   @Column({ name: 'slug', type: 'varchar', length: 255 })
   slug: string;
 
+  @Column({ name: 'best_time', type: 'varchar', length: 10, default: '' })
+  bestTime: string;
+
   @Column({ name: 'overview', type: 'text' })
   overview: string;
 
