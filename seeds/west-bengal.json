@@ -29,6 +29,7 @@
       "slug": "west-bengal",
       "name": "West Bengal",
       "status": "live",
+      "best_time": "Oct–Mar",
       "overview": "West Bengal is the rare Indian state that runs from the Himalaya to the sea. In the north, Darjeeling and Kalimpong sit among tea gardens with Kanchenjunga on the horizon, and the forests of the Dooars shelter one-horned rhinos and wild elephants. Further south lie the terracotta temples of Bishnupur, Tagore's open-air university at Shantiniketan, and the Nawabi palaces of Murshidabad. Kolkata, the old imperial capital, is all trams, book stalls, colonial landmarks and some of the best street food in the country. Where the Ganges meets the Bay of Bengal, the Sundarbans form the world's largest mangrove forest and the home of the Royal Bengal tiger. October to March is the best time to visit most of the state, and spring is the best time for the hills.",
       "latitude": 22.9868,
       "longitude": 87.855,
@@ -70,12 +71,38 @@
         {
           "slug": "darjeeling-queen-of-the-hills-budget",
           "name": "Darjeeling: Queen of the Hills",
+          "tagline": "Tiger Hill sunrise, Ghum monastery and three nights below Chowrasta.",
           "tier": "budget",
           "status": "live",
           "overview": "Darjeeling on a backpacker's budget, without missing the moments that matter. Join a fixed-date group of up to 18 at NJP or Bagdogra and ride a shared Tempo Traveller up through Kurseong's tea country. You'll stay three nights in a family-run homestay a few minutes below Chowrasta, with hot breakfasts and hosts who know which momo shop is worth the queue. Local jeeps carry you to Tiger Hill for Kanchenjunga's sunrise, Ghum's old monastery and, next day, the Himalayan Mountaineering Institute, the red pandas at the zoo, Happy Valley's tea terraces and the Peace Pagoda. Lunches and dinners are yours to choose on the Mall, and the toy-train joyride is an easy add-on. A Ghumbo coordinator handles tickets, timings and the early starts.",
           "duration_days": 4,
           "duration_nights": 3,
           "is_recommended": true,
+          "source_hubs": [
+            {
+              "name": "New Jalpaiguri Jn",
+              "type": "station",
+              "city": "Siliguri",
+              "code": "NJP"
+            },
+            {
+              "name": "Bagdogra Airport",
+              "type": "airport",
+              "city": "Siliguri",
+              "code": "IXB"
+            }
+          ],
+          "destination_hub": {
+            "name": "Darjeeling",
+            "type": "station",
+            "city": "Darjeeling",
+            "code": "DJ"
+          },
+          "stops": [
+            "Kurseong",
+            "Ghum"
+          ],
+          "best_time": "Oct–May",
           "tags": [
             {
               "label": "Hills",
@@ -84,6 +111,104 @@
             {
               "label": "Heritage",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 2 · 04:45",
+              "description": "Kanchenjunga turning pink, then gold, from Tiger Hill at 2,567 m. Worth the alarm."
+            },
+            {
+              "title": "DAY 2 · 06:30",
+              "description": "Morning chants under the big Maitreya Buddha at Ghum's Yiga Choeling, built in the 1850s."
+            },
+            {
+              "title": "DAY 3 · 08:45",
+              "description": "Tenzing Norgay's Everest gear at HMI, then red pandas and snow leopards at the zoo next door."
+            },
+            {
+              "title": "DAY 3 · 14:45",
+              "description": "Drum prayers at the white Peace Pagoda on Jalapahar, with the whole town spread below."
+            },
+            {
+              "title": "3 NIGHTS",
+              "description": "A family homestay below Chowrasta, with hot breakfasts and hosts who know the best momos."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Zoo and HMI close on Thursdays",
+              "description": "The Himalayan zoo and the HMI museum shut every Thursday. Our Day 3 visit falls on a Sunday or Monday on current dates; if a date ever lands on a Thursday, your coordinator swaps Day 2 and Day 3."
+            },
+            {
+              "title": "Happy Valley keeps its own hours",
+              "description": "The estate is often closed to visitors on Sundays and Mondays, and the factory is mostly idle from November to February. If it is shut on our day, we walk the terraces from the road and your coordinator points you to a good tasting on the Mall."
+            },
+            {
+              "title": "Clouds decide the sunrise",
+              "description": "Tiger Hill views depend on the weather and are clearest from October to December. We go up regardless, because the sky often opens for a few minutes after first light."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Warm layers",
+              "description": "Nights drop close to freezing from December to February, and homestays are not heated."
+            },
+            {
+              "title": "Cap and gloves",
+              "description": "You'll stand around for over an hour on Tiger Hill before sunrise, where it is colder than town."
+            },
+            {
+              "title": "Comfortable walking shoes",
+              "description": "Darjeeling is all steep lanes and stairs, and the Mall is pedestrian-only."
+            },
+            {
+              "title": "Light rain jacket",
+              "description": "Showers are common in April and May and the hills turn misty without warning."
+            },
+            {
+              "title": "Some cash",
+              "description": "Momo shops, tea counters and curio stalls often prefer cash, and ATMs near the Mall can run dry on holidays."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Arrive by 11:00",
+              "description": "Be at New Jalpaiguri station or Bagdogra airport by 11:00 on Day 1. The group vehicle leaves at 11:30 sharp."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they share the exact meeting spot at each hub the day before."
+            },
+            {
+              "title": "Book onward travel after 15:00",
+              "description": "On Day 4 we reach NJP or Bagdogra around 13:00, so pick a train or flight leaving after 15:00."
+            },
+            {
+              "title": "Running late",
+              "description": "If your train or flight is running late, call your coordinator as soon as you know. We can't hold the group vehicle for long, but they will tell you the easiest way to catch up."
+            }
+          ],
+          "faq": [
+            {
+              "question": "How fit do I need to be?",
+              "answer": "Reasonably fit is enough. Tiger Hill and Jalapahar are by jeep, but Darjeeling's lanes are steep and you'll climb a fair number of stairs each day."
+            },
+            {
+              "question": "Will the altitude affect me?",
+              "answer": "Darjeeling sits at about 2,000 m and Tiger Hill at 2,567 m. Most people only notice they get out of breath on stairs; no acclimatisation is needed."
+            },
+            {
+              "question": "Is the toy train included?",
+              "answer": "No. The two-hour Darjeeling–Ghum joyride is optional, approx ₹800 diesel or ₹1,310+ steam. Seats sell out, so book on IRCTC early; your coordinator can help."
+            },
+            {
+              "question": "Which meals are covered?",
+              "answer": "Breakfast at the homestay on Days 2 to 4. Lunches and dinners are at local eateries you choose, roughly ₹600–700 a day."
+            },
+            {
+              "question": "I'm travelling alone. Is that okay?",
+              "answer": "Yes, most of our travellers come solo. Rooms are twin sharing; tell us when we call and we'll talk you through room-sharing."
             }
           ],
           "itinerary": {
@@ -261,8 +386,8 @@
                     "included": true
                   },
                   {
-                    "title": "Happy Valley Tea Estate",
-                    "description": "Walk among the terraced bushes of one of Darjeeling's oldest estates and, when the factory is open, see withering and rolling up close before a tasting.",
+                    "title": "Tea-garden walk at Happy Valley",
+                    "description": "Walk the terraced slopes of one of Darjeeling's oldest estates. The factory and tasting room keep their own hours, so on days they're shut your coordinator takes the group to a tasting on the Mall.",
                     "start_time": "11:45",
                     "end_time": "13:00",
                     "location": "Happy Valley, Darjeeling",
@@ -460,15 +585,6 @@
           ],
           "departures": [
             {
-              "start_date": "2026-11-13",
-              "end_date": "2026-11-16",
-              "status": "open",
-              "is_peak": false,
-              "capacity": 18,
-              "currency": "inr",
-              "amount": "7799.00"
-            },
-            {
               "start_date": "2026-12-26",
               "end_date": "2026-12-29",
               "status": "open",
@@ -500,16 +616,140 @@
         {
           "slug": "darjeeling-kalimpong-mirik-hill-circuit-budget",
           "name": "Darjeeling, Kalimpong & Mirik Hill Circuit",
+          "tagline": "Mirik's lake, Darjeeling's Tiger Hill and Kalimpong's monasteries in six days.",
           "tier": "budget",
           "status": "live",
           "overview": "Three hill towns, six days and a price that suits students and young families. A fixed-date group of up to 18 shares one Tempo Traveller for the whole loop, beginning at NJP or Bagdogra. Night one is at a lakeside homestay in Mirik beside Sumendu Lake and its tea slopes. Then you follow the Nepal border road to Darjeeling for two nights in a guesthouse below Chowrasta, with local jeeps for the Tiger Hill sunrise and a full day at Ghum, Batasia, the mountaineering institute and the zoo. The last two nights are in a Kalimpong homestay, with Durpin monastery, Deolo hill, the flower nurseries and the Haat Bazaar to explore. Breakfasts are included; for the other meals you pick from local kitchens.",
           "duration_days": 6,
           "duration_nights": 5,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "New Jalpaiguri Jn",
+              "type": "station",
+              "city": "Siliguri",
+              "code": "NJP"
+            },
+            {
+              "name": "Bagdogra Airport",
+              "type": "airport",
+              "city": "Siliguri",
+              "code": "IXB"
+            }
+          ],
+          "destination_hub": {
+            "name": "Kalimpong",
+            "type": "bus_stand",
+            "city": "Kalimpong",
+            "code": "KLMP"
+          },
+          "stops": [
+            "Mirik",
+            "Darjeeling"
+          ],
+          "best_time": "Oct–May",
           "tags": [
             {
               "label": "Hills",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 15:15",
+              "description": "A 3.5 km lap of Sumendu Lake, over the arched Rainbow Bridge and into the pines."
+            },
+            {
+              "title": "DAY 3 · 04:00",
+              "description": "Jeeps to Tiger Hill in the dark for Kanchenjunga's first light, then Batasia Loop."
+            },
+            {
+              "title": "DAY 4 · 08:45",
+              "description": "Prayer flags at Lamahatta and the Peshok viewpoint, where the Teesta meets the Rangeet."
+            },
+            {
+              "title": "DAY 4 · 14:30",
+              "description": "Murals and valley views at Durpin monastery, consecrated by the Dalai Lama in 1976."
+            },
+            {
+              "title": "5 NIGHTS",
+              "description": "Three family homestays in three towns: lakeside Mirik, Darjeeling below Chowrasta, then Kalimpong."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Zoo and HMI close on Thursdays",
+              "description": "The Darjeeling zoo and HMI museum shut every Thursday. Our Day 3 falls on a Monday or Friday on current dates; if that ever changes, your coordinator moves the visit to the Day 2 afternoon."
+            },
+            {
+              "title": "Happy Valley keeps its own hours",
+              "description": "The estate is often closed to visitors on Sundays, Mondays and holidays, and the factory is mostly idle from November to February. If it's shut, we see the terraces from the road and your coordinator suggests a tasting on the Mall."
+            },
+            {
+              "title": "Weather sets the views",
+              "description": "Tiger Hill and Deolo views, and paragliding at Deolo, all depend on clear skies. Your coordinator checks the forecast each evening and may switch the order of a morning's stops."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Warm layers",
+              "description": "Darjeeling nights get cold, especially from December to February, and homestays are not heated."
+            },
+            {
+              "title": "Cap and gloves",
+              "description": "Tiger Hill at sunrise is the coldest hour of the trip."
+            },
+            {
+              "title": "Comfortable walking shoes",
+              "description": "The lake path, monastery steps and Darjeeling's stairs add up over six days."
+            },
+            {
+              "title": "Light rain jacket",
+              "description": "Spring departures can bring afternoon showers in the hills."
+            },
+            {
+              "title": "Motion-sickness tablets",
+              "description": "Six days of winding hill roads, including the border road from Mirik, can upset even good travellers."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Arrive by 11:00",
+              "description": "Be at New Jalpaiguri station or Bagdogra airport by 11:00 on Day 1. The group leaves for Mirik at 11:30."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they share the exact meeting spot at each hub the day before."
+            },
+            {
+              "title": "Book onward travel after 14:30",
+              "description": "On Day 6 we reach NJP or Bagdogra by about 12:30, so pick a train or flight leaving after 14:30."
+            },
+            {
+              "title": "Running late",
+              "description": "If your train or flight is running late, call your coordinator as soon as you know. We can't hold the group vehicle for long, but they will tell you the easiest way to catch up."
+            }
+          ],
+          "faq": [
+            {
+              "question": "How fit do I need to be?",
+              "answer": "Average fitness is fine. Most sightseeing is by vehicle with short walks, though the Mirik lake loop is 3.5 km and Darjeeling has plenty of stairs."
+            },
+            {
+              "question": "How high do we go?",
+              "answer": "Kalimpong and Mirik are at moderate heights, Darjeeling is about 2,000 m and Tiger Hill 2,567 m. Altitude is rarely an issue at these heights."
+            },
+            {
+              "question": "Is paragliding at Deolo included?",
+              "answer": "No. A tandem flight with a licensed operator is optional, approx ₹3,000–3,500, and only flies in good weather. Rowing and pony rides at Mirik are also paid locally."
+            },
+            {
+              "question": "Which meals are covered?",
+              "answer": "Breakfast every day from Day 2 to Day 6. Lunches and dinners are at local kitchens or your homestay, roughly ₹500–650 a day."
+            },
+            {
+              "question": "Do we change rooms often?",
+              "answer": "Three times: one night in Mirik, two in Darjeeling and two in Kalimpong. The Tempo Traveller carries your bags between towns."
             }
           ],
           "itinerary": {
@@ -696,8 +936,8 @@
                     "included": true
                   },
                   {
-                    "title": "Happy Valley Tea Estate",
-                    "description": "Walk the terraces and, when the factory is working, see how Darjeeling tea is processed.",
+                    "title": "Tea-garden walk at Happy Valley",
+                    "description": "Walk the terraced slopes of one of Darjeeling's oldest estates. The factory and tasting room keep their own hours, so on days they're shut your coordinator takes the group to a tasting on the Mall.",
                     "start_time": "12:15",
                     "end_time": "13:15",
                     "location": "Happy Valley, Darjeeling",
@@ -1014,15 +1254,6 @@
           ],
           "departures": [
             {
-              "start_date": "2026-11-07",
-              "end_date": "2026-11-12",
-              "status": "open",
-              "is_peak": false,
-              "capacity": 18,
-              "currency": "inr",
-              "amount": "12999.00"
-            },
-            {
               "start_date": "2026-12-23",
               "end_date": "2026-12-28",
               "status": "open",
@@ -1054,12 +1285,41 @@
         {
           "slug": "kolkata-city-of-joy-heritage-budget",
           "name": "Kolkata: City of Joy Heritage Trail",
+          "tagline": "Victoria Memorial, Mullick Ghat at dawn, a tram ride and a Hooghly ferry.",
           "tier": "budget",
           "status": "live",
           "overview": "Kolkata on foot, by tram, Metro and river ferry, the way the city itself gets around. You base yourself in the backpacker lanes of Sudder Street, a short walk from the Maidan, and join a small group led by a local guide. Walk to the Victoria Memorial and St Paul's, then graze your way down Park Street on a tasting walk. A pre-dawn van takes you to the marigold mountains of Mullick Ghat, then it's Kumartuli's clay gods, Tagore's family home at Jorasanko, a rattling tram to College Street and the Indian Museum. The last morning crosses the Hooghly by public ferry from Dakshineswar to Belur Math. Guesthouse rooms are simple but clean, with AC. Breakfasts, the tram, Metro, ferry and every entry ticket are included, so you can spend on sweets instead.",
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Howrah Jn",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "HWH"
+            },
+            {
+              "name": "Sealdah",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "SDAH"
+            },
+            {
+              "name": "Netaji Subhas Chandra Bose Intl Airport",
+              "type": "airport",
+              "city": "Kolkata",
+              "code": "CCU"
+            }
+          ],
+          "destination_hub": {
+            "name": "Kolkata",
+            "type": "station",
+            "city": "Kolkata",
+            "code": "ESPL"
+          },
+          "stops": [],
+          "best_time": "Oct–Mar",
           "tags": [
             {
               "label": "Heritage",
@@ -1068,6 +1328,104 @@
             {
               "label": "City",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 14:00",
+              "description": "A walk across the Maidan to the white marble Victoria Memorial and its galleries."
+            },
+            {
+              "title": "DAY 1 · 18:30",
+              "description": "Kathi rolls, fish fry and Anglo-Indian bakes on a guided Park Street tasting walk."
+            },
+            {
+              "title": "DAY 2 · 05:00",
+              "description": "Mountains of marigolds at Mullick Ghat, with clay-cup tea under Howrah Bridge."
+            },
+            {
+              "title": "DAY 2 · 12:15",
+              "description": "A rattling tram to College Street's book stalls, on one of Kolkata's last working lines."
+            },
+            {
+              "title": "DAY 3 · 09:30",
+              "description": "A public ferry across the Hooghly from Dakshineswar's temples to Belur Math."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Museums close on Mondays",
+              "description": "Victoria Memorial's galleries, Jorasanko Thakur Bari and the Indian Museum all shut on Mondays. On every departure they fall on Saturday or Sunday; the Monday is only temples and the river."
+            },
+            {
+              "title": "The tram doesn't always run",
+              "description": "Kolkata now runs trams on only a couple of routes, including Esplanade–Shyambazar, and services can be suspended at short notice. If it isn't running, we walk to College Street with the guide."
+            },
+            {
+              "title": "Belur Math closes at 11:30",
+              "description": "The Math shuts for the afternoon at 11:30 in winter. We keep the Dakshineswar visit and ferry tightly timed so you get a full 90 minutes there."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Walking shoes",
+              "description": "You'll cover several kilometres on foot, including the Maidan and Kumartuli's lanes."
+            },
+            {
+              "title": "Clothes for temples",
+              "description": "Shoulders and knees covered at Dakshineswar and Belur Math, and slip-on shoes help as you'll take them off."
+            },
+            {
+              "title": "A light shawl or jacket",
+              "description": "The 05:00 start at Mullick Ghat can be cool on the river in December and January."
+            },
+            {
+              "title": "Small change",
+              "description": "Street food, sweets and book-stall bargains go smoother with ₹10–100 notes."
+            },
+            {
+              "title": "Reusable bottle",
+              "description": "It's a warm, walking-heavy city even in winter; refill at the guesthouse."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Make your way to the guesthouse",
+              "description": "The trip starts at our guesthouse off Sudder Street; the address is in your confirmation. It's a 5-minute walk from Esplanade or Park Street Metro."
+            },
+            {
+              "title": "Getting there from your hub",
+              "description": "From Howrah or Sealdah, the Metro or a cab to Esplanade is the easiest. From the airport, a cab takes 45–75 minutes, approx ₹400–600."
+            },
+            {
+              "title": "Meet in the lobby at 12:30",
+              "description": "Rooms are ready from 12:00. Your tour leader meets everyone in the lobby at 12:30 before lunch."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your coordinator (the number is in your confirmation). Drop your bags at the guesthouse and they'll tell you where to join the group."
+            }
+          ],
+          "faq": [
+            {
+              "question": "How much walking is there?",
+              "answer": "Quite a lot, at an easy pace: the Maidan walk, Park Street, Kumartuli and College Street. The van covers the early Day 2 run and the Day 3 river loop."
+            },
+            {
+              "question": "Can I eat vegetarian?",
+              "answer": "Yes. The thali lunch and tasting walk have vegetarian options; just tell your tour leader on Day 1."
+            },
+            {
+              "question": "Are airport transfers included?",
+              "answer": "No. The trip starts at the guesthouse and ends around 12:45 on Day 3 at Esplanade, with a stop at Howrah station on the way. A cab to the airport is approx ₹400–600."
+            },
+            {
+              "question": "Where do I keep my bags on Day 3?",
+              "answer": "They travel with us in the van from check-out until the drop at Howrah or Esplanade."
+            },
+            {
+              "question": "Are camera fees included?",
+              "answer": "No. The Indian Museum charges for phone or camera photography (approx ₹50–118), and a few other sites charge where levied."
             }
           ],
           "itinerary": {
@@ -1395,15 +1753,6 @@
           ],
           "departures": [
             {
-              "start_date": "2026-11-14",
-              "end_date": "2026-11-16",
-              "status": "open",
-              "is_peak": false,
-              "capacity": 18,
-              "currency": "inr",
-              "amount": "5499.00"
-            },
-            {
               "start_date": "2026-12-26",
               "end_date": "2026-12-28",
               "status": "open",
@@ -1435,16 +1784,145 @@
         {
           "slug": "sundarbans-mangrove-tiger-safari-budget",
           "name": "Sundarbans: Mangrove & Tiger Safari",
+          "tagline": "Creek safaris, three watchtowers and two nights in a Pakhiralay village lodge.",
           "tier": "budget",
           "status": "live",
-          "overview": "A no-frills, fully guided escape into the world's largest mangrove delta for travellers who care more about the creeks than the thread count. We meet at Science City, ride an AC Tempo Traveller to Godkhali and board a launch chartered just for our group of up to 18. Two nights in a simple fan-cooled village lodge at Pakhiralay keep costs low and put you among the islanders: honey-collectors, crab-catchers and the Bonbibi pala singers who perform in the courtyard. Days are spent on the water with a forest eco-guide, climbing the Sajnekhali, Sudhanyakhali and Dobanki watchtowers and scanning mudbanks for crocodiles, deer and pugmarks. All meals, permits, guide fees and GST are included; tigers are a bonus, never a promise.",
+          "overview": "A no-frills, fully guided escape into the world's largest mangrove delta for travellers who care more about the creeks than the thread count. We meet at Science City, ride an AC Tempo Traveller to Godkhali and board a launch chartered just for our group of up to 18. Two nights in a simple fan-cooled village lodge at Pakhiralay keep costs low and put you among the islanders: honey-collectors, crab-catchers and the Bonbibi pala singers who perform in the courtyard. Days are spent on the water with a forest eco-guide, climbing the Sajnekhali, Sudhanyakhali and Dobanki watchtowers and scanning mudbanks for crocodiles, deer and pugmarks. All meals, permits, guide fees and taxes are included; tigers are a bonus, never a promise.",
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Howrah Jn",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "HWH"
+            },
+            {
+              "name": "Sealdah",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "SDAH"
+            },
+            {
+              "name": "Netaji Subhas Chandra Bose Intl Airport",
+              "type": "airport",
+              "city": "Kolkata",
+              "code": "CCU"
+            }
+          ],
+          "destination_hub": {
+            "name": "Godkhali",
+            "type": "port",
+            "city": "Gosaba",
+            "code": "GDKH"
+          },
+          "stops": [
+            "Science City"
+          ],
+          "best_time": "Oct–Mar",
           "tags": [
             {
               "label": "Wildlife",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 10:30",
+              "description": "Three hours on the group's own launch from Godkhali, with a river-fish lunch on deck."
+            },
+            {
+              "title": "DAY 1 · 19:00",
+              "description": "Bonbibir Pala in the lodge courtyard: the islanders' folk drama of the forest goddess and the tiger."
+            },
+            {
+              "title": "DAY 2 · 08:30",
+              "description": "Sudhanyakhali watchtower over a sweet-water pond, one of the reserve's best spots for deer."
+            },
+            {
+              "title": "DAY 2 · 13:30",
+              "description": "A half-kilometre fenced canopy walk above the mangroves at Dobanki, then up its watchtower."
+            },
+            {
+              "title": "2 NIGHTS",
+              "description": "A simple fan-cooled lodge at Pakhiralay, with fish-curry dinners and islanders for neighbours."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Tides set the boat's timings",
+              "description": "Launch timings shift with the tide, and boats must leave the reserve before dusk. The crew and your coordinator may change the order of the watchtowers to suit the water."
+            },
+            {
+              "title": "Tigers are a bonus",
+              "description": "The tigers here are shy and sightings are rare. Crocodiles, deer, monitor lizards and kingfishers are far more likely, and the guide knows where to look."
+            },
+            {
+              "title": "Carry original photo ID",
+              "description": "Forest permits are issued against government photo ID at Sajnekhali. Non-Indian passport holders need a separate permit with extra fees, so tell us when we call."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "A warm layer",
+              "description": "Early mornings on the open deck are chilly in December and January."
+            },
+            {
+              "title": "Sun hat and sunscreen",
+              "description": "You'll spend most of Day 2 on the water with little shade."
+            },
+            {
+              "title": "Binoculars",
+              "description": "Wildlife on the mudbanks is often far off, and the watchtowers overlook wide ponds."
+            },
+            {
+              "title": "Torch and power bank",
+              "description": "Power at the lodge is generator or solar and mainly in the evening."
+            },
+            {
+              "title": "Mosquito repellent",
+              "description": "The mangroves and village paths have mosquitoes, especially around dusk."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Be at Science City by 06:45",
+              "description": "We meet at Science City main gate on EM Bypass, Kolkata. The AC Tempo Traveller leaves at 07:00."
+            },
+            {
+              "title": "Getting there",
+              "description": "Science City is a cab ride from Howrah, Sealdah or the airport; the roads are quiet at that hour, but allow 30–60 minutes. If arriving the night before, stay nearby."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation; look for them at the main gate."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your coordinator straight away. Once the launch leaves Godkhali it's very hard to catch up, so please build in a buffer."
+            }
+          ],
+          "faq": [
+            {
+              "question": "Will I see a tiger?",
+              "answer": "Possibly, but don't count on it. The Sundarbans tigers are elusive; we promise the creeks, watchtowers and birds, not the big cat."
+            },
+            {
+              "question": "Can I charge my phone?",
+              "answer": "Yes, in the evenings, when the lodge runs on generator or solar power. Bring a power bank for the day on the boat."
+            },
+            {
+              "question": "What's the food like?",
+              "answer": "Simple Bengali meals: rice, dal, vegetables and river fish. Vegetarian food is available. Prawn and crab specials and drinks cost extra."
+            },
+            {
+              "question": "Are rooms air-conditioned?",
+              "answer": "No, they're fan-cooled. An AC upgrade is available where possible, approx ₹1,500 per room per night; winter nights rarely need it."
+            },
+            {
+              "question": "Is there mobile signal?",
+              "answer": "It is patchy on the islands and on the creeks. Expect a few hours of being offline, which most people end up enjoying."
             }
           ],
           "itinerary": {
@@ -1661,8 +2139,8 @@
               "description": "Folk performance at the lodge and a guided morning walk through Pakhiralay village."
             },
             {
-              "title": "Ghumbo tour escort and 5% GST",
-              "description": "Escort from Science City and back; GST included in the price."
+              "title": "Ghumbo tour escort and taxes",
+              "description": "Escort from Science City and back; taxes included in the price."
             }
           ],
           "exclusions": [
@@ -1743,15 +2221,6 @@
           ],
           "departures": [
             {
-              "start_date": "2026-11-14",
-              "end_date": "2026-11-16",
-              "status": "open",
-              "is_peak": false,
-              "capacity": 18,
-              "currency": "inr",
-              "amount": "6599.00"
-            },
-            {
               "start_date": "2026-12-26",
               "end_date": "2026-12-28",
               "status": "open",
@@ -1783,16 +2252,126 @@
         {
           "slug": "digha-mandarmani-tajpur-coastal-escape-budget",
           "name": "Digha, Mandarmani & Tajpur Coastal Escape",
+          "tagline": "Mandarmani's long sands, quiet Tajpur and sunrise on the Old Digha sea wall.",
           "tier": "budget",
           "status": "live",
-          "overview": "A cheerful, wallet-friendly seaside break built around the Tamralipta Express. Meet at Howrah, ride the AC chair car to Digha and hop in a Tempo Traveller to Mandarmani, where one of India's longest walkable beaches stretches flat towards the tideline and red crabs scatter at your feet. Day two wanders down the coast to quiet, casuarina-fringed Tajpur and the Shankarpur fishing harbour, then into New Digha for the Science Centre, Marine Aquarium and an evening at the grand Jagannath Dham. Catch sunrise on the Old Digha seawall and the boats at Udaipur beach before the late-morning train home. Clean budget lodges, breakfasts and dinners, train tickets, escort and GST included.",
+          "overview": "A cheerful, wallet-friendly seaside break built around the Tamralipta Express. Meet at Howrah, ride the AC chair car to Digha and hop in a Tempo Traveller to Mandarmani, where one of India's longest walkable beaches stretches flat towards the tideline and red crabs scatter at your feet. Day two wanders down the coast to quiet, casuarina-fringed Tajpur and the Shankarpur fishing harbour, then into New Digha for the Science Centre, the New Digha seafront and an evening at the grand Jagannath Dham. Catch sunrise on the Old Digha seawall and the boats at Udaipur beach before the late-morning train home. Clean budget lodges, breakfasts and dinners, train tickets, escort and taxes included.",
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Howrah Jn",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "HWH"
+            }
+          ],
+          "destination_hub": {
+            "name": "Digha",
+            "type": "station",
+            "city": "Digha",
+            "code": "DGHA"
+          },
+          "stops": [
+            "Tamluk",
+            "Kanthi"
+          ],
+          "best_time": "Oct–Mar",
           "tags": [
             {
               "label": "Coast",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 15:30",
+              "description": "Mandarmani's hard, flat sand at low tide, with red crabs scattering ahead of you."
+            },
+            {
+              "title": "DAY 2 · 09:15",
+              "description": "Casuarina-lined Tajpur beach, then Shankarpur harbour as the catch comes in."
+            },
+            {
+              "title": "DAY 2 · 17:45",
+              "description": "Evening darshan at Digha's new Jagannath Dham, modelled on Puri and lit up at dusk."
+            },
+            {
+              "title": "DAY 3 · 05:30",
+              "description": "The sun rising over the Bay of Bengal from the Old Digha sea wall."
+            },
+            {
+              "title": "DAY 3 · 07:45",
+              "description": "Fishermen hauling wooden boats up the sand at Udaipur beach, near the Odisha border."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Swim only in patrolled zones",
+              "description": "The sea can be rough and currents strong. Swim only where lifeguards are posted, and stay out when red flags are up."
+            },
+            {
+              "title": "Train times can shift",
+              "description": "Tamralipta Express timings get revised from time to time. Your coordinator confirms exact times the day before both journeys."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Beachwear and a towel",
+              "description": "There's time to swim at Mandarmani in the patrolled zone."
+            },
+            {
+              "title": "Sandals",
+              "description": "Easier than shoes on the beaches and for the temple, where footwear comes off."
+            },
+            {
+              "title": "Sunscreen and sunglasses",
+              "description": "The flat beaches have almost no shade, even in winter."
+            },
+            {
+              "title": "A light jacket",
+              "description": "The 05:30 sunrise walk and the early train can be cool from December to February."
+            },
+            {
+              "title": "Photo ID",
+              "description": "Needed for reserved train seats and hotel check-in."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Be at Howrah by 06:15",
+              "description": "Meet your coordinator at Howrah station's New Complex, at the platform for train 12857, by 06:15 on Day 1."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they message the platform number the night before."
+            },
+            {
+              "title": "The train won't wait",
+              "description": "Tamralipta Express leaves at 06:45. If you're delayed, call your coordinator at once; missed trains mean making your own way to Digha."
+            }
+          ],
+          "faq": [
+            {
+              "question": "Is it safe to swim?",
+              "answer": "In the patrolled zones and calm conditions, yes. The coordinator will tell you when and where; please follow the lifeguards' flags."
+            },
+            {
+              "question": "Is there vegetarian food?",
+              "answer": "Yes. Dinners are fish-thali style, but vegetarian options are always available."
+            },
+            {
+              "question": "Can I get a sea-facing room?",
+              "answer": "On request, if available, for approx ₹800–1,500 per room per night extra. The standard rooms are a 5–10 minute walk from the beach."
+            },
+            {
+              "question": "Are water sports included?",
+              "answer": "No. Banana boats, jet skis, the Taramandal and 3D show at the Science Centre are paid locally."
+            },
+            {
+              "question": "Which meals do I pay for?",
+              "answer": "Breakfast on the Day 1 train and all three lunches, approx ₹250–350 each. Two breakfasts and two dinners are included."
             }
           ],
           "itinerary": {
@@ -1866,7 +2445,7 @@
               {
                 "day": 2,
                 "title": "Tajpur, Shankarpur and the sights of Digha",
-                "overview": "Hop down the coast to quiet Tajpur and the Shankarpur fishing harbour, then move into Digha for the Science Centre, Marine Aquarium and an evening at Jagannath Dham.",
+                "overview": "Hop down the coast to quiet Tajpur and the Shankarpur fishing harbour, then move into Digha for the Science Centre, the New Digha seafront and an evening at Jagannath Dham.",
                 "location": "Tajpur / Digha",
                 "activities": [
                   {
@@ -1906,11 +2485,11 @@
                     "included": true
                   },
                   {
-                    "title": "Marine Aquarium & Regional Centre",
-                    "description": "The Zoological Survey of India's marine aquarium, with fish, turtles and coastal life of the Bay of Bengal.",
+                    "title": "New Digha seafront and Amarabati Park",
+                    "description": "An easy walk along the New Digha promenade and around the lakeside Amarabati Park as the light softens.",
                     "start_time": "16:15",
                     "end_time": "17:15",
-                    "location": "Marine Aquarium, Digha",
+                    "location": "New Digha",
                     "type": "sightseeing",
                     "included": true
                   },
@@ -2016,12 +2595,12 @@
               "description": "2 breakfasts and 2 dinners, fish-thali style with vegetarian options."
             },
             {
-              "title": "Science Centre and Marine Aquarium entries",
+              "title": "Science Centre entry",
               "description": "General gallery admission at both."
             },
             {
-              "title": "Ghumbo tour escort and 5% GST",
-              "description": "Escort from Howrah and back; GST included."
+              "title": "Ghumbo tour escort and taxes",
+              "description": "Escort from Howrah and back; taxes included."
             }
           ],
           "exclusions": [
@@ -2142,16 +2721,131 @@
         {
           "slug": "shantiniketan-bishnupur-terracotta-trail-budget",
           "name": "Shantiniketan & Bishnupur: The Terracotta Trail",
+          "tagline": "Bishnupur's terracotta temples, Dokra casting and Shantiniketan's Saturday haat.",
           "tier": "budget",
           "status": "live",
           "overview": "Rural Bengal's two creative capitals, done the way students and art lovers do it: by train. Catch the early Rupashi Bangla Express to Bishnupur and spend the day among the Malla kings' terracotta temples, Rasmancha, Shyam Rai, Jor Bangla and Madan Mohan, before watching Baluchari silk on the loom. A local van then carries the group past the Dokra metalsmiths of Bikna to Shantiniketan, in time for Uttarayan and the Saturday Sonajhuri haat with its Baul singers. The last morning is a guided walk around Visva-Bharati and Kala Bhavana, then a stop at the Kopai river and Amar Kutir, before the Shantiniketan Express back to Howrah. You sleep in a government tourist lodge and a simple Bolpur guesthouse. Breakfasts, dinners, trains, guides and entries are included.",
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Santragachi Jn",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "SRC"
+            }
+          ],
+          "destination_hub": {
+            "name": "Shantiniketan",
+            "type": "station",
+            "city": "Bolpur",
+            "code": "BHP"
+          },
+          "stops": [
+            "Bishnupur",
+            "Bikna",
+            "Durgapur"
+          ],
+          "best_time": "Nov–Mar",
           "tags": [
             {
               "label": "Heritage",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 10:30",
+              "description": "Krishna-lila panels on the five-pinnacled Shyam Rai and the pyramid-roofed Rasmancha."
+            },
+            {
+              "title": "DAY 1 · 16:45",
+              "description": "Baluchari silk taking shape on a jacquard loom in a Bishnupur weaver's home."
+            },
+            {
+              "title": "DAY 2 · 08:30",
+              "description": "Lost-wax brass casting with the hereditary Dokra metalsmiths of Bikna."
+            },
+            {
+              "title": "DAY 2 · 15:45",
+              "description": "Kantha, leather and Baul songs at the Saturday haat under Sonajhuri's trees."
+            },
+            {
+              "title": "DAY 3 · 08:00",
+              "description": "Open-air classes, Kala Bhavana murals and Ramkinkar Baij sculptures at Visva-Bharati."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Rabindra Bhavana shuts Thursdays",
+              "description": "Since July 2025 the Uttarayan complex and Rabindra Bhavana close only on Thursdays. Our visit is on Day 2, a Saturday, on every current departure."
+            },
+            {
+              "title": "Poush Mela crowds in December",
+              "description": "The 25–27 December departure overlaps Poush Mela, which begins around 23 December. Expect big crowds and a busier haat; your coordinator may shift timings to beat the rush."
+            },
+            {
+              "title": "Parts of the campus are closed",
+              "description": "Visva-Bharati is a working university, and some ashram precincts can only be seen from outside. Your guide shows you what's open on the day."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Comfortable sandals",
+              "description": "Easy to slip off at temples, and good for walking the red-earth paths of Shantiniketan."
+            },
+            {
+              "title": "A light shawl",
+              "description": "Mornings and evenings in rural Bengal are cool from December to February."
+            },
+            {
+              "title": "Cash for the haat",
+              "description": "Most Sonajhuri stallholders and Dokra artisans prefer cash."
+            },
+            {
+              "title": "A spare tote bag",
+              "description": "Saris, kantha and Dokra pieces add up quickly."
+            },
+            {
+              "title": "Photo ID",
+              "description": "Needed on the reserved trains and at the lodges."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Be at Santragachi by 06:00",
+              "description": "Meet your tour leader at Santragachi Jn station at 06:00 on Day 1. Train 12883 leaves around 06:30."
+            },
+            {
+              "title": "Getting there",
+              "description": "Santragachi is about 15 minutes from Howrah by cab or local train. It's not Howrah station itself, so check your cab's destination."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they message the platform number the night before."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your coordinator at once. If you miss the train, they'll help you plan a later train to Bishnupur at your own cost."
+            }
+          ],
+          "faq": [
+            {
+              "question": "What class are the train seats?",
+              "answer": "Reserved second sitting (2S), non-AC. An upgrade to AC chair car is possible on request, approx ₹250 extra each way."
+            },
+            {
+              "question": "Is there much walking?",
+              "answer": "Moderate. The temples are a short drive apart with walking between, and the Visva-Bharati walk takes about two hours at an easy pace."
+            },
+            {
+              "question": "Is the Sonajhuri haat only on Saturdays?",
+              "answer": "Saturday is the traditional and biggest day, which is why our Day 2 is always a Saturday."
+            },
+            {
+              "question": "Which meals are included?",
+              "answer": "Two breakfasts and two dinners. Lunches are at local eateries, approx ₹200 each, and Day 1 breakfast is snacks on the train."
             }
           ],
           "itinerary": {
@@ -2510,16 +3204,135 @@
         {
           "slug": "dooars-jaldapara-gorumara-wildlife-budget",
           "name": "Dooars Wildlife: Gorumara & Jaldapara",
+          "tagline": "Gorumara watchtowers at dusk and dawn, then rhinos in Jaldapara's grass.",
           "tier": "budget",
           "status": "live",
-          "overview": "Three wildlife safaris in the Dooars without the resort price tag. Starting from NJP, an AC Tempo Traveller carries a group of up to 18 to Lataguri, where two nights in a forest-corporation lodge put you minutes from Gorumara's gate. Ride shared open jeeps to the Medla or Jatraprasad watchtowers at dusk and again at first light, when rhino, gaur and elephants visit the salt licks. Day two drifts along the Murti and up into Samsing's tea hills; day three crosses to Madarihat, with optional Chilapata or Totopara drives, before a dawn safari among Jaldapara's tall grass. Breakfasts, dinners, safaris, escort and GST included. Jaldapara's 2026–27 reopening is being tracked; a Chilapata fallback is built in.",
+          "overview": "Three wildlife safaris in the Dooars without the resort price tag. Starting from NJP, an AC Tempo Traveller carries a group of up to 18 to Lataguri, where two nights in a forest-corporation lodge put you minutes from Gorumara's gate. Ride shared open jeeps to the Medla or Jatraprasad watchtowers at dusk and again at first light, when rhino, gaur and elephants visit the salt licks. Day two drifts along the Murti and up into Samsing's tea hills; day three crosses to Madarihat, with optional Chilapata or Totopara drives, before a dawn safari among Jaldapara's tall grass. Breakfasts, dinners, safaris, escort and taxes included. Jaldapara's safaris are open this season, with a Chilapata drive as the backup if a route shuts.",
           "duration_days": 4,
           "duration_nights": 3,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "New Jalpaiguri Jn",
+              "type": "station",
+              "city": "Siliguri",
+              "code": "NJP"
+            },
+            {
+              "name": "Bagdogra Airport",
+              "type": "airport",
+              "city": "Siliguri",
+              "code": "IXB"
+            }
+          ],
+          "destination_hub": {
+            "name": "Dooars",
+            "type": "station",
+            "city": "Lataguri",
+            "code": "LTG"
+          },
+          "stops": [
+            "Sevoke"
+          ],
+          "best_time": "Oct–Apr",
           "tags": [
             {
               "label": "Wildlife",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 14:30",
+              "description": "Dusk at a Gorumara watchtower as rhino, gaur and peafowl gather at the salt lick."
+            },
+            {
+              "title": "DAY 2 · 06:00",
+              "description": "First light at Chandrachur or Jatraprasad, the best hour for elephants and rhino."
+            },
+            {
+              "title": "DAY 2 · 10:00",
+              "description": "Paddling and birdwatching on the stony banks of the clear Murti river."
+            },
+            {
+              "title": "DAY 2 · 11:30",
+              "description": "Up through the Chalsa tea estates to Samsing, with the Murti valley below."
+            },
+            {
+              "title": "DAY 4 · 06:00",
+              "description": "An open-jeep safari in Jaldapara's tall grass, home to Bengal's largest one-horned rhino population."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "No safaris on Thursdays or monsoon",
+              "description": "Dooars safaris don't run on Thursdays, and the parks close from mid-June to mid-September. Every current departure avoids both."
+            },
+            {
+              "title": "Jaldapara is open this season",
+              "description": "Online safari booking reopened in October 2026. If the forest department shuts a route at short notice, we switch to Chilapata as the backup."
+            },
+            {
+              "title": "The forest picks the watchtower",
+              "description": "Watchtowers and routes are allotted by the forest department on the day, and elephant rides depend on its quota. Your coordinator books the moment slots open."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Muted clothing",
+              "description": "Greens, browns and greys disturb wildlife less than bright colours on safari."
+            },
+            {
+              "title": "A warm jacket",
+              "description": "Open jeeps at 06:00 are cold from December to February."
+            },
+            {
+              "title": "Binoculars",
+              "description": "Rhino and gaur often stay at the far edge of the salt licks."
+            },
+            {
+              "title": "Mosquito repellent",
+              "description": "The forest edges and tea gardens have mosquitoes around dusk."
+            },
+            {
+              "title": "Photo ID",
+              "description": "Forest gates check ID against the safari booking."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Arrive by 10:00",
+              "description": "Be at New Jalpaiguri station by 10:00 on Day 1. If you're flying in, we pick up at Bagdogra airport at 10:30."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they share the exact meeting spot at each hub the day before."
+            },
+            {
+              "title": "Book onward travel after 15:00",
+              "description": "On Day 4 we reach NJP or Bagdogra around 13:30, so pick a train or flight leaving after 15:00."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your coordinator as soon as you know. The Day 1 afternoon safari slot can't be moved, so we may need to leave before you arrive and they'll help you reach Lataguri."
+            }
+          ],
+          "faq": [
+            {
+              "question": "Will we see a rhino?",
+              "answer": "Chances are good, especially at Jaldapara and the Gorumara watchtowers, but wildlife is never guaranteed."
+            },
+            {
+              "question": "What does it cost on top?",
+              "answer": "Lunches (approx ₹250–350 each), the optional Chilapata or Totopara drive (approx ₹500–550), the Jhalong extension and elephant rides, plus camera fees at forest gates."
+            },
+            {
+              "question": "Are the jeeps shared with strangers?",
+              "answer": "No. Up to six guests per jeep, all from our group, with a forest guide on board."
+            },
+            {
+              "question": "Is the food vegetarian-friendly?",
+              "answer": "Yes. Lodge breakfasts and dinners always include vegetarian dishes."
             }
           ],
           "itinerary": {
@@ -2732,7 +3545,7 @@
                 "activities": [
                   {
                     "title": "Jaldapara jeep safari",
-                    "description": "Early safari by shared open Gypsy (up to 6 guests per jeep, all from our group) through the grasslands and riverine forest of the Torsa floodplain, home to West Bengal's largest population of one-horned rhino. Subject to the park's 2026–27 reopening: if Jaldapara safaris are not running, this becomes a Chilapata forest morning drive at the same time.",
+                    "description": "Early safari by shared open Gypsy (up to 6 guests per jeep, all from our group) through the grasslands and riverine forest of the Torsa floodplain, home to West Bengal's largest population of one-horned rhino. If the forest department shuts the route at short notice, this becomes a Chilapata forest morning drive at the same time.",
                     "start_time": "06:00",
                     "end_time": "08:00",
                     "location": "Jaldapara National Park",
@@ -2796,8 +3609,8 @@
               "description": "Jeep, entry and guide fees; switches to a Chilapata morning drive if Jaldapara is not open."
             },
             {
-              "title": "Ghumbo tour escort and 5% GST",
-              "description": "Escort from pickup to drop; GST included."
+              "title": "Ghumbo tour escort and taxes",
+              "description": "Escort from pickup to drop; taxes included."
             }
           ],
           "exclusions": [
@@ -2918,16 +3731,131 @@
         {
           "slug": "murshidabad-nawabi-heritage-budget",
           "name": "Murshidabad: Nawabi Heritage on the Bhagirathi",
+          "tagline": "Hazarduari Palace, a tonga through the old town and a boat to Khushbagh.",
           "tier": "budget",
           "status": "live",
           "overview": "The old capital of Bengal's Nawabs, explored the way locals do it: by train, toto, tonga and country boat. Board the morning Hazarduari Express in reserved seats and walk from your Lalbagh lodge into the Nizamat Fort, where the Hazarduari Palace museum holds armour, silver and portraits facing the great white Imambara. Day two rolls through the old town on a horse-drawn tonga to Katra Masjid and the Jahan Kosha cannon, then on to the Jain merchants' Kathgola garden palace and Motijheel, with a public boat across the Bhagirathi to Siraj-ud-Daulah's quiet grave at Khushbagh. The final morning is spent with silk weavers before the evening train home. A local heritage guide, entries, trains, breakfasts and dinners are included.",
           "duration_days": 3,
           "duration_nights": 2,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "Kolkata (Chitpur)",
+              "type": "station",
+              "city": "Kolkata",
+              "code": "KOAA"
+            }
+          ],
+          "destination_hub": {
+            "name": "Murshidabad",
+            "type": "station",
+            "city": "Murshidabad",
+            "code": "MBB"
+          },
+          "stops": [
+            "Krishnanagar",
+            "Plassey",
+            "Berhampore"
+          ],
+          "best_time": "Oct–Mar",
           "tags": [
             {
               "label": "Heritage",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 1 · 13:30",
+              "description": "Armour, Nawabi silver and the durbar hall inside Hazarduari, the palace of a thousand doors."
+            },
+            {
+              "title": "DAY 1 · 17:00",
+              "description": "Sunset on the Bhagirathi from the Lalbagh ghat, opposite the palace."
+            },
+            {
+              "title": "DAY 2 · 08:00",
+              "description": "A horse-drawn tonga through the old town to Katra Masjid and the Jahan Kosha cannon."
+            },
+            {
+              "title": "DAY 2 · 14:30",
+              "description": "A country boat across the Bhagirathi to Siraj-ud-Daulah's quiet grave at Khushbagh."
+            },
+            {
+              "title": "DAY 3 · 09:00",
+              "description": "Murshidabad silk being reeled and woven on handlooms near Jiaganj."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Hazarduari closes on Fridays",
+              "description": "The palace museum is shut every Friday. Our visit is on Day 1, a Saturday or Sunday on every current departure."
+            },
+            {
+              "title": "No photos inside the palace",
+              "description": "Photography isn't allowed inside Hazarduari, and bags may need to be left at the counter. Your guide tells you what to carry."
+            },
+            {
+              "title": "The river sets the ferry",
+              "description": "The public boat to Khushbagh depends on river conditions. If it isn't running, your coordinator reorders Day 2 or uses the next crossing."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Comfortable shoes",
+              "description": "The fort grounds, Katra Masjid and Kathgola involve a lot of walking."
+            },
+            {
+              "title": "A scarf or stole",
+              "description": "Useful for covering your head at mosques and shrines."
+            },
+            {
+              "title": "A light jacket",
+              "description": "Winter mornings by the river and the evening train get cool."
+            },
+            {
+              "title": "Cash",
+              "description": "For silk shopping, totos and small eateries."
+            },
+            {
+              "title": "Photo ID",
+              "description": "Needed on the reserved trains and at the lodge."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Be at Kolkata (Chitpur) by 06:20",
+              "description": "Meet your tour leader at Kolkata station in Chitpur at 06:20 on Day 1. Train 13113 leaves at 06:50."
+            },
+            {
+              "title": "It's not Howrah or Sealdah",
+              "description": "Kolkata (Chitpur) is a separate terminal in north Kolkata. Tell your cab driver 'Kolkata station, Chitpur', and allow extra time."
+            },
+            {
+              "title": "Find your coordinator",
+              "description": "Your coordinator's name and number are in your confirmation, and they message the platform number the night before."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your coordinator at once. If you miss the train, they'll help you plan a later train to Murshidabad at your own cost."
+            }
+          ],
+          "faq": [
+            {
+              "question": "What class are the train seats?",
+              "answer": "Reserved second sitting (2S), non-AC. An AC chair-car upgrade is approx ₹250 extra each way."
+            },
+            {
+              "question": "Is the tonga ride safe?",
+              "answer": "Yes, it's a slow, short ride through the old town with local drivers. If you'd rather not, you can follow by toto."
+            },
+            {
+              "question": "Which meals are included?",
+              "answer": "Two breakfasts and two dinners at the lodge. Lunches are at local eateries, approx ₹200 each."
+            },
+            {
+              "question": "When does the trip end?",
+              "answer": "Train 13114 reaches Kolkata (Chitpur) around 21:25 on Day 3. Plan your onward travel from there, not from Howrah."
             }
           ],
           "itinerary": {
@@ -3286,12 +4214,37 @@
         {
           "slug": "sandakphu-singalila-ridge-trek-budget",
           "name": "Sandakphu: Singalila Ridge Trek",
+          "tagline": "Four days on the Singalila Ridge to Sandakphu, facing Everest and Kanchenjunga.",
           "tier": "budget",
           "status": "live",
           "overview": "The best Himalayan panorama in West Bengal for the price of a long weekend, built for fit students and backpackers. A fixed-date group of up to 14 rides reserved local jeeps from NJP to Manebhanjan. From there you walk four days along the Singalila Ridge, sleeping in dorm beds at family teahouses in Tumling, Kalipokhri and Sandakphu (3,636 m). Simple, filling meals keep you going: dal-bhat, noodles and roti-sabzi. Wake on the summit to the Sleeping Buddha of Kanchenjunga, with Everest, Lhotse and Makalu on the western skyline, then drop through rhododendron forest to Srikhola's river. Licensed Singalila guides, park permits and all trail meals are covered. Porters and Land Rover lifts can be added if your legs ask for them.",
           "duration_days": 6,
           "duration_nights": 5,
           "is_recommended": false,
+          "source_hubs": [
+            {
+              "name": "New Jalpaiguri Jn",
+              "type": "station",
+              "city": "Siliguri",
+              "code": "NJP"
+            },
+            {
+              "name": "Bagdogra Airport",
+              "type": "airport",
+              "city": "Siliguri",
+              "code": "IXB"
+            }
+          ],
+          "destination_hub": {
+            "name": "Manebhanjan",
+            "type": "bus_stand",
+            "city": "Manebhanjan",
+            "code": "MNBJ"
+          },
+          "stops": [
+            "Mirik"
+          ],
+          "best_time": "Oct–May",
           "tags": [
             {
               "label": "Trek",
@@ -3300,6 +4253,104 @@
             {
               "label": "Hills",
               "description": null
+            }
+          ],
+          "highlights": [
+            {
+              "title": "DAY 3 · 05:30",
+              "description": "Dawn on the Kanchenjunga massif from Tumling, before walking into the national park."
+            },
+            {
+              "title": "DAY 3 · 12:00",
+              "description": "A long climb past Kaiyakatta to the prayer-flagged black lake of Kalipokhri."
+            },
+            {
+              "title": "DAY 4 · 16:30",
+              "description": "Sunset on the Sleeping Buddha from the summit of Sandakphu, at 3,636 m."
+            },
+            {
+              "title": "DAY 5 · 05:00",
+              "description": "Everest, Lhotse, Makalu and Kanchenjunga at sunrise: four of the world's five highest peaks."
+            },
+            {
+              "title": "DAY 5 · 07:30",
+              "description": "Down through rhododendron, magnolia and bamboo to Srikhola's river and suspension bridge."
+            }
+          ],
+          "callouts": [
+            {
+              "title": "Original photo ID is a must",
+              "description": "Permits and trekker registration happen at the Manebhanjan checkpost on Day 2 against your original government photo ID. Without it you can't enter the park."
+            },
+            {
+              "title": "Park closes in the monsoon",
+              "description": "Singalila National Park is closed from mid-June to mid-September. Our dates run only in the open season."
+            },
+            {
+              "title": "The mountains may hide",
+              "description": "November usually has the clearest views; April and May bring rhododendrons but more haze. If weather or landslides block the route, you get a free move to another date or a refund of unspent costs."
+            }
+          ],
+          "what_to_pack": [
+            {
+              "title": "Broken-in trekking shoes",
+              "description": "Days of 11–16 km on stone trail and steep descents are hard on new boots."
+            },
+            {
+              "title": "Down jacket and thermals",
+              "description": "Sandakphu nights drop below freezing, and teahouses are not heated."
+            },
+            {
+              "title": "Headlamp",
+              "description": "For the 05:00 summit sunrise and dim teahouse toilets."
+            },
+            {
+              "title": "Two water bottles",
+              "description": "Refill at teahouses; bottled water is not included and gets pricey on the ridge."
+            },
+            {
+              "title": "Cash",
+              "description": "There are no ATMs after Manebhanjan, and porters, hot water and snacks are paid in cash."
+            }
+          ],
+          "meeting_instructions": [
+            {
+              "title": "Arrive by 10:30",
+              "description": "Be at New Jalpaiguri station or Bagdogra airport by 10:30 on Day 1. The jeeps leave for Manebhanjan at 11:00."
+            },
+            {
+              "title": "Find your guide",
+              "description": "Your guide's name and number are in your confirmation, and they share the exact meeting spot at each hub the day before."
+            },
+            {
+              "title": "Come trek-ready",
+              "description": "Wear or carry your boots and warm layers; the gear check at the 18:00 briefing in Manebhanjan is your last chance to fix gaps."
+            },
+            {
+              "title": "Running late",
+              "description": "Call your guide as soon as you know. Shared jeeps run from Siliguri towards Mirik and Manebhanjan, and they'll tell you how to reach the group before the briefing."
+            }
+          ],
+          "faq": [
+            {
+              "question": "How fit do I need to be?",
+              "answer": "Fit enough to walk 6–7 hours on hilly ground. Days are 6 to 16 km, and the climb to Sandakphu is steep. Start walking or stair-climbing a month before."
+            },
+            {
+              "question": "Is altitude sickness a risk?",
+              "answer": "Sandakphu is 3,636 m, so mild headaches are possible. We climb gradually over three days; tell your guide early about any symptoms."
+            },
+            {
+              "question": "Can someone carry my bag?",
+              "answer": "Yes. A porter is optional at approx ₹1,000 a day (max 20 kg, shareable between two). Land Rover seats on the jeep road are approx ₹500–800 each."
+            },
+            {
+              "question": "What are the teahouses like?",
+              "answer": "Simple dorm beds with shared toilets and hearty vegetarian meals. Hot water by the bucket is extra."
+            },
+            {
+              "question": "Will my phone work?",
+              "answer": "Signal is patchy along the ridge, and your phone may switch to a Nepali network near the border. Turn off roaming to avoid charges."
             }
           ],
           "itinerary": {

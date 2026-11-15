@@ -19,12 +19,17 @@ import {
   ETripAudience,
   ETripStatus,
   ETripTier,
+  TTripCallout,
+  TTripFAQ,
+  TTripHighlight,
+  type TTripHub,
+  TTripMeetingInstruction,
   TTripTag,
+  TTripWhatToPack,
   type TItinerary,
   type TTripInclusion,
 } from '../schemas/trips.schema.js';
 import { TripDepartureEntity } from './trip_departures.entity.js';
-import { BookingRequestEntity } from './booking_requests.entity.js';
 import { TripReviewEntity } from './trip_reviews.entity.js';
 
 @Entity('trips')
@@ -68,6 +73,9 @@ export class TripEntity {
   @Column({ name: 'slug', type: 'varchar', length: 255 })
   slug: string;
 
+  @Column({ name: 'tagline', type: 'varchar', length: 100, default: '' })
+  tagline: string;
+
   @Column({ name: 'overview', type: 'text' })
   overview: string;
 
@@ -88,8 +96,39 @@ export class TripEntity {
   @Column({ name: 'duration_nights', type: 'integer' })
   durationNights: number;
 
+  @Column({ name: 'source_hubs', type: 'jsonb', default: () => "'[]'" })
+  sourceHubs: TTripHub[];
+
+  @Column({ name: 'destination_hub', type: 'jsonb' })
+  destinationHub: TTripHub;
+
+  @Column({ name: 'stops', type: 'jsonb', default: () => "'[]'" })
+  stops: string[];
+
+  @Column({ name: 'best_time', type: 'varchar', length: 10, default: '' })
+  bestTime: string;
+
   @Column({ name: 'tags', type: 'jsonb', default: () => "'[]'" })
   tags: TTripTag[];
+
+  @Column({ name: 'highlights', type: 'jsonb', default: () => "'[]'" })
+  highlights: TTripHighlight[];
+
+  @Column({ name: 'callouts', type: 'jsonb', default: () => "'[]'" })
+  callouts: TTripCallout[];
+
+  @Column({ name: 'what_to_pack', type: 'jsonb', default: () => "'[]'" })
+  whatToPack: TTripWhatToPack[];
+
+  @Column({
+    name: 'meeting_instructions',
+    type: 'jsonb',
+    default: () => "'[]'",
+  })
+  meetingInstructions: TTripMeetingInstruction[];
+
+  @Column({ name: 'faq', type: 'jsonb', default: () => "'[]'" })
+  faq: TTripFAQ[];
 
   @Column({ name: 'itinerary', type: 'jsonb' })
   itinerary: TItinerary;
