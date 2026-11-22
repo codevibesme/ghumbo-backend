@@ -22,7 +22,6 @@ import {
 } from '../../schemas/bookings.schema.js';
 import { PaymentService } from '../../lib/payment/payment.service.js';
 import { BookingEntity } from '../../entities/bookings.entity.js';
-import { TRazorpayCallbackBody } from '../../schemas/payments.schema.js';
 
 @Injectable()
 export class BillingService {
@@ -368,46 +367,6 @@ export class BillingService {
     status: EBookingRefundStatus,
   ): Promise<void> {
     await this.bookingService.setRefundDetails(paymentId, refundId, status);
-  }
-
-  async handleRazorpayCallback(body: TRazorpayCallbackBody): Promise<string> {
-    if (body.error?.metadata && typeof body.error.metadata === 'string') {
-      body.error.metadata = JSON.parse(body.error.metadata);
-    }
-
-    if (
-      body.razorpay_order_id &&
-      body.razorpay_payment_id &&
-      body.razorpay_signature
-    ) {
-      if (
-        !this.paymentService.validatePaymentSignature(
-          body.razorpay_order_id,
-          body.razorpay_payment_id,
-          body.razorpay_signature,
-        )
-      )
-        return '/trips';
-
-      const booking = await this.bookingService.getByPaymentCheckoutId(
-        body.razorpay_order_id,
-      );
-
-      return booking ? `/trips/${booking.id}/payment?status=success` : '/trips';
-    } else if (
-      body.error?.metadata.order_id &&
-      body.error?.metadata.payment_id
-    ) {
-      const booking = await this.bookingService.getByPaymentCheckoutId(
-        body.error.metadata.order_id,
-      );
-
-      return booking
-        ? `/trips/${booking.id}/payment?status=${booking.expiresAt < new Date() ? 'expired' : 'failed'}`
-        : `/trips`;
-    }
-
-    return `/trips`;
   }
 
   async handleWebhookEvents(
