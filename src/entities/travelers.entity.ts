@@ -17,10 +17,6 @@ import { UserEntity } from './users.entity.js';
 import { BookingTravelerEntity } from './booking_travelers.entity.js';
 
 @Entity('travelers')
-@Index('uq_travelers_user_id_is_self', ['userId'], {
-  unique: true,
-  where: `"is_self" = true AND "deleted_at" IS NULL`,
-})
 export class TravelerEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
@@ -38,14 +34,14 @@ export class TravelerEntity {
   })
   user: Relation<UserEntity> | null;
 
-  @Column({ name: 'is_self', type: 'boolean', default: false })
-  isSelf: boolean;
+  @Column({ name: 'first_name', type: 'varchar', length: 50 })
+  firstName: string;
 
-  @Column({ name: 'full_name', type: 'varchar', length: 100 })
-  fullName: string;
+  @Column({ name: 'last_name', type: 'varchar', length: 50 })
+  lastName: string;
 
   @Column({ name: 'date_of_birth', type: 'date' })
-  dateOfBirth: string;
+  dateOfBirth: Date;
 
   @Column({ name: 'gender', type: 'enum', enum: ETravelerGender })
   gender: ETravelerGender;

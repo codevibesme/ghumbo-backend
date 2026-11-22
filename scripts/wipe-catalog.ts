@@ -6,8 +6,8 @@
  *   npm run wipe-catalog -- --yes               # deletes
  *   npm run wipe-catalog -- --yes --with-bookings
  *
- * Booking requests, bookings and reviews point at trips and departures, so those tables
- * (booking_requests, bookings, booking_travelers, booking_payments, trip_reviews) are
+ * Bookings and reviews point at trips and departures, so those tables
+ * (bookings, booking_travelers, trip_reviews) are
  * emptied in the same statement. If any of them hold rows the wipe stops, unless
  * --with-bookings is passed. Users, sign-in data and saved travelers are never touched.
  *
@@ -17,13 +17,7 @@
 import pg from 'pg';
 
 const CATALOG = ['countries', 'destinations', 'trips', 'trip_departures'];
-const BOOKINGS = [
-  'booking_requests',
-  'bookings',
-  'booking_travelers',
-  'booking_payments',
-  'trip_reviews',
-];
+const BOOKINGS = ['bookings', 'booking_travelers', 'trip_reviews'];
 
 async function countRows(client: pg.Client, tables: string[]) {
   const counts: Record<string, number> = {};

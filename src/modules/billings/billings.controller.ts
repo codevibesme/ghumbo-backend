@@ -1,0 +1,90 @@
+import {
+  Body,
+  Controller,
+  HttpCode,
+  Param,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiBody,
+  ApiConflictResponse,
+  ApiExcludeEndpoint,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiParam,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import type { AuthenticatedUserReq } from '../../interfaces/index.js';
+import type { Response } from 'express';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard.js';
+import { CreateBookingReqDto, CreateBookingResDto } from './billings.dto.js';
+import { BillingService } from './billings.service.js';
+import { type TRazorpayCallbackBody } from '../../schemas/payments.schema.js';
+
+@Controller('billings')
+@ApiTags('billings')
+export class BillingController {
+  constructor(private readonly service: BillingService) {}
+
+  @Post('bookings')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
+  @ApiBody({ type: CreateBookingReqDto })
+  @ApiOkResponse({ type: CreateBookingResDto })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiConflictResponse({
+    description:
+      'An active booking is already in progress/Trip is fully booked. Please try some other date!',
+  })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  async createBooking(
+    @Req() req: AuthenticatedUserReq,
+    @Res() res: Response,
+    @Body() body: CreateBookingReqDto,
+  ) {
+    const data = await this.service.createBooking(req.user.userId, body);
+
+    return res.status(200).send(data);
+  }
+
+  @Post('/retry-payment/:bookingId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
+  @ApiParam({ name: 'bookingId', type: String })
+  @ApiOkResponse({ type: CreateBookingResDto })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiConflictResponse({
+    description: 'Booking has already expired',
+  })
+  @ApiNotFoundResponse({ description: 'Booking not found' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  async retryBooking(
+    @Req() req: AuthenticatedUserReq,
+    @Res() res: Response,
+    @Param('bookingId') bookingId: string,
+  ) {
+    const data = await this.service.retryPayment(bookingId, req.user.userId);
+
+    return res.status(200).send(data);
+  }
+
+  @Post('/razorpay/callback')
+  @HttpCode(303)
+  @ApiExcludeEndpoint()
+  async handleRazorpayCallback(
+    @Res() res: Response,
+    @Body() body: TRazorpayCallbackBody,
+  ) {
+    const clientUrl = process.env.CLIENT_URL!;
+    const redirectPath =
+      clientUrl + (await this.service.handleRazorpayCallback(body));
+
+    return res.status(303).redirect(redirectPath);
+  }
+}

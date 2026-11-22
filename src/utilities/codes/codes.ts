@@ -8,6 +8,4 @@ function generateCode(prefix: string, length = 6): string {
   return `${prefix}-${code}`;
 }
 
-export const generateBookingRequestCode = () => generateCode('GH');
-
 export const generateBookingCode = () => generateCode('GH');
