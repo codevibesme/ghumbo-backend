@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  HttpCode,
   Param,
   Post,
   Req,
@@ -13,7 +12,6 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiConflictResponse,
-  ApiExcludeEndpoint,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiParam,
@@ -25,7 +23,6 @@ import type { Response } from 'express';
 import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard.js';
 import { CreateBookingReqDto, CreateBookingResDto } from './billings.dto.js';
 import { BillingService } from './billings.service.js';
-import { type TRazorpayCallbackBody } from '../../schemas/payments.schema.js';
 
 @Controller('billings')
 @ApiTags('billings')
@@ -72,19 +69,5 @@ export class BillingController {
     const data = await this.service.retryPayment(bookingId, req.user.userId);
 
     return res.status(200).send(data);
-  }
-
-  @Post('/razorpay/callback')
-  @HttpCode(303)
-  @ApiExcludeEndpoint()
-  async handleRazorpayCallback(
-    @Res() res: Response,
-    @Body() body: TRazorpayCallbackBody,
-  ) {
-    const clientUrl = process.env.CLIENT_URL!;
-    const redirectPath =
-      clientUrl + (await this.service.handleRazorpayCallback(body));
-
-    return res.status(303).redirect(redirectPath);
   }
 }
