@@ -17,6 +17,7 @@ import { BillingController } from './billings.controller.js';
     TripDepartureModule,
     TravelerModule,
     BookingModule,
+    TripDepartureModule,
     BookingTravelerModule,
   ],
   controllers: [BillingController],

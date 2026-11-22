@@ -3,7 +3,10 @@ import {
   ArrayMinSize,
   ArrayUnique,
   IsArray,
+  IsOptional,
+  IsString,
   Matches,
+  MaxLength,
 } from 'class-validator';
 import { ECURRENCY } from '../../schemas/misc.schema.js';
 
@@ -33,4 +36,26 @@ export class CreateBookingResDto {
   orderId: string;
   amount: string;
   currency: ECURRENCY;
+}
+
+export class CancelBookingReqDto {
+  @Matches(ULID, { message: 'bookingId must be a ULID' })
+  bookingId: string;
+
+  @IsString()
+  @MaxLength(100)
+  @IsOptional()
+  cancellationReason?: string;
+}
+
+export class CancelQuoteResDto {
+  bookingAmount: string;
+  refundAmount: string;
+  cancellationFee: string;
+  paymentMethod: string;
+}
+
+export class CancelBookingResDto extends CancelQuoteResDto {
+  bookingId: string;
+  refundId: string | null;
 }
