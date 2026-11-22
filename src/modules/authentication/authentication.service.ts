@@ -178,6 +178,16 @@ export class AuthenticationService {
       ACCESS_TOKEN_VALIDITY,
     );
 
+    // TODO: SEND WELCOME EVENT
+    /*
+    {
+      event: 'sign-up:welcome'
+      payload: {
+        userId
+      }
+    }
+    */
+
     return {
       refreshToken: refreshToken,
       accessToken: accessToken,

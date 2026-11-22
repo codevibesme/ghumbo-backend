@@ -46,6 +46,10 @@ export class BookingRepository {
         'b.refundStatus',
         'b.refundAmount',
         'b.refundReason',
+        'b.refundedAt',
+        'b.cancellationReason',
+        'b.cancellationFee',
+        'b.cancelledAt',
         'b.error',
         'b.paymentMethod',
         'b.createdAt',
@@ -106,6 +110,10 @@ export class BookingRepository {
       refundStatus: data.refundStatus,
       refundAmount: data.refundAmount,
       refundReason: data.refundReason,
+      refundedAt: data.refundedAt,
+      cancellationReason: data.cancellationReason,
+      cancellationFee: data.cancellationFee,
+      cancelledAt: data.cancelledAt,
       expiresAt: data.expiresAt,
       error: data.error,
     };
@@ -175,6 +183,8 @@ export class BookingRepository {
       {
         paymentRefundId: refundId,
         refundStatus: status,
+        refundedAt:
+          status === EBookingRefundStatus.PROCESSED ? new Date() : null,
       },
     );
   }

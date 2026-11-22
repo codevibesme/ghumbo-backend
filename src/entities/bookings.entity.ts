@@ -129,8 +129,26 @@ export class BookingEntity {
   @Column({ name: 'refund_reason', type: 'text', default: null })
   refundReason: string | null;
 
+  @Column({ name: 'refunded_at', type: 'timestamptz', default: null })
+  refundedAt: Date | null;
+
   @Column({ name: 'payment_method', type: 'text', default: null })
   paymentMethod: string | null;
+
+  @Column({ name: 'cancelled_at', type: 'timestamptz', default: null })
+  cancelledAt: Date | null;
+
+  @Column({ name: 'cancellation_reason', type: 'text', default: null })
+  cancellationReason: string | null;
+
+  @Column({
+    name: 'cancellation_fee',
+    type: 'numeric',
+    precision: 12,
+    scale: 2,
+    default: null,
+  })
+  cancellationFee: string | null;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;

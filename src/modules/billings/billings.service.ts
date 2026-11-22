@@ -11,7 +11,13 @@ import {
 import { UserService } from '../users/users.service.js';
 import { BookingService } from '../bookings/bookings.service.js';
 import { BookingTravelerService } from '../booking_travelers/booking_travlers.service.js';
-import { CreateBookingReqDto, CreateBookingResDto } from './billings.dto.js';
+import {
+  CancelBookingReqDto,
+  CancelBookingResDto,
+  CancelQuoteResDto,
+  CreateBookingReqDto,
+  CreateBookingResDto,
+} from './billings.dto.js';
 import { ETripDepartureStatus } from '../../schemas/trip_departures.schema.js';
 import { TxnHelperService } from '../../helpers/txn.service.js';
 import { TripDepartureEntity } from '../../entities/trip_departures.entity.js';
@@ -22,6 +28,8 @@ import {
 } from '../../schemas/bookings.schema.js';
 import { PaymentService } from '../../lib/payment/payment.service.js';
 import { BookingEntity } from '../../entities/bookings.entity.js';
+import { calculateRefundAmount } from '../../utilities/calculate-refund-amount.js';
+import { TripDepartureService } from '../trip_departures/trip_departures.service.js';
 
 @Injectable()
 export class BillingService {
@@ -34,6 +42,7 @@ export class BillingService {
     private readonly travelerService: TravelerService,
     private readonly txn: TxnHelperService,
     private readonly paymentService: PaymentService,
+    private readonly departureService: TripDepartureService,
   ) {}
 
   async createBooking(
@@ -135,6 +144,16 @@ export class BillingService {
 
       await this.bookingService.updatePaymentCheckoutId(booking.id, order.id);
 
+      // TODO: SEND BOOKING CREATED EVENT
+      /*
+      {
+        event: booking:created
+        payload: {
+          bookingId: string
+        }
+      }
+      */
+
       return {
         bookingId: booking.id,
         orderId: order.id,
@@ -207,6 +226,16 @@ export class BillingService {
       await bookingRepo.save(booking);
       await departureRepo.save(departure);
     });
+
+    // TODO: SEND BOOKING EXPIRED EVENT
+    /*
+    {
+      event: booking:expired
+      payload: {
+        bookingId
+      }
+    }
+    */
   }
 
   async reconcileLatePayment(
@@ -255,6 +284,17 @@ export class BillingService {
 
         await manager.save(departure);
         await manager.save(booking);
+
+        // TODO: SEND BOOKING CONFIRMED EVENT
+        /*
+        {
+          event: booking:confirmed
+          payload: {
+            bookingId
+          }
+        }
+        */
+
         return booking;
       }
 
@@ -275,6 +315,16 @@ export class BillingService {
       );
 
       await this.bookingService.setPaymentRefundId(booking.id, refundRes.id);
+
+      // TODO: SEND BOOKING REFUND INITIATED
+      /*
+      {
+        event: booking:refund:initiated
+        payload: {
+          bookingId
+        }
+      }
+      */
     }
   }
 
@@ -289,7 +339,15 @@ export class BillingService {
       paymentMethod,
     );
     if (res.affected === 1) {
-      // emit success event
+      // TODO: SEND BOOKING CONFIRMED EVENT
+      /*
+      {
+        event: booking:confirmed
+        payload: {
+          bookingId
+        }
+      }
+      */
 
       return;
     }
@@ -367,6 +425,30 @@ export class BillingService {
     status: EBookingRefundStatus,
   ): Promise<void> {
     await this.bookingService.setRefundDetails(paymentId, refundId, status);
+
+    // TODO: SEND BOOKING REFUND PROCESSED/FAILED
+    /*
+    {
+      event: booking:refund:${status}
+      payload: {
+        bookingId
+      }
+    }
+    */
+  }
+
+  async notifyPaymentFailure(orderId: string): Promise<void> {
+    const booking = await this.bookingService.getByPaymentCheckoutId(orderId);
+    if (!booking) return;
+    // TODO: SEND BOOKING PAYMENT FAILED
+    /*
+    {
+      event: booking:payment:${status}
+      payload: {
+        bookingId
+      }
+    }
+    */
   }
 
   async handleWebhookEvents(
@@ -394,6 +476,10 @@ export class BillingService {
           eventData.payload.payment.entity.id,
           eventData.payload.payment.entity.method,
         );
+      case 'payment.failed':
+        return await this.notifyPaymentFailure(
+          eventData.payload.payment.entity.order_id,
+        );
       case 'refund.processed':
       case 'refund.failed':
         return await this.recordRefundDetails(
@@ -402,6 +488,158 @@ export class BillingService {
           eventData.payload.refund.entity.status,
         );
     }
+  }
+
+  async cancelBooking(
+    userId: string,
+    record: CancelBookingReqDto,
+  ): Promise<CancelBookingResDto> {
+    const { bookingId, cancellationReason } = record;
+
+    const candidate = await this.bookingService.getByIdOrThrow(bookingId);
+
+    if (candidate.userId !== userId) {
+      throw new ForbiddenException("Booking doesn't belong to the user");
+    }
+
+    const booking = await this.txn.run(async (manager) => {
+      const departure = await manager
+        .getRepository(TripDepartureEntity)
+        .createQueryBuilder('departure')
+        .setLock('pessimistic_write')
+        .where('departure.id = :departureId', {
+          departureId: candidate.departureId,
+        })
+        .getOne();
+
+      if (!departure) throw new NotFoundException('Trip departure not found');
+
+      if (new Date(departure.startDate) <= new Date())
+        throw new ConflictException('Trip has already started');
+
+      if (departure.status === ETripDepartureStatus.CANCELLED)
+        throw new ConflictException('Trip cancelled, refund already processed');
+
+      const booking = await manager
+        .getRepository(BookingEntity)
+        .createQueryBuilder('booking')
+        .setLock('pessimistic_write')
+        .where('booking.id = :bookingId', { bookingId })
+        .andWhere('booking.status = :bookingStatus', {
+          bookingStatus: EBookingStatus.CONFIRMED,
+        })
+        .andWhere('booking.refundStatus IS NULL')
+        .getOne();
+
+      if (!booking)
+        throw new ConflictException('Booking is not in a refundable state.');
+      if (!booking.paymentReferenceId)
+        throw new ServiceUnavailableException(
+          "Booking doesn't have a valid payment reference",
+        );
+
+      if (departure.bookedSeats < booking.travelerCount)
+        throw new InternalServerErrorException(
+          'Trip departure seats are out of sync',
+        );
+
+      departure.bookedSeats -= booking.travelerCount;
+      booking.status = EBookingStatus.CANCELLED;
+      booking.cancellationReason = cancellationReason || null;
+      booking.cancelledAt = new Date();
+      const refundAmount = calculateRefundAmount(
+        booking.cancelledAt,
+        new Date(departure.startDate),
+        Number(booking.amount),
+      );
+      booking.cancellationFee = Math.round(
+        Number(booking.amount) - refundAmount,
+      ).toFixed(2);
+
+      if (refundAmount > 0) {
+        booking.refundStatus = EBookingRefundStatus.PENDING;
+        booking.refundAmount = refundAmount.toFixed(2);
+        booking.refundReason = 'CANCELLED BY USER';
+      }
+
+      await manager.save(departure);
+      await manager.save(booking);
+
+      return booking;
+    });
+
+    // TODO: SEND BOOKING CANCELLED
+    /*
+    {
+      event: booking:cancelled
+      payload: {
+        bookingId
+      }
+    }
+    */
+
+    if (booking.refundStatus === null)
+      return {
+        bookingId: booking.id,
+        refundId: null,
+        bookingAmount: booking.amount,
+        refundAmount: '0',
+        cancellationFee: booking.amount,
+        paymentMethod: booking.paymentMethod!,
+      };
+
+    const refundRes = await this.paymentService.refundBooking(
+      booking.id,
+      booking.paymentReferenceId!,
+      Math.round(Number(booking.refundAmount) * 100),
+    );
+
+    await this.bookingService.setPaymentRefundId(booking.id, refundRes.id);
+
+    return {
+      bookingId: booking.id,
+      refundId: refundRes.id,
+      bookingAmount: booking.amount,
+      refundAmount: booking.refundAmount!,
+      cancellationFee: booking.cancellationFee!,
+      paymentMethod: booking.paymentMethod!,
+    };
+  }
+
+  async getCancellationQuote(
+    userId: string,
+    bookingId: string,
+  ): Promise<CancelQuoteResDto> {
+    const booking = await this.bookingService.getByIdOrThrow(bookingId);
+    if (booking.userId !== userId)
+      throw new ForbiddenException("Booking doesn't belong to the user");
+
+    if (booking.status !== EBookingStatus.CONFIRMED)
+      throw new ConflictException('Cannot cancel unconfirmed booking');
+
+    const now = new Date();
+
+    const departure = await this.departureService.findByIdAndStatusOrThrow(
+      booking.departureId,
+      ETripDepartureStatus.OPEN,
+    );
+    if (new Date(departure.startDate) <= now)
+      throw new ConflictException('Trip has already started');
+
+    const refundAmount = calculateRefundAmount(
+      now,
+      new Date(departure.startDate),
+      Number(booking.amount),
+    );
+
+    return {
+      bookingAmount: booking.amount,
+      refundAmount: refundAmount.toFixed(2),
+      cancellationFee: Math.round(
+        Number(booking.amount) - refundAmount,
+      ).toFixed(2),
+      paymentMethod: booking.paymentMethod!,
+    };
   }
 
   async sweepStaleBookings(): Promise<void> {
