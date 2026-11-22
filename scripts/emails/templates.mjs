@@ -124,9 +124,9 @@ export const templates = [
       note('Didn’t create this account? Reply to this email and we’ll close it.', '0 0 40px') +
       h2('What your account does') +
       features([
-        ['Track every request', 'See when we got it, when we called and when your seat is confirmed, all in My trips.'],
+        ['Track every booking', 'Your seats, payment, pickup point and countdown to the trip, all in My trips.'],
         ['Save trips for later', 'Keep a departure on your list now and decide after payday.'],
-        ['Skip the retyping', 'Your name, email and mobile fill in on your next request.'],
+        ['Skip the retyping', 'Save your travellers once and tick them at checkout next time.'],
       ]) +
       board({
         title: 'Leaving soon',
@@ -142,110 +142,6 @@ export const templates = [
         })),
         foot: 'TWIN SHARING · TAXES INCLUDED',
       }),
-  },
-
-  // 2 · Request received
-  {
-    alias: 'trip-request-received',
-    name: 'Trips · 2 Request received',
-    from: SENDERS.trips,
-    subject: `We got your request · ${v('BOOKING_REF')}`,
-    preheader: `${v('TRIP_SHORT')}, ${v('DEPARTURE_DATE')}, ${v('TRAVELLERS')}. No payment yet.`,
-    variables: {
-      ...user,
-      BOOKING_REF: { sample: 'GH-26DEC-4821' },
-      TRIP_NAME: { sample: 'Darjeeling: Queen of the Hills' },
-      TRIP_SHORT: { sample: 'Darjeeling' },
-      DEPARTURE_DATE: { sample: 'Sat 26 Dec' },
-      DEPARTURE_DATES: { sample: 'SAT 26 DEC → TUE 29 DEC 2026' },
-      TRAVELLERS: { sample: '2 adults · one room' },
-      ESTIMATE: { sample: '≈ ₹18,998 · taxes included' },
-      SUPPORT_PHONE: { sample: '+91 33 4000 0000' },
-      TRACK_URL: { sample: 'https://ghumbo.com/my-trips/GH-26DEC-4821' },
-    },
-    footer: {
-      reason: "You're getting this because you requested a seat on a Ghumbo trip.",
-      lines: ["Trip updates can't be turned off while a request is open."],
-    },
-    body: () =>
-      kicker('Seat request') +
-      h1('We got your request') +
-      p(`Thanks, ${v('USER_NAME')}. Your request for ${v('TRIP_NAME')} is in. We call you within 24 hours from ${v('SUPPORT_PHONE')} to sort the rest.`) +
-      card(
-        label('Your reference') +
-          bigMono(v('BOOKING_REF')) +
-          smallP('Quote it if you call or write to us.', C.muted, '8px 0 20px') +
-          kv([
-            ['Trip', v('TRIP_NAME')],
-            ['Departure', v('DEPARTURE_DATES'), { mono: true }],
-            ['Travellers', v('TRAVELLERS'), { mono: true }],
-            ['Estimate', v('ESTIMATE'), { mono: true }],
-          ]),
-        '0 0 20px',
-      ) +
-      callout('No payment yet', 'Nothing is charged online. The final amount is confirmed on the call.', C.navy, '0 0 32px') +
-      h2('What happens next') +
-      steps([
-        ['Within 24 hours', 'We call you', `From ${v('SUPPORT_PHONE')}. Save the number so you know it’s us.`],
-        ['On the call', 'We confirm your seat', 'We answer your questions and sort your room, then send a link to pay in full. Paying confirms your seat.'],
-        ['7 days before', 'Your trip pack arrives', 'Pickup time, your coordinator and a packing list.'],
-      ]) +
-      button(v('TRACK_URL'), 'Track your request →') +
-      note('Need to change something? Reply to this email and quote your reference.', '0'),
-  },
-
-  // 3 · We tried calling
-  {
-    alias: 'trip-missed-call',
-    name: 'Trips · 3 We tried calling',
-    from: SENDERS.trips,
-    subject: `We tried calling you, ${v('USER_NAME')}`,
-    preheader: `Pick a callback time so we can hold your ${v('TRIP_SHORT')} seat.`,
-    variables: {
-      ...user,
-      TRIP_SHORT: { sample: 'Darjeeling' },
-      TRIP_NAME: { sample: 'Darjeeling: Queen of the Hills' },
-      CALLED_AT: { sample: '11 Oct · 17:05' },
-      SUPPORT_PHONE: { sample: '+91 33 4000 0000' },
-      USER_PHONE: { sample: '+91 98300 12345' },
-      SLOT_1_LABEL: { sample: 'Today, Sun 11 Oct · 18:00–20:00' },
-      SLOT_1_URL: { sample: 'https://ghumbo.com/callback?slot=1' },
-      SLOT_2_LABEL: { sample: 'Tomorrow, Mon 12 Oct · 10:00–12:00' },
-      SLOT_2_URL: { sample: 'https://ghumbo.com/callback?slot=2' },
-      SLOT_3_LABEL: { sample: 'Tomorrow, Mon 12 Oct · 16:00–18:00' },
-      SLOT_3_URL: { sample: 'https://ghumbo.com/callback?slot=3' },
-      SEATS_LEFT: { sample: '4' },
-      DEPARTURE_DATE: { sample: '26 Dec' },
-      DEPARTURE_DATES: { sample: 'SAT 26 DEC → TUE 29 DEC 2026' },
-      BOOKING_REF: { sample: 'GH-26DEC-4821' },
-    },
-    footer: {
-      reason: "You're getting this because you requested a seat on a Ghumbo trip.",
-      lines: ["Trip updates can't be turned off while a request is open."],
-    },
-    body: () => {
-      const slot = (i, pad) =>
-        `<tr><td style="padding:${pad}"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate"><tr><td bgcolor="${C.white}" style="background:${C.white};border:${i === 1 ? `2px solid ${C.navy}` : `1.5px solid ${C.ink}`};border-radius:6px;text-align:center"><a href="${v(`SLOT_${i}_URL`)}" style="display:block;padding:14px 12px;font:700 16px/20px ${SANS};color:${C.ink};text-decoration:none">${v(`SLOT_${i}_LABEL`)}</a></td></tr></table></td></tr>`;
-      return (
-        kicker(`Missed call · ${v('CALLED_AT')}`) +
-        h1('We tried calling you') +
-        p(`We rang from ${v('SUPPORT_PHONE')} about your ${v('TRIP_SHORT')} request and couldn’t get through. Pick a time below and we’ll call you back on ${v('USER_PHONE')}.`, '0 0 32px') +
-        h2('Pick a callback time', '0 0 16px') +
-        slot(1, '0 0 12px') + slot(2, '0 0 12px') + slot(3, '0 0 8px') +
-        note(`All times IST. Rather call us? <a href="tel:${v('SUPPORT_PHONE')}" style="color:${C.navy};font-weight:600">${v('SUPPORT_PHONE')}</a>`, '0 0 24px') +
-        callout(
-          `Seats are going on ${v('DEPARTURE_DATE')}`,
-          `Only ${v('SEATS_LEFT')} seats left on this date. Your request stays in the queue, but a seat is only held once we talk.`,
-          C.amberFg,
-        ) +
-        `<tr><td style="padding:0">${kv([
-          ['Reference', v('BOOKING_REF'), { mono: true }],
-          ['Trip', v('TRIP_NAME')],
-          ['Departure', v('DEPARTURE_DATES'), { mono: true }],
-          ['Status', badge('We called you', 'outline')],
-        ])}</td></tr>`
-      );
-    },
   },
 
   // 4 · Seat confirmed
@@ -492,11 +388,11 @@ export const templates = [
       ) +
       callout(
         'You get first access',
-        `The waitlist can request seats until ${v('ACCESS_END_DATE')}. After that, seats go public. Groups are small, so early requests get first pick of dates.`,
+        `The waitlist gets first pick until ${v('ACCESS_END_DATE')}. After that, seats go public. Seats are limited, so book early for the best dates.`,
         C.amberFg,
       ) +
       button(v('DESTINATION_URL'), `See ${v('DESTINATION')} trips →`) +
-      note('Same deal as always: request a seat, we call within 24 hours, no payment online.', '0'),
+      note('Book online in a couple of minutes. Pay in full and your seat is locked.', '0'),
   },
 
   // 9 · Review reminder
@@ -530,7 +426,7 @@ export const templates = [
       note('This is the only reminder we’ll send.', '0'),
   },
 
-  // 11 · Payment receipt (trips are paid in full after the call)
+  // 11 · Payment receipt (sent once the Razorpay webhook confirms the booking)
   {
     alias: 'billing-payment-receipt',
     name: 'Billing · 11 Payment receipt',

@@ -53,7 +53,7 @@ export class TransactionRunner {
 export class TxnHelperService {
   constructor(private readonly dataSource: DataSource) {}
 
-  async createTransaction(): Promise<TransactionRunner> {
+  private async createTransaction(): Promise<TransactionRunner> {
     const queryRunner = this.dataSource.createQueryRunner();
 
     try {

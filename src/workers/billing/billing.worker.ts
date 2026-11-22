@@ -4,8 +4,9 @@ import {
   Logger,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { QueueService } from '../../lib/queue/queue.service.js';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { SqsConsumerEventHandler, SqsMessageHandler } from '@ssut/nestjs-sqs';
+import { QueueService } from '../../lib/queue/queue.service.js';
 import { QUEUES, SQS_MAX_RECEIVE_COUNT } from '../../lib/queue/queue.config.js';
 
 import {
@@ -13,12 +14,16 @@ import {
   TBillingQueueJob,
 } from '../../schemas/queue.schema.js';
 import { type Message } from '@aws-sdk/client-sqs';
+import { BillingService } from '../../modules/billings/billings.service.js';
 
 @Injectable()
 export class BillingWorker {
   private readonly logger = new Logger(BillingWorker.name);
 
-  constructor(private readonly queueService: QueueService) {}
+  constructor(
+    private readonly billingService: BillingService,
+    private readonly queueService: QueueService,
+  ) {}
 
   @SqsMessageHandler(QUEUES.BILLING.name, false)
   async handle(message: Message) {
@@ -54,5 +59,10 @@ export class BillingWorker {
   @SqsConsumerEventHandler(QUEUES.BILLING.name, 'processing_error')
   onError(error: Error, message: Message) {
     this.logger.error(`Failed ${message.MessageId}: ${error.message}`);
+  }
+
+  @Cron(CronExpression.EVERY_30_SECONDS)
+  async sweepStaleBookings(): Promise<void> {
+    await this.billingService.sweepStaleBookings();
   }
 }

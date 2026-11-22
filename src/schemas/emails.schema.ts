@@ -9,8 +9,6 @@ const rowSlot = z.string().max(MAX_VALUE).optional();
 export enum EEMAIL_TEMPLATES {
   AUTH_SIGN_IN_CODE = 'auth-sign-in-code',
   LIFECYCLE_WELCOME = 'lifecycle-welcome',
-  TRIP_REQUEST_RECEIVED = 'trip-request-received',
-  TRIP_MISSED_CALL = 'trip-missed-call',
   TRIP_SEAT_CONFIRMED = 'trip-seat-confirmed',
   TRIP_PACK = 'trip-pack',
   TRIP_DEPARTURE_TOMORROW = 'trip-departure-tomorrow',
@@ -48,44 +46,6 @@ export const LifecycleWelcomeEmailTemplate = z.object({
     TRIP_3_SEATS: text,
     TRIP_3_PRICE: text,
     UNSUBSCRIBE_LINK: url,
-  }),
-});
-
-export const TripRequestReceivedEmailTemplate = z.object({
-  id: z.literal(EEMAIL_TEMPLATES.TRIP_REQUEST_RECEIVED),
-  variables: z.strictObject({
-    USER_NAME: optionalText,
-    BOOKING_REF: text,
-    TRIP_NAME: text,
-    TRIP_SHORT: text,
-    DEPARTURE_DATE: text,
-    DEPARTURE_DATES: text,
-    TRAVELLERS: text,
-    ESTIMATE: text,
-    SUPPORT_PHONE: text,
-    TRACK_URL: url,
-  }),
-});
-
-export const TripMissedCallEmailTemplate = z.object({
-  id: z.literal(EEMAIL_TEMPLATES.TRIP_MISSED_CALL),
-  variables: z.strictObject({
-    USER_NAME: optionalText,
-    TRIP_SHORT: text,
-    TRIP_NAME: text,
-    CALLED_AT: text,
-    SUPPORT_PHONE: text,
-    USER_PHONE: text,
-    SLOT_1_LABEL: text,
-    SLOT_1_URL: url,
-    SLOT_2_LABEL: text,
-    SLOT_2_URL: url,
-    SLOT_3_LABEL: text,
-    SLOT_3_URL: url,
-    SEATS_LEFT: text,
-    DEPARTURE_DATE: text,
-    DEPARTURE_DATES: text,
-    BOOKING_REF: text,
   }),
 });
 
@@ -249,8 +209,6 @@ export const BillingPaymentReceiptEmailTemplate = z.object({
 export const EmailTemplate = z.discriminatedUnion('id', [
   AuthEmailTemplate,
   LifecycleWelcomeEmailTemplate,
-  TripRequestReceivedEmailTemplate,
-  TripMissedCallEmailTemplate,
   TripSeatConfirmedEmailTemplate,
   TripPackEmailTemplate,
   TripDepartureTomorrowEmailTemplate,

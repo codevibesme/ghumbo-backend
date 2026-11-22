@@ -13,7 +13,6 @@ import {
 } from 'typeorm';
 import { ulid } from 'ulid';
 import { TripEntity } from './trips.entity.js';
-import { BookingRequestEntity } from './booking_requests.entity.js';
 import { ETripDepartureStatus } from '../schemas/trip_departures.schema.js';
 import { BookingEntity } from './bookings.entity.js';
 import { ECURRENCY } from '../schemas/misc.schema.js';
@@ -76,12 +75,6 @@ export class TripDepartureEntity {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
-
-  @OneToMany(
-    () => BookingRequestEntity,
-    (bookingRequests) => bookingRequests.departure,
-  )
-  bookingRequests: BookingRequestEntity[];
 
   @OneToMany(() => BookingEntity, (bookings) => bookings.departure)
   bookings: BookingEntity[];

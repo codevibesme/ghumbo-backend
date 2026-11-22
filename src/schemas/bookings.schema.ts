@@ -1,7 +1,11 @@
 export enum EBookingStatus {
-  PENDING_PAYMENT = 'pending_payment',
-  BALANCE_DUE = 'balance_due',
-  FULLY_PAID = 'fully_paid',
-  OVERDUE = 'overdue',
-  CANCELLED = 'cancelled',
+  PENDING = 'pending',
+  CONFIRMED = 'confirmed',
+  EXPIRED = 'expired',
+}
+
+export enum EBookingRefundStatus {
+  PENDING = 'pending',
+  PROCESSED = 'processed',
+  FAILED = 'failed',
 }

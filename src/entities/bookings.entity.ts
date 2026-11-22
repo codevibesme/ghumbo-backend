@@ -7,29 +7,29 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryColumn,
   type Relation,
   UpdateDateColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
-import { EBookingStatus } from '../schemas/bookings.schema.js';
+import {
+  EBookingRefundStatus,
+  EBookingStatus,
+} from '../schemas/bookings.schema.js';
 import { ECURRENCY } from '../schemas/misc.schema.js';
 import { generateBookingCode } from '../utilities/codes/codes.js';
-import { BookingRequestEntity } from './booking_requests.entity.js';
 import { UserEntity } from './users.entity.js';
 import { TripDepartureEntity } from './trip_departures.entity.js';
 import { BookingTravelerEntity } from './booking_travelers.entity.js';
-import { BookingPaymentEntity } from './booking_payments.entity.js';
 
 @Entity('bookings')
 @Index('idx_bookings_departure_id_status', ['departureId', 'status'])
+@Index('uq_bookings_departure_id_user_id', ['departureId', 'userId'], {
+  unique: true,
+  where: "status IN ('pending')",
+})
 @Check('chk_bookings_traveler_count', `"traveler_count" > 0`)
 @Check('chk_bookings_amount', `"amount" >= 0`)
-@Check(
-  'chk_bookings_balance_due',
-  `"balance_due" >= 0 AND "balance_due" <= "amount"`,
-)
 export class BookingEntity {
   @PrimaryColumn({ name: 'id', type: 'varchar', length: 26 })
   id: string = ulid();
@@ -37,20 +37,8 @@ export class BookingEntity {
   @Column({ name: 'code', type: 'varchar', length: 9, unique: true })
   code: string = generateBookingCode();
 
-  @Column({ name: 'request_id', type: 'varchar', length: 26, nullable: true })
-  requestId: string | null;
-
-  @OneToOne(() => BookingRequestEntity, (request) => request.booking, {
-    onDelete: 'SET NULL',
-  })
-  @JoinColumn({
-    name: 'request_id',
-    foreignKeyConstraintName: 'fk_bookings_request_id',
-  })
-  request: Relation<BookingRequestEntity> | null;
-
   @Index('idx_bookings_user_id')
-  @Column({ name: 'user_id', type: 'varchar', length: 26, nullable: true })
+  @Column({ name: 'user_id', type: 'varchar', length: 26, default: null })
   userId: string | null;
 
   @ManyToOne(() => UserEntity, (user) => user.bookings, {
@@ -62,8 +50,8 @@ export class BookingEntity {
   })
   user: Relation<UserEntity> | null;
 
-  @Column({ name: 'departure_id', type: 'varchar', length: 26, nullable: true })
-  departureId: string | null;
+  @Column({ name: 'departure_id', type: 'varchar', length: 26 })
+  departureId: string;
 
   @ManyToOne(() => TripDepartureEntity, (departure) => departure.bookings, {
     onDelete: 'NO ACTION',
@@ -72,7 +60,7 @@ export class BookingEntity {
     name: 'departure_id',
     foreignKeyConstraintName: 'fk_bookings_departure_id',
   })
-  departure: Relation<TripDepartureEntity> | null;
+  departure: Relation<TripDepartureEntity>;
 
   @Column({ name: 'traveler_count', type: 'integer' })
   travelerCount: number;
@@ -81,9 +69,17 @@ export class BookingEntity {
     name: 'status',
     type: 'enum',
     enum: EBookingStatus,
-    default: EBookingStatus.PENDING_PAYMENT,
+    default: EBookingStatus.PENDING,
   })
   status: EBookingStatus;
+
+  @Column({
+    name: 'refund_status',
+    type: 'enum',
+    enum: EBookingRefundStatus,
+    default: null,
+  })
+  refundStatus: EBookingRefundStatus | null;
 
   @Column({ name: 'currency', type: 'enum', enum: ECURRENCY })
   currency: ECURRENCY;
@@ -91,22 +87,50 @@ export class BookingEntity {
   @Column({ name: 'amount', type: 'numeric', precision: 12, scale: 2 })
   amount: string;
 
-  @Column({ name: 'balance_due', type: 'numeric', precision: 12, scale: 2 })
-  balanceDue: string;
-
-  @Column({ name: 'due_date', type: 'timestamptz' })
-  dueDate: Date;
-
   @Column({
-    name: 'cancelled_at',
-    type: 'timestamptz',
-    nullable: true,
+    name: 'refund_amount',
+    type: 'numeric',
+    precision: 12,
+    scale: 2,
     default: null,
   })
-  cancelledAt: Date | null;
+  refundAmount: string | null;
 
-  @Column({ name: 'cancel_reason', type: 'text', nullable: true })
-  cancelReason: string | null;
+  @Column({
+    name: 'payment_checkout_id',
+    type: 'varchar',
+    length: 40,
+    default: null,
+  })
+  paymentCheckoutId: string | null;
+
+  @Column({
+    name: 'payment_reference_id',
+    type: 'varchar',
+    length: 40,
+    default: null,
+  })
+  paymentReferenceId: string | null;
+
+  @Column({
+    name: 'payment_refund_id',
+    type: 'varchar',
+    length: 40,
+    default: null,
+  })
+  paymentRefundId: string | null;
+
+  @Column({ name: 'expires_at', type: 'timestamptz' })
+  expiresAt: Date;
+
+  @Column({ name: 'error', type: 'text', default: null })
+  error: string | null;
+
+  @Column({ name: 'refund_reason', type: 'text', default: null })
+  refundReason: string | null;
+
+  @Column({ name: 'payment_method', type: 'text', default: null })
+  paymentMethod: string | null;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;
@@ -116,7 +140,4 @@ export class BookingEntity {
 
   @OneToMany(() => BookingTravelerEntity, (travelers) => travelers.booking)
   travelers: Relation<BookingTravelerEntity>[];
-
-  @OneToMany(() => BookingPaymentEntity, (payments) => payments.booking)
-  payments: Relation<BookingPaymentEntity>[];
 }
