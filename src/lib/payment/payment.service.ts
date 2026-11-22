@@ -1,10 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 
 import Razorpay from 'razorpay';
-import {
-  validatePaymentVerification,
-  validateWebhookSignature,
-} from 'razorpay/dist/utils/razorpay-utils.js';
+import { validateWebhookSignature } from 'razorpay/dist/utils/razorpay-utils.js';
 import { Orders } from 'razorpay/dist/types/orders.js';
 
 @Injectable()
@@ -51,24 +48,6 @@ export class PaymentService {
       webhookBody,
       signature,
       process.env.RAZORPAY_WEBHOOK_SECRET,
-    );
-  }
-
-  validatePaymentSignature(
-    razorpayOrderId: string,
-    razorpayPaymentId: string,
-    razorpaySignature: string,
-  ): boolean {
-    if (!process.env.RAZORPAY_API_SECRET)
-      throw new InternalServerErrorException('Payment api secret missing');
-
-    return validatePaymentVerification(
-      {
-        order_id: razorpayOrderId,
-        payment_id: razorpayPaymentId,
-      },
-      razorpaySignature,
-      process.env.RAZORPAY_API_SECRET,
     );
   }
 }
