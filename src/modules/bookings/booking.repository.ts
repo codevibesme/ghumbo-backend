@@ -210,6 +210,35 @@ export class BookingRepository {
     return data.map((booking) => booking.id);
   }
 
+  async getOrphanRefunds(pageParams: PaginationReqDto): Promise<BookingDto[]> {
+    const page = pageParams?.page ?? 1;
+    const size = pageParams?.size ?? 100;
+
+    return await this.repo
+      .createQueryBuilder('booking')
+      .select([
+        'booking.id',
+        'booking.paymentReferenceId',
+        'booking.refundAmount',
+      ])
+      .where('booking.status IN (:...statuses)', {
+        statuses: [EBookingStatus.CANCELLED, EBookingStatus.EXPIRED],
+      })
+      .andWhere('booking.refundStatus = :refundStatus', {
+        refundStatus: EBookingRefundStatus.PENDING,
+      })
+      .andWhere('booking.paymentReferenceId IS NOT NULL')
+      .andWhere('booking.paymentRefundId IS NULL')
+      .andWhere('booking.refundAmount > 0')
+      .andWhere('COALESCE(booking.cancelledAt, booking.updatedAt) < :cutoff', {
+        cutoff: new Date(Date.now() - 5 * 60_000),
+      })
+      .orderBy('booking.createdAt', 'ASC')
+      .skip((page - 1) * size)
+      .take(size)
+      .getMany();
+  }
+
   async findUserBookings(
     userId: string,
     pageParams: PaginationReqDto,

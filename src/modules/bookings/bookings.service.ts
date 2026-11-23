@@ -76,6 +76,10 @@ export class BookingService {
     return await this.repo.getStaleBookings(pageParams);
   }
 
+  async getOrphanRefunds(pageParams: PaginationReqDto): Promise<BookingDto[]> {
+    return await this.repo.getOrphanRefunds(pageParams);
+  }
+
   async findUserBookings(
     userId: string,
     pageParams: PaginationReqDto,

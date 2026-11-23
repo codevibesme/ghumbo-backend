@@ -30,6 +30,13 @@ export class PaymentService {
   }
 
   async refundBooking(bookingId: string, paymentId: string, amount: number) {
+    const previousRefunds =
+      await this.client.payments.fetchMultipleRefund(paymentId);
+    for (const refund of previousRefunds.items) {
+      if (refund.notes?.bookingId === bookingId && refund.status !== 'failed')
+        return refund;
+    }
+
     return await this.client.payments.refund(paymentId, {
       amount,
       notes: {
