@@ -643,7 +643,7 @@ export class BillingService {
   }
 
   async sweepStaleBookings(): Promise<void> {
-    let page = 1,
+    const page = 1,
       size = 100;
 
     const staleBookings = await this.bookingService.getStaleBookings({
@@ -660,6 +660,39 @@ export class BillingService {
     res.forEach((r, i) => {
       if (r.status === 'rejected')
         this.logger.error(`Expire failed for ${staleBookings[i]}`, r.reason);
+    });
+  }
+
+  async sweepOrphanRefunds(): Promise<void> {
+    const page = 1,
+      size = 100;
+
+    const orphanRefunds = await this.bookingService.getOrphanRefunds({
+      page,
+      size,
+    });
+
+    if (!orphanRefunds.length) return;
+
+    const res = await Promise.allSettled(
+      orphanRefunds.map(async (booking) => {
+        if (!booking.paymentReferenceId || !booking.refundAmount) return;
+
+        const refundRes = await this.paymentService.refundBooking(
+          booking.id,
+          booking.paymentReferenceId,
+          Math.round(Number(booking.refundAmount) * 100),
+        );
+        await this.bookingService.setPaymentRefundId(booking.id, refundRes.id);
+      }),
+    );
+
+    res.forEach((r, i) => {
+      if (r.status === 'rejected')
+        this.logger.error(
+          `Refund issue failed for ${orphanRefunds[i].id}`,
+          r.reason,
+        );
     });
   }
 }

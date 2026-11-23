@@ -65,4 +65,9 @@ export class BillingWorker {
   async sweepStaleBookings(): Promise<void> {
     await this.billingService.sweepStaleBookings();
   }
+
+  @Cron(CronExpression.EVERY_10_MINUTES)
+  async sweepOrphanRefunds(): Promise<void> {
+    return await this.billingService.sweepOrphanRefunds();
+  }
 }
